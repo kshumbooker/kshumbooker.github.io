@@ -1,3 +1,10 @@
+/**  the structure of each component for this project is:
+ *  template()
+ *  constructor()
+ *  render()
+ *  any extra handler functions if required
+ */
+
 const productsData = [
   {
     title: 'Coca-Cola Zero Sugar',
@@ -460,12 +467,12 @@ class HeroBannerCarousel extends HTMLElement {
         <a href="${val.url}"><img src="${val.image}" class="d-block w-100" alt="${val.alt}"></a>
       </div>
       `).join('')}
-    </div>   
-    <button class="carousel-control-prev" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="prev">
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="prev" style="background: ${this.arrowBgColor}; opacity: 1;">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="next" style="background: ${this.arrowBgColor}; opacity: 1;">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -475,6 +482,8 @@ class HeroBannerCarousel extends HTMLElement {
   constructor() {
     super();
     this.heroBannerCarousel = heroBannerCarousel;
+    this.arrowColor = '';
+    this.arrowBgColor = '#000000';
     this.render();
   }
 
@@ -684,8 +693,8 @@ class HeroBannerB extends HTMLElement {
     <img src="${this.image}" class="img-fluid" />
     <div class="container mt-3 p-4 hero-banner-b-form" 
       style="background: ${this.textBgColor}">
-      <h3>${this.heading}</h3>
-      <p>${this.text}</p>
+      <h6 style="font-size: ${this.headingSize}; color: ${this.headingColor}; ">${this.heading}</h6>
+      <p style="font-size: ${this.textSize}; color: ${this.textColor};">${this.text}</p>
       <a href="${this.buttonUrl}" class="btn btn-primary" 
         style="color: ${this.buttonFontColor}; background: ${this.buttonBgColor}">${this.buttonText}</a>
     </div>
@@ -695,7 +704,11 @@ class HeroBannerB extends HTMLElement {
     super();
     this.image = 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/57/original-Brands_Banner_Desktop_1920_x_586-020057.png';
     this.text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
+    this.textColor = '#000000';
+    this.textSize = '16px';
     this.heading = 'Enquiry Form';
+    this.headingSize = '24px';
+    this.headingColor = '#404040';
     this.buttonText = 'Enquire here';
     this.textBgColor = '#ffffff';
     this.buttonUrl = 'https://www.yourcoca-cola.co.uk/contact-us.list';
@@ -863,7 +876,7 @@ class ProductCategory extends HTMLElement {
     super();
     this.text = 'Baileys Absolut Vodka & Sprite';
     this.url = 'https://www.yourcoca-cola.co.uk/absolut-vodka-and-sprite-12-x-250ml/15213058.html';
-    this.fontSize = '36px';
+    this.fontSize = '18px';
     this.fontColor = '#f8f8f8';
     this.bgColor = '#000000';
     this.render();
@@ -965,15 +978,19 @@ class SubPageNavigation extends HTMLElement {
 
 class StandardCopy extends HTMLElement {
   template = () => `
-    <p class="h3 mb-4">${this.title}</p>
-    <p>${this.description}</p>
+    <p class="mb-4" style="font-size: ${this.headingSize}; color: ${this.headingColor}">${this.heading}</p>
+    <p style="font-size: ${this.textSize}; color: ${this.textColor}">${this.text}</p>
   `;
 
 
   constructor() {
     super();
-    this.title = 'Shop your favourites';
-    this.description = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.';
+    this.heading = 'Shop your favourites';
+    this.headingSize = '36px';
+    this.headingColor = '#404040';
+    this.text = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.';
+    this.textSize = '14px';
+    this.textColor = '#000000';
     this.render();
   }
 
