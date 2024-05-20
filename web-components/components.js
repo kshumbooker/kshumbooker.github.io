@@ -1,10 +1,3 @@
-/**  the structure of each component for this project is:
- *  template()
- *  constructor()
- *  render()
- *  any extra handler functions if required
- */
-
 const productsData = [
   {
     title: 'Coca-Cola Zero Sugar',
@@ -147,6 +140,72 @@ const productsData = [
     price: 15.99,
     rrp: 1.59,
     por: 58.5,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Fruit Punch Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/15355387-8795143410513525.jpg',
+    midascode: 100014,
+    brand: 'relentless',
+    price: 11.99,
+    rrp: 1.99,
+    por: 41.5,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Raspberry Zero Sugar Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13733909-2774951400808045.jpg',
+    midascode: 100015,
+    brand: 'relentless',
+    price: 12.99,
+    rrp: 1.89,
+    por: 40.5,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Origin Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13220383-1204886545310409.jpg',
+    midascode: 100016,
+    brand: 'relentless',
+    price: 13.99,
+    rrp: 1.79,
+    por: 44.5,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Peach Zero Sugar Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13733910-9564951400918733.jpg',
+    midascode: 100017,
+    brand: 'relentless',
+    price: 13.79,
+    rrp: 1.83,
+    por: 45.5,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Cherry Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13220386-3294886545986861.jpg',
+    midascode: 100018,
+    brand: 'relentless',
+    price: 13.49,
+    rrp: 1.89,
+    por: 45.8,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Passion Punch Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13220384-1685004239058525.jpg',
+    midascode: 100019,
+    brand: 'relentless',
+    price: 13.19,
+    rrp: 1.93,
+    por: 46.8,
     quantity: 0
   }
 ];
@@ -518,7 +577,7 @@ class Heading extends HTMLElement {
 
 class ProductCardList extends HTMLElement {
   template = () => `
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4">
     ${this.products.map(p => `
     <div class="col">
       <div class="card mx-auto h-100 text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
@@ -574,7 +633,7 @@ class ProductCardList extends HTMLElement {
   `
   constructor() {
     super();
-    this.products = productsByBrand('costa coffee');
+    this.products = productsByBrand('relentless');
     this.render();
   }
 
