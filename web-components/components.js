@@ -633,7 +633,7 @@ class ProductCardList extends HTMLElement {
   `
   constructor() {
     super();
-    this.products = productsByBrand('relentless');
+    this.products = productsByBrand('costa coffee');
     this.render();
   }
 
