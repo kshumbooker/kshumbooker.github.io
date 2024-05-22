@@ -730,23 +730,35 @@ class ImageCard extends HTMLElement {
 
 
 class HeroBannerA extends HTMLElement {
-  template = () => `
-    <img src="${this.image}" class="img-fluid" />
-    <a class="btn btn-light mt-3 hero-banner-a-button" href="${this.url}">${this.text}</a>
-  `;
-
-
   constructor() {
     super();
+  }
+
+  connectedCallback() {
+    const shadow = this.attachShadow({ mode: 'closed' });
     this.text = 'Shop All Coca Cola products';
     this.url = 'https://www.yourcoca-cola.co.uk/shop.list?pageNumber=1&facetFilters=en_brand_content:Coca-Cola+Original+Taste';
     this.image = 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/09/Coca-cola-banner-1920x700-073909.png';
-    this.render();
-  }
-
-  render() {
-    this.innerHTML = `
-      ${this.template().trim()}
+    shadow.innerHTML = `
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      .hero-banner-a-button {
+        display: block;
+        background: #f4af00;
+        padding: 11.2px 40px 12.8px;
+        border-radius: 24px;
+      }
+      @media (min-width: 768px) {
+        .hero-banner-a-button {
+          position:absolute;
+          bottom:0%;
+          left:50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    </style>
+    <img src="${this.image}" class="img-fluid" />
+    <a class="btn btn-light mt-3 hero-banner-a-button" href="${this.url}">${this.text}</a>
     `;
   }
 }
