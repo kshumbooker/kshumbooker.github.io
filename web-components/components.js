@@ -755,7 +755,7 @@ class HeroBannerA extends HTMLElement {
         }
       }
     </style>
-    <div class="container text-center mb-5">
+    <div class="container text-center mt-5 mb-5">
       <img src="${this.image}" class="img-fluid" />
       <a class="btn btn-light mt-3 hero-banner-a-button" href="${this.url}">${this.text}</a>
     </div>
