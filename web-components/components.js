@@ -737,10 +737,7 @@ class HeroBannerA extends HTMLElement {
   }
 
   connectedCallback() {
-    const shadow = this.attachShadow({ mode: 'closed' });
-    
-    shadow.innerHTML = `
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    this.innerHTML = `
     <style>
       .hero-banner-a-button {
         background: ${this.getAttribute('data-btn-bg-color')};
@@ -757,50 +754,13 @@ class HeroBannerA extends HTMLElement {
         }
       }
     </style>
-    <div class="container text-center mt-5 mb-5">
+    <div class="container justify-content-center mt-5 mb-5">
       <img src="${this.getAttribute('data-image')}" class="img-fluid" />
       <a class="btn btn-light mt-3 hero-banner-a-button" href="${this.getAttribute('data-url')}">${this.getAttribute('data-text')}</a>
     </div>
     `;
   }
 }
-
-
-
-/*class HeroBannerA extends HTMLElement {
-  constructor() {
-    super();
-  }
-
-  connectedCallback() {
-    const shadow = this.attachShadow({ mode: 'closed' });
-    this.text = 'Shop All Coca Cola products';
-    this.url = 'https://www.yourcoca-cola.co.uk/shop.list?pageNumber=1&facetFilters=en_brand_content:Coca-Cola+Original+Taste';
-    this.image = 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/09/Coca-cola-banner-1920x700-073909.png';
-    shadow.innerHTML = `
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-      .hero-banner-a-button {
-        background: #f4af00;
-        padding: 11.2px 40px 12.8px;
-        border-radius: 24px;
-        display: block;
-      }
-      @media (min-width: 768px) {
-        .hero-banner-a-button {
-          position:relative;
-          bottom:75px;
-          display: inline-block;
-        }
-      }
-    </style>
-    <div class="container text-center mt-5 mb-5">
-      <img src="${this.image}" class="img-fluid" />
-      <a class="btn btn-light mt-3 hero-banner-a-button" href="${this.url}">${this.text}</a>
-    </div>
-    `;
-  }
-}*/
 
 class HeroBannerB extends HTMLElement {
   template = () => `
