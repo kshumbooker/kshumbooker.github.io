@@ -561,7 +561,7 @@ class HeroBannerCarousel extends HTMLElement {
 }
 
 
-class Heading extends HTMLElement {
+/*class Heading extends HTMLElement {
   template = () => `
     <h1 class="display-6" style="color: ${this.fontColor}; font-size: ${this.fontSize}">${this.heading}</p>
   `;
@@ -577,6 +577,21 @@ class Heading extends HTMLElement {
   render() {
     this.innerHTML = `
       ${this.template().trim()}
+    `;
+  }
+}*/
+
+class Heading extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+    <div class="container text-center mb-5">
+      <p class="display-6 text-center">Heading</p>
+      <h1 class="display-6" style="color: ${this.getAttribute('data-fontColor')}; font-size: ${this.getAttribute('data-fontSize')}">${this.getAttribute('data-heading')}</h1>
+    </div>
     `;
   }
 }
