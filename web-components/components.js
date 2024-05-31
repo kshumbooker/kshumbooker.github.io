@@ -762,7 +762,7 @@ class HeroBannerA extends HTMLElement {
   }
 }
 
-class HeroBannerB extends HTMLElement {
+/*class HeroBannerB extends HTMLElement {
   template = () => `
     <img src="${this.image}" class="img-fluid" />
     <div class="container mt-3 p-4 hero-banner-b-form" 
@@ -794,6 +794,44 @@ class HeroBannerB extends HTMLElement {
   render() {
     this.innerHTML = `
       ${this.template().trim()}
+    `;
+  }
+}*/
+
+class HeroBannerB extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+    <style>
+      @media (min-width: 768px) {
+        .hero-banner-b-form {
+          position:absolute;
+          top: 60%;
+          left: 50%;
+          opacity: 0.7;
+          transform: translate(-50%, -50%);
+          width: 75%;
+        }
+      }
+      </style>
+      <div class="container position-relative text-center pt-5 mb-5 hero-banner-b">
+        <p class="display-6">Hero Banner B</p> 
+        <img src="${this.getAttribute('data-image')}" class="img-fluid" />
+        <div class="container mt-3 p-4 hero-banner-b-form" style="background: ${this.getAttribute('data-textBgColor')}">
+          <h6 style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}; ">
+            ${this.getAttribute('data-heading')}
+          </h6>
+          <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')};">
+            ${this.getAttribute('data-text')}
+          </p>
+          <a href="${this.getAttribute('data-buttonUrl')}" class="btn btn-primary" style="color: ${this.getAttribute('data-buttonFontColor')}; background: ${this.getAttribute('data-buttonBgColor')}">
+            ${this.getAttribute('data-buttonText')}
+          </a>
+        </div>
+      </div>
     `;
   }
 }
