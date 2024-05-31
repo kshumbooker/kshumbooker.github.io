@@ -1103,7 +1103,7 @@ class SubPageNavigation extends HTMLElement {
   }
 }
 
-class StandardCopy extends HTMLElement {
+/*class StandardCopy extends HTMLElement {
   template = () => `
     <p class="mb-4" style="font-size: ${this.headingSize}; color: ${this.headingColor}">${this.heading}</p>
     <p style="font-size: ${this.textSize}; color: ${this.textColor}">${this.text}</p>
@@ -1124,6 +1124,26 @@ class StandardCopy extends HTMLElement {
   render() {
     this.innerHTML = `
       ${this.template().trim()}
+    `;
+  }
+}*/
+
+class StandardCopy extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+    <div class="container mb-5 text-center">
+      <p class="display-6">Standard Copy</p> 
+      <p class="mb-4" style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">
+        ${this.getAttribute('data-heading')}
+      </p>
+      <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')}">
+        ${this.getAttribute('data-text')}
+      </p>
+    </div>
     `;
   }
 }
