@@ -345,9 +345,12 @@ class InfoCardA extends HTMLElement {
 
   constructor() {
     super();
+  }
+
+  connectedCallback() {
     this.heading = '[TITLE] SEASONAL PROMOTION BANNER';
     this.headingSize = '24px';
-    this.headingColor = '#ff0000';
+    this.headingColor = '#000000';
     this.image = 'https://www.insidehook.com/wp-content/uploads/2021/07/cokezero-h.jpg?fit=1200%2C800';
     this.alt = 'Coca Cola Zero Sugar';
     this.text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam egestas massa sit amet mi rutrum, a hendrerit ante pulvinar. Vivamus id risus a lorem consequat lobortis a id purus. Maecenas ac dui vulputate, posuere arcu ut, aliquet arcu. Fusce mollis lacinia ipsum sed facilisis.';
@@ -735,6 +738,42 @@ class HeroBannerA extends HTMLElement {
 
   connectedCallback() {
     const shadow = this.attachShadow({ mode: 'closed' });
+    
+    shadow.innerHTML = `
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      .hero-banner-a-button {
+        background: ${this.getAttribute('data-btn-bg-color')};
+        color: ${this.getAttribute('data-btn-color')};
+        padding: 11.2px 40px 12.8px;
+        border-radius: 24px;
+        display: block;
+      }
+      @media (min-width: 768px) {
+        .hero-banner-a-button {
+          position:relative;
+          bottom:75px;
+          display: inline-block;
+        }
+      }
+    </style>
+    <div class="container text-center mt-5 mb-5">
+      <img src="${this.getAttribute('data-image')}" class="img-fluid" />
+      <a class="btn btn-light mt-3 hero-banner-a-button" href="${this.getAttribute('data-url')}">${this.getAttribute('data-text')}</a>
+    </div>
+    `;
+  }
+}
+
+
+
+/*class HeroBannerA extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    const shadow = this.attachShadow({ mode: 'closed' });
     this.text = 'Shop All Coca Cola products';
     this.url = 'https://www.yourcoca-cola.co.uk/shop.list?pageNumber=1&facetFilters=en_brand_content:Coca-Cola+Original+Taste';
     this.image = 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/09/Coca-cola-banner-1920x700-073909.png';
@@ -761,8 +800,7 @@ class HeroBannerA extends HTMLElement {
     </div>
     `;
   }
-}
-
+}*/
 
 class HeroBannerB extends HTMLElement {
   template = () => `
