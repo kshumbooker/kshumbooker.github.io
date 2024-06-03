@@ -355,49 +355,35 @@ class InfoCardA extends HTMLElement {
 
 
 class InfoCardB extends HTMLElement {
-  template = () => `
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
-      <div class="card h-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <img src="${this.image}" alt="${this.alt}" class="img-fluid" />
-        <div class="card-body" style="background: ${this.cardBgColor}">
-          <div class="p-4">
-            <h6 style="font-size: ${this.headingSize}; color: ${this.headingColor};">${this.heading}</h6>
-          </div>
-          <div class="p-4">
-            <p style="font-size: ${this.textSize}; color: ${this.textColor};">${this.text}</p>
-          </div>
-          <div class="p-4">
-            <a href="${this.url}" class="text-decoration-none" style="color: ${this.urlColor};">${this.urlText} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+    <div class="container mb-5">
+      <p class="display-6 text-center">Info Card B</p>
+      <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+          <div class="card h-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+          <img src="${this.getAttribute('data-image')}" alt="${this.getAttribute('data-alt')}" class="img-fluid" />
+          <div class="card-body" style="background: ${this.getAttribute('data-cardBgColor')}">
+            <div class="p-4">
+              <h6 style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')};">${this.getAttribute('data-heading')}</h6>
+            </div>
+            <div class="p-4">
+              <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')};">${this.getAttribute('data-text')}</p>
+            </div>
+            <div class="p-4">
+              <a href="${this.getAttribute('data-url')}" class="text-decoration-none" style="color: ${this.getAttribute('data-urlColor')};">${this.getAttribute('data-urlText')} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/></svg></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-    `
-
-  constructor() {
-    super();
-    this.heading = '[TITLE] Jack Daniels & Coca Cola';
-    this.image = 'https://static.thcdn.com/images/medium/webp/widgets/190-en/24/Two_Item_Image_-_Option_2-041524.png';
-    this.alt = 'JD and Coke';
-    this.text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam egestas massa sit amet mi rutrum, a hendrerit ante pulvinar. Vivamus id risus a lorem consequat lobortis a id purus. Maecenas ac dui vulputate, posuere arcu ut, aliquet arcu. Fusce mollis lacinia ipsum sed facilisis.';
-    this.textColor = '#404040';
-    this.textSize = '16px';
-    this.url = 'https://www.yourcoca-cola.co.uk/brands/jack-daniels-coca-cola.list';
-    this.urlText = 'Shop now';
-    this.urlColor = '#000000';
-    this.headingSize = '24px';
-    this.headingColor = '#ff0000';
-    this.cardBgColor = '#f8f8f8';
-    this.render();
-  }
-
-  render() {
-    this.innerHTML = `
-      ${this.template().trim()}
-    `;
+  `;
   }
 }
 
