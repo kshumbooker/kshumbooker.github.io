@@ -389,79 +389,74 @@ class InfoCardB extends HTMLElement {
 
 
 class ProductCard extends HTMLElement {
-  template = () => `
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
-      <div class="card mx-auto h-100 text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <div class="card-title">
-          <span class="fw-bold">${this.product.midascode}</span>
-        </div>
-        <img src=${this.product.image} class="mb-5" />
-        <div class="row mb-3">
-          <span class="fw-bold">${this.product.title}</span>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            ${this.product.volume}
-          </div>
-          <div class="col">
-            <div class="fw-bold">&pound;${this.product.price}</div>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <a href="#">Add to List</a>
-          </div>
-          <div class="col">
-            <span>RRP: ${this.product.rrp}</span>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col offset-6">
-            <span>POR: ${this.product.por}%</span>
-          </div>
-        </div>
-        <div class="d-flex justify-content-center">
-          <button class="btn button productCardMinus">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
-            </svg>
-          </button>
-          <div class="col-2">
-            <input type="text" class="form-control text-center" value=${this.product.quantity} />
-          </div>
-          <button class="btn button productCardPlus">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-            </svg>
-          </button>
-        </div>  
-        <div class="p-4">
-          <button type="button" class="btn btn-primary button booker">Shop Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-    `;
 
   constructor() {
     super();
-    this.product = {
-      title: 'Coca-Cola Zero Sugar',
-      volume: '24 x 330ml',
-      image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657922-9294861134854115.jpg',
-      midascode: 100001,
-      brand: 'coca-cola',
-      price: 13.09,
-      rrp: 1.39,
-      por: 49.7,
-      quantity: 0
-    };
-    
-    this.render();
-
+    this.quantity = 0;  
   }
 
+  template = () => `
+  <div class="container mb-5">
+  <p class="display-6 text-center">Product Card</p>
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+        <div class="card mx-auto h-100 text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+          <div class="card-title">
+            <span class="fw-bold">${this.getAttribute('data-midascode')}</span>
+          </div>
+          <img src=${this.getAttribute('data-image')} class="mb-5" />
+          <div class="row mb-3">
+            <span class="fw-bold">${this.getAttribute('data-description')}</span>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              ${this.getAttribute('data-volume')}
+            </div>
+            <div class="col">
+              <div class="fw-bold">&pound;${this.getAttribute('data-price')}</div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <a href="#">Add to List</a>
+            </div>
+            <div class="col">
+              <span>RRP: ${this.getAttribute('data-rrp')}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col offset-6">
+              <span>POR: ${this.getAttribute('data-por')}%</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button class="btn button productCardMinus">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
+              </svg>
+            </button>
+            <div class="col-2">
+              <input type="text" class="form-control text-center productCardQuantity" value=${this.quantity} />
+            </div>
+            <button class="btn button productCardPlus">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+              </svg>
+            </button>
+          </div>  
+          <div class="p-4">
+        <button type="button" class="btn btn-primary button booker">Shop Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  `;
+
+  connectedCallback() {
+    this.render();
+  }
+ 
   render() {
     this.innerHTML = `
       ${this.template().trim()}
@@ -472,14 +467,14 @@ class ProductCard extends HTMLElement {
   }
   
   productCardPlusClick = () => {
-    this.product.quantity++;
+    this.quantity++;
     this.render();
   }
 
   productCardMinusClick = () => {
-    this.product.quantity > 0 ? this.product.quantity-- : false;
+    this.quantity > 0 ? this.quantity-- : false;
     this.render();
-  } 
+  }
 }
 
 class HeroBannerCarousel extends HTMLElement {
