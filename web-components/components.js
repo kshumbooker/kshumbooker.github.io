@@ -322,58 +322,34 @@ const subPageNavigation = [
 
 
 class InfoCardA extends HTMLElement {
-  template = () => `
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
-      <div class="card h-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <img src="${this.image}" alt="${this.alt}" />
-        <div class="card-body">
-          <div class="p-4">
-            <p class="h6" style="font-size: ${this.headingSize}; color: ${this.headingColor}">${this.heading}</h6>
-          </div>
-          <div class="p-4">
-            <p style="font-size: ${this.textSize}; color: ${this.textColor}; ">${this.text} ${this.count}</p>
-          </div>
-          <div class="p-4">
-            <a href="${this.url}" class="btn btn-primary infoCardABtn" style="background: ${this.buttonBgColor}; color: ${this.buttonFontColor};">${this.buttonText}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  `
-
   constructor() {
     super();
   }
 
-  connectedCallback() {
-    this.heading = '[TITLE] SEASONAL PROMOTION BANNER';
-    this.headingSize = '24px';
-    this.headingColor = '#000000';
-    this.image = 'https://www.insidehook.com/wp-content/uploads/2021/07/cokezero-h.jpg?fit=1200%2C800';
-    this.alt = 'Coca Cola Zero Sugar';
-    this.text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam egestas massa sit amet mi rutrum, a hendrerit ante pulvinar. Vivamus id risus a lorem consequat lobortis a id purus. Maecenas ac dui vulputate, posuere arcu ut, aliquet arcu. Fusce mollis lacinia ipsum sed facilisis.';
-    this.buttonFontColor = '#ffffff';
-    this.buttonBgColor = '#000000';
-    this.buttonText = 'Shop Now';
-    this.url = 'https://www.yourcoca-cola.co.uk/brands/coca-cola-zero-sugar.list';
-    this.textSize = '20px';
-    this.textColor = '#808080';
-    this.count = 0;
-    this.render();
-  }
-
-  render() {
+  connectedCallback() { 
     this.innerHTML = `
-      ${this.template().trim()}
+    <div class="container mb-5">
+      <p class="display-6 text-center">Info Card A</p>
+      <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+          <div class="card h-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+            <img src="${this.getAttribute('data-image')}" alt="${this.getAttribute('data-alt')}" />
+            <div class="card-body">
+              <div class="p-4">
+                <p class="h6" style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">${this.getAttribute('data-heading')}</h6>
+              </div>
+              <div class="p-4">
+                <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')}; ">${this.getAttribute('data-text')}</p>
+              </div>
+              <div class="p-4">
+                <a href="${this.getAttribute('data-url')}" class="btn btn-primary infoCardABtn" style="background: ${this.getAttribute('data-buttonBgColor')}; color: ${this.getAttribute('data-buttonFontColor')};">${this.getAttribute('data-buttonText')}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     `;
-    this.querySelector('.infoCardABtn').addEventListener('click', this.shopNowClick);
-  }
-
-  shopNowClick = () => {
-    this.count++;
-    this.render();
   }
 }
 
