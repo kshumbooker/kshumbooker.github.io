@@ -1124,22 +1124,16 @@ class StandardCopy extends HTMLElement {
 }
 
 class Button extends HTMLElement {
-  template = () => `
-    <a href="${this.url}" class="btn btn-primary" style="color: ${this.fontColor}; background: ${this.buttonBgColor}">${this.text}</button>
-  `;
-
   constructor() {
     super();
-    this.text = 'Shop all Coca-Cola products';
-    this.url = 'https://www.yourcoca-cola.co.uk/shop.list?pageNumber=1&facetFilters=en_brand_content:Coca-Cola+Original+Taste|en_brand_content:Coca-Cola+Zero+Sugar';
-    this.fontColor = '#000000';
-    this.buttonBgColor = '#48a832';
-    this.render();
   }
 
-  render() {
+  connectedCallback() {
     this.innerHTML = `
-      ${this.template().trim()}
+    <div class="container text-center mb-5">
+      <p class="display-6 text-center">Custom Button</p> 
+      <a href="${this.getAttribute('data-url')}" class="btn btn-primary" style="color: ${this.getAttribute('data-fontColor')}; background: ${this.getAttribute('data-buttonBgColor')}">${this.getAttribute('data-text')}</a>
+    </div>
     `;
   }
 }
