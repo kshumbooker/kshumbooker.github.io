@@ -1100,22 +1100,18 @@ class Button extends HTMLElement {
   }
 }
 
-class HeroImage extends HTMLElement {
-  template = () => `
-    <a href="${this.url}"><img src="${this.image}" class="img-fluid" alt="${this.alt}" /></a>
-  `;
 
+class HeroImage extends HTMLElement {
   constructor() {
     super();
-    this.image = 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/19/original-ABBA_Brand_Page_Banner_1-012219.png';
-    this.alt = 'Absolut Vodka';
-    this.url = 'https://www.yourcoca-cola.co.uk/brands/absolut-vodka-sprite.list';
-    this.render();
   }
 
-  render() {
+  connectedCallback() {
     this.innerHTML = `
-      ${this.template().trim()}
+    <div class="container mb-5">
+      <p class="display-6 text-center">Hero Image</p> 
+      <a href="${this.getAttribute('data-url')}"><img src="${this.getAttribute('data-image')}" class="img-fluid" alt="${this.getAttribute('data-alt')}" /></a>
+    </div>
     `;
   }
 }
