@@ -1,326 +1,3 @@
-const productsData = [
-  {
-    title: 'Coca-Cola Zero Sugar',
-    volume: '24 x 330ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657922-9294861134854115.jpg',
-    midascode: 100001,
-    brand: 'coca-cola',
-    price: 13.09,
-    rrp: 1.39,
-    por: 49.7,
-    quantity: 0
-  },
-  {
-    title: 'Coca-Cola Lemon',
-    volume: '24 x 330ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/15227578-8645125050786129.jpg',
-    midascode: 100002,
-    brand: 'coca-cola',
-    price: 13.99,
-    rrp: 1.39,
-    por: 55.5,
-    quantity: 0
-  },
-  {
-    title: 'Coca-Cola Original',
-    volume: '24 x 250ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/13869129-4134964590200453.jpg',
-    midascode: 100003,
-    brand: 'coca-cola',
-    price: 13.99,
-    rrp: 1.39,
-    por: 55.5,
-    quantity: 0
-  },
-  {
-    title: 'Coca-Cola Cherry',
-    volume: '24 x 330ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657920-1654899330330921.jpg',
-    midascode: 100004,
-    brand: 'coca-cola',
-    price: 13.99,
-    rrp: 1.39,
-    por: 55.5,
-    quantity: 0
-  },
-  {
-    title: 'Coca-Cola Original Taste Glass Bottles',
-    volume: '24 x 330ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657918-9414807812038433.jpg',
-    midascode: 100005,
-    brand: 'coca-cola',
-    price: 13.99,
-    rrp: 1.39,
-    por: 55.5,
-    quantity: 0
-  },
-  {
-    title: 'Coca-Cola Zero Sugar Lemon',
-    volume: '24 x 330ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/15227577-1255125050706956.jpg',
-    midascode: 100006,
-    brand: 'coca-cola',
-    price: 14.99,
-    rrp: 1.49,
-    por: 57.5,
-    quantity: 0
-  },
-  {
-    title: 'Coca-Cola Zero Sugar Cherry',
-    volume: '24 x 330ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12912901-1414889184313857.jpg',
-    midascode: 100007,
-    brand: 'coca-cola',
-    price: 15.99,
-    rrp: 1.59,
-    por: 58.5,
-    quantity: 0
-  },
-  {
-    title: 'Costa Coffee Latte',
-    volume: '12 x 250ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657928-1344965615047130.jpg',
-    midascode: 100008,
-    brand: 'costa coffee',
-    price: 15.99,
-    rrp: 1.59,
-    por: 58.5,
-    quantity: 0
-  },
-  {
-    title: 'Costa Coffee Vanilla Latte',
-    volume: '12 x 250ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12882462-1564965615215088.jpg',
-    midascode: 100009,
-    brand: 'costa coffee',
-    price: 15.99,
-    rrp: 1.59,
-    por: 58.5,
-    quantity: 0
-  },
-  {
-    title: 'Costa Coffee Caramel Latte',
-    volume: '12 x 250ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657927-1074965615454608.jpg',
-    midascode: 100010,
-    brand: 'costa coffee',
-    price: 15.99,
-    rrp: 1.59,
-    por: 58.5,
-    quantity: 0
-  },
-  {
-    title: 'Costa Coffee Flat White',
-    volume: '12 x 250ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12882463-3574965914586723.jpg',
-    midascode: 100011,
-    brand: 'costa coffee',
-    price: 15.99,
-    rrp: 1.59,
-    por: 58.5,
-    quantity: 0
-  },
-  {
-    title: 'Jack Daniel\'s and Coca-Cola',
-    volume: '12 x 330ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/14509056-2415036628891027.jpg',
-    midascode: 100012,
-    brand: 'jack daniels',
-    price: 15.99,
-    rrp: 1.59,
-    por: 58.5,
-    quantity: 0
-  },
-  {
-    title: 'Jack Daniel\'s and Coca-Cola Zero',
-    volume: '12 x 330ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/14509057-9895036629017087.jpg',
-    midascode: 100013,
-    brand: 'jack daniels',
-    price: 15.99,
-    rrp: 1.59,
-    por: 58.5,
-    quantity: 0
-  },
-  {
-    title: 'Relentless Fruit Punch Energy Drink',
-    volume: '12 x 500ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/15355387-8795143410513525.jpg',
-    midascode: 100014,
-    brand: 'relentless',
-    price: 11.99,
-    rrp: 1.99,
-    por: 41.5,
-    quantity: 0
-  },
-  {
-    title: 'Relentless Raspberry Zero Sugar Energy Drink',
-    volume: '12 x 500ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13733909-2774951400808045.jpg',
-    midascode: 100015,
-    brand: 'relentless',
-    price: 12.99,
-    rrp: 1.89,
-    por: 40.5,
-    quantity: 0
-  },
-  {
-    title: 'Relentless Origin Energy Drink',
-    volume: '12 x 500ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13220383-1204886545310409.jpg',
-    midascode: 100016,
-    brand: 'relentless',
-    price: 13.99,
-    rrp: 1.79,
-    por: 44.5,
-    quantity: 0
-  },
-  {
-    title: 'Relentless Peach Zero Sugar Energy Drink',
-    volume: '12 x 500ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13733910-9564951400918733.jpg',
-    midascode: 100017,
-    brand: 'relentless',
-    price: 13.79,
-    rrp: 1.83,
-    por: 45.5,
-    quantity: 0
-  },
-  {
-    title: 'Relentless Cherry Energy Drink',
-    volume: '12 x 500ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13220386-3294886545986861.jpg',
-    midascode: 100018,
-    brand: 'relentless',
-    price: 13.49,
-    rrp: 1.89,
-    por: 45.8,
-    quantity: 0
-  },
-  {
-    title: 'Relentless Passion Punch Energy Drink',
-    volume: '12 x 500ml',
-    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13220384-1685004239058525.jpg',
-    midascode: 100019,
-    brand: 'relentless',
-    price: 13.19,
-    rrp: 1.93,
-    por: 46.8,
-    quantity: 0
-  }
-];
-
-const productCategories = [
-  {
-    category: 'Coca Cola Original Taste - Glass Bottles',
-    url: 'https://www.yourcoca-cola.co.uk/coca-cola-original-taste-24-x-330ml-glass-bottles/12657918.html'
-  },
-  {
-    category: 'Fanta Orange Zero',
-    url: 'https://www.yourcoca-cola.co.uk/fanta-orange-zero-24-x-330ml/12752523.html'
-  },
-  {
-    category: 'Diet Coke',
-    url: 'https://www.yourcoca-cola.co.uk/diet-coke-24-x-330ml/12657929.html'
-  },
-  {
-    category: 'Monster Energy Drink Ultra Peachy Keen',
-    url: 'https://www.yourcoca-cola.co.uk/monster-energy-drink-ultra-12-x-500ml/12657943.html'
-  },
-  {
-    category: 'Relentless Fruit Punch',
-    url: 'https://www.yourcoca-cola.co.uk/relentless-fruit-punch-energy-drink-12-x-500ml/15355387.html'
-  },
-  {
-    category: 'Powerade Golden Mango',
-    url: 'https://www.yourcoca-cola.co.uk/powerade-golden-mango-12-x-500ml/15213056.html'
-  },
-  {
-    category: 'Coca Cola Lemon',
-    url: 'https://www.yourcoca-cola.co.uk/coca-cola-lemon-24-x-330ml/15227578.html'
-  },
-  {
-    category: 'Reign Razzle Berry',
-    url: 'https://www.yourcoca-cola.co.uk/reign-razzle-berry-12-x-500ml/12918403.html'
-  }
-];
-
-const heroBannerCarousel = [
-  {
-    image: 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/49/original-New_Fanta_Desktop-011449.png',
-    alt: 'Fanta',
-    url: 'https://www.yourcoca-cola.co.uk/brands/fanta.list'
-  },
-  {
-    image: 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/09/Coca-cola-banner-1920x700-073909.png',
-    alt: 'Coca Cola',
-    url: 'https://www.yourcoca-cola.co.uk/brands/coca-cola-original-taste.list'
-  },
-  {
-    image: 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/19/original-ABBA_Brand_Page_Banner_1-012219.png',
-    alt: 'Absolut Vodka',
-    url: 'https://www.yourcoca-cola.co.uk/brands/absolut-vodka-sprite.list'
-  },
-  {
-    image: 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/00/Appletiser-banner-1920x700-080600.png',
-    alt: 'Appletiser',
-    url: 'https://www.yourcoca-cola.co.uk/brands/appletiser.list'
-  },
-  {
-    image: 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/45/original-Dr_Pepper_Brands_Page_Desktop-091945.png',
-    alt: 'Dr Pepper',
-    url: 'https://www.yourcoca-cola.co.uk/brands/dr-pepper.list'
-  },
-  {
-    image: 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/35/original-Desktop-031535.png',
-    alt: 'Jack Daniels',
-    url: 'https://www.yourcoca-cola.co.uk/brands/jack-daniels-coca-cola.list'
-  },
-  {
-    image: 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/00/original-Desktop_%2831%29-025700.png',
-    alt: 'Lilt',
-    url: 'https://www.yourcoca-cola.co.uk/brands/lilt.list'
-  },
-  {
-    image: 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/14/original-Sprite_1920x586px-020414.png',
-    alt: 'Sprite',
-    url: 'https://www.yourcoca-cola.co.uk/brands/sprite.list' 
-  }
-];
-
-const subPageNavigation = [
-  {
-    id: 'home',
-    title: 'Home',
-    text: 'Limited-Time Offer: Place an order worth £60+ and choose a Free Gift OR Free Entry to our Prize Draw for a Chance To Win £250 of account credit, which you can use to buy your favourite drinks from Your Coca-Cola. Offer ends 19/05/24. Gifts available while stocks last.',
-    image: 'https://static.thcdn.com/images/medium/webp/widgets/190-en/17/original-Free_Gift_Mobile-073417.png',
-    color: '#000000'
-  },
-  {
-    id: 'monster',
-    title: 'Monster Energy',
-    text: 'Tear into a can of Monster Energy wherever your journey takes you, the meanest energy drink on the planet. The Monster Energy blend combined with caffeine gives you the energy you need in a smooth easy drinking flavour. Athletes, gamers, musicians, students, road warriors, metal heads, geeks, hipsters, and bikers dig it - you will too. Unleash the Beast!',
-    image: 'https://static.thcdn.com/images/medium/webp/widgets/190-en/14/Monster-header-375x375-113914.png',
-    color: '#121212'
-  },
-  {
-    id: 'cocacola',
-    title: 'Coca Cola',
-    text: 'Coca‑Cola history began in 1886 when Dr. John Pemberton created a distinctive soft drink now known as Coca-Cola Original Taste. Today, you can find Coca-Cola Original Taste in a variety of sizes to suit every lifestyle and occasion.',
-    image: 'https://static.thcdn.com/images/medium/webp/widgets/190-en/29/Coca-cola-header-375x375-090329.png',
-    color: '#C70100'
-  },
-  {
-    id: 'fanta',
-    title: 'Fanta',
-    text: 'Bright, bubbly, instantly refreshing and great tasting. Fanta is made with 100% natural flavours and is caffeine free. Fanta is available in a variety of real fruit flavours.',
-    image: 'https://static.thcdn.com/images/medium/webp/widgets/190-en/58/original-New_Fanta_Mobile-011458.png',
-    color: '#F86C02'
-  }
-]
-
-
-
 class InfoCardA extends HTMLElement {
   constructor() {
     super();
@@ -328,8 +5,7 @@ class InfoCardA extends HTMLElement {
 
   connectedCallback() { 
     this.innerHTML = `
-    <div class="container mb-5">
-      <p class="display-6 text-center">Info Card A</p>
+    <div class="container mt-5 mb-5">
       <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
           <div class="card h-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
@@ -353,7 +29,6 @@ class InfoCardA extends HTMLElement {
   }
 }
 
-
 class InfoCardB extends HTMLElement {
   constructor() {
     super();
@@ -362,7 +37,6 @@ class InfoCardB extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <div class="container mb-5">
-      <p class="display-6 text-center">Info Card B</p>
       <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
           <div class="card h-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
@@ -387,7 +61,6 @@ class InfoCardB extends HTMLElement {
   }
 }
 
-
 class ProductCard extends HTMLElement {
 
   constructor() {
@@ -396,8 +69,7 @@ class ProductCard extends HTMLElement {
   }
 
   template = () => `
-  <div class="container mb-5">
-  <p class="display-6 text-center">Product Card</p>
+  <div class="container mt-5 mb-5">
     <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
         <div class="card mx-auto h-100 text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
@@ -445,12 +117,12 @@ class ProductCard extends HTMLElement {
             </button>
           </div>  
           <div class="p-4">
-        <button type="button" class="btn btn-primary button booker">Shop Now</button>
+            <button type="button" class="btn btn-primary button booker">Shop Now</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
   `;
 
   connectedCallback() {
@@ -478,65 +150,50 @@ class ProductCard extends HTMLElement {
 }
 
 class HeroBannerCarousel extends HTMLElement {
-  template = () => `
-  <div id="HeroBannerCarousel" class="carousel">
-    <div class="carousel-inner">
-    ${this.heroBannerCarousel.map((val, key) => `
-      <div class="carousel-item ${key == 0 ? "active" : ""}">
-        <a href="${val.url}"><img src="${val.image}" class="d-block w-100" alt="${val.alt}"></a>
-      </div>
-      `).join('')}
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="prev" style="background: ${this.arrowBgColor}">
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-  </svg>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="next" style="background: ${this.arrowBgColor}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-      </svg>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  `;
-
   constructor() {
     super();
-    this.heroBannerCarousel = heroBannerCarousel;
-    this.arrowColor = '';
-    this.arrowBgColor = '#000000';
-    this.render();
   }
 
-  render() {
+  connectedCallback() {
     this.innerHTML = `
-      ${this.template().trim()}
-    `;
+    <style>
+    .carousel-control-prev, .carousel-control-next{
+      width: 5vh;
+      height: 5vh;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+    }
+    </style>
+    <div class="container position-relative text-center mt-5 mb-5">
+      <div id="HeroBannerCarousel" class="carousel">
+        <div class="carousel-inner">
+        ${JSON.parse(this.getAttribute('data-hero-banner-carousel')).map((val, key) => `
+          <div class="carousel-item ${key == 0 ? "active" : ""}">
+            <a href="${val.url}"><img src="${val.image}" class="d-block w-100" alt="${val.alt}"></a>
+          </div>
+        `)}
+      </div>
+      ${this.getAttribute('data-arrowShow') == 'true' ? `
+      <button class="carousel-control-prev" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="${this.getAttribute('data-arrowBgColor')}" class="bi bi-arrow-left-circle-fill" viewBox="-1 -1 20 20">
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" stroke="${this.getAttribute('data-arrowColor')}"/>
+        </svg>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="${this.getAttribute('data-arrowBgColor')}" class="bi bi-arrow-right-circle-fill" viewBox="-3 -1 20 20">
+          <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" stroke="${this.getAttribute('data-arrowColor')}"/>
+        </svg>
+        <span class="visually-hidden">Next</span>
+      </button>` : ``}
+    </div>
+  </div>`;
   }
 }
 
 
-/*class Heading extends HTMLElement {
-  template = () => `
-    <h1 class="display-6" style="color: ${this.fontColor}; font-size: ${this.fontSize}">${this.heading}</p>
-  `;
-
-  constructor() {
-    super();
-    this.heading = 'Shop products';
-    this.fontColor = '#d3d3d3';
-    this.fontSize = '48px';
-    this.render();
-  }
-
-  render() {
-    this.innerHTML = `
-      ${this.template().trim()}
-    `;
-  }
-}*/
 
 class Heading extends HTMLElement {
   constructor() {
@@ -545,18 +202,28 @@ class Heading extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="container text-center mb-5">
-      <p class="display-6 text-center">Heading</p>
+    <div class="container text-center mt-5 mb-5">
       <h1 class="display-6" style="color: ${this.getAttribute('data-fontColor')}; font-size: ${this.getAttribute('data-fontSize')}">${this.getAttribute('data-heading')}</h1>
     </div>
     `;
   }
 }
 
-
 class ProductCardList extends HTMLElement {
+  constructor() {
+    super();
+  }
+
   template = () => `
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+  <style>
+    .card {
+      margin: 0 .5em;
+      box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+      border: none;
+    }
+  </style>
+  <div class="container mt-5 mb-5">
+    <div class="row row-cols-4 row-cols-md-3 row-cols-lg-4 g-4">
     ${this.products.map(p => `
     <div class="col">
       <div class="card mx-auto h-100 text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
@@ -606,13 +273,15 @@ class ProductCardList extends HTMLElement {
           <button type="button" class="btn btn-primary button booker">Shop Now</button>
         </div>
       </div>
-        </div>
-    `).join('')}
+    </div>
+    `).join("")}
+    </div>
   </div>
-  `
-  constructor() {
-    super();
-    this.products = productsByBrand('costa coffee');
+</div>
+`;
+  
+  connectedCallback() {
+    this.products = JSON.parse(this.getAttribute('data-product-card-list'));
     this.render();
   }
 
@@ -649,56 +318,41 @@ class ProductCardList extends HTMLElement {
 
 
 class LinkToShop extends HTMLElement {
-  template = () => `
-    <div class="row mb-3">
-      <a href="${this.url}" target="_blank"><img src="${this.image}" class="img-fluid" alt="${this.alt}" /></a>
-    </div>
-    <div class="row">
-      <a href="${this.url}">${this.name} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
-        </svg>
-      </a>
-    </div>
-    `;
-  
-
   constructor() {
     super();
-    this.image = 'https://www.booker.co.uk/-/media/Images/Booker-Supplier-Income/FY25-NP3/NP3-GroceryCatering-Caterer-Unilever.png?iar=0&hash=4989B548FFC2265B10C9840071333582';
-    this.name = 'Visit Hellmann\'s Mayonnaise store';
-    this.url = 'https://www.hellmanns.com/us/en/products/mayonnaise.html';
-    this.alt = 'Jack Grealish';
-    this.render();
   }
 
-  render() {
+  connectedCallback() {
     this.innerHTML = `
-      ${this.template().trim()}
+    <div class="container mt-5 mb-5">
+      <div class="row mb-3">
+        <a href="${this.getAttribute('data-url')}" target="_blank"><img src="${this.getAttribute('data-image')}" class="img-fluid" alt="${this.getAttribute('data-alt')}"></a>
+      </div>
+      <div class="row">
+        <a href="${this.getAttribute('data-url')}">${this.getAttribute('data-name')} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </a>
+      </div>
+    </div>
     `;
   }
 }
 
-class ImageCard extends HTMLElement {
-  template = () => `
-    <div>
-      <img src="${this.image}" class="img-fluid" />
-    </div>
-    <a href="${this.url}" class="btn btn-light imageCardBtn" style="color: ${this.fontColor}; background: ${this.buttonBgColor};">${this.buttonText}</a>
-  `;
 
+class ImageCard extends HTMLElement {
   constructor() {
     super();
-    this.url = 'https://www.yourcoca-cola.co.uk/shop.list?pageNumber=1&facetFilters=en_brand_content:Coca-Cola+Original+Taste';
-    this.image = 'https://static.thcdn.com/images/medium/webp/widgets/190-en/01/original-cczsbrand-031501.png';
-    this.buttonText = 'Shop';
-    this.fontColor = '#ffffff';
-    this.buttonBgColor = '#000000';
-    this.render();
   }
 
-  render() {
+  connectedCallback() {
     this.innerHTML = `
-      ${this.template().trim()}
+    <div class="container text-center mt-5 mb-5">
+      <div>
+        <img src="${this.getAttribute('data-image')}" class="img-fluid" />
+      </div>
+      <a href="${this.getAttribute('data-url')}" class="btn btn-light" style="color: ${this.getAttribute('data-fontColor')}; background: ${this.getAttribute('data-buttonBgColor')}; position: relative; bottom: 50px; padding-left: 25px; padding-right: 25px;">${this.getAttribute('data-buttonText')}</a>
+    </div>
     `;
   }
 }
@@ -728,47 +382,11 @@ class HeroBannerA extends HTMLElement {
     </style>
     <div class="container justify-content-center mt-5 mb-5">
       <img src="${this.getAttribute('data-image')}" class="img-fluid" />
-      <a class="btn btn-light mt-3 hero-banner-a-button" href="${this.getAttribute('data-url')}">${this.getAttribute('data-text')}</a>
+        <a class="btn btn-light mt-3 hero-banner-a-button" href="${this.getAttribute('data-url')}">${this.getAttribute('data-text')}</a>
     </div>
     `;
   }
 }
-
-/*class HeroBannerB extends HTMLElement {
-  template = () => `
-    <img src="${this.image}" class="img-fluid" />
-    <div class="container mt-3 p-4 hero-banner-b-form" 
-      style="background: ${this.textBgColor}">
-      <h6 style="font-size: ${this.headingSize}; color: ${this.headingColor}; ">${this.heading}</h6>
-      <p style="font-size: ${this.textSize}; color: ${this.textColor};">${this.text}</p>
-      <a href="${this.buttonUrl}" class="btn btn-primary" 
-        style="color: ${this.buttonFontColor}; background: ${this.buttonBgColor}">${this.buttonText}</a>
-    </div>
-  `;
-
-  constructor() {
-    super();
-    this.image = 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/57/original-Brands_Banner_Desktop_1920_x_586-020057.png';
-    this.text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
-    this.textColor = '#000000';
-    this.textSize = '16px';
-    this.heading = 'Enquiry Form';
-    this.headingSize = '24px';
-    this.headingColor = '#404040';
-    this.buttonText = 'Enquire here';
-    this.textBgColor = '#ffffff';
-    this.buttonUrl = 'https://www.yourcoca-cola.co.uk/contact-us.list';
-    this.buttonFontColor = '#ffffff';
-    this.buttonBgColor = '#000000';
-    this.render();
-  }
-
-  render() {
-    this.innerHTML = `
-      ${this.template().trim()}
-    `;
-  }
-}*/
 
 class HeroBannerB extends HTMLElement {
   constructor() {
@@ -789,8 +407,7 @@ class HeroBannerB extends HTMLElement {
         }
       }
       </style>
-      <div class="container position-relative text-center pt-5 mb-5 hero-banner-b">
-        <p class="display-6">Hero Banner B</p> 
+      <div class="container position-relative text-center mt-5 mb-5 hero-banner-b">
         <img src="${this.getAttribute('data-image')}" class="img-fluid" />
         <div class="container mt-3 p-4 hero-banner-b-form" style="background: ${this.getAttribute('data-textBgColor')}">
           <h6 style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}; ">
@@ -810,8 +427,21 @@ class HeroBannerB extends HTMLElement {
 
 
 class ProductCardListCarousel extends HTMLElement {
+  constructor() {
+    super();
+  }
+
   template = () => `
-  <div class="row justify-content-center">
+  <style>
+  .carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color: #000;
+  }
+  .carousel-inner {
+    overflow: visible;
+  }
+  </style>
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
       <div id="ProductCardListCarousel" class="carousel productCardListCarousel">
         <div class="carousel-inner">
         ${this.carouselProducts.map((p, key) => 
@@ -879,13 +509,13 @@ class ProductCardListCarousel extends HTMLElement {
         </button>
       </div>
     </div>
-  `
+  </div>`;
 
-  constructor() {
-    super();
-    this.products = productsByBrand('coca-cola');
+  connectedCallback() {
+    this.products = JSON.parse(this.getAttribute('data-product-card-list-carousel'));
     this.carouselProducts = (!sessionStorage.getItem('carouselProducts')) ? this.products : JSON.parse(sessionStorage.getItem('carouselProducts'));
     this.carouselActiveKey = (!sessionStorage.getItem('carouselActiveKey')) ? 0 : sessionStorage.getItem('carouselActiveKey');
+
     this.render();
   }
 
@@ -939,101 +569,84 @@ class ProductCardListCarousel extends HTMLElement {
       [...cardsPlus].map(p => p.addEventListener('click', () => { productCarouselPlusMinus(p, 'plus') }));
       [...cardsMinus].map(m => m.addEventListener('click', () => { productCarouselPlusMinus(m, 'minus') }));
       [...sliders].map(s => s.addEventListener('click', () => { carouselActiveKey() } ));
-      
   }
 }
 
+
 class ProductCategory extends HTMLElement {
-  template = () => `
-  <div class="row mt-4">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mx-auto">
-      <a class="text-decoration-none" href="${this.url}">  
-        <div class="card text-dark h-100 text-center p-4 fw-bold" style="background: ${this.bgColor};">
-          <span style="font-size: ${this.fontSize}; color: ${this.fontColor}; ">${this.text}</span>
+  constructor() {
+    super();  
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+    <div class="container mt-5 mb-5">
+      <div class="row mt-4">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mx-auto">
+          <a class="text-decoration-none" href="${this.getAttribute('data-url')}">  
+            <div class="card text-dark h-100 text-center p-4 fw-bold" style="background: ${this.getAttribute('data-bgColor')};">
+              <span style="font-size: ${this.getAttribute('data-fontSize')}; color: ${this.getAttribute('data-fontColor')}; ">${this.getAttribute('data-text')}</span>
+            </div>
+          </a>
         </div>
-      </a>
+      </div>
+    </div>
+    `;
+  }
+}
+
+
+class ProductCategories extends HTMLElement { 
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    let categories = JSON.parse(this.getAttribute("data-categories"));
+    this.innerHTML = `
+    <div class="container mt-5 mb-5">
+      <div class="row g-2 mt-4"> 
+      ${categories.map(c => `
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 mx-auto">
+          <a class="text-decoration-none" href="${c.url}">
+          <div class="card bg-light text-dark text-center h-100 p-4 fw-bold justify-content-center">
+            <span>${c.category}</span>
+          </div>
+          </a>
+        </div>
+      `).join("")}
+      </div>
+    </div>
+    `;
+  }
+}
+
+class SubPageNavigation extends HTMLElement {
+  template = () => `
+  <div class="container mt-5 mb-5">
+    <nav class="navbar navbar-expand-lg bg-white border-bottom border-secondary mb-2">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        ${this.subPageNavigation.map(s => `<li class="nav-item">
+          <a class="nav-link" name="${s.id}">${s.title}</a>
+          </li>`).join("")}
+      </ul>
+    </nav>
+    <div class="row" id="subNavigationContent">
+    
     </div>
   </div>
   `;
 
   constructor() {
     super();
-    this.text = 'Baileys Absolut Vodka & Sprite';
-    this.url = 'https://www.yourcoca-cola.co.uk/absolut-vodka-and-sprite-12-x-250ml/15213058.html';
-    this.fontSize = '18px';
-    this.fontColor = '#f8f8f8';
-    this.bgColor = '#000000';
-    this.render();
   }
 
-  render() {
-    this.innerHTML = `
-      ${this.template().trim()}
-    `;
-  }
-}
-
-
-class ProductCategories extends HTMLElement {
-  template = () => `
-  <div class="row g-2 mt-4">
-  ${this.categories.map(c => `
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 mx-auto">
-      <a class="text-decoration-none" href="${c.url}">
-        <div class="card bg-light text-dark text-center h-100 p-4 fw-bold justify-content-center">
-          <span>${c.category}</span>
-        </div>
-      </a>
-    </div> 
-  `).join('')}
-  </div>`;
-
-
-  constructor() {
-    super();
-    this.categories = productCategories;
-    this.render();
-  }
-
-  render() {
-    this.innerHTML = `
-      ${this.template().trim()}
-    `;
-  }
-}
-
-
-class SubPageNavigation extends HTMLElement {
-  
-  template = () => `
-  <nav class="navbar navbar-expand-lg bg-white border-bottom border-secondary mb-2">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" name="home">HOME</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" name="monster">MONSTER</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" name="cocacola">COCA COLA</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" name="fanta">FANTA</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="row" id="subNavigationContent">
-    
-  </div>
-  `;
-
-  constructor() {
-    super();
-    this.subPageNavigation = subPageNavigation;
+  connectedCallback() {
+    this.subPageNavigation = JSON.parse(this.getAttribute('data-sub-page-navigation'));
     this.render();
     const pages = this.querySelectorAll('.nav-link');
     [...pages].map(p => p.addEventListener('click', () => { this.displaySubContent(p.name) }));
-    document.getElementById('#subNavigationContent').innerHTML = this.displaySubContent('home');  
+    document.getElementById('#subNavigationContent').innerHTML = this.displaySubContent('home');
   }
 
   render() {
@@ -1060,6 +673,7 @@ class SubPageNavigation extends HTMLElement {
   }
 }
 
+
 class StandardCopy extends HTMLElement {
   constructor() {
     super();
@@ -1067,8 +681,7 @@ class StandardCopy extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="container mb-5 text-center">
-      <p class="display-6">Standard Copy</p> 
+    <div class="container text-center mt-5 mb-5">
       <p class="mb-4" style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">
         ${this.getAttribute('data-heading')}
       </p>
@@ -1080,6 +693,7 @@ class StandardCopy extends HTMLElement {
   }
 }
 
+
 class Button extends HTMLElement {
   constructor() {
     super();
@@ -1087,8 +701,7 @@ class Button extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="container text-center mb-5">
-      <p class="display-6 text-center">Custom Button</p> 
+    <div class="container text-center mt-5 mb-5">
       <a href="${this.getAttribute('data-url')}" class="btn btn-primary" style="color: ${this.getAttribute('data-fontColor')}; background: ${this.getAttribute('data-buttonBgColor')}">${this.getAttribute('data-text')}</a>
     </div>
     `;
@@ -1103,20 +716,12 @@ class HeroImage extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="container mb-5">
-      <p class="display-6 text-center">Hero Image</p> 
+    <div class="container text-center mt-5 mb-5">
       <a href="${this.getAttribute('data-url')}"><img src="${this.getAttribute('data-image')}" class="img-fluid" alt="${this.getAttribute('data-alt')}" /></a>
     </div>
     `;
   }
 }
-
-
-/* global custom functions */
-const productsByBrand = (brand) => {
-  return productsData.filter(p => p.brand == brand)
-}
-
 
 // register components
 customElements.define('info-card-a', InfoCardA);
