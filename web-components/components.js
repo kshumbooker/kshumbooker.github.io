@@ -223,7 +223,7 @@ class ProductCardList extends HTMLElement {
     }
   </style>
   <div class="container mt-5 mb-5">
-    <div class="row row-cols-4 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
     ${this.products.map(p => `
     <div class="col">
       <div class="card mx-auto h-100 text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
