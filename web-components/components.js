@@ -380,7 +380,7 @@ class HeroBannerA extends HTMLElement {
         }
       }
     </style>
-    <div class="container justify-content-center mt-5 mb-5">
+    <div class="container justify-content-center text-center mt-5 mb-5">
       <img src="${this.getAttribute('data-image')}" class="img-fluid" />
         <a class="btn btn-light mt-3 hero-banner-a-button" href="${this.getAttribute('data-url')}">${this.getAttribute('data-text')}</a>
     </div>
