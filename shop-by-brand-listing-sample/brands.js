@@ -246,7 +246,7 @@ const brandsData = [{
     },
     {
       name: "Arla",
-      active: true, featured: false, img: "",
+      active: true, featured: true, img: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Arla_Foods_logo.svg/330px-Arla_Foods_logo.svg.png",
       url: ""
     },
     {
@@ -844,7 +844,7 @@ const brandsData = [{
     },
     {
       name: "Cadbury",
-      active: true, featured: true, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Cadbury_%282020%29.svg/220px-Cadbury_%282020%29.svg.png",
+      active: true, featured: false, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Cadbury_%282020%29.svg/220px-Cadbury_%282020%29.svg.png",
       url: ""
     },
     {
@@ -1289,7 +1289,7 @@ const brandsData = [{
     },
     {
       name: "Coca-Cola",
-      active: true, featured: false, img: "https://static.vecteezy.com/system/resources/previews/014/414/677/original/coca-cola-logo-on-transparent-background-free-vector.jpg",
+      active: true, featured: true, img: "https://static.vecteezy.com/system/resources/previews/014/414/677/original/coca-cola-logo-on-transparent-background-free-vector.jpg",
       url: ""
     },
     {
@@ -1389,7 +1389,7 @@ const brandsData = [{
     },
     {
       name: "Cornetto",
-      active: true, featured: false, img: "",
+      active: true, featured: true, img: "https://upload.wikimedia.org/wikipedia/en/thumb/6/69/Cornetto_logo.png/330px-Cornetto_logo.png",
       url: ""
     },
     {
@@ -1778,7 +1778,7 @@ const brandsData = [{
     },
     {
       name: "Durex",
-      active: true, featured: true, img: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Durex_logo.svg/200px-Durex_logo.svg.png",
+      active: true, featured: false, img: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Durex_logo.svg/200px-Durex_logo.svg.png",
       url: ""
     }
   ]
@@ -2629,7 +2629,7 @@ const brandsData = [{
     },
     {
       name: "Heinz",
-      active: true, featured: true, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/H._J._Heinz_Company_-_Logo.svg/200px-H._J._Heinz_Company_-_Logo.svg.png",
+      active: true, featured: false, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/H._J._Heinz_Company_-_Logo.svg/200px-H._J._Heinz_Company_-_Logo.svg.png",
       url: ""
     },
     {
@@ -3489,7 +3489,7 @@ const brandsData = [{
     },
     {
       name: "Marlboro",
-      active: true, featured: true, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Marlboro_Logo.svg/170px-Marlboro_Logo.svg.png",
+      active: true, featured: false, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Marlboro_Logo.svg/170px-Marlboro_Logo.svg.png",
       url: ""
     },
     {
@@ -4371,7 +4371,7 @@ const brandsData = [{
     },
     {
       name: "Pepsi",
-      active: true, featured: false, img: "",
+      active: true, featured: true, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Pepsi_2023.svg/140px-Pepsi_2023.svg.png",
       url: ""
     },
     {
@@ -6348,3 +6348,4 @@ const brandsData = [{
   ]
 }
 ];
+
