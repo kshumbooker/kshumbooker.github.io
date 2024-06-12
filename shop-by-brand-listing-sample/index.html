@@ -623,6 +623,8 @@
 			border-radius: 5px;
 			color: #2356AA;
 			text-decoration: none;
+            margin: 3px;
+            font-weight: 700;
 		}
 
 		.alphabet-nav a:hover, a:active {
@@ -639,7 +641,11 @@
         }
 
         .featuredImg {
-            max-width: 125px;
+            max-width: 100px;
+        }
+
+        .card:hover {
+            border: 1px solid #2356AA;
         }
         
 </style>
@@ -694,7 +700,7 @@
 
     const featuredBrandHtml = (img) => {
         let html = `
-            <div class="card">
+            <div class="card m-3">
                 <div class="card-body align-items-center d-flex justify-content-center">
 					<img src=${img} class="img-fluid border-0 my-auto featuredImg" />					
                 </div>                   
@@ -723,9 +729,9 @@
 				return item 
 			}).map(brand => `<div class="row">
 			    <div class="col">
-				      <h1 class="display-6 booker">
+				      <h4 class="booker">
 					      ${brand.id}
-				      </h1>
+				      </h4>
 			      </div>
 		      </div>
 		      <div class="row">
