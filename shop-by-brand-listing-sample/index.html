@@ -649,7 +649,7 @@
 
 <main class="py-3 container-fluid back-grey">
 	<div class="container mx-auto text-center">
-		<h5 class="display-4 booker">Shop by brand</h5>
+		<h2 class="booker">Shop by brand</h2>
 	</div>
 	<nav class="navbar alphabet-nav mt-3 mb-3">
 		<div class="container" id="alphabetNav">
@@ -671,7 +671,7 @@
   let featuredBrandsData = document.getElementById("featuredBrandsData");
 
 	const loadAlphabetNav = () => {
-		alphabetNav.innerHTML = `<a href="">ALL</a>`;
+		alphabetNav.innerHTML = `<a href="#" class="alphabetFilter">ALL</a>`;
 		alphabetNav.innerHTML += brandsData.map(brand => {
 			return brand.brands.length > 0 ? `<a href="#" class="alphabetFilter">${brand.id}</a>` : ``;
 		}).join("");
@@ -708,7 +708,7 @@
 
     const loadFeaturedBrandData = () => {
        let featuredBrands = getFeaturedBrands();
-       featuredBrandsData.innerHTML += `<div class="container"><h4>FEATURED BRANDS</h4></div>`;
+       featuredBrandsData.innerHTML += `<div class="container"><h4>FEATURED STORES</h4></div>`;
        for (let i = 0; i < featuredBrands.length; i++) {
         featuredBrandsData.innerHTML += featuredBrandHtml(featuredBrands[i].img);
        }
@@ -937,3 +937,4 @@ pageSearchUrl = '/products/search'
 </script>
 
 </html>
+
