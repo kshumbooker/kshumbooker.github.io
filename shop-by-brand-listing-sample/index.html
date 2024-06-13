@@ -619,11 +619,14 @@
 
 		.alphabet-nav a {
 			border: 1px solid #2356AA;
-			padding: 10px;
+			border-radius: 2px;
 			color: #2356AA;
 			text-decoration: none;
             margin: 3px;
             font-weight: 700;
+            text-align: center;
+            display: block;
+            width: 35px;
 		}
 
 		.alphabet-nav a:hover, a:active {
@@ -643,6 +646,10 @@
             max-width: 100px;
         }
 
+        .card {
+            border-radius: 0.8rem;
+        }
+
         .card:hover {
             border: 1px solid #2356AA;
         }
@@ -657,7 +664,7 @@
 		<h2 class="booker">Shop by brand</h2>
 	</div>
 	<nav class="navbar alphabet-nav mt-3 mb-3">
-		<div class="container" id="alphabetNav">
+		<div class="container-fluid" id="alphabetNav">
 	    </div>
 	</nav>
     <div class="container mt-5 mb-5 text-center justify-content-center featuredBrandsData" id="featuredBrandsData">
@@ -697,11 +704,14 @@
         return featuredBrandsArr;      
     }
 
-    const featuredBrandHtml = (img) => {
+    const featuredBrandHtml = (img, brand) => {
         let html = `
             <div class="card m-3">
                 <div class="card-body align-items-center d-flex justify-content-center">
 					<img src=${img} class="img-fluid border-0 my-auto featuredImg" />					
+                </div>
+                <div class="container m-0 p-0">
+                    <p class="booker">${brand}</p>
                 </div>                   
             </div>
         `
@@ -715,7 +725,7 @@
        let featuredBrands = getFeaturedBrands();
        featuredBrandsData.innerHTML += `<div class="container"><h4>FEATURED STORES</h4></div>`;
        for (let i = 0; i < featuredBrands.length; i++) {
-        featuredBrandsData.innerHTML += featuredBrandHtml(featuredBrands[i].img);
+        featuredBrandsData.innerHTML += featuredBrandHtml(featuredBrands[i].img, featuredBrands[i].name);
        }
     }
 
