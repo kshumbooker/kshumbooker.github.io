@@ -722,7 +722,7 @@
     const loadBrandListingData = (firstChar = '') => {
 			brandListingData.innerHTML = '';
 			brandListingData.innerHTML += brandsData.filter(function(item) {
-				if (firstChar != '') {
+				if (firstChar != '' && firstChar.text != 'ALL') {
 					return item.id === firstChar.text
 				}
 				return item 
