@@ -676,9 +676,9 @@
   let featuredBrandsData = document.getElementById("featuredBrandsData");
 
 	const loadAlphabetNav = () => {
-		alphabetNav.innerHTML = `<a href="#" class="alphabetFilter">ALL</a>`;
+		alphabetNav.innerHTML = `<a href="#brandListingData" class="alphabetFilter">ALL</a>`;
 		alphabetNav.innerHTML += brandsData.map(brand => {
-			return brand.brands.length > 0 ? `<a href="#" class="alphabetFilter">${brand.id}</a>` : ``;
+			return brand.brands.length > 0 ? `<a href="#brandListingData" class="alphabetFilter">${brand.id}</a>` : ``;
 		}).join("");
 
         const alphabetFilter = document.querySelectorAll('.alphabetFilter');
@@ -726,7 +726,7 @@
 					return item.id === firstChar.text
 				}
 				return item 
-			}).map(brand => `<div class="row">
+			}).map(brand => `<div class="row" id="alphabetNav${brand.id}">
 			    <div class="col">
 				      <h4 class="booker">
 					      ${brand.id}
@@ -942,4 +942,3 @@ pageSearchUrl = '/products/search'
 </script>
 
 </html>
-
