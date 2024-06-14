@@ -108,7 +108,7 @@ class ProductCard extends HTMLElement {
               </svg>
             </button>
             <div class="col-2">
-              <input type="text" class="form-control text-center productCardQuantity" value=${this.quantity} />
+              <input type="text" class="form-control text-center productCardQuantity" id="productCardQuantity" value=${this.quantity} />
             </div>
             <button class="btn button productCardPlus">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -117,12 +117,12 @@ class ProductCard extends HTMLElement {
             </button>
           </div>  
           <div class="p-4">
-            <button type="button" class="btn btn-primary button booker">Shop Now</button>
-          </div>
-        </div>
+        <button type="button" class="btn btn-primary button booker">Shop Now</button>
       </div>
     </div>
   </div>
+</div>
+</div>
   `;
 
   connectedCallback() {
@@ -139,14 +139,17 @@ class ProductCard extends HTMLElement {
   }
   
   productCardPlusClick = () => {
+    this.quantity = document.getElementById('productCardQuantity').value;
     this.quantity++;
     this.render();
   }
 
   productCardMinusClick = () => {
+    this.quantity = document.getElementById('productCardQuantity').value;
     this.quantity > 0 ? this.quantity-- : false;
     this.render();
   }
+
 }
 
 class HeroBannerCarousel extends HTMLElement {
