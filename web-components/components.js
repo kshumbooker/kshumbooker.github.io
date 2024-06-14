@@ -264,7 +264,7 @@ class ProductCardList extends HTMLElement {
             </svg>
           </button>
           <div class="col-3">
-            <input type="text" class="form-control text-center" value=${p.quantity} />
+            <input type="text" class="form-control text-center" id="productCardList${p.midascode}" value=${p.quantity} />
           </div>
           <button class="btn button productCardListPlus" id="${p.midascode}">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -281,7 +281,7 @@ class ProductCardList extends HTMLElement {
     </div>
   </div>
 </div>
-`;
+    `;
   
   connectedCallback() {
     this.products = JSON.parse(this.getAttribute('data-product-card-list'));
@@ -302,7 +302,9 @@ class ProductCardList extends HTMLElement {
 
   productCardListPlusClick = (card) => {
     this.products.find((value, index) => {
+      
       if (value.midascode == card.id) {
+        this.products[index].quantity = document.getElementById('productCardList'+value.midascode).value;
         this.products[index].quantity++;
       }
     });
@@ -312,6 +314,7 @@ class ProductCardList extends HTMLElement {
   productCardListMinusClick = (card) => {
     this.products.find((value, index) => {
       if (value.midascode == card.id && this.products[index].quantity > 0) {
+        this.products[index].quantity = document.getElementById('productCardList'+value.midascode).value;
         this.products[index].quantity--;
       }
     });
