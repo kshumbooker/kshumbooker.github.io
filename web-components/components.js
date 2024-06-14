@@ -29,6 +29,7 @@ class InfoCardA extends HTMLElement {
   }
 }
 
+
 class InfoCardB extends HTMLElement {
   constructor() {
     super();
@@ -60,6 +61,8 @@ class InfoCardB extends HTMLElement {
   `;
   }
 }
+
+
 
 class ProductCard extends HTMLElement {
 
@@ -152,6 +155,7 @@ class ProductCard extends HTMLElement {
 
 }
 
+
 class HeroBannerCarousel extends HTMLElement {
   constructor() {
     super();
@@ -197,7 +201,6 @@ class HeroBannerCarousel extends HTMLElement {
 }
 
 
-
 class Heading extends HTMLElement {
   constructor() {
     super();
@@ -221,7 +224,7 @@ class ProductCardList extends HTMLElement {
   <style>
     .card {
       margin: 0 .5em;
-      box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+      box-shadow: 2px 6px 15px 0 rgba(22, 22, 26, 0.18);
       border: none;
     }
   </style>
@@ -264,7 +267,7 @@ class ProductCardList extends HTMLElement {
             </svg>
           </button>
           <div class="col-3">
-            <input type="text" class="form-control text-center" id="productCardList${p.midascode}" value=${p.quantity} />
+            <input type="text" class="form-control text-center productCards" id="productCardList${p.midascode}" value=${p.quantity} />
           </div>
           <button class="btn button productCardListPlus" id="${p.midascode}">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -295,14 +298,21 @@ class ProductCardList extends HTMLElement {
 
     const plus = this.querySelectorAll('.productCardListPlus');
     const minus = this.querySelectorAll('.productCardListMinus');
-
+    const productCards = this.querySelectorAll('.productCards');
+    
     [...plus].map(p => p.addEventListener('click', () => { this.productCardListPlusClick(p) }));
     [...minus].map(m => m.addEventListener('click', () => { this.productCardListMinusClick(m) }));
+    [...productCards].map((card, index) => card.addEventListener('change', () => { this.productCardListInputChange(card, index) }));
+  }
+
+  productCardListInputChange = (card, index) => {
+    console.log(card);
+    this.products[index].quantity = document.getElementById('productCardList'+value.midascode).value;
+    this.render();
   }
 
   productCardListPlusClick = (card) => {
     this.products.find((value, index) => {
-      
       if (value.midascode == card.id) {
         this.products[index].quantity = document.getElementById('productCardList'+value.midascode).value;
         this.products[index].quantity++;
@@ -344,7 +354,6 @@ class LinkToShop extends HTMLElement {
     `;
   }
 }
-
 
 class ImageCard extends HTMLElement {
   constructor() {
@@ -616,6 +625,8 @@ class ProductCardListCarousel extends HTMLElement {
 }
 
 
+
+
 class ProductCategory extends HTMLElement {
   constructor() {
     super();  
@@ -637,6 +648,7 @@ class ProductCategory extends HTMLElement {
     `;
   }
 }
+
 
 
 class ProductCategories extends HTMLElement { 
@@ -663,6 +675,7 @@ class ProductCategories extends HTMLElement {
     `;
   }
 }
+
 
 class SubPageNavigation extends HTMLElement {
   template = () => `
@@ -765,6 +778,7 @@ class HeroImage extends HTMLElement {
     `;
   }
 }
+
 
 // register components
 customElements.define('info-card-a', InfoCardA);
