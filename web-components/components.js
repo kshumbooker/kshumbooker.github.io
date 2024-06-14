@@ -446,6 +446,10 @@ class ProductCardListCarousel extends HTMLElement {
     overflow: visible;
   }
 
+  .card {
+    margin: 0 .25rem;
+  }
+
   .carousel-inner .carousel-item.active,
 .carousel-inner .carousel-item-next,
 .carousel-inner .carousel-item-prev {
