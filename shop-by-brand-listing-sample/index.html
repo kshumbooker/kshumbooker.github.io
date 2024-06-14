@@ -619,7 +619,7 @@
 
 		.alphabet-nav a {
 			border: 1px solid #2356AA;
-			border-radius: 2px;
+			border-radius: 0.3rem;
 			color: #2356AA;
 			text-decoration: none;
             margin: 3px;
@@ -633,6 +633,15 @@
 			background: #2356AA;
 			color: #ffffff;
 		}
+
+        .brandLink {
+            color: #000000;
+        }
+
+
+        .brandLink:hover {
+            color: #2356AA;
+        }
 
         .navbar > .container, .navbar > .container-fluid {
             justify-content: center;
@@ -650,9 +659,20 @@
             border-radius: 0.8rem;
         }
 
+        .card-body {
+            padding: 0.8rem;
+        }
+
         .card:hover {
             border: 1px solid #2356AA;
         }
+
+
+        a.alphabetFilter.active {
+            background: #2356AA;
+            color: #ffffff;
+        }
+
         
 </style>
 <!--<div class="cs-advert mx-auto">
@@ -663,13 +683,14 @@
 	<div class="container mx-auto text-center">
 		<h2 class="booker">Shop by brand</h2>
 	</div>
-	<nav class="navbar alphabet-nav mt-3 mb-3">
+	<nav class="navbar alphabet-nav mt-3">
 		<div class="container-fluid" id="alphabetNav">
 	    </div>
 	</nav>
-    <div class="container mt-5 mb-5 text-center justify-content-center featuredBrandsData" id="featuredBrandsData">
+    <div class="container text-center justify-content-center featuredBrandsData" id="featuredBrandsData">
+
 	</div>
-	<div class="container mt-5" id="brandListingData">
+	<div class="container" id="brandListingData">
 
 	</div>
 </main>
@@ -680,23 +701,24 @@
 <script>
 	let alphabetNav = document.getElementById("alphabetNav");
 	let brandListingData = document.getElementById("brandListingData");
-  let featuredBrandsData = document.getElementById("featuredBrandsData");
+    let featuredBrandsData = document.getElementById("featuredBrandsData");
 
 	const loadAlphabetNav = () => {
-		alphabetNav.innerHTML = `<a href="#brandListingData" class="alphabetFilter">ALL</a>`;
+		alphabetNav.innerHTML = `<a href="#" class="alphabetFilter active">ALL</a>`;
 		alphabetNav.innerHTML += brandsData.map(brand => {
-			return brand.brands.length > 0 ? `<a href="#brandListingData" class="alphabetFilter">${brand.id}</a>` : ``;
+			return brand.brands.length > 0 ? `<a href="#" class="alphabetFilter">${brand.id}</a>` : ``;
 		}).join("");
 
         const alphabetFilter = document.querySelectorAll('.alphabetFilter');
-        [...alphabetFilter].map(alphabet => alphabet.addEventListener('click', () => { loadBrandListingData(alphabet) }));
+        [...alphabetFilter].map(alphabet => alphabet.addEventListener('click', () => { loadBrandsData(alphabet.text); }));
     }
 
-    const getFeaturedBrands = () => {
+    const getFeaturedBrands = (alphabet) => {
         let featuredBrandsArr = [];
         brandsData.map(brand => {
             brand.brands.map(b => {
                 if (b.featured == true) {
+                    b.alphabet = brand.id;
                     featuredBrandsArr.push(b);
                 }
             })
@@ -710,7 +732,7 @@
                 <div class="card-body align-items-center d-flex justify-content-center">
 					<img src=${img} class="img-fluid border-0 my-auto featuredImg" />					
                 </div>
-                <div class="container m-0 p-0">
+                <div class="container">
                     <p class="booker">${brand}</p>
                 </div>                   
             </div>
@@ -718,25 +740,50 @@
         return html;
     }
 
-
-
-
-    const loadFeaturedBrandData = () => {
-       let featuredBrands = getFeaturedBrands();
-       featuredBrandsData.innerHTML += `<div class="container"><h4>FEATURED STORES</h4></div>`;
-       for (let i = 0; i < featuredBrands.length; i++) {
-        featuredBrandsData.innerHTML += featuredBrandHtml(featuredBrands[i].img, featuredBrands[i].name);
-       }
+    const addActiveClassToAlphabet = () => {
+        let alphabets = alphabetNav.getElementsByClassName('alphabetFilter');
+        
+        for (let i = 0; i < alphabets.length; i++) {
+            alphabets[i].addEventListener('click', function() {
+                let current = document.getElementsByClassName('active');     
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace('active', '');
+                }
+                this.className += ' active';
+            })   
+        }
     }
 
-    const loadBrandListingData = (firstChar = '') => {
+
+    const loadBrandsData = (alphabet = '') => {
+        addActiveClassToAlphabet();
+        loadFeaturedBrandData(alphabet);
+       loadBrandListingData(alphabet);
+    }
+
+    const loadFeaturedBrandData = (alphabet = '') => {
+        let featuredBrands = getFeaturedBrands(alphabet);
+        featuredBrandsData.innerHTML = ``;
+        featuredBrandsData.innerHTML += featuredBrands.filter(function(brand) {
+            if (alphabet != '' && alphabet != 'ALL') {
+				return brand.alphabet === alphabet
+			}
+            return brand
+        }).map(b => featuredBrandHtml(b.img, b.name)).join("");
+        if (featuredBrandsData.innerHTML.length > 0) {
+            featuredBrandsData.innerHTML = `<div class="container mt-3">FEATURED STORES</div>${featuredBrandsData.innerHTML}`;
+        }
+    }
+
+
+    const loadBrandListingData = (alphabet = '') => {
 			brandListingData.innerHTML = '';
 			brandListingData.innerHTML += brandsData.filter(function(item) {
-				if (firstChar != '' && firstChar.text != 'ALL') {
-					return item.id === firstChar.text
+				if (alphabet != '' && alphabet != 'ALL') {
+					return item.id === alphabet
 				}
 				return item 
-			}).map(brand => `<div class="row" id="alphabetNav${brand.id}">
+			}).map(brand => `<hr><div class="row">
 			    <div class="col">
 				      <h4 class="booker">
 					      ${brand.id}
@@ -745,16 +792,14 @@
 		      </div>
 		      <div class="row">
 			      ${brand.brands.map(b => {
-			        return b.active == true && !b.featured == true ? `<div class="col-3 p-3">${b.name}</div>` : ``
+			        return b.active == true && !b.featured == true ? `<div class="col-3 p-3"><a href="" class="brandLink">${b.name}</a></div>` : ``
 			      }).join("")}
-	        </div>
-	        <hr> 
+	        </div> 
 			`).join("");
     }
 
     loadAlphabetNav();
-    loadFeaturedBrandData();
-    brandListingData.onload = loadBrandListingData();
+    loadBrandsData('ALL');
 </script>
 
 <script nonce="XRCWjv1IbJu3W9DUaOJtx6tkDwzvpXPQYPe6Owq01Wo=">
