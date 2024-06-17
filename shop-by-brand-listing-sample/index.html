@@ -645,7 +645,7 @@
             justify-content: center;
         }
 
-        .featuredBrandsData{
+        .featuredBrandsData {
             display: flex; flex-wrap: wrap;
         }
 
@@ -674,6 +674,13 @@
 
         a.alphabetFilter.active {
             background: #2356AA;
+            color: #ffffff;
+        }
+
+        a.alphabetFilter.disabled {
+            border: 1px solid #cccccc;
+            pointer-events: none;
+            background: #cccccc;
             color: #ffffff;
         }
 
@@ -710,10 +717,11 @@
 	const loadAlphabetNav = () => {
 		alphabetNav.innerHTML = `<a href="#" class="alphabetFilter active">ALL</a>`;
 		alphabetNav.innerHTML += brandsData.map(brand => {
-			return brand.brands.length > 0 ? `<a href="#" class="alphabetFilter">${brand.id}</a>` : ``;
+			return brand.brands.length == 0 ? `<a href="#" class="alphabetFilter disabled" disabled>${brand.id}</a>` : `<a href="#" class="alphabetFilter">${brand.id}</a>`;
 		}).join("");
 
         const alphabetFilter = document.querySelectorAll('.alphabetFilter');
+        
         [...alphabetFilter].map(alphabet => alphabet.addEventListener('click', () => { loadBrandsData(alphabet.text); }));
     }
 
