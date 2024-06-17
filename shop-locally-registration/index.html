@@ -1,23 +1,50 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Booker Shop Locally Registration</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato' rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <style>
+    <title>Customer Registration Document - Shop Locally</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.booker.co.uk/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+
+    body {
+      background: #E5E5E5;
+      font-family: 'Lato';
+      line-height: 1.5;
+    }
+
     .shop-locally {
       background: #0454A1;
       color: #ffffff;
+      font-weight: 700;
     }
 
-    body {
-      background: #BFBFBF;
-      font-family: 'Lato';
+    h4, h6 {
+      font-weight: 700;
     }
 
-    .form-field, .form-field:active, .form-field:focus {
-      background: #FFDD00;
+    form {
+      background: #ffffff;
+      color: #333333;
+    }
+
+    label {
+      font-weight:700;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    dl, ol, ul {
+      padding-left: 0;
+    }
+
+    .required {
+      color: red;
     }
 
     
@@ -25,100 +52,72 @@
 </head>
 <body>
   <div class="container">
-    <div class="row shop-locally mb-3">
-      <div class="col">
-        <h2>Customer Registration Document</h2>
+    <form class="mb-5 pb-5">
+      <div class="container p-3 shop-locally">
+        <img src="https://kshumbooker.github.io/shop-locally-registration/ShopLocallyLogo.jpg" >
+      </div>
+      <div class="container p-3">
+        <h4>Shop Locally Sign Up</h4>
+        Booker Group would like to send you marketing information regarding our products and services, special offers, events and market research. Please tick below to confirm that you're happy for Booker to contact you for this purpose. You can unsubscribe at any time by logging in at booker.co.uk, or by clicking unsubscribe in any of our promotional Emails or SMS messages you receive. Please note that the below preferences refer to marketing activities only. Booker may still contact you by the above methods for essential communication regarding your account.<br>
+        <br>
+        For more information regarding help with how Booker Group companies use your personal data please see our privacy policy. For full T&C's <a href="./agreement.html">click here</a>
+      </div>
+      <div class="container p-3 shop-locally mb-3">
+        <h4>CUSTOMER DETAILS</h4>
+      </div>
+    <div class="container">
+      <div class="form-group">
+        <label for="tradingName">Trading Name <span class="required">*</span></label>
+        <input type="text" class="form-control" name="tradingName" required>
+      </div>
+      <div class="form-group">
+        <label for="customerNumber">Booker Customer No. (for this store) <span class="required">*</span></label>
+        <input type="text" maxlength="9" class="form-control" name="customerNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="customerName">Customer Name <span class="required">*</span></label>
+        <input type="text" class="form-control" name="customerName">
+      </div>
+      <div class="form-group">
+        <label for="storeAddress1">Store Address 1 <span class="required">*</span></label>
+        <input type="text" class="form-control" name="storeAddress1" required>
+      </div>
+      <div class="form-group">
+        <label for="storeAddress2">Store Address 2 <span class="required">*</span></label>
+        <input type="text" class="form-control" name="storeAddress2" required>
+      </div>
+      <div class="form-group">
+        <label for="townCity">Town / City <span class="required">*</span></label>
+        <input type="text" class="form-control" name="townCity" required>
+      </div>
+      <div class="form-group">
+        <label for="county">County <span class="required">*</span></label>
+        <input type="text" class="form-control" name="county" required>
+      </div>
+      <div class="form-group">
+        <label for="postCode">Postcode <span class="required">*</span></label>      
+        <input type="text" class="form-control" name="postCode" required>
       </div>
     </div>
-    <form class="form">
-      <div class="row shop-locally mb-2">
-        <div class="col">
-          <h4>CUSTOMER DETAILS</h4>
-        </div>
+      <div class="container p-3 mt-5 mb-3 shop-locally">
+        <h6>ADDITIONAL INFORMATION</h6>
       </div>
-      <div class="row mb-2">
-        <div class="col-4 bg-white">
-          <label><b>Trading Name</b></label>
-        </div>
-        <div class="col-8">
-          <input type="text" class="form-control form-field" name="tradingName" required>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col-4 bg-white">
-          <label><b>Booker Customer No. (for this store)</b></label>
-        </div>
-        <div class="col-8">
-          <input type="text" maxlength="9" class="form-control form-field" name="tradingName" required>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col-4 bg-white">
-          <label><b>Customer Name</b></label>
-        </div>
-        <div class="col-8">
-          <input type="text" class="form-control form-field" name="customerName" required>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col-4 bg-white">
-          <label><b>Store Address 1</b></label>
-        </div>
-        <div class="col-8">
-          <input type="text" class="form-control form-field" name="storeAddress1" required>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col-4 bg-white">
-          <label><b>Store Address 2</b></label>
-        </div>
-        <div class="col-8">
-          <input type="text" class="form-control form-field" name="storeAddress2" required>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col-4 bg-white">
-          <label><b>Town / City</b></label>
-        </div>
-        <div class="col-8">
-          <input type="text" class="form-control form-field" name="townCity" required>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col-4 bg-white">
-          <label><b>County</b></label>
-        </div>
-        <div class="col-2">
-          <input type="text" class="form-control form-field" name="county" required>
-        </div>
-        <div class="col-4 bg-white">
-          <label><b>Postcode</b></label>
-        </div>
-        <div class="col-2">
-          <input type="text" class="form-control form-field" name="postCode" required>
-        </div>
-      </div>
-      <div class="row shop-locally mb-2">
-        <div class="col">
-          <h6>ADDITIONAL INFORMATION</h6>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-4 bg-white">
-          <label><b>Store Category</b></label>
-        </div>
-        <div class="col-3">
+      <div class="container">
+        <div class="form-group">    
+          <label for="storeCategory">Store Category</label>
           <input type="text" class="form-control form-field" name="storeCategory" required>
         </div>
       </div>
-      <div class="row shop-locally mb-2">
-        <div class="col">
-          <h6>CUSTOMER DECLARATION</h6>
-        </div>
+      <div class="container p-3 mt-5 mb-3 shop-locally">
+        <h6>CUSTOMER DECLARATION</h6>
       </div>
-      <div class="row">
-        <div class="col bg-white">
-          <p>I am the owner of the above business and trade at the above address. I agree to comply with the obligations set out in this Agreement and in particular to support the promotion activity. I understand that failing to comply with my obligations may result in my membership of Retail Club being cancelled by Booker.</p>
+      <div class="container">
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input"> 
+          <label class="form-check-label" for="disclaimer"><i>I am the owner of the above business and trade at the above address. I agree to comply with the obligations set out in this Agreement and in particular to support the promotion activity. I understand that failing to comply with my obligations may result in my membership of Retail Club being cancelled by Booker.</i></label>
+        </div>
+        <div class="form-group">
+          <button class="btn shop-locally">SUBMIT</button>
         </div>
       </div>
     </form>
