@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -648,7 +645,7 @@
             justify-content: center;
         }
 
-        .featuredBrandsData {
+        .featuredBrandsData{
             display: flex; flex-wrap: wrap;
         }
 
@@ -697,7 +694,7 @@
     <div class="container text-center justify-content-center featuredBrandsData" id="featuredBrandsData">
 
 	</div>
-	<div class="container" id="brandListingData">
+	<div class="container text-center justify-content-center brandListingData" id="brandListingData">
 
 	</div>
 </main>
@@ -789,19 +786,19 @@
 				if (alphabet != '' && alphabet != 'ALL') {
 					return item.id === alphabet
 				}
-				return item 
-			}).map(brand => `<hr><div class="row">
-			    <div class="col">
-				      <h4 class="booker">
-					      ${brand.id}
-				      </h4>
-			      </div>
-		      </div>
-		      <div class="row">
-			      ${brand.brands.map(b => {
-			        return b.active == true && !b.featured == true ? `<div class="col-3 p-3"><a href="" class="brandLink">${b.name}</a></div>` : ``
+				return item.brands.length > 0 ? item : false 
+			}).map(brand => `
+				<hr>
+					<div class="row">
+				  	<h4 class="booker text-left position-absolute">
+					  	${brand.id}
+				  	</h4>
+					</div>
+				<div class="row">
+				  ${brand.brands.map((b) => {
+						 return b.active == true && !b.featured == true ? `<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 p-1"><a href="" class="brandLink">${b.name}</a></div>` : ``
 			      }).join("")}
-	        </div> 
+				</div>
 			`).join("");
     }
 
