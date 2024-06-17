@@ -223,14 +223,19 @@ class ProductCardList extends HTMLElement {
   template = () => `
   <style>
     .card {
-      margin: 0 .5em;
+      margin: 0 .25em;
       box-shadow: 2px 6px 15px 0 rgba(22, 22, 26, 0.18);
       border: none;
+    }
+    .booker, .booker:hover {
+      background: #2356AA;
+      color: #fff;
+      border: 0;  
     }
   </style>
   <div class="container mt-5 mb-5">
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-    ${this.products.map(p => `
+    ${this.products.map((p, key) => `
     <div class="col">
       <div class="card mx-auto h-100 text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-title">
@@ -267,7 +272,7 @@ class ProductCardList extends HTMLElement {
             </svg>
           </button>
           <div class="col-3">
-            <input type="text" class="form-control text-center productCards" id="productCardList${p.midascode}" value=${p.quantity} />
+            <input type="text" maxlength="3" class="form-control text-center" id="productCardList${key}" value=${p.quantity} />
           </div>
           <button class="btn button productCardListPlus" id="${p.midascode}">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -276,7 +281,7 @@ class ProductCardList extends HTMLElement {
           </button>
         </div>
         <div class="p-4">
-          <button type="button" class="btn btn-primary button booker">Shop Now</button>
+          <button type="button" class="btn booker">Shop Now</button>
         </div>
       </div>
     </div>
@@ -298,37 +303,13 @@ class ProductCardList extends HTMLElement {
 
     const plus = this.querySelectorAll('.productCardListPlus');
     const minus = this.querySelectorAll('.productCardListMinus');
-    const productCards = this.querySelectorAll('.productCards');
     
-    [...plus].map(p => p.addEventListener('click', () => { this.productCardListPlusClick(p) }));
-    [...minus].map(m => m.addEventListener('click', () => { this.productCardListMinusClick(m) }));
-    [...productCards].map((card, index) => card.addEventListener('change', () => { this.productCardListInputChange(card, index) }));
+    [...plus].map((p, index) => p.addEventListener('click', () => { this.productCardListClick(p, index, 'plus') }));
+    [...minus].map((m, index) => m.addEventListener('click', () => { this.productCardListClick(m, index, 'minus') }));
   }
 
-  productCardListInputChange = (card, index) => {
-    console.log(card);
-    this.products[index].quantity = document.getElementById('productCardList'+value.midascode).value;
-    this.render();
-  }
-
-  productCardListPlusClick = (card) => {
-    this.products.find((value, index) => {
-      if (value.midascode == card.id) {
-        this.products[index].quantity = document.getElementById('productCardList'+value.midascode).value;
-        this.products[index].quantity++;
-      }
-    });
-    this.render();
-  }
-
-  productCardListMinusClick = (card) => {
-    this.products.find((value, index) => {
-      if (value.midascode == card.id && this.products[index].quantity > 0) {
-        this.products[index].quantity = document.getElementById('productCardList'+value.midascode).value;
-        this.products[index].quantity--;
-      }
-    });
-    this.render();
+  productCardListClick = (card, index, direction) => {
+    return direction == 'plus' ? document.getElementById('productCardList'+index).value++ : direction == 'minus' && document.getElementById('productCardList'+index).value > 0 ? document.getElementById('productCardList'+index).value-- : false;
   } 
 }
 
