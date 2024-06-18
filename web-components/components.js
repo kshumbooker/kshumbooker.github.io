@@ -422,6 +422,7 @@ class HeroBannerB extends HTMLElement {
 }
 
 
+
 class ProductCardListCarousel extends HTMLElement {
   constructor() {
     super();
@@ -430,7 +431,7 @@ class ProductCardListCarousel extends HTMLElement {
   template = () => `
   <style>
   .carousel-control-next-icon, .carousel-control-prev-icon {
-    background-color: #000;
+    background-color: #2356AA;
   }
   .carousel-inner {
     overflow: visible;
@@ -438,6 +439,16 @@ class ProductCardListCarousel extends HTMLElement {
 
   .card {
     margin: 0 .25rem;
+  }
+
+  a {
+    color: #2356AA;
+  }
+
+  .booker, .booker:hover {
+    background: #2356AA;
+    color: #fff;
+    border: 0;  
   }
 
   .carousel-inner .carousel-item.active,
@@ -480,8 +491,8 @@ class ProductCardListCarousel extends HTMLElement {
         ${this.carouselProducts.map((p, key) => 
           `
           <div class="carousel-item productCardListItem ${ (key == this.carouselActiveKey) ? "active" : "" }">
-            <div class="card text-center rounded">
-              <div class="card-title">
+            <div class="card text-center rounded product${key}">
+              <div class="card-title pt-3">
                 <span class="fw-bold">${p.midascode}</span>
               </div>
               <img src=${p.image} class="img-fluid" />
@@ -510,22 +521,22 @@ class ProductCardListCarousel extends HTMLElement {
                 </div>
               </div>
               <div class="d-flex justify-content-center">
-                <button class="btn button productCarouselMinus" id="productCarousel_${p.midascode}">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+                <button class="btn button productCarouselMinus" id="productCarouselMinus${key}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
                   </svg>
                 </button>
                 <div class="col-3">
-                  <input type="text" class="form-control text-center" id="carouselProduct${p.midascode}" value=${p.quantity} />
+                  <input type="text" maxlength="3" class="form-control text-center carouselProducts align-middle" id="carouselProduct${key}" value=${p.quantity} />
                 </div>
-                <button class="btn button productCarouselPlus" id="productCarousel_${p.midascode}">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                <button class="btn button productCarouselPlus" id="productCarouselPlus${key}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
                   </svg>
                 </button>
               </div>    
               <div class="p-4">
-                <button type="button" class="btn btn-primary booker">Shop Now</button>
+                <button type="button" class="btn booker">Shop Now</button>
               </div>
             </div>
           </div>
@@ -548,7 +559,6 @@ class ProductCardListCarousel extends HTMLElement {
     this.products = JSON.parse(this.getAttribute('data-product-card-list-carousel'));
     this.carouselProducts = (!sessionStorage.getItem('carouselProducts')) ? this.products : JSON.parse(sessionStorage.getItem('carouselProducts'));
     this.carouselActiveKey = (!sessionStorage.getItem('carouselActiveKey')) ? 0 : sessionStorage.getItem('carouselActiveKey');
-
     this.render();
   }
 
@@ -561,25 +571,35 @@ class ProductCardListCarousel extends HTMLElement {
       let carousel = document.querySelectorAll('.productCardListItem');
       [...carousel].map((c, k) => {
         if (c.classList.contains('active')) {
-          this.carouselActiveKey = k;
+          sessionStorage.setItem('carouselActiveKey', k);
         }
       });
+      
     };
 
-    const productCarouselPlusMinus = (card, plusMinus) => {
-      this.carouselProducts.find((product, index) => {
-        if (product.midascode == card.id.split('_')[1]) {
-          if (plusMinus == 'plus') {
-            this.carouselProducts[index].quantity++;
-            document.getElementById('carouselProduct' + '' + product.midascode).value++;
-          } else {
-            this.carouselProducts[index].quantity > 0 ? this.carouselProducts[index].quantity-- : false;
-            document.getElementById('carouselProduct' + '' + product.midascode).value--;
-          }
-          sessionStorage.setItem('carouselProducts', JSON.stringify(this.carouselProducts));
-        }
-      });
+    const productCarouselInput = (product) => {
+      let key = getKeyFromId(product.id);
+      this.carouselProducts[key].quantity = event.target.value;
+      document.getElementById('carouselProduct'+key).value = event.target.value;
+      sessionStorage.setItem('carouselProducts', JSON.stringify(this.carouselProducts));
       this.render();
+    }
+    
+    const productCarouselPlusMinus = (element, plusMinus) => {
+      let key = getKeyFromId(element.id);
+      if (plusMinus == 'plus') {
+          this.carouselProducts[key].quantity++;
+          document.getElementById('carouselProduct'+key).value++;
+      } else {
+          this.carouselProducts[key].quantity > 0 ? this.carouselProducts[key].quantity-- : false;
+          document.getElementById('carouselProduct'+key).value--;
+      }
+      sessionStorage.setItem('carouselProducts', JSON.stringify(this.carouselProducts));
+      this.render();
+    }
+
+    const getKeyFromId = (id) => {
+      return id.charAt(id.length - 1);
     }
 
       let items = document.querySelectorAll('.productCardListCarousel .productCardListItem');     
@@ -598,10 +618,12 @@ class ProductCardListCarousel extends HTMLElement {
       const cardsPlus = document.querySelectorAll('.productCarouselPlus');
       const cardsMinus = document.querySelectorAll('.productCarouselMinus');
       const sliders = document.querySelectorAll('.productCarouselSlide');
+      const carouselProducts = document.querySelectorAll('.carouselProducts');
 
-      [...cardsPlus].map(p => p.addEventListener('click', () => { productCarouselPlusMinus(p, 'plus') }));
-      [...cardsMinus].map(m => m.addEventListener('click', () => { productCarouselPlusMinus(m, 'minus') }));
+      [...cardsPlus].map(plus => plus.addEventListener('click', () => { productCarouselPlusMinus(plus , 'plus') }));
+      [...cardsMinus].map(minus => minus.addEventListener('click', () => { productCarouselPlusMinus(minus, 'minus') }));
       [...sliders].map(s => s.addEventListener('click', () => { carouselActiveKey() } ));
+      [...carouselProducts].map(product => product.addEventListener('change', () => { productCarouselInput(product) } ));
   }
 }
 
