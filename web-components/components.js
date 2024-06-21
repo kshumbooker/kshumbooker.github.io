@@ -63,7 +63,6 @@ class InfoCardB extends HTMLElement {
 }
 
 
-
 class ProductCard extends HTMLElement {
 
   constructor() {
@@ -72,6 +71,13 @@ class ProductCard extends HTMLElement {
   }
 
   template = () => `
+  <style>
+    .booker, .booker:hover {
+      background: #2356AA;
+      color: #fff;
+      border: 0;  
+    }
+  </style>
   <div class="container mt-5 mb-5">
     <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
@@ -120,7 +126,7 @@ class ProductCard extends HTMLElement {
             </button>
           </div>  
           <div class="p-4">
-        <button type="button" class="btn btn-primary button booker">Shop Now</button>
+        <button type="button" class="btn booker">Shop Now</button>
       </div>
     </div>
   </div>
