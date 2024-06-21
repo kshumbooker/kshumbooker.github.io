@@ -40,9 +40,9 @@ class InfoCardB extends HTMLElement {
     <div class="container mb-5">
       <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
-          <div class="card h-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+          <div class="card h-100 shadow-lg p-3 mb-5 rounded" style="background: ${this.getAttribute('data-cardBgColor')}">
           <img src="${this.getAttribute('data-image')}" alt="${this.getAttribute('data-alt')}" class="img-fluid" />
-          <div class="card-body" style="background: ${this.getAttribute('data-cardBgColor')}">
+          <div class="card-body" style="background: ${this.getAttribute('data-centralTextBgColor')}">
             <div class="p-4">
               <h6 style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')};">${this.getAttribute('data-heading')}</h6>
             </div>
@@ -61,6 +61,7 @@ class InfoCardB extends HTMLElement {
   `;
   }
 }
+
 
 
 class ProductCard extends HTMLElement {
@@ -220,6 +221,8 @@ class Heading extends HTMLElement {
     `;
   }
 }
+
+
 
 class ProductCardList extends HTMLElement {
   constructor() {
@@ -426,7 +429,6 @@ class HeroBannerB extends HTMLElement {
     `;
   }
 }
-
 
 
 class ProductCardListCarousel extends HTMLElement {
@@ -768,7 +770,7 @@ class Button extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <div class="container text-center mt-5 mb-5">
-      <a href="${this.getAttribute('data-url')}" class="btn btn-primary" style="color: ${this.getAttribute('data-fontColor')}; background: ${this.getAttribute('data-buttonBgColor')}">${this.getAttribute('data-text')}</a>
+      <a href="${this.getAttribute('data-url')}" class="btn" style="color: ${this.getAttribute('data-fontColor')}; background: ${this.getAttribute('data-buttonBgColor')}">${this.getAttribute('data-text')}</a>
     </div>
     `;
   }
@@ -783,7 +785,7 @@ class HeroImage extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <div class="container text-center mt-5 mb-5">
-      <a href="${this.getAttribute('data-url')}"><img src="${this.getAttribute('data-image')}" class="img-fluid" alt="${this.getAttribute('data-alt')}" /></a>
+      <img src="${this.getAttribute('data-image')}" class="img-fluid" alt="${this.getAttribute('data-alt')}" />
     </div>
     `;
   }
