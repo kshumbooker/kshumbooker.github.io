@@ -192,16 +192,17 @@ class HeroBannerCarousel extends HTMLElement {
     this.innerHTML = `
     <style>
     .carousel-control-prev, .carousel-control-next{
-      width: 5vh;
-      height: 5vh;
-      border-radius: 50%;
+      width: 4vh;
+      height: 4vh;
       top: 50%;
       transform: translateY(-50%);
       opacity: 1;
+      background: ${this.getAttribute('data-arrowBgColor')};
     }
+    
     </style>
     <div class="container position-relative text-center mt-5 mb-5">
-      <div id="HeroBannerCarousel" class="carousel">
+      <div id="HeroBannerCarousel" class="carousel" data-interval="false">
         <div class="carousel-inner">
         ${JSON.parse(this.getAttribute('data-hero-banner-carousel')).map((val, key) => `
           <div class="carousel-item ${key == 0 ? "active" : ""}">
@@ -210,18 +211,15 @@ class HeroBannerCarousel extends HTMLElement {
         `)}
       </div>
       ${this.getAttribute('data-arrowShow') == 'true' ? `
-      <button class="carousel-control-prev" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="prev">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="${this.getAttribute('data-arrowBgColor')}" class="bi bi-arrow-left-circle-fill" viewBox="-1 -1 20 20">
-          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" stroke="${this.getAttribute('data-arrowColor')}"/>
-        </svg>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#HeroBannerCarousel" data-bs-slide="next">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="${this.getAttribute('data-arrowBgColor')}" class="bi bi-arrow-right-circle-fill" viewBox="-3 -1 20 20">
-          <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" stroke="${this.getAttribute('data-arrowColor')}"/>
-        </svg>
-        <span class="visually-hidden">Next</span>
-      </button>` : ``}
+      <a class="carousel-control-prev" type="button" data-target="#HeroBannerCarousel" data-slide="prev">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="${this.getAttribute('data-arrowColor')}" viewBox="0 0 8 8"><path d="M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z" /></svg>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" type="button" data-target="#HeroBannerCarousel" data-slide="next">
+        <svg xmlns='http://www.w3.org/2000/svg' fill="${this.getAttribute('data-arrowColor')}" viewBox="0 0 8 8"><path d="M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z" /></svg>
+        
+        <span class="sr-only">Next</span>
+      </a>` : ``}
     </div>
   </div>`;
   }
@@ -275,6 +273,13 @@ class ProductCardList extends HTMLElement {
       color: #676767;
     }
     
+    .addToList {
+      font-size: 0.8rem;
+    }
+
+    .productCardListQuantity {
+      width: 3rem;
+    }
 
   </style>
   <div class="container mt-5 mb-5">
@@ -301,7 +306,7 @@ class ProductCardList extends HTMLElement {
         </div>
         <div class="row mb-3">
           <div class="col p-0">
-            <a href="#"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
+            <a href="#" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
           </div>
           <div class="col p-0">
             <p class="rrp">RRP: ${p.rrp}</p>
@@ -318,9 +323,7 @@ class ProductCardList extends HTMLElement {
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
             </svg>
           </button>
-          <div class="col-sm-1 col-md-2 col-lg-3 p-0">
-            <input type="text" maxlength="3" class="form-control text-center p-0" id="productCardList${key}" value=${p.quantity} />
-          </div>
+          <input type="text" maxlength="3" class="form-control text-center p-0 productCardListQuantity" id="productCardList${key}" value=${p.quantity} />
           <button class="btn button productCardListPlus" id="${p.midascode}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
@@ -439,10 +442,10 @@ class HeroBannerB extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <style>
-      @media (min-width: 768px) {
+      @media (min-width: 992px) {
         .hero-banner-b-form {
           position:absolute;
-          top: 60%;
+          top: 50%;
           left: 50%;
           opacity: 0.7;
           transform: translate(-50%, -50%);
@@ -459,7 +462,7 @@ class HeroBannerB extends HTMLElement {
           <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')};">
             ${this.getAttribute('data-text')}
           </p>
-          <a href="${this.getAttribute('data-buttonUrl')}" class="btn btn-primary" style="color: ${this.getAttribute('data-buttonFontColor')}; background: ${this.getAttribute('data-buttonBgColor')}">
+          <a href="${this.getAttribute('data-buttonUrl')}" class="btn" style="color: ${this.getAttribute('data-buttonFontColor')}; background: ${this.getAttribute('data-buttonBgColor')}">
             ${this.getAttribute('data-buttonText')}
           </a>
         </div>
@@ -487,6 +490,20 @@ class ProductCardListCarousel extends HTMLElement {
     margin: 0 .25rem;
   }
 
+  .price {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .rrp, .por {
+      font-weight: 700;
+      color: #676767;
+    }
+    
+    .addToList {
+      font-size: 0.8rem;
+    }
+
   a {
     color: #2356AA;
   }
@@ -497,15 +514,15 @@ class ProductCardListCarousel extends HTMLElement {
     border: 0;  
   }
 
-  .carousel-inner .carousel-item.active,
+  .productCardListCarouselQuantity {
+    width: 3rem;
+  }
+
+
+.carousel-inner .carousel-item.active,
 .carousel-inner .carousel-item-next,
 .carousel-inner .carousel-item-prev {
   display: flex;
-}
-
-.carousel-inner .carousel-item-end,
-.carousel-inner .carousel-item-start { 
-  transform: translateX(0);
 }
 
 @media (max-width: 768px) {
@@ -517,53 +534,73 @@ class ProductCardListCarousel extends HTMLElement {
   }
 }
 
-
-@media (min-width: 768px) {
-  .carousel-inner .carousel-item-end.active,
-  .carousel-inner .carousel-item-next {
-    transform: translateX(25%);
+@media (min-width: 200px) and (max-width: 767.98px) {
+  .carousel-inner .carousel-item > div {
+      display: none;
   }
-  
-  .carousel-inner .carousel-item-start.active, 
-  .carousel-inner .carousel-item-prev {
-    transform: translateX(-25%);
+  .carousel-inner .carousel-item > div:first-child {
+      display: block;
   }
 }
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .carousel-inner .carousel-item > div {
+      display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child, .carousel-inner .carousel-item > div:nth-child(2) {
+      display: block;
+  }
+}
+
+
+
+
   </style>
   <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
-      <div id="ProductCardListCarousel" class="carousel productCardListCarousel">
+      <div id="ProductCardListCarousel" class="carousel productCardListCarousel" data-interval="false">
         <div class="carousel-inner">
         ${this.carouselProducts.map((p, key) => 
           `
           <div class="carousel-item productCardListItem ${ (key == this.carouselActiveKey) ? "active" : "" }">
-            <div class="card text-center rounded product${key}">
-              <div class="card-title pt-3">
-                <span class="fw-bold">${p.midascode}</span>
-              </div>
-              <img src=${p.image} class="img-fluid" />
-              <div class="row mb-3">
-                <span class="fw-bold">${p.title}</span>
-              </div>
-              <div class="row mb-3">
+               
+            <div class="card p-3 text-center rounded product${key}">
+              <div class="row">
                 <div class="col">
-                  <span>${p.volume}</span>
+                  <div class="card-title">
+                    <p class="font-weight-bold">${p.midascode}</p>
+                  </div>
                 </div>
+              </div>
+              <div class="row mb-5">
                 <div class="col">
-                  <span class="fw-bold">&pound;${p.price}</span>
+                  <img src=${p.image} class="img-fluid" />
                 </div>
               </div>
               <div class="row mb-3">
                 <div class="col">
-                  <a href="#">Add to List</a>
+                  <p class="font-weight-bold">${p.title}</p>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col">
+                  <p>${p.volume}</p>
                 </div>
                 <div class="col">
-                  <span>RRP: ${p.rrp}</span>
+                  <p class="font-weight-bold price">&pound;${p.price}</p>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col p-0">
+                  <a href="#" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
+                </div>
+                <div class="col p-0">
+                  <p class="rrp">RRP: ${p.rrp}</p>
                 </div>
               </div>
               <div class="row mb-3">
                 <div class="col offset-6">
-                  <span>POR: ${p.por}%</span>
+                  <p class="por">POR: ${p.por}%</p>
                 </div>
               </div>
               <div class="d-flex justify-content-center">
@@ -572,9 +609,7 @@ class ProductCardListCarousel extends HTMLElement {
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
                   </svg>
                 </button>
-                <div class="col-3">
-                  <input type="text" maxlength="3" class="form-control text-center carouselProducts align-middle" id="carouselProduct${key}" value=${p.quantity} />
-                </div>
+                <input type="text" maxlength="3" class="form-control text-center carouselProducts align-middle productCardListCarouselQuantity" id="carouselProduct${key}" value=${p.quantity} />
                 <button class="btn button productCarouselPlus" id="productCarouselPlus${key}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
@@ -589,13 +624,13 @@ class ProductCardListCarousel extends HTMLElement {
           `
           ).join('')}
         </div>
-        <button class="carousel-control-prev productCarouselSlide" type="button" data-bs-target="#ProductCardListCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+        <a class="carousel-control-prev productCarouselSlide" type="button" data-target="#ProductCardListCarousel" data-slide="prev">
+         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
         </button>
-        <button class="carousel-control-next productCarouselSlide" type="button" data-bs-target="#ProductCardListCarousel" data-bs-slide="next">
+        <a class="carousel-control-next productCarouselSlide" type="button" data-target="#ProductCardListCarousel" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <span class="sr-only">Next</span>
         </button>
       </div>
     </div>
@@ -618,7 +653,7 @@ class ProductCardListCarousel extends HTMLElement {
       [...carousel].map((c, k) => {
         if (c.classList.contains('active')) {
           this.carouselActiveKey = k;
-          sessionStorage.setItem('carouselActiveKey', k);
+          sessionStorage.setItem('carouselActiveKey', this.carouselActiveKey);
         }
       });
       
@@ -648,11 +683,12 @@ class ProductCardListCarousel extends HTMLElement {
     const getKeyFromId = (id) => {
       return id.charAt(id.length - 1);
     }
-
-      let items = document.querySelectorAll('.productCardListCarousel .productCardListItem');     
+    
+      let items = document.querySelectorAll('.productCardListCarousel .productCardListItem');
+      const minPerSlide = 4;
       items.forEach((item) => {
-        const minPerSlide = 4;
         let next = item.nextElementSibling;
+        
         for (let i = 1; i < minPerSlide; i++) {
           if (!next) {
         	  next = items[0];
@@ -662,11 +698,13 @@ class ProductCardListCarousel extends HTMLElement {
           next = next.nextElementSibling;
         }
       });
+
+      
       const cardsPlus = document.querySelectorAll('.productCarouselPlus');
       const cardsMinus = document.querySelectorAll('.productCarouselMinus');
       const sliders = document.querySelectorAll('.productCarouselSlide');
       const carouselProducts = document.querySelectorAll('.carouselProducts');
-
+      
       [...cardsPlus].map(plus => plus.addEventListener('click', () => { productCarouselPlusMinus(plus , 'plus') }));
       [...cardsMinus].map(minus => minus.addEventListener('click', () => { productCarouselPlusMinus(minus, 'minus') }));
       [...sliders].map(s => s.addEventListener('click', () => { carouselActiveKey() } ));
@@ -688,7 +726,7 @@ class ProductCategory extends HTMLElement {
       <div class="row mt-4">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mx-auto">
           <a class="text-decoration-none" href="${this.getAttribute('data-url')}">  
-            <div class="card text-dark h-100 text-center p-4 fw-bold" style="background: ${this.getAttribute('data-bgColor')};">
+            <div class="card text-dark h-100 text-center p-4 font-weight-bold" style="background: ${this.getAttribute('data-bgColor')};">
               <span style="font-size: ${this.getAttribute('data-fontSize')}; color: ${this.getAttribute('data-fontColor')}; ">${this.getAttribute('data-text')}</span>
             </div>
           </a>
@@ -710,13 +748,13 @@ class ProductCategories extends HTMLElement {
     let categories = JSON.parse(this.getAttribute("data-categories"));
     this.innerHTML = `
     <div class="container mt-5 mb-5">
-      <div class="row g-2 mt-4"> 
+      <div class="row"> 
       ${categories.map(c => `
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 mx-auto">
+        <div class="col-sm-12 col-md-6 col-lg-3 mx-auto mb-3">
           <a class="text-decoration-none" href="${c.url}">
-          <div class="card bg-light text-dark text-center h-100 p-4 fw-bold justify-content-center">
-            <span>${c.category}</span>
-          </div>
+            <div class="card bg-light text-dark text-center h-100 p-4 font-weight-bold justify-content-center">
+              ${c.category}
+            </div>  
           </a>
         </div>
       `).join("")}
@@ -730,15 +768,15 @@ class ProductCategories extends HTMLElement {
 class SubPageNavigation extends HTMLElement {
   template = () => `
   <div class="container mt-5 mb-5">
-    <nav class="navbar navbar-expand-lg bg-white border-bottom border-secondary mb-2">
+    <nav class="navbar navbar-expand-md navbar-expand-lg bg-white border-bottom border-secondary mb-2 p-0" id="subNavigationContentNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        ${this.subPageNavigation.map(s => `<li class="nav-item">
-          <a class="nav-link" name="${s.id}">${s.title}</a>
+        ${this.subPageNavigation.map(s => `
+          <li class="nav-item">
+            <a class="nav-link text-dark" name="${s.id}" href="#">${s.title}</a>
           </li>`).join("")}
       </ul>
     </nav>
     <div class="row" id="subNavigationContent">
-    
     </div>
   </div>
   `;
@@ -752,7 +790,7 @@ class SubPageNavigation extends HTMLElement {
     this.render();
     const pages = this.querySelectorAll('.nav-link');
     [...pages].map(p => p.addEventListener('click', () => { this.displaySubContent(p.name) }));
-    document.getElementById('#subNavigationContent').innerHTML = this.displaySubContent('home');
+    this.displaySubContent('home');
   }
 
   render() {
@@ -767,8 +805,8 @@ class SubPageNavigation extends HTMLElement {
         let sub = this.subPageNavigation[index];
         document.getElementById('subNavigationContent').innerHTML = `
         <div class="col-sm-12 col-md-6 bg-light p-4">
-            <span class="align-middle"><h4>${sub.title}</h4>
-          ${sub.text}</span>
+            <p class="align-middle"><h4>${sub.title}</h4>
+          ${sub.text}</p>
         </div>
         <div class="col-sm-12 col-md-6 d-flex justify-content-center" style="background-color: ${value.color}">
           <img src="${sub.image}" class="img-fluid" />
@@ -778,6 +816,7 @@ class SubPageNavigation extends HTMLElement {
     });
   }
 }
+
 
 
 class StandardCopy extends HTMLElement {
