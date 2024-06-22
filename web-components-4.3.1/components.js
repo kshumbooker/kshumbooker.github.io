@@ -12,13 +12,13 @@ class InfoCardA extends HTMLElement {
             <img src="${this.getAttribute('data-image')}" alt="${this.getAttribute('data-alt')}" />
             <div class="card-body">
               <div class="p-4">
-                <p class="h6" style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">${this.getAttribute('data-heading')}</h6>
+                <p style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">${this.getAttribute('data-heading')}</p>
               </div>
               <div class="p-4">
                 <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')}; ">${this.getAttribute('data-text')}</p>
               </div>
               <div class="p-4">
-                <a href="${this.getAttribute('data-url')}" class="btn btn-primary infoCardABtn" style="background: ${this.getAttribute('data-buttonBgColor')}; color: ${this.getAttribute('data-buttonFontColor')};">${this.getAttribute('data-buttonText')}</a>
+                <a href="${this.getAttribute('data-url')}" class="btn infoCardABtn" style="background: ${this.getAttribute('data-buttonBgColor')}; color: ${this.getAttribute('data-buttonFontColor')};">${this.getAttribute('data-buttonText')}</a>
               </div>
             </div>
           </div>
@@ -648,11 +648,11 @@ class ProductCardListCarousel extends HTMLElement {
       ${this.template().trim()}
     `;
 
-    const carouselActiveKey = () => {
+    const carouselActiveKey = (direction) => {
       let carousel = document.querySelectorAll('.productCardListItem');
       [...carousel].map((c, k) => {
         if (c.classList.contains('active')) {
-          this.carouselActiveKey = k;
+          this.carouselActiveKey = direction == 'next' ? k + 1 : direction == 'prev' ? k - 1 : false;
           sessionStorage.setItem('carouselActiveKey', this.carouselActiveKey);
         }
       });
@@ -707,7 +707,7 @@ class ProductCardListCarousel extends HTMLElement {
       
       [...cardsPlus].map(plus => plus.addEventListener('click', () => { productCarouselPlusMinus(plus , 'plus') }));
       [...cardsMinus].map(minus => minus.addEventListener('click', () => { productCarouselPlusMinus(minus, 'minus') }));
-      [...sliders].map(s => s.addEventListener('click', () => { carouselActiveKey() } ));
+      [...sliders].map(s => s.addEventListener('click', () => { carouselActiveKey(s.attributes['data-slide'].value) } ));
       [...carouselProducts].map(product => product.addEventListener('change', () => { productCarouselInput(product) } ));
   }
 }
