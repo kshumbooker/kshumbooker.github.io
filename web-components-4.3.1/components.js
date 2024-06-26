@@ -277,16 +277,15 @@ class ProductCardList extends HTMLElement {
       font-size: 0.8rem;
     }
 
-    .productCardListQuantity {
+    [id*='productCardListQuantity'] {
       width: 3rem;
     }
-
   </style>
   <div class="container mt-5 mb-5">
     <div class="row">
-    ${this.products.map((p, key) => `
+    ${this.products.data.map((p, key) => `
     <div class="col-sm-12 col-md-6 col-lg-3 mb-3 p-0">
-      <div class="card p-3 h-100 text-center rounded">
+      <div class="card p-3 h-100 text-center rounded" id="product-card-list-${this.products.id}">
         <div class="card-title">
           <p class="font-weight-bold">${p.midascode}</p>
         </div>
@@ -323,7 +322,7 @@ class ProductCardList extends HTMLElement {
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
             </svg>
           </button>
-          <input type="text" maxlength="3" class="form-control text-center p-0 productCardListQuantity" id="productCardList${key}" value=${p.quantity} />
+          <input type="text" maxlength="3" class="form-control text-center p-0" id="${this.products.id}-productCardListQuantity${key}" value=${p.quantity} />
           <button class="btn button productCardListPlus" id="${p.midascode}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
@@ -354,12 +353,14 @@ class ProductCardList extends HTMLElement {
     const plus = this.querySelectorAll('.productCardListPlus');
     const minus = this.querySelectorAll('.productCardListMinus');
     
-    [...plus].map((p, index) => p.addEventListener('click', () => { this.productCardListClick(p, index, 'plus') }));
-    [...minus].map((m, index) => m.addEventListener('click', () => { this.productCardListClick(m, index, 'minus') }));
+    [...plus].map((p, index) => p.addEventListener('click', () => { this.productCardListClick(p.parentElement.parentElement.id, index, 'plus') }));
+    [...minus].map((m, index) => m.addEventListener('click', () => { this.productCardListClick(m.parentElement.parentElement.id, index, 'minus') }));
   }
 
-  productCardListClick = (card, index, direction) => {
-    return direction == 'plus' ? document.getElementById('productCardList'+index).value++ : direction == 'minus' && document.getElementById('productCardList'+index).value > 0 ? document.getElementById('productCardList'+index).value-- : false;
+  productCardListClick = (parentId, index, direction) => {    
+    let productCardId = parentId.charAt(parentId.length - 1);
+ 
+    return direction == 'plus' ? document.getElementById(productCardId + '-' + 'productCardListQuantity'+ index).value++ : direction == 'minus' && document.getElementById(productCardId + '-' + 'productCardListQuantity'+ index).value > 0 ? document.getElementById(productCardId + '-' + 'productCardListQuantity'+ index).value-- : false;
   } 
 }
 
