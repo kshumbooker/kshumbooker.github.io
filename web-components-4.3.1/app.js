@@ -327,12 +327,16 @@ const subPageNavigation = [
 
     let productCategoriesContainer = document.getElementById("product-categories");
     let heroBannerCarouselContainer = document.getElementById("hero-banner-carousel");
-    let productCardListContainer = document.getElementById('product-card-list');
+    let productCardListContainer = [...document.getElementsByTagName('product-card-list')];
     let subPageNavigationContainer = document.getElementById('sub-page-navigation');
     let productCardListCarouselContainer = document.getElementById('product-card-list-carousel');
     productCategoriesContainer.setAttribute("data-categories", JSON.stringify(productCategories));
     heroBannerCarouselContainer.setAttribute("data-hero-banner-carousel", JSON.stringify(heroBannerCarousel));
-    productCardListContainer.setAttribute("data-product-card-list", JSON.stringify(productsByBrand(productCardListContainer.getAttribute('data-brand'))));
+    productCardListContainer.map((v, k) => {
+      v.setAttribute('data-product-card-list', JSON.stringify({
+          id: k,
+          data: productsByBrand(productCardListContainer[k].getAttribute('data-brand'))
+      }))});
     subPageNavigationContainer.setAttribute('data-sub-page-navigation', JSON.stringify(subPageNavigation));
     productCardListCarouselContainer.setAttribute('data-product-card-list-carousel', JSON.stringify(productsByBrand(productCardListCarouselContainer.getAttribute('data-brand'))));
    
