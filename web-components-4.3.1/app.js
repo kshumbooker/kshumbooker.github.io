@@ -1,3 +1,224 @@
+const productsData_CocaCola = [
+  {
+    title: 'Coca-Cola Zero Sugar',
+    volume: '24 x 330ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657922-9294861134854115.jpg',
+    midascode: 100001,
+    brand: 'coca-cola',
+    price: 13.09,
+    rrp: 1.39,
+    por: 49.7,
+    quantity: 0
+  },
+  {
+    title: 'Coca-Cola Lemon',
+    volume: '24 x 330ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/15227578-8645125050786129.jpg',
+    midascode: 100002,
+    brand: 'coca-cola',
+    price: 13.99,
+    rrp: 1.39,
+    por: 55.5,
+    quantity: 0
+  },
+  {
+    title: 'Coca-Cola Original',
+    volume: '24 x 250ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/13869129-4134964590200453.jpg',
+    midascode: 100003,
+    brand: 'coca-cola',
+    price: 13.99,
+    rrp: 1.39,
+    por: 55.5,
+    quantity: 0
+  },
+  {
+    title: 'Coca-Cola Cherry',
+    volume: '24 x 330ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657920-1654899330330921.jpg',
+    midascode: 100004,
+    brand: 'coca-cola',
+    price: 13.99,
+    rrp: 1.39,
+    por: 55.5,
+    quantity: 0
+  },
+  {
+    title: 'Coca-Cola Original Taste Glass Bottles',
+    volume: '24 x 330ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657918-9414807812038433.jpg',
+    midascode: 100005,
+    brand: 'coca-cola',
+    price: 13.99,
+    rrp: 1.39,
+    por: 55.5,
+    quantity: 0
+  },
+  {
+    title: 'Coca-Cola Zero Sugar Lemon',
+    volume: '24 x 330ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/15227577-1255125050706956.jpg',
+    midascode: 100006,
+    brand: 'coca-cola',
+    price: 14.99,
+    rrp: 1.49,
+    por: 57.5,
+    quantity: 0
+  },
+  {
+    title: 'Coca-Cola Zero Sugar Cherry',
+    volume: '24 x 330ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12912901-1414889184313857.jpg',
+    midascode: 100007,
+    brand: 'coca-cola',
+    price: 15.99,
+    rrp: 1.59,
+    por: 58.5,
+    quantity: 0
+  }
+];
+
+const productsData_Relentless = [
+  {
+    title: 'Relentless Fruit Punch Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/15355387-8795143410513525.jpg',
+    midascode: 100014,
+    brand: 'relentless',
+    price: 11.99,
+    rrp: 1.99,
+    por: 41.5,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Raspberry Zero Sugar Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13733909-2774951400808045.jpg',
+    midascode: 100015,
+    brand: 'relentless',
+    price: 12.99,
+    rrp: 1.89,
+    por: 40.5,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Origin Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13220383-1204886545310409.jpg',
+    midascode: 100016,
+    brand: 'relentless',
+    price: 13.99,
+    rrp: 1.79,
+    por: 44.5,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Peach Zero Sugar Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13733910-9564951400918733.jpg',
+    midascode: 100017,
+    brand: 'relentless',
+    price: 13.79,
+    rrp: 1.83,
+    por: 45.5,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Cherry Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13220386-3294886545986861.jpg',
+    midascode: 100018,
+    brand: 'relentless',
+    price: 13.49,
+    rrp: 1.89,
+    por: 45.8,
+    quantity: 0
+  },
+  {
+    title: 'Relentless Passion Punch Energy Drink',
+    volume: '12 x 500ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/960/960/13220384-1685004239058525.jpg',
+    midascode: 100019,
+    brand: 'relentless',
+    price: 13.19,
+    rrp: 1.93,
+    por: 46.8,
+    quantity: 0
+  }
+];
+
+const productsData_CostaCoffee = [
+  {
+    title: 'Costa Coffee Latte',
+    volume: '12 x 250ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657928-1344965615047130.jpg',
+    midascode: 100008,
+    brand: 'costa coffee',
+    price: 15.99,
+    rrp: 1.59,
+    por: 58.5,
+    quantity: 0
+  },
+  {
+    title: 'Costa Coffee Vanilla Latte',
+    volume: '12 x 250ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12882462-1564965615215088.jpg',
+    midascode: 100009,
+    brand: 'costa coffee',
+    price: 15.99,
+    rrp: 1.59,
+    por: 58.5,
+    quantity: 0
+  },
+  {
+    title: 'Costa Coffee Caramel Latte',
+    volume: '12 x 250ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12657927-1074965615454608.jpg',
+    midascode: 100010,
+    brand: 'costa coffee',
+    price: 15.99,
+    rrp: 1.59,
+    por: 58.5,
+    quantity: 0
+  },
+  {
+    title: 'Costa Coffee Flat White',
+    volume: '12 x 250ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/12882463-3574965914586723.jpg',
+    midascode: 100011,
+    brand: 'costa coffee',
+    price: 15.99,
+    rrp: 1.59,
+    por: 58.5,
+    quantity: 0
+  }
+];
+
+const productsData_JackDaniels = [
+  {
+    title: 'Jack Daniel\'s and Coca-Cola',
+    volume: '12 x 330ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/14509056-2415036628891027.jpg',
+    midascode: 100012,
+    brand: 'jack daniels',
+    price: 15.99,
+    rrp: 1.59,
+    por: 58.5,
+    quantity: 0
+  },
+  {
+    title: 'Jack Daniel\'s and Coca-Cola Zero',
+    volume: '12 x 330ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/14509057-9895036629017087.jpg',
+    midascode: 100013,
+    brand: 'jack daniels',
+    price: 15.99,
+    rrp: 1.59,
+    por: 58.5,
+    quantity: 0
+  }
+];
+
 
       const productCategories = [
   {
@@ -324,6 +545,10 @@ const subPageNavigation = [
       return productsData.filter(p => p.brand == brand)
     }
 
+const productsByBrandIndivArray = (brand) => {
+      return eval('productsData_' + brand);
+    }
+
 
     let productCategoriesContainer = document.getElementById("product-categories");
     let heroBannerCarouselContainer = document.getElementById("hero-banner-carousel");
@@ -335,7 +560,7 @@ const subPageNavigation = [
     productCardListContainer.map((v, k) => {
       v.setAttribute('data-product-card-list', JSON.stringify({
           id: k,
-          data: productsByBrand(productCardListContainer[k].getAttribute('data-brand'))
+          data: productsByBrandIndivArray(productCardListContainer[k].getAttribute('data-brand'))
       }))});
     subPageNavigationContainer.setAttribute('data-sub-page-navigation', JSON.stringify(subPageNavigation));
     productCardListCarouselContainer.setAttribute('data-product-card-list-carousel', JSON.stringify(productsByBrand(productCardListCarouselContainer.getAttribute('data-brand'))));
