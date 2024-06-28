@@ -1123,7 +1123,7 @@
 		reader.onload = function() {
 
 			/* using includes in the file name is a bit crap because for example, product and productgroup will both return a match and we need to tell exactly which file the user is uploading. Need to actually match the file name properly. The assumption here is that the user gets the file and doesn't rename it, so the format will always be <EBIZ or CORD>_<interface name><load of numbers.ext>, extract the interface name from in between */
-			let interface = file.name.match(/((EBIZ_|CORD_|CORD2_|SAP2WEB_|OURBOOKER))(?<interface>[a-z]+)(.*)/i);
+			let interface = file.name.match(/((EBIZ_|CORD\d*_|SAP2WEB_|OURBOOKER))(?<interface>[a-z]+)(.*)/i);
 			
 
 			let fileType = interface.groups.interface ? interface.groups.interface.toLowerCase() : '';
@@ -1398,3 +1398,4 @@
 
 </body>
 </html>
+
