@@ -473,7 +473,7 @@ class HeroBannerB extends HTMLElement {
 }
 
 
-class ProductCardListCarousel extends HTMLElement {
+/*class ProductCardListCarousel extends HTMLElement {
   constructor() {
     super();
   }
@@ -711,6 +711,231 @@ class ProductCardListCarousel extends HTMLElement {
       [...cardsMinus].map(minus => minus.addEventListener('click', () => { productCarouselPlusMinus(minus, 'minus') }));
       [...sliders].map(s => s.addEventListener('click', () => { carouselActiveKey(s.attributes['data-slide'].value) } ));
       [...carouselProducts].map(product => product.addEventListener('change', () => { productCarouselInput(product) } ));
+  }
+}*/
+
+class ProductCardListCarousel extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  template = () => `
+  <style>
+  .carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color: #2356AA;
+  }
+  .carousel-inner {
+    overflow: visible;
+  }
+
+  .card {
+    margin: 0 .25rem;
+  }
+
+  .price {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .rrp, .por {
+      font-weight: 700;
+      color: #676767;
+    }
+    
+    .addToList {
+      font-size: 0.8rem;
+    }
+
+  a {
+    color: #2356AA;
+  }
+
+  .booker, .booker:hover {
+    background: #2356AA;
+    color: #fff;
+    border: 0;  
+  }
+
+  .productCardListCarouselQuantity {
+    width: 3rem;
+  }
+
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .carousel-inner .carousel-item > div {
+      display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child {
+      display: block;
+  }
+}
+
+@media (min-width: 200px) and (max-width: 767.98px) {
+  .carousel-inner .carousel-item > div {
+      display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child {
+      display: block;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .carousel-inner .carousel-item > div {
+      display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child, .carousel-inner .carousel-item > div:nth-child(2) {
+      display: block;
+  }
+}
+
+  </style>
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+      <div id="ProductCardListCarousel${this.products.id}" class="carousel productCardListCarousel" data-interval="false">
+        <div class="carousel-inner">
+        ${this.products.data.map((p, key) => 
+          `
+          <div class="carousel-item productCardListItem ${ (key == this.carouselActiveKey) ? "active" : "" }">
+               
+            <div class="card p-3 text-center rounded product${key}" id="${this.products.id}_productCardListCarousel_${key}">
+              <div class="row">
+                <div class="col">
+                  <div class="card-title">
+                    <p class="font-weight-bold">${p.midascode}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col">
+                  <img src=${p.image} class="img-fluid" />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col">
+                  <p class="font-weight-bold">${p.title}</p>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col">
+                  <p>${p.volume}</p>
+                </div>
+                <div class="col">
+                  <p class="font-weight-bold price">&pound;${p.price}</p>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col p-0">
+                  <a href="#" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
+                </div>
+                <div class="col p-0">
+                  <p class="rrp">RRP: ${p.rrp}</p>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col offset-6">
+                  <p class="por">POR: ${p.por}%</p>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="btn rounded-circle booker plus-minus-icon productCarouselMinus" id="${this.products.id}_productCarouselMinus_${key}">
+                  <i class="fas fa-minus"></i>
+                </div>
+                <input type="text" maxlength="3" class="form-control text-center carouselProducts align-middle productCardListCarouselQuantity ml-2 mr-2" id="${this.products.id}_carouselProduct_${key}" value=${p.quantity} />
+                <div class="btn rounded-circle booker plus-minus-icon productCarouselPlus" id="${this.products.id}_productCarouselPlus_${key}">
+                  <i class="fas fa-plus"></i>
+                </div>
+              </div>    
+              <div class="p-4">
+                <button type="button" class="btn booker">Shop Now</button>
+              </div>
+            </div>
+          </div>
+          `
+          ).join('')}
+        </div>
+        <a class="carousel-control-prev productCarouselSlide" type="button" data-target="#ProductCardListCarousel${this.products.id}" data-slide="prev">
+         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </button>
+        <a class="carousel-control-next productCarouselSlide" type="button" data-target="#ProductCardListCarousel${this.products.id}" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>`;
+
+  connectedCallback() {
+    this.products = JSON.parse(this.getAttribute('data-product-card-list-carousel'));
+    this.carouselActiveKey = 0;
+    this.render();
+  }
+
+  render() {
+    this.innerHTML = `
+      ${this.template().trim()}
+    `;
+
+    const carouselActiveKey = (direction) => {
+      let carousel = this.querySelectorAll('.productCardListItem');
+      [...carousel].map((c, k) => {
+        if (c.classList.contains('active')) {
+          this.carouselActiveKey = direction == 'next' ? k + 1 : direction == 'prev' ? k - 1 : false;
+        }
+      });
+    };
+
+    const productCarouselInput = (product) => {
+      let key = getKeysFromId(product.id);
+      this.products.data[key.productKey].quantity = product.value;
+      this.render();
+    }
+    
+    const productCarouselPlusMinus = (product, plusMinus) => {
+      let key = getKeysFromId(product.id);
+      plusMinus == 'plus' ? this.products.data[key.productKey].quantity++ : plusMinus == 'minus' && this.products.data[key.productKey].quantity > 0 ? this.products.data[key.productKey].quantity-- : false;
+      this.render();
+    }
+
+    const getKeysFromId = (id) => {
+      let keys = [];
+      keys['carouselKey'] = id.split('_')[0];
+      keys['productKey'] = id.split('_')[2];
+      return keys;
+    }
+
+      let items = this.querySelectorAll('.productCardListCarousel .productCardListItem');
+    
+      const minPerSlide = 4;
+      items.forEach((item) => {
+        let next = item.nextElementSibling;
+        
+        for (let i = 1; i < minPerSlide; i++) {
+          if (!next) {
+        	  next = items[0];
+      	  }
+          let cloneChild = next.cloneNode(true);
+          item.appendChild(cloneChild.children[0]);
+          next = next.nextElementSibling;
+        }
+      });
+
+      
+      const cardsPlus = this.querySelectorAll('.productCarouselPlus');
+      const cardsMinus = this.querySelectorAll('.productCarouselMinus');
+      const sliders = this.querySelectorAll('.productCarouselSlide');
+      const carouselProducts = this.querySelectorAll('.carouselProducts');
+      
+      [...cardsPlus].map((p) => p.addEventListener('click', () => { productCarouselPlusMinus(p, 'plus') }));
+      [...cardsMinus].map((m) => m.addEventListener('click', () => { productCarouselPlusMinus(m, 'minus') }));
+      [...sliders].map((s) => s.addEventListener('click', () => { carouselActiveKey(s.attributes['data-slide'].value) } ));
+      [...carouselProducts].map((product) => product.addEventListener('change', () => { productCarouselInput(product) } ));
   }
 }
 
