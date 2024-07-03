@@ -554,7 +554,9 @@ const productsByBrandIndivArray = (brand) => {
     let heroBannerCarouselContainer = document.getElementById("hero-banner-carousel");
     let productCardListContainer = [...document.getElementsByTagName('product-card-list')];
     let subPageNavigationContainer = document.getElementById('sub-page-navigation');
-    let productCardListCarouselContainer = document.getElementById('product-card-list-carousel');
+    //let productCardListCarouselContainer = document.getElementById('product-card-list-carousel');
+    let productCardListCarouselContainer = [...document.getElementsByTagName('product-card-list-carousel')];
+
     productCategoriesContainer.setAttribute("data-categories", JSON.stringify(productCategories));
     heroBannerCarouselContainer.setAttribute("data-hero-banner-carousel", JSON.stringify(heroBannerCarousel));
     productCardListContainer.map((v, k) => {
@@ -563,5 +565,10 @@ const productsByBrandIndivArray = (brand) => {
           data: productsByBrandIndivArray(productCardListContainer[k].getAttribute('data-brand'))
       }))});
     subPageNavigationContainer.setAttribute('data-sub-page-navigation', JSON.stringify(subPageNavigation));
-    productCardListCarouselContainer.setAttribute('data-product-card-list-carousel', JSON.stringify(productsByBrand(productCardListCarouselContainer.getAttribute('data-brand'))));
-   
+    //productCardListCarouselContainer.setAttribute('data-product-card-list-carousel', JSON.stringify(productsByBrand(productCardListCarouselContainer.getAttribute('data-brand'))));
+   productCardListCarouselContainer.map((v, k) => {
+      v.setAttribute('data-product-card-list-carousel', JSON.stringify({
+          id: k,
+          data: productsByBrandIndivArray(productCardListCarouselContainer[k].getAttribute('data-brand'))
+        }
+      ))});
