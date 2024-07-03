@@ -654,6 +654,7 @@ class ProductCardListCarousel extends HTMLElement {
       [...carousel].map((c, k) => {
         if (c.classList.contains('active')) {
           this.carouselActiveKey = direction == 'next' ? k + 1 : direction == 'prev' ? k - 1 : false;
+          console.log(this.carouselActiveKey);
           sessionStorage.setItem('carouselActiveKey', this.carouselActiveKey);
         }
       });
