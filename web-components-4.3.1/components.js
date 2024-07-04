@@ -641,13 +641,22 @@ class ProductCardListCarousel extends HTMLElement {
       ${this.template().trim()}
     `;
 
-    const carouselActiveKey = (direction) => {
+    const carouselActiveKey = (direction, index) => {
       let carousel = this.querySelectorAll('.productCardListItem');
-      [...carousel].map((c, k) => {
-        if (c.classList.contains('active')) {
-          this.carouselActiveKey = direction == 'next' ? k + 1 : direction == 'prev' ? k - 1 : false;
-        }
-      });
+          if (direction == 'next') {
+            if (this.carouselActiveKey == carousel.length - 1) {
+              this.carouselActiveKey = 0;  
+            } else {
+              this.carouselActiveKey++;
+            }
+          }
+          if (direction == 'prev') {
+            if (this.carouselActiveKey == 0) {
+              this.carouselActiveKey = carousel.length - 1;
+            } else {
+              this.carouselActiveKey--;
+            }
+          }
     };
 
     const productCarouselInput = (product) => {
@@ -697,7 +706,6 @@ class ProductCardListCarousel extends HTMLElement {
       [...carouselProducts].map((product) => product.addEventListener('change', () => { productCarouselInput(product) } ));
   }
 }
-
 
 
 
