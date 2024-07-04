@@ -579,6 +579,7 @@ class ProductCardListCarousel extends HTMLElement {
       let carousel = document.querySelectorAll('.productCardListItem');
       [...carousel].map((c, k) => {
         if (c.classList.contains('active')) {
+          console.log(k);
           this.carouselActiveKey = k;
           sessionStorage.setItem('carouselActiveKey', k);
         }
