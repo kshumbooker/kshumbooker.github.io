@@ -6042,7 +6042,8 @@ const brandsData = [{
       name: "Vitasoy",
       active: true,
       featured: true,
-      img: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/VitasoyLogo.svg/220px-VitasoyLogo.svg.png"
+      img: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/VitasoyLogo.svg/220px-VitasoyLogo.svg.png",
+      url: "https://www.booker.co.uk/"
     },
     {
       name: "Viva",
