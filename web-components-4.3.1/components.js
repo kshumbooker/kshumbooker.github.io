@@ -241,7 +241,6 @@ class Heading extends HTMLElement {
 }
 
 
-
 class ProductCardList extends HTMLElement {
   constructor() {
     super();
@@ -274,7 +273,7 @@ class ProductCardList extends HTMLElement {
     }
     
     .addToList {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
 
     [id*='productCardListQuantity'] {
@@ -285,25 +284,25 @@ class ProductCardList extends HTMLElement {
     <div class="row">
     ${this.products.data.map((p, key) => `
     <div class="col-sm-12 col-md-6 col-lg-3 mb-3 p-0">
-      <div class="card p-3 h-100 text-center rounded" id="product-card-list-${this.products.id}">
+      <div class="card p-3 h-100 text-center rounded productCardList" id="productCardList_${this.products.id}">
         <div class="card-title">
           <p class="font-weight-bold">${p.midascode}</p>
         </div>
         <img src=${p.image} class="mb-5" />
         <div class="row mb-3">
-          <div class="col">
+          <div class="col-12">
             <p class="font-weight-bold">${p.title}</p>
           </div>
         </div>
-        <div class="row mb-3">
-          <div class="col">
+        <div class="d-flex flex-row mb-3">
+          <div class="col p-0">
             <p class="font-weight-bold">${p.volume}</p>
           </div>
-          <div class="col">
+          <div class="col p-0">
             <p class="font-weight-bold price">&pound;${p.price}</p>
           </div>
         </div>
-        <div class="row mb-3">
+        <div class="d-flex flex-row mb-3">
           <div class="col p-0">
             <a href="#" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
           </div>
@@ -312,22 +311,18 @@ class ProductCardList extends HTMLElement {
           </div>
         </div>
         <div class="row mb-3">
-          <div class="col offset-6">
+          <div class="col-6 offset-6 p-0">
             <p class="por">POR: ${p.por}%</p>
           </div>
         </div>
         <div class="d-flex justify-content-center">
-          <button class="btn button productCardListMinus" id="${p.midascode}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
-            </svg>
-          </button>
-          <input type="text" maxlength="3" class="form-control text-center p-0" id="${this.products.id}-productCardListQuantity${key}" value=${p.quantity} />
-          <button class="btn button productCardListPlus" id="${p.midascode}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-            </svg>
-          </button>
+          <div class="btn rounded-circle booker plus-minus-icon productCardListMinus" id="${p.midascode}">
+            <i class="fas fa-minus"></i>
+          </div>
+          <input type="text" maxlength="3" class="form-control text-center ml-2 mr-2 p-0" id="${this.products.id}_productCardListQuantity${key}" value=${p.quantity} />
+           <div class="btn rounded-circle booker plus-minus-icon productCardListPlus" id="${p.midascode}">
+            <i class="fas fa-plus"></i>
+          </div>
         </div>
         <div class="p-4">
           <button type="button" class="btn booker">Shop Now</button>
@@ -353,16 +348,17 @@ class ProductCardList extends HTMLElement {
     const plus = this.querySelectorAll('.productCardListPlus');
     const minus = this.querySelectorAll('.productCardListMinus');
     
-    [...plus].map((p, index) => p.addEventListener('click', () => { this.productCardListClick(p.parentElement.parentElement.id, index, 'plus') }));
-    [...minus].map((m, index) => m.addEventListener('click', () => { this.productCardListClick(m.parentElement.parentElement.id, index, 'minus') }));
+    [...plus].map((p, index) => p.addEventListener('click', () => { this.productCardListClick(p, index, 'plus') }));
+    [...minus].map((m, index) => m.addEventListener('click', () => { this.productCardListClick(m, index, 'minus') }));
   }
 
-  productCardListClick = (parentId, index, direction) => {    
-    let productCardId = parentId.charAt(parentId.length - 1);
- 
-    return direction == 'plus' ? document.getElementById(productCardId + '-' + 'productCardListQuantity'+ index).value++ : direction == 'minus' && document.getElementById(productCardId + '-' + 'productCardListQuantity'+ index).value > 0 ? document.getElementById(productCardId + '-' + 'productCardListQuantity'+ index).value-- : false;
-  } 
+  productCardListClick = (plusMinus, index, direction) => {
+    let productCardListId = (plusMinus.parentElement.parentElement) ? plusMinus.parentElement.parentElement.id : false;
+    let id = productCardListId.split('_')[1];
+    return direction == 'plus' ? document.getElementById(id + '_' + 'productCardListQuantity'+ index).value++ : direction == 'minus' && document.getElementById(id + '_' + 'productCardListQuantity'+ index).value > 0 ? document.getElementById(id + '_' + 'productCardListQuantity'+ index).value-- : false;
+  }
 }
+
 
 
 class LinkToShop extends HTMLElement {
