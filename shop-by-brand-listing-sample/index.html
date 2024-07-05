@@ -708,6 +708,7 @@
 
 
 <script type="text/javascript" src="./brands.js"></script>
+
 <script>
     let alphabetNav = document.getElementById("alphabetNav");
     let brandListingData = document.getElementById("brandListingData");
@@ -716,7 +717,7 @@
     const loadAlphabetNav = () => {
         alphabetNav.innerHTML = `<a href="#" class="alphabetFilter active">ALL</a>`;
         alphabetNav.innerHTML += brandsData.map(brand => {
-            return brand.brands.length == 0 ? `<a href="#" class="alphabetFilter disabled" disabled>${brand.id}</a>` : `<a href="#" class="alphabetFilter">${brand.id}</a>`;
+            return (brand.brands.length == 0 || allBrandsInactive(brand)) ? `<a href="#" class="alphabetFilter disabled" disabled>${brand.id}</a>` : `<a href="#" class="alphabetFilter">${brand.id}</a>`;
         }).join("");
 
         const alphabetFilter = document.querySelectorAll('.alphabetFilter');
@@ -788,6 +789,10 @@
         }
     }
 
+    const allBrandsInactive = (item) => {
+        return item.brands.every(i => i.active == false);
+    }
+
 
     const loadBrandListingData = (alphabet = '') => {
             brandListingData.innerHTML = '';
@@ -795,7 +800,7 @@
                 if (alphabet != '' && alphabet != 'ALL') {
                     return item.id === alphabet
                 }
-                return item.brands.length > 0 ? item : false 
+                return (item.brands.length > 0 && !allBrandsInactive(item)) ? item : false 
             }).map(brand => `
                 <hr>
                     <div class="row">
