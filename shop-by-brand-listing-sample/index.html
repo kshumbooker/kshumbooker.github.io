@@ -804,7 +804,7 @@
 					</div>
 				<div class="row">
 				  ${brand.brands.map((b) => {
-						 return b.active == true && !b.featured == true ? `<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 p-1"><a href="" class="brandLink">${b.name}</a></div>` : ``
+						 return b.active == true && !b.featured == true ? `<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 p-1"><a href="${b.url}" class="brandLink">${b.name}</a></div>` : ``
 			      }).join("")}
 				</div>
 			`).join("");
