@@ -498,7 +498,7 @@ class ProductCardListCarousel extends HTMLElement {
     }
     
     .addToList {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
 
   a {
@@ -559,32 +559,32 @@ class ProductCardListCarousel extends HTMLElement {
           <div class="carousel-item productCardListItem ${ (key == this.carouselActiveKey) ? "active" : "" }">
                
             <div class="card p-3 text-center rounded product${key}" id="${this.products.id}_productCardListCarousel_${key}">
-              <div class="row">
+              <div class="d-flex flex-row mb-3">
                 <div class="col">
                   <div class="card-title">
                     <p class="font-weight-bold">${p.midascode}</p>
                   </div>
                 </div>
               </div>
-              <div class="row mb-5">
+              <div class="d-flex flex-row mb-5">
                 <div class="col">
                   <img src=${p.image} class="img-fluid" />
                 </div>
               </div>
-              <div class="row mb-3">
+              <div class="d-flex flex-row mb-3">
                 <div class="col">
                   <p class="font-weight-bold">${p.title}</p>
                 </div>
               </div>
-              <div class="row mb-3">
-                <div class="col">
+              <div class="d-flex flex-row mb-3">
+                <div class="col p-0">
                   <p>${p.volume}</p>
                 </div>
                 <div class="col">
                   <p class="font-weight-bold price">&pound;${p.price}</p>
                 </div>
               </div>
-              <div class="row mb-3">
+              <div class="d-flex flex-row mb-3">
                 <div class="col p-0">
                   <a href="#" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
                 </div>
@@ -593,7 +593,7 @@ class ProductCardListCarousel extends HTMLElement {
                 </div>
               </div>
               <div class="row mb-3">
-                <div class="col offset-6">
+                <div class="col-6 offset-6 p-0">
                   <p class="por">POR: ${p.por}%</p>
                 </div>
               </div>
