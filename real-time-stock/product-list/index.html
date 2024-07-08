@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17091,41 +17088,64 @@ pageSearchUrl = '/products/search'
         return `<span class="${bgClass} d-block text-center text-white pt-1 pb-1 pl-3 pr-3 rounded mt-2 mb-2">${level}</span>`;
     }
 
-    let products = document.querySelectorAll('.quantity.row-mode.trolley-mode');
-    [...products].filter((product) => {
+    /* grid view */
+    let productsGridView = document.querySelectorAll('.product-list.row.colUnGrouped')[0].children;
 
-     let productNode = product.nextElementSibling;
 
-     let topLevelProductNode = productNode.parentElement.parentElement.parentElement.parentElement.parentElement;
-
-     topLevelProductNode.setAttribute('data-stocklevel', randomStockLevel());
-
-      productNode.classList.remove('flex-column');
-      productNode.childNodes[1].childNodes[1].remove();
-      productNode.childNodes[3].childNodes[1].remove();
-
-      let stockLevel = document.createElement('div');
-      stockLevel.classList.add('d-flex', 'justify-content-center');
-
-      stockLevel.innerHTML = stockLevelHtml(topLevelProductNode.getAttribute('data-stocklevel'));
-
-      productNode.previousElementSibling.after(stockLevel);
-
-      if (!productNode.childNodes[3].classList.contains('d-none')) {
-        productNode.childNodes[1].classList.add('justify-content-end');
-      } else {
-        productNode.classList.add('justify-content-center');
-        productNode.childNodes[1].classList.remove('col', 'd-flex', 'flex-row');
-      }
-
-      let addToList = productNode.childNodes[1].childNodes[2].childNodes[0].nextElementSibling; 
-
-      addToList.innerHTML = `<i class="fa-solid fa-heart-circle-check text-dark"></i>`;
-
-      let addNote = productNode.childNodes[3].childNodes[2];
+    [...productsGridView].map((product) => {
+        product.setAttribute('data-stocklevel', randomStockLevel());
+        let productLevel = product.children[4];
+        productLevel.children[1].children[0].classList.remove('pl-0');
+        productLevel.children[1].children[0].classList.remove('col-6');
+        productLevel.children[1].children[0].classList.add('col-3');
+        productLevel.children[1].children[0].children[0].children[0].remove();
+        productLevel.children[1].children[0].children[0].children[0].innerHTML = `<i class="fa-solid fa-heart-circle-check text-dark"></i>`;
       
-      addNote.innerHTML = `<i class="fa-solid fa-book text-dark"></i>`;
+        productLevel.children[2].children[0].children[0].children[0].remove();
+        productLevel.children[2].children[0].children[0].children[0].children[0].innerHTML = `<i class="fa-solid fa-book text-dark"></i>`;
 
+        let addToNoteClone = productLevel.children[2].children[0].children[0].children[0].cloneNode(true);
+
+        productLevel.children[2].children[0].children[0].children[0].remove();
+
+        let newAddToNote = document.createElement('div');
+        newAddToNote.classList.add('col-3', 'p-0', 'justify-content-start');
+        newAddToNote.innerHTML = addToNoteClone.innerHTML;
+        productLevel.children[1].children[0].after(newAddToNote);
+        
+        let stockLevel = document.createElement('div');
+        stockLevel.classList.add('row', 'd-flex', 'justify-content-start', 'ml-2');
+        stockLevel.innerHTML = stockLevelHtml(product.getAttribute('data-stocklevel'));
+        
+        productLevel.children[0].after(stockLevel);
+    });
+
+
+    /* List view */
+    let productsListView = document.querySelectorAll('.product-list.rowUnGrouped')[0].children;
+    
+    [...productsListView].map((product) => {
+        product.setAttribute('data-stocklevel', randomStockLevel());
+        let productLevel = product.children[1].children[1].children[0].children[1].children[1];
+        productLevel.children[0].children[1].children[0].innerHTML = `<i class="fa-solid fa-heart-circle-check text-dark"></i>`;
+        productLevel.children[0].children[0].remove();
+        productLevel.children[1].children[1].innerHTML = `<i class="fa-solid fa-book text-dark"></i>`;
+        productLevel.children[1].children[0].remove();
+        product.children[1].children[1].children[0].children[1].children[1].classList.remove('flex-column');
+
+        let stockLevel = document.createElement('div');
+        stockLevel.classList.add('d-flex', 'justify-content-center');
+        stockLevel.innerHTML = stockLevelHtml(product.getAttribute('data-stocklevel'));
+        productLevel.previousSibling.after(stockLevel);
+        
+        if (productLevel.children[1].classList.contains('d-none')) {
+            
+          productLevel.classList.add('justify-content-center');
+          productLevel.children[0].classList.remove('col', 'd-flex', 'flex-row');
+      } else {
+        productLevel.children[0].classList.add('justify-content-end');
+      }
+        
     });
 
 
