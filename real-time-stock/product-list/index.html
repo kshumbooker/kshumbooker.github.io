@@ -17077,9 +17077,41 @@ $(document).ready(function(){ suggestion.branch = 'B26600';})
 pageSearchUrl = '/products/search'
 </script>
 <style>
-.stockLevel {
+  .stockLevel {
       font-size: 0.625rem;
   }
+
+  @media (max-width: 767px) {
+    /*.add-note {
+      float:left;
+      position: absolute;
+      left: 70px;
+      top: 40px;
+    }*/
+    .stockLevelDiv {
+      max-width: 50%;
+      float: right;
+    }
+
+    .SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
+      align-items: center !important;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .stockLevelDiv {
+      max-width: 50%;
+      margin-left: 20px;
+    }
+  }
+
+    @media (max-width: 576px) {
+    .stockLevelDiv {
+      max-width: 100%;
+      margin-left: 25px;
+    }
+  }
+
 </style>
 <script>
     function randomStockLevel() {
@@ -17090,7 +17122,7 @@ pageSearchUrl = '/products/search'
 
     function stockLevelHtml(level) {
         let bgClass = level == 'IN STOCK' ? 'bg-success' : level == 'LOW STOCK' ? 'bg-warning' : level == 'NO STOCK' ? 'bg-secondary' : false;
-        return `<span class="${bgClass} d-block text-center text-white pt-1 pb-1 pl-3 pr-3 rounded mt-2 mb-2 stockLevel">${level}</span>`;
+        return `<span class="${bgClass} text-center mw-75 d-block text-white pt-1 pb-1 pl-3 pr-3 rounded mt-2 mb-2 stockLevel">${level}</span>`;
     }
 
     /* grid view */
@@ -17100,14 +17132,18 @@ pageSearchUrl = '/products/search'
     [...productsGridView].map((product) => {
         product.setAttribute('data-stocklevel', randomStockLevel());
         let productLevel = product.children[4];
+        let showNote = product.children[4].getAttribute('data-show-note');
         productLevel.children[1].children[0].classList.remove('pl-0');
         productLevel.children[1].children[0].classList.remove('col-6');
-        productLevel.children[1].children[0].classList.add('col-3');
+        productLevel.children[1].children[0].classList.add('col-2', 'mr-2');
         productLevel.children[1].children[0].children[0].children[0].remove();
         productLevel.children[1].children[0].children[0].children[0].innerHTML = `<i class="fa-solid fa-heart-circle-check text-dark"></i>`;
       
-        productLevel.children[2].children[0].children[0].children[0].remove();
-        productLevel.children[2].children[0].children[0].children[0].children[0].innerHTML = `<i class="fa-solid fa-book text-dark"></i>`;
+        if (showNote == 'True') {
+          
+          productLevel.children[2].children[0].children[0].children[0].remove();
+          productLevel.children[2].children[0].children[0].children[0].children[0].innerHTML = `<i class="fa-solid fa-book text-dark"></i>`;
+        }
 
         let addToNoteClone = productLevel.children[2].children[0].children[0].children[0].cloneNode(true);
 
@@ -17123,33 +17159,72 @@ pageSearchUrl = '/products/search'
         stockLevel.innerHTML = stockLevelHtml(product.getAttribute('data-stocklevel'));
         
         productLevel.children[0].after(stockLevel);
+
     });
 
 
-    /* List view */
+    /* List & mobile views */
     let productsListView = document.querySelectorAll('.product-list.rowUnGrouped')[0].children;
     
     [...productsListView].map((product) => {
+    
         product.setAttribute('data-stocklevel', randomStockLevel());
-        let productLevel = product.children[1].children[1].children[0].children[1].children[1];
-        productLevel.children[0].children[1].children[0].innerHTML = `<i class="fa-solid fa-heart-circle-check text-dark"></i>`;
-        productLevel.children[0].children[0].remove();
-        productLevel.children[1].children[1].innerHTML = `<i class="fa-solid fa-book text-dark"></i>`;
-        productLevel.children[1].children[0].remove();
-        product.children[1].children[1].children[0].children[1].children[1].classList.remove('flex-column');
+        let desktopProductNode = product.children[1].children[1].children[0];
+        let mobileProductNode = product.children[1].children[1].children[1];
 
-        let stockLevel = document.createElement('div');
-        stockLevel.classList.add('d-flex', 'justify-content-center');
-        stockLevel.innerHTML = stockLevelHtml(product.getAttribute('data-stocklevel'));
-        productLevel.previousSibling.after(stockLevel);
+        let stockLevel = stockLevelHtml(product.getAttribute('data-stocklevel'));
+      
+        desktopProductNode.children[1].children[1].children[0].children[0].remove();
+
+        // Add to List - change the "Add to List" text to be the icon
+        desktopProductNode.children[1].children[1].children[0].children[0].innerHTML = `<i class="fa-solid fa-heart-circle-check text-dark"></i>`;
+
+        // to show or not show the note for each product is determined by this data attribute
+        let showNote = desktopProductNode.children[1].getAttribute('data-show-note');
+
+        // remove add note img 
+        desktopProductNode.children[1].children[1].children[1].children[0].remove();
+
+        // replace "Add Note" url text with the icon
+        desktopProductNode.children[1].children[1].children[1].children[0].innerHTML = `<i class="fa-solid fa-book text-dark"></i>`;
+
+        // remove flex-column class from parent div of the new list and note icons to make them line up better
+        desktopProductNode.children[1].children[1].classList.remove('flex-column');
+        desktopProductNode.children[1].children[1].classList.add('justify-content-center');
+
+        // lined up the list icon to end or middle depending on whether the note icon shows or not
+        if (showNote == 'True') {
+          desktopProductNode.children[1].children[1].children[0].classList.add('justify-content-end');
+        } else {
+          desktopProductNode.children[1].children[1].children[0].classList.add('justify-content-center', 'mr-3');
+        }
+
+        let stockLevelDiv = document.createElement('div');
+        stockLevelDiv.classList.add('stockLevelDiv', 'mb-2');
+        stockLevelDiv.innerHTML = stockLevel;
+        desktopProductNode.children[1].children[0].after(stockLevelDiv);
+
+
+        let addNoteMobile = desktopProductNode.parentNode.children[1].children[0].children[0].children[1].children[0].children[1];
+
         
-        if (productLevel.children[1].classList.contains('d-none')) {
-            
-          productLevel.classList.add('justify-content-center');
-          productLevel.children[0].classList.remove('col', 'd-flex', 'flex-row');
-      } else {
-        productLevel.children[0].classList.add('justify-content-end');
-      }
+        // add stockLevelDiv to the mobile view
+        let stockLevelDivMobile = document.createElement('div');
+        stockLevelDivMobile.classList.add('stockLevelDiv', 'mt-2', 'mb-2', 'text-right');
+        stockLevelDivMobile.innerHTML = stockLevel;
+        //desktopProductNode.parentNode.children[1].children[0].children[0].children[1].children[0].after(stockLevelDivMobile);
+
+        
+
+        if (showNote == 'True') {
+          desktopProductNode.parentNode.children[1].children[0].children[0].children[1].children[0].children[1].children[1].after(stockLevelDivMobile);
+          desktopProductNode.parentNode.children[1].children[0].children[0].children[1].children[0].children[1].children[1].innerHTML = `<i class="fa-solid fa-book text-dark"></i>`;
+        } else {
+          desktopProductNode.parentNode.children[1].children[0].children[0].children[1].children[0].children[1].after(stockLevelDivMobile);
+        }
+             
+        //remove old add note icon
+        desktopProductNode.parentNode.children[1].children[0].children[0].children[1].children[0].children[1].children[0].remove();
         
     });
 
