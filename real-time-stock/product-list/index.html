@@ -17122,7 +17122,7 @@ pageSearchUrl = '/products/search'
 
     function stockLevelHtml(level) {
         let bgClass = level == 'IN STOCK' ? 'bg-success' : level == 'LOW STOCK' ? 'bg-warning' : level == 'NO STOCK' ? 'bg-secondary' : false;
-        return `<span class="${bgClass} text-center mw-75 d-block text-white pt-1 pb-1 pl-3 pr-3 rounded mt-2 mb-2 stockLevel">${level}</span>`;
+        return `<span class="${bgClass} text-center mw-100 d-inline-block text-white pt-1 pb-1 pl-3 pr-3 rounded mt-2 mb-2 stockLevel">${level}</span>`;
     }
 
     /* grid view */
