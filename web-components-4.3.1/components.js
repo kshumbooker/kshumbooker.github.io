@@ -394,7 +394,7 @@ class ImageCard extends HTMLElement {
       <div>
         <img src="${this.getAttribute('data-image')}" class="img-fluid" />
       </div>
-      <a href="${this.getAttribute('data-url')}" class="btn btn-light" style="color: ${this.getAttribute('data-fontColor')}; background: ${this.getAttribute('data-buttonBgColor')}; position: relative; bottom: 50px; padding-left: 25px; padding-right: 25px;">${this.getAttribute('data-buttonText')}</a>
+      <a href="${this.getAttribute('data-url')}" class="btn" style="color: ${this.getAttribute('data-fontColor')}; background: ${this.getAttribute('data-buttonBgColor')}; position: relative; bottom: 50px; padding-left: 25px; padding-right: 25px;">${this.getAttribute('data-buttonText')}</a>
     </div>
     `;
   }
