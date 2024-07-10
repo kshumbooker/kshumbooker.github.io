@@ -10,6 +10,10 @@
       float: right;
     }
 
+    .stockLevel {
+      margin-left: 0.5rem;
+    }
+
     .SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
       align-items: center !important;
       padding-right: 0;
@@ -20,6 +24,10 @@
     .stockLevelDiv {
       max-width: 50%;
       margin-left: 20px;
+    }
+
+    .stockLevel {
+      margin-left: 0.5rem;
     }
 
     .SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
@@ -34,3 +42,5 @@
       margin-left: 25px;
     }
   }
+
+  
