@@ -858,6 +858,39 @@ class HeroImage extends HTMLElement {
   }
 }
 
+class LinkToShopSearch extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+    <div class="container mt-5 mb-5">
+      <div class="d-flex">
+        <div class="linkToShopSearchImg mr-2">
+          <img src="${this.getAttribute('data-img')}" style="max-width: 100px;" />
+        </div>
+        <div class="linkToShopSearchTextContent">
+          <div class="row">
+            <div class="col-12">
+              <h5 class="font-weight-bold">${this.getAttribute('data-headingText')}</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12"> 
+              <a href="https://www.yourcoca-cola.co.uk/brands/schweppes.list" class="font-weight-bold"> ${this.getAttribute('data-urlText')}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
 
 // register components
 customElements.define('info-card-a', InfoCardA);
@@ -877,3 +910,4 @@ customElements.define('standard-copy', StandardCopy);
 customElements.define('product-category', ProductCategory);
 customElements.define('hero-image', HeroImage);
 customElements.define('custom-heading', Heading);
+customElements.define('link-to-shop-search', LinkToShopSearch);
