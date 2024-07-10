@@ -395,7 +395,7 @@ function randomStockLevel() {
   let stockLevels = ['IN STOCK', 'LOW STOCK', 'NO STOCK'];
   let level = stockLevels[Math.floor(Math.random() * stockLevels.length)];
   let bgClass = level == 'IN STOCK' ? 'bg-success' : level == 'LOW STOCK' ? 'bg-warning' : level == 'NO STOCK' ? 'bg-secondary' : false;
-  return `<div class="row stockLevel p-0 mb-2"><div class="col"><span class="${bgClass} text-center mw-100 d-inline-block text-white pt-1 pb-1 pl-3 pr-3 rounded mt-2 mb-2 stockLevel">${level}</span></div></div>`;
+  return `<div class="row stockLevel"><div class="col p-0"><span class="${bgClass} text-center mw-100 d-inline-block text-white py-1 px-3 rounded my-3 stockLevel">${level}</span></div></div>`;
 }
 
 
