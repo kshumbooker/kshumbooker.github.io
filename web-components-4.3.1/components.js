@@ -277,48 +277,48 @@ class ProductCardList extends HTMLElement {
     ${this.products.data.map((p, key) => `
     <div class="col-sm-12 col-md-6 col-lg-3 my-3 p-1">
       <div class="card p-3 h-100 text-center rounded productCardList" id="productCardList_${this.products.id}">
-        <div class="card-title">
-          <p class="font-weight-bold">${p.midascode}</p>
+        <div class="card-title m-0">
+          <span class="font-weight-bold">${p.midascode}</span>
         </div>
-        <img src=${p.image} class="mb-5" />
-        <div class="row mb-3">
+        <img src=${p.image} class="my-3" />
+        <div class="row my-3">
           <div class="col-12">
-            <p class="font-weight-bold">${p.title}</p>
+            <span class="font-weight-bold">${p.title}</span>
           </div>
         </div>
-        <div class="d-flex flex-row mb-3">
+        <div class="d-flex flex-row my-3">
           <div class="col p-0">
-            <p class="font-weight-bold">${p.volume}</p>
+            <span class="font-weight-bold">${p.volume}</span>
           </div>
           <div class="col p-0">
-            <p class="font-weight-bold price">&pound;${p.price}</p>
+            <span class="font-weight-bold price">&pound;${p.price}</span>
           </div>
         </div>
-        <div class="d-flex flex-row mb-3">
+        <div class="d-flex flex-row my-3">
           <div class="col p-0">
             <a href="#" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
           </div>
           <div class="col p-0">
-            <p class="rrp">RRP: ${p.rrp}</p>
+            <span class="rrp">RRP: ${p.rrp}</span>
           </div>
         </div>
-        <div class="row mb-3">
+        <div class="row my-3">
           <div class="col-6 offset-6 p-0">
-            <p class="por">POR: ${p.por}%</p>
+            <span class="por">POR: ${p.por}%</span>
           </div>
         </div>
         <div class="d-flex justify-content-center">
           <div class="btn rounded-circle booker plus-minus-icon productCardListMinus" id="${p.midascode}">
             <i class="fas fa-minus"></i>
           </div>
-          <input type="text" maxlength="3" class="form-control text-center ml-2 mr-2 p-0" id="${this.products.id}_productCardListQuantity${key}" value=${p.quantity} />
+          <input type="text" maxlength="3" class="form-control text-center mx-2 p-0" id="${this.products.id}_productCardListQuantity${key}" value=${p.quantity} />
            <div class="btn rounded-circle booker plus-minus-icon productCardListPlus" id="${p.midascode}">
             <i class="fas fa-plus"></i>
           </div>
         </div>
       </div>
     </div>
-    `).join("")}
+    `).join('')}
     </div>
   </div>
 </div>
@@ -347,7 +347,6 @@ class ProductCardList extends HTMLElement {
     return direction == 'plus' ? document.getElementById(id + '_' + 'productCardListQuantity'+ index).value++ : direction == 'minus' && document.getElementById(id + '_' + 'productCardListQuantity'+ index).value > 0 ? document.getElementById(id + '_' + 'productCardListQuantity'+ index).value-- : false;
   }
 }
-
 
 
 class LinkToShop extends HTMLElement {
