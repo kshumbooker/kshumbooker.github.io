@@ -5,22 +5,18 @@ class InfoCardA extends HTMLElement {
 
   connectedCallback() { 
     this.innerHTML = `
-    <div class="container mt-5 mb-5">
-      <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
-          <div class="card h-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-            <img src="${this.getAttribute('data-image')}" alt="${this.getAttribute('data-alt')}" />
-            <div class="card-body">
-              <div class="p-4">
-                <p style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">${this.getAttribute('data-heading')}</p>
-              </div>
-              <div class="p-4">
-                <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')}; ">${this.getAttribute('data-text')}</p>
-              </div>
-              <div class="p-4">
-                <a href="${this.getAttribute('data-url')}" class="btn infoCardABtn" style="background: ${this.getAttribute('data-buttonBgColor')}; color: ${this.getAttribute('data-buttonFontColor')};">${this.getAttribute('data-buttonText')}</a>
-              </div>
-            </div>
+    <div class="my-3">
+      <div class="card h-100 shadow-lg p-3 bg-body-tertiary rounded">
+        <img src="${this.getAttribute('data-image')}" alt="${this.getAttribute('data-alt')}" />
+        <div class="card-body">
+          <div class="p-2">
+            <p style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">${this.getAttribute('data-heading')}</p>
+          </div>
+          <div class="p-2">
+            <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')}; ">${this.getAttribute('data-text')}</p>
+          </div>
+          <div class="p-2">
+            <a href="${this.getAttribute('data-url')}" class="btn infoCardABtn" style="background: ${this.getAttribute('data-buttonBgColor')}; color: ${this.getAttribute('data-buttonFontColor')};">${this.getAttribute('data-buttonText')}</a>
           </div>
         </div>
       </div>
