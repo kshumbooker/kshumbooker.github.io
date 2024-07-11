@@ -33,27 +33,23 @@ class InfoCardB extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="container mb-5">
-      <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
-          <div class="card h-100 shadow-lg p-3 mb-5 rounded" style="background: ${this.getAttribute('data-cardBgColor')}">
-          <img src="${this.getAttribute('data-image')}" alt="${this.getAttribute('data-alt')}" class="img-fluid" />
-          <div class="card-body" style="background: ${this.getAttribute('data-centralTextBgColor')}">
-            <div class="p-4">
-              <h6 style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')};">${this.getAttribute('data-heading')}</h6>
-            </div>
-            <div class="p-4">
-              <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')};">${this.getAttribute('data-text')}</p>
-            </div>
-            <div class="p-4">
-              <a href="${this.getAttribute('data-url')}" class="text-decoration-none" style="color: ${this.getAttribute('data-urlColor')};">${this.getAttribute('data-urlText')} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/></svg></a>
-            </div>
+    <div class="my-3">
+     <div class="card h-100 shadow-lg p-3 rounded" style="background: ${this.getAttribute('data-cardBgColor')}">
+        <img src="${this.getAttribute('data-image')}" alt="${this.getAttribute('data-alt')}" class="img-fluid" />
+        <div class="card-body" style="background: ${this.getAttribute('data-centralTextBgColor')}">
+          <div class="p-2">
+            <h6 style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')};">${this.getAttribute('data-heading')}</h6>
+          </div>
+          <div class="p-2">
+            <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')};">${this.getAttribute('data-text')}</p>
+          </div>
+          <div class="p-2">
+            <a href="${this.getAttribute('data-url')}" class="text-decoration-none" style="color: ${this.getAttribute('data-urlColor')};">${this.getAttribute('data-urlText')} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/></svg></a>
           </div>
         </div>
       </div>
     </div>
-  </div>
   `;
   }
 }
