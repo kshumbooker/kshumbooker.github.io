@@ -280,10 +280,10 @@ class ProductCardList extends HTMLElement {
       width: 3rem;
     }
   </style>
-  <div class="container mt-5 mb-5">
+  <div class="my-3">
     <div class="row">
     ${this.products.data.map((p, key) => `
-    <div class="col-sm-12 col-md-6 col-lg-3 mb-3 p-0">
+    <div class="col-sm-12 col-md-6 col-lg-3 my-3 p-1">
       <div class="card p-3 h-100 text-center rounded productCardList" id="productCardList_${this.products.id}">
         <div class="card-title">
           <p class="font-weight-bold">${p.midascode}</p>
@@ -323,9 +323,6 @@ class ProductCardList extends HTMLElement {
            <div class="btn rounded-circle booker plus-minus-icon productCardListPlus" id="${p.midascode}">
             <i class="fas fa-plus"></i>
           </div>
-        </div>
-        <div class="p-4">
-          <button type="button" class="btn booker">Shop Now</button>
         </div>
       </div>
     </div>
