@@ -276,7 +276,7 @@ class ProductCardList extends HTMLElement {
     <div class="row">
     ${this.products.data.map((p, key) => `
     <div class="col-sm-12 col-md-6 col-lg-3 my-3 p-1">
-      <div class="card p-3 h-100 text-center rounded productCardList" id="productCardList_${this.products.id}">
+      <div class="card p-3 h-100 text-center rounded productCardList" id="productCardList_${this.products.id}_${key}_${p.midascode}">
         <div class="card-title m-0">
           <span class="font-weight-bold">${p.midascode}</span>
         </div>
@@ -336,15 +336,17 @@ class ProductCardList extends HTMLElement {
 
     const plus = this.querySelectorAll('.productCardListPlus');
     const minus = this.querySelectorAll('.productCardListMinus');
-    
     [...plus].map((p, index) => p.addEventListener('click', () => { this.productCardListClick(p, index, 'plus') }));
     [...minus].map((m, index) => m.addEventListener('click', () => { this.productCardListClick(m, index, 'minus') }));
   }
 
   productCardListClick = (plusMinus, index, direction) => {
     let productCardListId = (plusMinus.parentElement.parentElement) ? plusMinus.parentElement.parentElement.id : false;
-    let id = productCardListId.split('_')[1];
-    return direction == 'plus' ? document.getElementById(id + '_' + 'productCardListQuantity'+ index).value++ : direction == 'minus' && document.getElementById(id + '_' + 'productCardListQuantity'+ index).value > 0 ? document.getElementById(id + '_' + 'productCardListQuantity'+ index).value-- : false;
+    let key = productCardListId.split('_')[2];
+    let midasCode = productCardListId.split('_')[3];
+    direction == 'plus' ? this.products.data[key].quantity++ : direction == 'minus' && this.products.data[key].quantity > 0 ? this.products.data[key].quantity-- : false;
+    /*setTimeout(UpdateTrolley2(midasCode,  this.products.data[key].quantity, 0), 500);*/
+    this.render();
   }
 }
 
