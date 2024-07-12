@@ -55,125 +55,6 @@ class InfoCardB extends HTMLElement {
 }
 
 
-
-/*class ProductCard extends HTMLElement {
-
-  constructor() {
-    super();
-    this.quantity = 0;  
-  }
-
-  template = () => `
-  <style>
-    * {
-      font-family: 'Lato'
-    }
-
-    .booker, .booker:hover {
-      background: #2356AA;
-      color: #fff;
-      border: 0;  
-    }
-
-    .price {
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .rrp, .por {
-      font-weight: 700;
-      color: #676767;
-    }
-      .productCardQuantity {
-        width: 3em;
-      }
-
-
-  </style>
-  <div class="container mt-5 mb-5 text-center">
-    <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
-        <div class="card mx-auto h-100 shadow-lg p-3 mb-5 rounded">
-          <div class="card-title">
-            <p class="font-weight-bold">${this.getAttribute('data-midascode')}</p>
-          </div>
-          <img src=${this.getAttribute('data-image')} class="mb-5" />
-          <div class="row mb-3">
-            <div class="col">
-              <p class="font-weight-bold">${this.getAttribute('data-description')}</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              ${this.getAttribute('data-volume')}
-            </div>
-            <div class="col">
-              <p class="price">&pound;${this.getAttribute('data-price')}</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <a href="#"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
-            </div>
-            <div class="col">
-              <p class="rrp">RRP: ${this.getAttribute('data-rrp')}</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col offset-6">
-              <p class="por">POR: ${this.getAttribute('data-por')}%</p>
-            </div>
-          </div>
-          <div class="d-flex justify-content-center">
-            <button class="btn button productCardMinus" value="minus">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
-              </svg>
-            </button>
-            <input type="text" maxlength="3" class="form-control text-center productCardQuantity p-0" id="productCardQuantity" value=${this.quantity} />
-            
-            <button class="btn button productCardPlus" value="plus">
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-                </svg>
-            </button>
-          </div>  
-          <div class="p-4">
-        <button type="button" class="btn booker">Shop Now</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-  `;
-
-  connectedCallback() {
-    this.render();
-  }
- 
-  render() {
-    this.innerHTML = `
-      ${this.template().trim()}
-    `;
-
-    this.querySelector('.productCardPlus').addEventListener('click', this.productCardPlusClick);
-    this.querySelector('.productCardMinus').addEventListener('click', this.productCardMinusClick);
-  }
-  
-  productCardPlusClick = () => {
-    this.quantity = document.getElementById('productCardQuantity').value;
-    this.quantity++;
-    this.render();
-  }
-
-  productCardMinusClick = () => {
-    this.quantity = document.getElementById('productCardQuantity').value;
-    this.quantity > 0 ? this.quantity-- : false;
-    this.render();
-  }
-
-}*/
-
 class ProductCard extends HTMLElement {
 
   constructor() {
@@ -246,7 +127,7 @@ class ProductCard extends HTMLElement {
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
               </svg>
             </button>
-            <input type="text" maxlength="3" class="form-control text-center productCardQuantity p-0" id="productCardQuantity_${this.midasCode}" value=${this.quantity} />
+            <input type="number" maxlength="3" class="form-control text-center productCardQuantity p-0" id="productCardQuantity_${this.midasCode}" value=${this.quantity} />
             
             <button class="btn button productCardPlus" value="plus">
                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -293,7 +174,6 @@ class ProductCard extends HTMLElement {
 
   productCardInputQuantity = (product, index) => {
     this.quantity = product.value;
-    this.render();
     this.bookerTrolleyFunc(this.midasCode, this.quantity);
   }
 
