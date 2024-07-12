@@ -56,7 +56,7 @@ class InfoCardB extends HTMLElement {
 
 
 
-class ProductCard extends HTMLElement {
+/*class ProductCard extends HTMLElement {
 
   constructor() {
     super();
@@ -170,6 +170,140 @@ class ProductCard extends HTMLElement {
     this.quantity = document.getElementById('productCardQuantity').value;
     this.quantity > 0 ? this.quantity-- : false;
     this.render();
+  }
+
+}*/
+
+class ProductCard extends HTMLElement {
+
+  constructor() {
+    super();
+  }
+
+  template = () => `
+  <style>
+    * {
+      font-family: 'Lato'
+    }
+
+    .booker, .booker:hover {
+      background: #2356AA;
+      color: #fff;
+      border: 0;  
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .rrp, .por {
+      font-weight: 700;
+      color: #676767;
+    }
+      .productCardQuantity {
+        width: 3em;
+      }
+
+
+  </style>
+  <div class="my-3 text-center">
+   
+        <div class="card mx-auto h-100 shadow-lg p-3 rounded" id="productCard_${this.getAttribute('data-midascode')}">
+          <div class="card-title m-0">
+            <span class="font-weight-bold">${this.getAttribute('data-midascode')}</span>
+          </div>
+          <img src=${this.getAttribute('data-image')} class="my-3" />
+          <div class="row my-3">
+            <div class="col">
+              <span class="font-weight-bold">${this.getAttribute('data-description')}</span>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col">
+              <span>${this.getAttribute('data-volume')}</span>
+            </div>
+            <div class="col my-3">
+              <span class="price">&pound;${this.getAttribute('data-price')}</span>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col">
+              <a href="/Products/ShoppingList/AddProduct?productCode=${this.getAttribute('data-midascode')}&returnUrl=${window.location.href}"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
+            </div>
+            <div class="col">
+              <span class="rrp">RRP: ${this.getAttribute('data-rrp')}</span>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col offset-6">
+              <span class="por">POR: ${this.getAttribute('data-por')}%</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button class="btn button productCardMinus" value="minus">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
+              </svg>
+            </button>
+            <input type="text" maxlength="3" class="form-control text-center productCardQuantity p-0" id="productCardQuantity_${this.midasCode}" value=${this.quantity} />
+            
+            <button class="btn button productCardPlus" value="plus">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2356AA" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+                </svg>
+            </button>
+          </div>  
+    </div>
+</div>
+  `;
+
+  connectedCallback() {
+    this.quantity = this.getAttribute('data-quantity');
+    this.midasCode = this.getAttribute('data-midascode');
+    this.timeoutProducts = {};
+    this.render();
+  }
+ 
+  render() {
+    this.innerHTML = `
+      ${this.template().trim()}
+    `;
+
+   
+   const plus = this.querySelectorAll('.productCardPlus');
+   const minus = this.querySelectorAll('.productCardMinus');
+   const productCardQuantity = this.querySelectorAll('.productCardQuantity');
+   
+    [...plus].map((p, index) => p.addEventListener('click', () => {
+      this.productCardPlusMinus('plus');
+    }));
+    [...minus].map((m, index) => m.addEventListener('click', () => {
+      this.productCardPlusMinus('minus');
+    }));
+
+    [...productCardQuantity].map((product, index) => product.addEventListener('change', () => { this.productCardInputQuantity(product, index) }));
+  }
+  
+  productCardPlusMinus = (direction) => {
+    direction == 'plus' ? this.quantity++ : direction == 'minus' && this.quantity > 0 ? this.quantity-- : false;
+    this.render();
+    this.bookerTrolleyFunc(this.midasCode, this.quantity);
+  }
+
+  productCardInputQuantity = (product, index) => {
+    this.quantity = product.value;
+    this.render();
+    this.bookerTrolleyFunc(this.midasCode, this.quantity);
+  }
+
+  bookerTrolleyFunc = (midasCode, quantity, supplierId = 0) => {
+    if (this.timeoutProducts[midasCode] !== null) {
+      clearTimeout(this.timeoutProducts[midasCode]);
+    }
+    this.timeoutProducts[midasCode] = setTimeout((midasCode, quantity) => {
+      UpdateTrolley2(midasCode,  quantity, supplierId);
+    }, 500, midasCode, quantity);
   }
 
 }
