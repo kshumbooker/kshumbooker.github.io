@@ -325,7 +325,7 @@ class ProductCardList extends HTMLElement {
           <div class="btn rounded-circle booker plus-minus-icon productCardListMinus" id="${p.midascode}">
             <i class="fas fa-minus"></i>
           </div>
-          <input type="text" maxlength="3" class="form-control text-center mx-2 p-0 productCardListProducts" id="${this.products.id}_productCardListQuantity_${key}" value=${p.quantity} />
+          <input type="number" maxlength="3" class="form-control text-center mx-2 p-0 productCardListProducts" id="${this.products.id}_productCardListQuantity_${key}" value=${p.quantity} />
            <div class="btn rounded-circle booker plus-minus-icon productCardListPlus" id="${p.midascode}">
             <i class="fas fa-plus"></i>
           </div>
@@ -355,7 +355,7 @@ class ProductCardList extends HTMLElement {
     [...plus].map((p, index) => p.addEventListener('click', () => { this.productCardListClick(p, index, 'plus') }));
     [...minus].map((m, index) => m.addEventListener('click', () => { this.productCardListClick(m, index, 'minus') }));
 
-    [...productCardListproducts].map((product, index) => product.addEventListener('change', () => { this.productCardListInputQuantity(product, index) }));
+    [...productCardListproducts].map((product, index) => product.addEventListener('keyup', () => { this.productCardListInputQuantity(product, index) }));
   }
 
   productCardListClick = (product, index, direction) => {
@@ -373,7 +373,6 @@ class ProductCardList extends HTMLElement {
     let midasCode = key[3];
     this.products.data[key[2]].quantity = product.value;
     let quantity = this.products.data[key[2]].quantity;
-    this.render();
     this.bookerTrolleyFunc(midasCode, quantity);
   }
 
