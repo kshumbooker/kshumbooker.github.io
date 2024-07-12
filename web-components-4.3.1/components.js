@@ -626,6 +626,13 @@ class ProductCardListCarousel extends HTMLElement {
   .carousel-control-next-icon, .carousel-control-prev-icon {
     background-color: #2356AA;
   }
+  .carousel-control-prev, .carousel-control-next{
+    width: 4vh;
+    height: 4vh;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+  }
   .carousel-inner {
     overflow: visible;
   }
@@ -697,65 +704,62 @@ class ProductCardListCarousel extends HTMLElement {
 }
 
   </style>
-  <div class="container mt-5 mb-5">
+  <div class="my-3">
     <div class="row justify-content-center">
-      <div id="ProductCardListCarousel${this.products.id}" class="carousel productCardListCarousel" data-interval="false">
+      <div id="ProductCardListCarousel${this.products.id}" class="carousel productCardListCarousel my-3" data-interval="false">
         <div class="carousel-inner">
         ${this.products.data.map((p, key) => 
           `
           <div class="carousel-item productCardListItem ${ (key == this.carouselActiveKey) ? "active" : "" }">
                
             <div class="card p-3 text-center rounded product${key}" id="${this.products.id}_productCardListCarousel_${key}">
-              <div class="d-flex flex-row mb-3">
+              <div class="d-flex flex-row my-3">
                 <div class="col">
-                  <div class="card-title">
-                    <p class="font-weight-bold">${p.midascode}</p>
+                  <div class="card-title m-0">
+                    <span class="font-weight-bold">${p.midascode}</span>
                   </div>
                 </div>
               </div>
-              <div class="d-flex flex-row mb-5">
+              <div class="d-flex flex-row my-3">
                 <div class="col">
                   <img src=${p.image} class="img-fluid" />
                 </div>
               </div>
-              <div class="d-flex flex-row mb-3">
+              <div class="d-flex flex-row my-3">
                 <div class="col">
-                  <p class="font-weight-bold">${p.title}</p>
+                  <span class="font-weight-bold">${p.title}</span>
                 </div>
               </div>
-              <div class="d-flex flex-row mb-3">
+              <div class="d-flex flex-row my-3">
                 <div class="col p-0">
-                  <p>${p.volume}</p>
+                  <span class="font-weight-bold">${p.volume}</span>
                 </div>
                 <div class="col">
-                  <p class="font-weight-bold price">&pound;${p.price}</p>
+                  <span class="font-weight-bold price">&pound;${p.price}</span>
                 </div>
               </div>
-              <div class="d-flex flex-row mb-3">
+              <div class="d-flex flex-row my-3">
                 <div class="col p-0">
-                  <a href="#" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
+                  <a href="/Products/ShoppingList/AddProduct?productCode=${p.midascode}&returnUrl=${window.location.href}" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
                 </div>
                 <div class="col p-0">
-                  <p class="rrp">RRP: ${p.rrp}</p>
+                  <span class="rrp">RRP: ${p.rrp}</span>
                 </div>
               </div>
-              <div class="row mb-3">
+              <div class="row my-3">
                 <div class="col-6 offset-6 p-0">
-                  <p class="por">POR: ${p.por}%</p>
+                  <span class="por">POR: ${p.por}%</span>
                 </div>
               </div>
               <div class="d-flex justify-content-center">
                 <div class="btn rounded-circle booker plus-minus-icon productCarouselMinus" id="${this.products.id}_productCarouselMinus_${key}">
                   <i class="fas fa-minus"></i>
                 </div>
-                <input type="text" maxlength="3" class="form-control text-center carouselProducts align-middle productCardListCarouselQuantity ml-2 mr-2 p-0" id="${this.products.id}_carouselProduct_${key}" value=${p.quantity} />
+                <input type="text" maxlength="3" class="form-control text-center carouselProducts align-middle productCardListCarouselQuantity mx-2 p-0" id="${this.products.id}_carouselProduct_${key}" value=${p.quantity} />
                 <div class="btn rounded-circle booker plus-minus-icon productCarouselPlus" id="${this.products.id}_productCarouselPlus_${key}">
                   <i class="fas fa-plus"></i>
                 </div>
               </div>    
-              <div class="p-4">
-                <button type="button" class="btn booker">Shop Now</button>
-              </div>
             </div>
           </div>
           `
@@ -776,6 +780,7 @@ class ProductCardListCarousel extends HTMLElement {
   connectedCallback() {
     this.products = JSON.parse(this.getAttribute('data-product-card-list-carousel'));
     this.carouselActiveKey = 0;
+    this.timeoutProducts = {};
     this.render();
   }
 
@@ -784,9 +789,46 @@ class ProductCardListCarousel extends HTMLElement {
       ${this.template().trim()}
     `;
 
+
+    let items = this.querySelectorAll('.productCardListCarousel .productCardListItem');
+    
+    const minPerSlide = 4;
+    items.forEach((item) => {
+      let next = item.nextElementSibling;
+      
+      for (let i = 0; i < minPerSlide - 1; i++) {
+        if (!next) {
+          next = items[0];
+        }
+        let cloneChild = next.cloneNode(true);
+        item.appendChild(cloneChild.children[0]);
+        next = next.nextElementSibling;
+      }
+    });
+
+    
+    const cardsPlus = this.querySelectorAll('.productCarouselPlus');
+    const cardsMinus = this.querySelectorAll('.productCarouselMinus');
+    const sliders = this.querySelectorAll('.productCarouselSlide');
+    const carouselProducts = this.querySelectorAll('.carouselProducts');
+    
+    [...cardsPlus].map((p) => p.addEventListener('click', () => { productCarouselPlusMinus(p, 'plus') }));
+    [...cardsMinus].map((m) => m.addEventListener('click', () => { productCarouselPlusMinus(m, 'minus') }));
+    [...sliders].map((s) => s.addEventListener('click', () => { carouselActiveKey(s.attributes['data-slide'].value) } ));
+    [...carouselProducts].map((product) => product.addEventListener('change', () => { productCarouselInput(product) } ));
+
+    const bookerTrolleyFunc = (midasCode, quantity, supplierId = 0) => {
+      if (this.timeoutProducts[midasCode] !== null) {
+        clearTimeout(this.timeoutProducts[midasCode]);
+      }
+      this.timeoutProducts[midasCode] = setTimeout((midasCode, quantity) => {
+        UpdateTrolley2(midasCode,  quantity, supplierId);
+      }, 500, midasCode, quantity);
+    }
+
     const carouselActiveKey = (direction, index) => {
-      let carousel = this.querySelectorAll('.productCardListItem');
-          if (direction == 'next') {
+      let carousel = this.querySelectorAll('.productCardListCarousel .productCardListItem');
+        if (direction == 'next') {
             if (this.carouselActiveKey == carousel.length - 1) {
               this.carouselActiveKey = 0;  
             } else {
@@ -800,18 +842,25 @@ class ProductCardListCarousel extends HTMLElement {
               this.carouselActiveKey--;
             }
           }
+
     };
 
     const productCarouselInput = (product) => {
       let key = getKeysFromId(product.id);
       this.products.data[key.productKey].quantity = product.value;
+      let quantity = this.products.data[key.productKey].quantity;
+      let midasCode = this.products.data[key.productKey].midascode;
       this.render();
+      bookerTrolleyFunc(midasCode, quantity);
     }
     
     const productCarouselPlusMinus = (product, plusMinus) => {
       let key = getKeysFromId(product.id);
       plusMinus == 'plus' ? this.products.data[key.productKey].quantity++ : plusMinus == 'minus' && this.products.data[key.productKey].quantity > 0 ? this.products.data[key.productKey].quantity-- : false;
+      let quantity = this.products.data[key.productKey].quantity;
+      let midasCode = this.products.data[key.productKey].midascode;
       this.render();
+      bookerTrolleyFunc(midasCode, quantity);
     }
 
     const getKeysFromId = (id) => {
@@ -820,33 +869,6 @@ class ProductCardListCarousel extends HTMLElement {
       keys['productKey'] = id.split('_')[2];
       return keys;
     }
-
-      let items = this.querySelectorAll('.productCardListCarousel .productCardListItem');
-    
-      const minPerSlide = 4;
-      items.forEach((item) => {
-        let next = item.nextElementSibling;
-        
-        for (let i = 1; i < minPerSlide; i++) {
-          if (!next) {
-        	  next = items[0];
-      	  }
-          let cloneChild = next.cloneNode(true);
-          item.appendChild(cloneChild.children[0]);
-          next = next.nextElementSibling;
-        }
-      });
-
-      
-      const cardsPlus = this.querySelectorAll('.productCarouselPlus');
-      const cardsMinus = this.querySelectorAll('.productCarouselMinus');
-      const sliders = this.querySelectorAll('.productCarouselSlide');
-      const carouselProducts = this.querySelectorAll('.carouselProducts');
-      
-      [...cardsPlus].map((p) => p.addEventListener('click', () => { productCarouselPlusMinus(p, 'plus') }));
-      [...cardsMinus].map((m) => m.addEventListener('click', () => { productCarouselPlusMinus(m, 'minus') }));
-      [...sliders].map((s) => s.addEventListener('click', () => { carouselActiveKey(s.attributes['data-slide'].value) } ));
-      [...carouselProducts].map((product) => product.addEventListener('change', () => { productCarouselInput(product) } ));
   }
 }
 
