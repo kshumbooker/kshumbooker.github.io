@@ -520,6 +520,10 @@ class ProductCardListCarousel extends HTMLElement {
     margin: 0 .25rem;
   }
 
+  .carousel-item {
+    padding: .5rem;
+  }
+
   .price {
       font-size: 20px;
       font-weight: 700;
@@ -592,7 +596,7 @@ class ProductCardListCarousel extends HTMLElement {
           <div class="carousel-item productCardListItem ${ (key == this.carouselActiveKey) ? "active" : "" }">
                
             <div class="card p-3 text-center rounded product${key}" id="${this.products.id}_productCardListCarousel_${key}">
-              <div class="d-flex flex-row my-3">
+              <div class="d-flex flex-row">
                 <div class="col">
                   <div class="card-title m-0">
                     <span class="font-weight-bold">${p.midascode}</span>
@@ -634,7 +638,7 @@ class ProductCardListCarousel extends HTMLElement {
                 <div class="btn rounded-circle booker plus-minus-icon productCarouselMinus" id="${this.products.id}_productCarouselMinus_${key}">
                   <i class="fas fa-minus"></i>
                 </div>
-                <input type="text" maxlength="3" class="form-control text-center carouselProducts align-middle productCardListCarouselQuantity mx-2 p-0" id="${this.products.id}_carouselProduct_${key}" value=${p.quantity} />
+                <input type="number" maxlength="3" class="form-control text-center carouselProducts align-middle productCardListCarouselQuantity mx-2 p-0" id="${this.products.id}_carouselProduct_${key}" value=${p.quantity} />
                 <div class="btn rounded-circle booker plus-minus-icon productCarouselPlus" id="${this.products.id}_productCarouselPlus_${key}">
                   <i class="fas fa-plus"></i>
                 </div>
@@ -694,7 +698,7 @@ class ProductCardListCarousel extends HTMLElement {
     [...cardsPlus].map((p) => p.addEventListener('click', () => { productCarouselPlusMinus(p, 'plus') }));
     [...cardsMinus].map((m) => m.addEventListener('click', () => { productCarouselPlusMinus(m, 'minus') }));
     [...sliders].map((s) => s.addEventListener('click', () => { carouselActiveKey(s.attributes['data-slide'].value) } ));
-    [...carouselProducts].map((product) => product.addEventListener('change', () => { productCarouselInput(product) } ));
+    [...carouselProducts].map((product) => product.addEventListener('keyup', () => { productCarouselInput(product) } ));
 
     const bookerTrolleyFunc = (midasCode, quantity, supplierId = 0) => {
       if (this.timeoutProducts[midasCode] !== null) {
@@ -729,7 +733,6 @@ class ProductCardListCarousel extends HTMLElement {
       this.products.data[key.productKey].quantity = product.value;
       let quantity = this.products.data[key.productKey].quantity;
       let midasCode = this.products.data[key.productKey].midascode;
-      this.render();
       bookerTrolleyFunc(midasCode, quantity);
     }
     
