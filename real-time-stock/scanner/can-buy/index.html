@@ -57,7 +57,8 @@
     </script>
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdyyJolAAAAACgcsj49zrez-uIeeJU-aeVpZAa3"></script>
-    <script defer src="../../components.js"></script>
+    <script defer src="../../components.js" type="text/javascript"></script>
+
 
 </head>
 
@@ -762,7 +763,7 @@
                     <th class="text-right hide-iPadPro">VAT</th>
                     <th class="text-center">Scanned Quantity</th>
                     <th colspan="2" class="text-center">In Trolley</th>
-                    <th class="text-center"></th>
+                    <th colspan="2" class="text-center"></th>
                     <th colspan="2" class="text-center">Add To List</th>
                 </tr>
             </thead>
@@ -802,7 +803,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
 
                         <td class="text-center">
                             <div class="add-to-list col d-flex flex-row justify-content-center">
@@ -871,7 +872,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
 
                         <td class="text-center">
                             <div class="add-to-list col d-flex flex-row justify-content-center">
@@ -917,7 +918,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
 
                         <td class="text-center">
                             <div class="add-to-list col d-flex flex-row justify-content-center">
@@ -962,7 +963,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
 
                         <td class="text-center">
                             <div class="add-to-list col d-flex flex-row justify-content-center">
@@ -1007,7 +1008,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
 
                         <td class="text-center">
                             <div class="add-to-list col d-flex flex-row justify-content-center">
@@ -1100,7 +1101,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
 
                                             <td class="text-center">
                                                 <div class="add-to-list col d-flex flex-row justify-content-center">
@@ -1196,7 +1197,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
 
                                             <td class="text-center">
                                                 <div class="add-to-list col d-flex flex-row justify-content-center">
@@ -1267,7 +1268,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
 
                                             <td class="text-center">
                                                 <div class="add-to-list col d-flex flex-row justify-content-center">
@@ -1338,7 +1339,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
 
                                             <td class="text-center">
                                                 <div class="add-to-list col d-flex flex-row justify-content-center">
@@ -1409,7 +1410,7 @@
 
     </div>
 </td>
-<td><stock-label></stock-label></td>
+<td colspan="2"><stock-label></stock-label></td>
                                             <td class="text-center">
                                                 <div class="add-to-list col d-flex flex-row justify-content-center">
                                                     <a href="/Products/ShoppingList/AddProduct?productCode=219244&amp;returnUrl=http%3a%2f%2fwww.booker.co.uk%2fScanner%2fbrowsescannedproducts" style="word-break: break-word" class="m-0">
@@ -1674,8 +1675,23 @@
 <script type='text/javascript' src='/scripts/main-nav/main-nav.js'></script>
 <script type='text/javascript' src='/scripts/suggestion/keyword-suggestion.js'></script>
 <script type='text/javascript' nonce='xhmi7aVd/yr3c9HDKPTP3hzQ9uSxz1xxR8miKvda5P0='>
+    
 $(document).ready(function(){ suggestion.branch = 'B26600';})
 pageSearchUrl = '/products/search'
 </script>
 
+<script type="text/javascript">
+    function randomStockLevel() {
+        let stockLevels = ['IN STOCK', 'LOW STOCK', 'NO STOCK'];
+        let level = stockLevels[Math.floor(Math.random() * stockLevels.length)];
+        return level;
+    }
+    
+
+    let stockLabels = document.querySelectorAll('stock-label');
+    [...stockLabels].map(label => {
+        label.setAttribute('data-stocklevel', randomStockLevel());
+    });
+  
+</script>
 </html>
