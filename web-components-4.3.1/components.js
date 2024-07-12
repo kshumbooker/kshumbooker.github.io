@@ -926,7 +926,7 @@ class ProductCategories extends HTMLElement {
 
 class SubPageNavigation extends HTMLElement {
   template = () => `
-  <div class="container mt-5 mb-5">
+  <div class="my-3">
     <nav class="navbar navbar-expand-md navbar-expand-lg bg-white border-bottom border-secondary mb-2 p-0" id="subNavigationContentNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         ${this.subPageNavigation.map(s => `
