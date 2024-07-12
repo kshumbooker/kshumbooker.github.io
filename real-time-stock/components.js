@@ -388,15 +388,10 @@ branches.sort((a, b) => a.distance - b.distance);
 /*let noStockMenuContainer = document.getElementById('rts-no-stock-menu');
 
 noStockMenuContainer.setAttribute('data-products', JSON.stringify(products));
-noStockMenuContainer.setAttribute('data-branches', JSON.stringify(branches));
-*/
+noStockMenuContainer.setAttribute('data-branches', JSON.stringify(branches));*/
 
-function randomStockLevel() {
-  let stockLevels = ['IN STOCK', 'LOW STOCK', 'NO STOCK'];
-  let level = stockLevels[Math.floor(Math.random() * stockLevels.length)];
-  let bgClass = level == 'IN STOCK' ? 'bg-success' : level == 'LOW STOCK' ? 'bg-warning' : level == 'NO STOCK' ? 'bg-secondary' : false;
-  return `<div class="row stockLevel"><div class="col p-0"><span class="${bgClass} text-center mw-100 d-inline-block text-white py-1 px-3 rounded my-3 stockLevel">${level}</span></div></div>`;
-}
+
+
 
 
 
@@ -417,7 +412,12 @@ class AddToNote extends HTMLElement {
 class StockLabel extends HTMLElement {
   constructor() {
     super();
-    this.innerHTML = randomStockLevel();
+    this.status = this.getAttribute('data-stocklevel');
+  }
+
+  connectedCallback() {
+    let bgClass = this.status == 'IN STOCK' ? 'bg-success' : this.status == 'LOW STOCK' ? 'bg-warning' : this.status == 'NO STOCK' ? 'bg-secondary' : false;
+    this.innerHTML = `<div class="row stockLevel"><div class="col p-0"><span class="${bgClass} text-center mw-100 d-inline-block text-white py-1 px-2 rounded my-3 stockLevel">${this.status}</span></div></div>`; 
   }
 }
 
