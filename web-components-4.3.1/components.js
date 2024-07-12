@@ -282,7 +282,7 @@ class ProductCard extends HTMLElement {
       this.productCardPlusMinus('minus');
     }));
 
-    [...productCardQuantity].map((product, index) => product.addEventListener('change', () => { this.productCardInputQuantity(product, index) }));
+    [...productCardQuantity].map((product, index) => product.addEventListener('keyup', () => { this.productCardInputQuantity(product, index) }));
   }
   
   productCardPlusMinus = (direction) => {
