@@ -296,7 +296,7 @@ class ProductCardList extends HTMLElement {
         </div>
         <div class="d-flex flex-row my-3">
           <div class="col p-0">
-            <a href="#" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
+            <a href="/Products/ShoppingList/AddProduct?productCode=${p.midascode}&returnUrl=${window.location.href}" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
           </div>
           <div class="col p-0">
             <span class="rrp">RRP: ${p.rrp}</span>
@@ -311,7 +311,7 @@ class ProductCardList extends HTMLElement {
           <div class="btn rounded-circle booker plus-minus-icon productCardListMinus" id="${p.midascode}">
             <i class="fas fa-minus"></i>
           </div>
-          <input type="text" maxlength="3" class="form-control text-center mx-2 p-0" id="${this.products.id}_productCardListQuantity${key}" value=${p.quantity} />
+          <input type="text" maxlength="3" class="form-control text-center mx-2 p-0 productCardListProducts" id="${this.products.id}_productCardListQuantity_${key}" value=${p.quantity} />
            <div class="btn rounded-circle booker plus-minus-icon productCardListPlus" id="${p.midascode}">
             <i class="fas fa-plus"></i>
           </div>
@@ -326,6 +326,7 @@ class ProductCardList extends HTMLElement {
   
   connectedCallback() {
     this.products = JSON.parse(this.getAttribute('data-product-card-list'));
+    this.timeoutProducts = {};
     this.render();
   }
 
@@ -336,17 +337,39 @@ class ProductCardList extends HTMLElement {
 
     const plus = this.querySelectorAll('.productCardListPlus');
     const minus = this.querySelectorAll('.productCardListMinus');
+    const productCardListproducts = this.querySelectorAll('.productCardListProducts');
     [...plus].map((p, index) => p.addEventListener('click', () => { this.productCardListClick(p, index, 'plus') }));
     [...minus].map((m, index) => m.addEventListener('click', () => { this.productCardListClick(m, index, 'minus') }));
+
+    [...productCardListproducts].map((product, index) => product.addEventListener('change', () => { this.productCardListInputQuantity(product, index) }));
   }
 
-  productCardListClick = (plusMinus, index, direction) => {
-    let productCardListId = (plusMinus.parentElement.parentElement) ? plusMinus.parentElement.parentElement.id : false;
+  productCardListClick = (product, index, direction) => {
+    let productCardListId = (product.parentElement.parentElement) ? product.parentElement.parentElement.id : false;
     let key = productCardListId.split('_')[2];
     let midasCode = productCardListId.split('_')[3];
     direction == 'plus' ? this.products.data[key].quantity++ : direction == 'minus' && this.products.data[key].quantity > 0 ? this.products.data[key].quantity-- : false;
-    /*setTimeout(UpdateTrolley2(midasCode,  this.products.data[key].quantity, 0), 500);*/
+    let quantity = this.products.data[key].quantity;
+    this.render(); 
+    this.bookerTrolleyFunc(midasCode, quantity);
+  }
+
+  productCardListInputQuantity = (product) => {
+    let key = (product.parentElement.parentElement) ? product.parentElement.parentElement.id.split('_') : false;
+    let midasCode = key[3];
+    this.products.data[key[2]].quantity = product.value;
+    let quantity = this.products.data[key[2]].quantity;
     this.render();
+    this.bookerTrolleyFunc(midasCode, quantity);
+  }
+
+  bookerTrolleyFunc = (midasCode, quantity, supplierId = 0) => {
+    if (this.timeoutProducts[midasCode] !== null) {
+      clearTimeout(this.timeoutProducts[midasCode]);
+    }
+    this.timeoutProducts[midasCode] = setTimeout((midasCode, quantity) => {
+      UpdateTrolley2(midasCode,  quantity, supplierId);
+    }, 500, midasCode, quantity);
   }
 }
 
