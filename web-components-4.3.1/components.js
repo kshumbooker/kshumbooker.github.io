@@ -359,7 +359,7 @@ class Heading extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="container text-center mt-5 mb-5">
+    <div class="text-center my-3">
       <h1 class="display-6" style="color: ${this.getAttribute('data-fontColor')}; font-size: ${this.getAttribute('data-fontSize')}">${this.getAttribute('data-heading')}</h1>
     </div>
     `;
