@@ -1418,5 +1418,19 @@
 $(document).ready(function(){ suggestion.branch = 'B19100';})
 pageSearchUrl = '/products/search'
 </script>
+<script type="text/javascript">
+    function randomStockLevel() {
+        let stockLevels = ['IN STOCK', 'LOW STOCK', 'NO STOCK'];
+        let level = stockLevels[Math.floor(Math.random() * stockLevels.length)];
+        return level;
+    }
+    
+
+    let stockLabels = document.querySelectorAll('stock-label');
+    [...stockLabels].map(label => {
+        label.setAttribute('data-stocklevel', randomStockLevel());
+    });
+  
+</script>
 
 </html>
