@@ -4,9 +4,11 @@ function randomStockLevel() {
       return stock;
   }
 
-
   /* get all products in "list" pages - ones where there are list and grid views */
   let productsList = document.querySelectorAll('.d-flex.product.row.product-model');
+
+  let page = window.location.href;
+  
 
   /* List & mobile views */
   
@@ -35,6 +37,12 @@ function randomStockLevel() {
 
       // replace "Add Note" url text with the icon
       desktopProductNode.children[1].children[1].innerHTML = `<add-to-note class="ml-2"></add-to-note>`;
+
+      if (page.includes('recent-purchases') && desktopProductNode.children[2] !== undefined) {
+        let hideBtn = desktopProductNode.children[2] !== 'undefined' ? desktopProductNode.children[2].cloneNode(true) : false;
+        desktopProductNode.children[2].remove();
+        desktopProductNode.parentNode.lastChild.after(hideBtn);
+      }
 
       // remove flex-column class and add justify-content-center from parent div of the new list and note icons to make them line up better
       desktopProductNode.classList.remove('flex-column');
@@ -101,3 +109,4 @@ function randomStockLevel() {
 
       product.children[4].children[0].after(stockLevelDivGrid);
   });
+
