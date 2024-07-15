@@ -1,7 +1,19 @@
-
-  .stockLevel {
+.stockLevel {
     font-size: 0.625rem;
     font-weight: 700;  
+  }
+
+  .list-img, .note-img {
+    display: none;
+  }
+
+  .SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
+    padding-right: 0!important;
+  }
+
+  .rtsIcons > div {
+
+    justify-content: center;
   }
 
   @media (max-width: 767px) {
@@ -42,5 +54,3 @@
       margin-left: 25px;
     }
   }
-
-  
