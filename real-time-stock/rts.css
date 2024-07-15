@@ -7,6 +7,10 @@
   margin: -0.25rem;
 }
 
+main#booker_orderT .colMode .product-list .product .shop .shopping .fa-star {
+  position: initial;
+}
+
 .list-img, .note-img {
   display: none;
 }
@@ -66,3 +70,4 @@
     margin-left: 1.563rem;
   }
 }
+
