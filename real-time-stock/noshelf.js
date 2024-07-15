@@ -1,4 +1,4 @@
-    function randomStockLevel() {
+      function randomStockLevel() {
         let stockLevels = ['IN STOCK', 'LOW STOCK', 'NO STOCK'];
         let stock = stockLevels[Math.floor(Math.random() * stockLevels.length)];
         return stock;
@@ -87,15 +87,16 @@
     [...gridProductList].map((product) => {
         product.setAttribute('data-stocklevel', randomStockLevel());
         let showNote = product.children[4].getAttribute('data-show-note');
-        let directDelivered = product.children[2].getAttribute('data-directdelivered');
-        let onlineExclusive = product.children[2].getAttribute('data-onlineexclusive');
+
+        let directDelivered = product.children[4].children[5].children[0].getAttribute('data-directdelivered');
+        let onlineExclusive = product.children[4].children[5].children[0].getAttribute('data-onlineexclusive');
 
         // add stockLevelDiv to the mobile view, if not direct delivered or online exclusive
-        if (directDelivered == 'False' && onlineExclusive == 'False') {
-            let stockLevelDivGrid = document.createElement('div');
-            stockLevelDivGrid.classList.add('stockLevelDiv', 'row', 'pl-2');
-            stockLevelDivGrid.innerHTML = `<stock-label data-stocklevel="${product.getAttribute('data-stocklevel')}"></stock-label>`;
-        }
+    
+        let stockLevelDivGrid = document.createElement('div');
+        stockLevelDivGrid.classList.add('stockLevelDiv', 'row', 'pl-2');
+        stockLevelDivGrid.innerHTML = (directDelivered == 'False' && onlineExclusive == 'False') ? `<stock-label data-stocklevel="${product.getAttribute('data-stocklevel')}"></stock-label>` : ``;
+        
 
         let gridProductNode = product.children[4].children[1].children[0].children[0];
         gridProductNode.parentElement.classList.remove('pl-0');
