@@ -1,4 +1,4 @@
-    function randomStockLevel() {
+      function randomStockLevel() {
         let stockLevels = ['IN STOCK', 'LOW STOCK', 'NO STOCK'];
         let stock = stockLevels[Math.floor(Math.random() * stockLevels.length)];
         return stock;
@@ -8,18 +8,18 @@
     /* get all products in "list" pages - ones where there are list and grid views */
     let productsList = document.querySelectorAll('.d-flex.product.row.product-model');
 
+    let page = window.location.href;
+
     /* List & mobile views */
     
     [...productsList].map((product) => {
     
         /* mock stock level data for each product - assumption for now is that a data attribute "data-stocklevel" is going to be served from the backend */ 
-
-        //let stockLevel = stockLevelHtml(product.getAttribute('data-stocklevel'));
         product.setAttribute('data-stocklevel', randomStockLevel());
-    
+        
         let desktopProductNode = product.children[1].children[1].children[0].children[1].children[1];
-        let mobileProductNode = product.children[1].children[1].children[1].children[0].children[0].children[1].children[0].children[1].children[1];
 
+        let mobileProductNode = page.includes('multibuy') ? product.children[1].children[1].children[1].children[0].children[0].children[1].children[1].children[1] : product.children[1].children[1].children[1].children[0].children[0].children[1].children[0].children[1].children[1];
 
         // remove the current Add to List icon - also set .list-img to display none in the css
         desktopProductNode.children[0].children[0].src = '';
@@ -35,6 +35,14 @@
 
         // replace "Add Note" url text with the icon
         desktopProductNode.children[1].children[1].innerHTML = `<add-to-note class="ml-2"></add-to-note>`;
+
+
+        if (page.includes('recent-purchases') && desktopProductNode.children[2] !== undefined) {
+          let hideBtn = desktopProductNode.children[2] !== 'undefined' ? desktopProductNode.children[2].cloneNode(true) : false;
+          desktopProductNode.children[2].remove();
+          desktopProductNode.parentNode.lastChild.after(hideBtn);
+        }
+
 
         // remove flex-column class and add justify-content-center from parent div of the new list and note icons to make them line up better
         desktopProductNode.classList.remove('flex-column');
