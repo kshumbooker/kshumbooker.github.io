@@ -16,6 +16,10 @@
     margin-bottom: .5rem;
   }
 
+.add-note {
+    margin-left: .5rem;
+  }
+
   .SubCategoriesRow .rowMode .product-list .product .shopping {
     font-size: inherit;
   }
