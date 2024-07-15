@@ -1,64 +1,68 @@
 .stockLevel {
-    font-size: 0.625rem;
-    font-weight: 700;  
+  font-size: 0.625rem;
+  font-weight: 700;  
+}
+
+.SubCategoriesRow .rowMode .product-list .product .shopping .fa-star {
+  margin: -0.25rem;
+}
+
+.list-img, .note-img {
+  display: none;
+}
+
+.SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
+  padding-right: 0!important;
+}
+
+.rtsIcons > div {
+  justify-content: center;
+  margin-bottom: .5rem;
+}
+
+.add-note {
+  margin-left: .5rem;
+}
+
+.SubCategoriesRow .rowMode .product-list .product .shopping {
+  font-size: inherit;
+}
+
+@media (max-width: 767px) {
+  .stockLevelDiv {
+    max-width: 50%;
+    float: right;
   }
 
-  .list-img, .note-img {
-    display: none;
+  .stockLevel {
+    margin-left: 0.5rem;
   }
 
   .SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
-    padding-right: 0!important;
+    align-items: center !important;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .stockLevelDiv {
+    max-width: 50%;
+    margin-left: 1.25rem;
   }
 
-  .rtsIcons > div {
-    justify-content: center;
-    margin-bottom: .5rem;
+  .stockLevel {
+    margin-left: 0.5rem;
   }
 
-.add-note {
-    margin-left: .5rem;
+  .SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
+    align-items: center !important;
+    padding-right: 0;
   }
+}
 
-  .SubCategoriesRow .rowMode .product-list .product .shopping {
-    font-size: inherit;
+  @media (max-width: 576px) {
+  .stockLevelDiv {
+    max-width: 100%;
+    margin-left: 1.563rem;
   }
-
-  @media (max-width: 767px) {
-    .stockLevelDiv {
-      max-width: 50%;
-      float: right;
-    }
-
-    .stockLevel {
-      margin-left: 0.5rem;
-    }
-
-    .SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
-      align-items: center !important;
-      padding-right: 0;
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    .stockLevelDiv {
-      max-width: 50%;
-      margin-left: 1.25rem;
-    }
-
-    .stockLevel {
-      margin-left: 0.5rem;
-    }
-
-    .SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
-      align-items: center !important;
-      padding-right: 0;
-    }
-  }
-
-    @media (max-width: 576px) {
-    .stockLevelDiv {
-      max-width: 100%;
-      margin-left: 1.563rem;
-    }
-  }
+}
