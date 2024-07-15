@@ -13,11 +13,11 @@
 
   .rtsIcons > div {
     justify-content: center;
+    margin-bottom: .5rem;
   }
 
   .SubCategoriesRow .rowMode .product-list .product .shopping {
     font-size: inherit;
-    margin-bottom: .5rem;
   }
 
   @media (max-width: 767px) {
