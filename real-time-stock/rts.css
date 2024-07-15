@@ -12,8 +12,11 @@
   }
 
   .rtsIcons > div {
-
     justify-content: center;
+  }
+
+  .SubCategoriesRow .rowMode .product-list .product .shopping {
+    font-size: inherit;
   }
 
   @media (max-width: 767px) {
