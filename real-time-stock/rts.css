@@ -17,6 +17,7 @@
 
   .SubCategoriesRow .rowMode .product-list .product .shopping {
     font-size: inherit;
+    margin-bottom: .5rem;
   }
 
   @media (max-width: 767px) {
