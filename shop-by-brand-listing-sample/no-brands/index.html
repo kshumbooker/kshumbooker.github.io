@@ -678,7 +678,7 @@
         }
 
         a.alphabetFilter.disabled {
-            border: 1px solid #cccccc;
+            border: 1px solid #8e8e8e;
             pointer-events: none;
             background: #cccccc;
             color: #ffffff;
@@ -707,7 +707,7 @@
 </main>
 
 
-<script type="text/javascript" src="./nobrands.js"></script>
+<script type="text/javascript" src="../nobrands.js"></script>
 
 <script>
     let alphabetNav = document.getElementById("alphabetNav");
@@ -810,7 +810,7 @@
                     </div>
                 <div class="row">
                   ${brand.brands.map((b) => {
-                         return b.active == true && !b.featured == true ? `<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 p-1"><a href="${b.url}" class="brandLink">${b.name}</a></div>` : ``
+                         return b.active == true ? `<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 p-1"><a href="${b.url}" class="brandLink">${b.name}</a></div>` : ``
                   }).join("")}
                 </div>
             `).join("");
@@ -819,6 +819,7 @@
     loadAlphabetNav();
     loadBrandsData('ALL');
 </script>
+
 
 <script nonce="XRCWjv1IbJu3W9DUaOJtx6tkDwzvpXPQYPe6Owq01Wo=">
     $(document).ready(function () {
