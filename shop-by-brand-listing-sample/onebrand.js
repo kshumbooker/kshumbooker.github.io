@@ -6299,7 +6299,7 @@ const brandsData = [{
     },
     {
       name: "Yazoo",
-      active: true, featured: false, img: "",
+      active: true, featured: true, img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Yazoo_Logotype.svg/220px-Yazoo_Logotype.svg.png",
       url: "https://www.booker.co.uk/"
     },
     {
