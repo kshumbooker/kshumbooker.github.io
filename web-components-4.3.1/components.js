@@ -918,7 +918,7 @@ class LinkToShopSearch extends HTMLElement {
     this.innerHTML = `
       <div class="d-flex my-3">
         <div class="linkToShopSearchImg">
-          <img src="${this.getAttribute('data-img')}" style="max-width: 100px;" />
+          <img src="${this.getAttribute('data-img')}" style="max-width: 6.25rem;" />
         </div>
         <div class="linkToShopSearchTextContent">
           <div class="row">
@@ -936,7 +936,7 @@ class LinkToShopSearch extends HTMLElement {
             </div>
           </div>
         </div>
-      `;
+    `;
   }
 }
 
