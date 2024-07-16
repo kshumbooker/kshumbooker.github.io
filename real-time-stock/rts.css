@@ -19,7 +19,7 @@ main#booker_orderT .colMode .product-list .product .shop .shopping .fa-star {
   display: none;
 }
 
-.SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
+.SubCategoriesRow .rowMode .product-list .product .shopping .add-note, .modalComponents .delist-modal .rowMode .product-list .product .shopping .add-note {
   padding-right: 0!important;
 }
 
