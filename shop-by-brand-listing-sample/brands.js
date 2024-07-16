@@ -12,7 +12,7 @@ const brandsData = [{
     },
     {
       name: "7UP",
-      active: true, featured: false, img: "",
+      active: true, featured: false, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/7Up_logo_%282024%29.svg/100px-7Up_logo_%282024%29.svg.png",
       url: "https://www.booker.co.uk/"
     }
   ]
@@ -6299,7 +6299,7 @@ const brandsData = [{
     },
     {
       name: "Yazoo",
-      active: true, featured: false, img: "",
+      active: true, featured: false, img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Yazoo_Logotype.svg/220px-Yazoo_Logotype.svg.png",
       url: "https://www.booker.co.uk/"
     },
     {
