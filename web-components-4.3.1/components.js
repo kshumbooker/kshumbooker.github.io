@@ -916,8 +916,7 @@ class LinkToShopSearch extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="my-3">
-      <div class="d-flex">
+      <div class="d-flex my-3">
         <div class="linkToShopSearchImg mr-2">
           <img src="${this.getAttribute('data-img')}" style="max-width: 100px;" />
         </div>
@@ -937,8 +936,7 @@ class LinkToShopSearch extends HTMLElement {
             </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
   }
 }
 
