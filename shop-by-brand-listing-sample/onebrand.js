@@ -1286,12 +1286,12 @@ const brandsData = [{
       name: "Cobra",
       active: true, featured: false, img: "",
       url: "https://www.booker.co.uk/"
-    },
+    },*/
     {
       name: "Coca-Cola",
       active: true, featured: true, img: "https://static.vecteezy.com/system/resources/previews/014/414/677/original/coca-cola-logo-on-transparent-background-free-vector.jpg",
       url: "https://www.booker.co.uk/"
-    },
+    }/*,
     {
       name: "Cockburn's",
       active: true, featured: false, img: "",
@@ -6299,7 +6299,7 @@ const brandsData = [{
     },
     {
       name: "Yazoo",
-      active: true, featured: true, img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Yazoo_Logotype.svg/220px-Yazoo_Logotype.svg.png",
+      active: false, featured: false, img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Yazoo_Logotype.svg/220px-Yazoo_Logotype.svg.png",
       url: "https://www.booker.co.uk/"
     },
     {
