@@ -858,8 +858,6 @@ class SubPageNavigation extends HTMLElement {
   }
 }
 
-
-
 class StandardCopy extends HTMLElement {
   constructor() {
     super();
@@ -867,8 +865,8 @@ class StandardCopy extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="container text-center mt-5 mb-5">
-      <p class="mb-4" style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">
+    <div class="my-3">
+      <p class="my-3" style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">
         ${this.getAttribute('data-heading')}
       </p>
       <p style="font-size: ${this.getAttribute('data-textSize')}; color: ${this.getAttribute('data-textColor')}">
