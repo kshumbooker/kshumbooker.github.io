@@ -865,7 +865,7 @@ class StandardCopy extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="my-3">
+    <div class="my-3 text-center">
       <p class="my-3" style="font-size: ${this.getAttribute('data-headingSize')}; color: ${this.getAttribute('data-headingColor')}">
         ${this.getAttribute('data-heading')}
       </p>
