@@ -885,7 +885,7 @@ class Button extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="container text-center mt-5 mb-5">
+    <div class="text-center my-3">
       <a href="${this.getAttribute('data-url')}" class="btn" style="color: ${this.getAttribute('data-fontColor')}; background: ${this.getAttribute('data-buttonBgColor')}">${this.getAttribute('data-text')}</a>
     </div>
     `;
