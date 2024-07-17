@@ -902,7 +902,7 @@ class HeroImage extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div class="container text-center mt-5 mb-5">
+    <div class="text-center my-3">
       <img src="${this.getAttribute('data-image')}" class="img-fluid" alt="${this.getAttribute('data-alt')}" />
     </div>
     `;
