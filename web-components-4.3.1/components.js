@@ -208,7 +208,7 @@ class HeroBannerCarousel extends HTMLElement {
     
     </style>
     <div class="position-relative text-center my-3">
-      <div id="HeroBannerCarousel" class="carousel" data-interval="false">
+      <div id="HeroBannerCarousel" class="carousel" data-ride="carousel" data-interval="3000">
         <div class="carousel-inner">
         ${JSON.parse(this.getAttribute('data-hero-banner-carousel')).map((val, key) => `
           <div class="carousel-item ${key == 0 ? "active" : ""}">
