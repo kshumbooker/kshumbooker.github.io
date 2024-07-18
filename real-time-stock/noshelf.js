@@ -12,6 +12,18 @@
 
     let page = window.location.href;
 
+    if (page.includes('print-product-list')) {
+        let headerRow = document.querySelectorAll('#print-table > .table-desktop > thead > tr');
+        let tableRows = document.querySelectorAll('#print-table > .table-desktop > tbody > tr');
+        let newHeader = document.createElement('th');
+        headerRow[0].children[2].after(newHeader);
+        [...tableRows].filter(row => row.children[0].attributes.colspan == undefined).map(product => {
+            let newCell = document.createElement('td');
+            newCell.innerHTML = `<stock-label data-stocklevel="${randomStockLevel()}"></stock-label>`;
+            product.children[2].after(newCell);
+        });
+    }
+
     /* List & mobile views */
     
     [...productsList].map((product) => {
