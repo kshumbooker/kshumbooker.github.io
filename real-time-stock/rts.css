@@ -3,6 +3,14 @@
   font-weight: 700;  
 }
 
+.PrintProductListUngroup .product-table-col {
+  padding: 1em 1em;
+}
+
+#print-table.product-table-col {
+  font-size: 0.8rem;
+}
+
 .SubCategoriesRow .rowMode .product-list .product .shopping .fa-star {
   margin: -0.25rem;
 }
