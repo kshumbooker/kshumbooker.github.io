@@ -417,7 +417,7 @@ class StockLabel extends HTMLElement {
 
   connectedCallback() {
     let bgClass = this.status == 'IN STOCK' ? 'bg-success' : this.status == 'LOW STOCK' ? 'bg-warning' : this.status == 'NO STOCK' ? 'bg-secondary' : false;
-    this.innerHTML = `<div class="row stockLevel"><div class="col p-0"><span class="${bgClass} text-center mw-100 d-inline-block text-white py-1 px-2 rounded my-2 stockLevel">${this.status}</span></div></div>`; 
+    this.innerHTML = `<div class="row stockLevel"><div class="col p-0 text-center"><span class="${bgClass} text-center mw-100 d-inline-block text-white py-1 px-2 rounded my-2 stockLevel">${this.status}</span></div></div>`; 
   }
 }
 
