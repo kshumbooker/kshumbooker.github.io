@@ -1,4 +1,6 @@
-      function randomStockLevel() {
+  /* function to mock the stock level being passed in for each product */
+  
+  function randomStockLevel() {
         let stockLevels = ['IN STOCK', 'LOW STOCK', 'NO STOCK'];
         let stock = stockLevels[Math.floor(Math.random() * stockLevels.length)];
         return stock;
@@ -16,8 +18,19 @@
     
         /* mock stock level data for each product - assumption for now is that a data attribute "data-stocklevel" is going to be served from the backend */ 
         product.setAttribute('data-stocklevel', randomStockLevel());
+
+        let stockLevelDiv = document.createElement('div');
+        stockLevelDiv.classList.add('stockLevelDiv');
+    
+        let stockLevelDivMobile = document.createElement('div');
+        stockLevelDivMobile.classList.add('stockLevelDiv', 'row', 'text-right');
+    
+        let showNote;
+        let directDelivered;
+        let onlineExclusive;
         
-        let desktopProductNode = product.children[1].children[1].children[0].children[1].children[1];
+        // desktopProductNode being the "buy-this-product product-counter" div, which does not exist for online exclusive collect.
+        let desktopProductNode = product.children[1].children[1].children[0].children[1].children[1]; 
 
         let mobileProductNode = page.includes('multibuy') ? product.children[1].children[1].children[1].children[0].children[0].children[1].children[1].children[1] : product.children[1].children[1].children[1].children[0].children[0].children[1].children[0].children[1].children[1];
 
@@ -26,17 +39,25 @@
 
         // Add to List - change the "Add to List" text to be the icon component
         desktopProductNode.children[0].children[1].innerHTML = `<add-to-list></add-to-list>`;
+        
+        // to show or not show the note for each product is determined by these data attributes - not applicable to online exclusive collect, undefined here means online exclusive / available to purchase in branch?
+        if (desktopProductNode.children[1] !== undefined) {
 
-        // to show or not show the note for each product is determined by this data attribute
-        let showNote = desktopProductNode.children[1].getAttribute('data-show-note');
-        let directDelivered = product.children[2].getAttribute('data-directdelivered');
-        let onlineExclusive = product.children[2].getAttribute('data-onlineexclusive');
+            showNote = desktopProductNode.children[1].getAttribute('data-show-note') ? desktopProductNode.children[1].getAttribute('data-show-note') : 'False';
+            directDelivered = product.children[2].getAttribute('data-directdelivered') ? product.children[2].getAttribute('data-directdelivered') : 'False';
+            onlineExclusive = product.children[2].getAttribute('data-onlineexclusive') ? product.children[2].getAttribute('data-onlineexclusive') : 'False';
         
         // remove add note img, also set .note-img to display none in the css
         desktopProductNode.children[1].children[0].src = '';
 
         // replace "Add Note" url text with the icon
         desktopProductNode.children[1].children[1].innerHTML = `<add-to-note class="ml-2"></add-to-note>`;
+
+        } else {
+            // to handle OE collect, who should be able to see stock labels
+            directDelivered = 'False';
+            onlineExclusive = 'False';
+        }
 
 
         if (page.includes('recent-purchases') && desktopProductNode.children[2] !== undefined) {
@@ -52,21 +73,17 @@
 
         // remove the classes from the div wrapped around the icons
         desktopProductNode.children[0].classList.remove('col', 'd-flex', 'flex-row');
-        desktopProductNode.children[1].classList.remove('col', 'd-flex', 'flex-row');
+        
+        desktopProductNode.children[1] !== undefined ? desktopProductNode.children[1].classList.remove('col', 'd-flex', 'flex-row') : false;
 
 
         if (directDelivered == 'False' && onlineExclusive == 'False') {
-            let stockLevelDiv = document.createElement('div');
-            stockLevelDiv.classList.add('stockLevelDiv');
             stockLevelDiv.innerHTML = `<stock-label data-stocklevel="${product.getAttribute('data-stocklevel')}"></stock-label>`;
             desktopProductNode.parentElement.children[0].after(stockLevelDiv);
         }
 
        /* Mobile View - add to list does not show for any products */
 
-        // add stockLevelDiv to the mobile view
-        let stockLevelDivMobile = document.createElement('div');
-        stockLevelDivMobile.classList.add('stockLevelDiv', 'row', 'text-right');
         stockLevelDivMobile.innerHTML = (directDelivered == 'False' && onlineExclusive == 'False') ? `<stock-label data-stocklevel="${product.getAttribute('data-stocklevel')}"></stock-label>` : ``;
 
 
@@ -86,15 +103,16 @@
     
     [...gridProductList].map((product) => {
         product.setAttribute('data-stocklevel', randomStockLevel());
-        let showNote = product.children[4].getAttribute('data-show-note');
-
-        let directDelivered = product.children[4].children[5].children[0].getAttribute('data-directdelivered');
-        let onlineExclusive = product.children[4].children[5].children[0].getAttribute('data-onlineexclusive');
-
-        // add stockLevelDiv to the mobile view, if not direct delivered or online exclusive
-    
         let stockLevelDivGrid = document.createElement('div');
         stockLevelDivGrid.classList.add('stockLevelDiv', 'row', 'pl-2');
+
+        let showNote = product.children[4].getAttribute('data-show-note');
+
+        let directDelivered = product.children[4].children[5].children[0].getAttribute('data-directdelivered') ? product.children[4].children[5].children[0].getAttribute('data-directdelivered') : 'False';
+        let onlineExclusive = product.children[4].children[5].children[0].getAttribute('data-onlineexclusive') ? product.children[4].children[5].children[0].getAttribute('data-onlineexclusive') : 'False';
+
+        // add stockLevelDiv to the mobile view, if not direct delivered or online exclusive
+
         stockLevelDivGrid.innerHTML = (directDelivered == 'False' && onlineExclusive == 'False') ? `<stock-label data-stocklevel="${product.getAttribute('data-stocklevel')}"></stock-label>` : ``;
         
 
