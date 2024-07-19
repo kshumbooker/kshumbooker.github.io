@@ -810,10 +810,10 @@ class SubPageNavigation extends HTMLElement {
   template = () => `
   <div class="my-3">
     <nav class="navbar navbar-expand-md navbar-expand-lg bg-white border-bottom border-secondary mb-2 p-0" id="subNavigationContentNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="cursor: pointer;">
         ${this.subPageNavigation.map(s => `
           <li class="nav-item">
-            <a class="nav-link text-dark" name="${s.id}" href="#">${s.title}</a>
+            <a class="nav-link text-dark" name="${s.id}">${s.title}</a>
           </li>`).join("")}
       </ul>
     </nav>
