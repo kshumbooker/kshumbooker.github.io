@@ -504,6 +504,10 @@ class ProductCardListCarousel extends HTMLElement {
   .carousel-control-next-icon, .carousel-control-prev-icon {
     background-color: #2356AA;
   }
+
+  .carousel-control-next-icon {
+    margin-left: -1.2rem;
+  }
   .carousel-control-prev, .carousel-control-next{
     width: 4vh;
     height: 4vh;
@@ -652,7 +656,7 @@ class ProductCardListCarousel extends HTMLElement {
           <span class="sr-only">Previous</span>
         </button>
         <a class="carousel-control-next productCarouselSlide" type="button" data-target="#ProductCardListCarousel${this.products.id}" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true" style="margin-left:-1.2rem"></span>
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </button>
       </div>
