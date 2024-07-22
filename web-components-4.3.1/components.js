@@ -217,11 +217,11 @@ class HeroBannerCarousel extends HTMLElement {
       </div>
       ${this.getAttribute('data-arrowShow') == 'true' ? `
       <a class="carousel-control-prev" type="button" data-target="#HeroBannerCarousel" data-slide="prev">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="${this.getAttribute('data-arrowColor')}" viewBox="0 0 8 8"><path d="M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="${this.getAttribute('data-arrowColor')}" style="background: ${this.getAttribute('data-arrowBgColor')}" viewBox="0 0 8 8"><path d="M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z" /></svg>
         <span class="sr-only">Previous</span>
       </a>
       <a class="carousel-control-next" type="button" data-target="#HeroBannerCarousel" data-slide="next">
-        <svg xmlns='http://www.w3.org/2000/svg' fill="${this.getAttribute('data-arrowColor')}" viewBox="0 0 8 8"><path d="M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z" /></svg>
+        <svg xmlns='http://www.w3.org/2000/svg' fill="${this.getAttribute('data-arrowColor')}" style="background: ${this.getAttribute('data-arrowBgColor')}" viewBox="0 0 8 8"><path d="M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z" /></svg>
         
         <span class="sr-only">Next</span>
       </a>` : ``}
