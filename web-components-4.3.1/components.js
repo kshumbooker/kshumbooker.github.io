@@ -205,6 +205,7 @@ class HeroBannerCarousel extends HTMLElement {
       opacity: 1;
       background: ${this.getAttribute('data-arrowBgColor')};
     }
+    
     </style>
     <div class="position-relative text-center my-3">
       <div id="HeroBannerCarousel" class="carousel" data-ride="carousel" data-interval="3000">
