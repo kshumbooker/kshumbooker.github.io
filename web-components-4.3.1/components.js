@@ -197,10 +197,14 @@ class HeroBannerCarousel extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <style>
-    .carousel-control-prev, .carousel-control-next {
+    .carousel-control-prev, .carousel-control-next{
+      width: 4vh;
+      height: 4vh;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
       background: ${this.getAttribute('data-arrowBgColor')};
     }
-    
     </style>
     <div class="position-relative text-center my-3">
       <div id="HeroBannerCarousel" class="carousel" data-ride="carousel" data-interval="3000">
@@ -499,6 +503,14 @@ class ProductCardListCarousel extends HTMLElement {
   <style>
   .carousel-control-next-icon, .carousel-control-prev-icon {
     background-color: #2356AA;
+  }
+
+  .carousel-control-prev, .carousel-control-next{
+    width: 4vh;
+    height: 4vh;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
   }
  
   .carousel-inner {
