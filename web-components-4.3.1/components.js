@@ -595,7 +595,7 @@ class ProductCardListCarousel extends HTMLElement {
           `
           <div class="carousel-item productCardListItem ${ (key == this.carouselActiveKey) ? "active" : "" }">
                
-            <div class="card p-3 mx-2 text-center rounded product${key}" id="${this.products.id}_productCardListCarousel_${key}">
+            <div class="card p-3 w-100 mx-2 text-center rounded product${key}" id="${this.products.id}_productCardListCarousel_${key}">
               <div class="d-flex flex-row">
                 <div class="col">
                   <div class="card-title m-0">
