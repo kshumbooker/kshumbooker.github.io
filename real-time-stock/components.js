@@ -413,11 +413,11 @@ class StockLabel extends HTMLElement {
   constructor() {
     super();
     this.status = this.getAttribute('data-stocklevel');
+    this.bgcolor = this.getAttribute('data-stocklevel-bgcolor');
   }
 
   connectedCallback() {
-    let bgClass = this.status == 'IN STOCK' ? 'bg-success' : this.status == 'LOW STOCK' ? 'bg-warning' : this.status == 'NO STOCK' ? 'bg-secondary' : false;
-    this.innerHTML = `<div class="row stockLevel"><div class="col p-0 text-center"><span class="${bgClass} text-center mw-100 d-inline-block text-white py-1 px-2 rounded my-2 stockLevel">${this.status}</span></div></div>`; 
+    this.innerHTML = `<div class="row stockLevel text-center"><div class="col p-0"><span style="background: ${this.bgcolor}" class="text-center mw-100 d-inline-block text-white py-1 px-2 rounded my-2 stockLevel">${this.status}</span></div></div>`; 
   }
 }
 
