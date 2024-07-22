@@ -509,9 +509,6 @@ class ProductCardListCarousel extends HTMLElement {
     background: transparent;
   }
 
-  .carousel-control-next-icon {
-    margin-left: -1.2rem;
-  }
   .carousel-control-prev, .carousel-control-next{
     width: 4vh;
     height: 4vh;
