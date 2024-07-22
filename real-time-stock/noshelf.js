@@ -1,10 +1,28 @@
-  /* function to mock the stock level being passed in for each product */
+   /* function to mock the stock level and colour being passed in for each product */
   
   function randomStockLevel() {
-        let stockLevels = ['IN STOCK', 'LOW STOCK', 'NO STOCK'];
-        let stock = stockLevels[Math.floor(Math.random() * stockLevels.length)];
-        return stock;
-    }
+    
+    let stockLevels = [
+      {
+        level: 'IN STOCK',
+        color: '#51AF39'
+      },
+      {
+        level: 'LOW STOCK',
+        color: '#EE8E1B'
+      },
+      {
+        level: 'NO STOCK',
+        color: '#808080'
+      },
+    ];
+    let stock = Math.floor(Math.random() * stockLevels.length);
+    return stockLevels[stock];
+  }
+
+  function findMoreAvailabilityToggle() {
+    document.querySelector('.find-more-availability').classList.toggle('d-none');
+  }
 
 
     /* get all products in "list" pages - ones where there are list and grid views */
@@ -19,17 +37,114 @@
         headerRow[0].children[2].after(newHeader);
         [...tableRows].filter(row => row.children[0].attributes.colspan == undefined).map(product => {
             let newCell = document.createElement('td');
-            newCell.innerHTML = `<stock-label data-stocklevel="${randomStockLevel()}"></stock-label>`;
+            newCell.innerHTML = `<stock-label data-stocklevel="${randomStockLevel().level}"></stock-label>`;
             product.children[2].after(newCell);
         });
+       
+    
     }
+
+
+    /* product information contains RTS stock locator, need to pass the product to the component */
+    if (page.includes('product-information')) {
+
+        let stockLevelDiv = document.createElement('div');
+        stockLevelDiv.innerHTML = `<stock-label data-stocklevel="${randomStockLevel()}"></stock-label>`;
+
+        let product = document.querySelectorAll('.product-main');
+        let midasCode = product[0].children[0].innerText;
+
+        let findMoreAvailability = document.createElement('div');
+        findMoreAvailability.innerHTML = `<find-more-availability data-midascode=${midasCode}></find-more-availability>`;
+        document.body.appendChild(findMoreAvailability);
+
+        let findMoreAvailabilityUrl = document.createElement('a');
+        findMoreAvailabilityUrl.classList.add('findMoreAvailabilityUrl');
+        findMoreAvailabilityUrl.text = `Find More Availability`;
+        findMoreAvailabilityUrl.href = `#`;
+        findMoreAvailabilityUrl.addEventListener('click', findMoreAvailabilityToggle);
+        stockLevelDiv.appendChild(findMoreAvailabilityUrl);
+
+
+        let productDesktop = document.querySelectorAll('.product-price > .filaDesktop');
+
+        // add text-center to align the Find More Availability URL
+        document.querySelectorAll('.shopProduct.trolley-mode')[0].classList.add('text-center');
+        
+        
+        productDesktop[0].children[2].children[1].classList.remove('d-flex', 'align-items-center', 'mt-0', 'flex-grow-1');
+        productDesktop[0].children[2].children[1].children[1].innerHTML = `<add-to-list></add-to-list>`;
+        let addNote = productDesktop[0].children[2].children[2].getAttribute('data-show-note');
+
+        let newAddNote;
+
+        if (addNote == 'True') {
+            productDesktop[0].children[2].children[2].classList.remove('d-flex','align-items-center', 'mt-0'); 
+            productDesktop[0].children[2].children[2].children[1].innerHTML = `<add-to-note></add-to-note>`;
+            newAddNote = productDesktop[0].children[2].children[2].cloneNode(true);
+        }
+
+        // need to clone the add to list and add to note nodes, and then remove them from where they currently are
+
+        let newAddToList = productDesktop[0].children[2].children[1].cloneNode(true);
+
+        let onlineExclusive = productDesktop[0].children[2].children[0] !== undefined ? productDesktop[0].children[2].children[0].getAttribute('data-onlineexclusive') : 'False';
+
+        let showNote = productDesktop[0].children[2].children[0].children[2] !== undefined ? productDesktop[0].children[2].children[0].children[2].getAttribute('data-show-note') : 'False';
+
+        
+        
+        if (onlineExclusive == 'False') {
+            productDesktop[0].children[2].lastElementChild.remove();
+            if (showNote == 'True') {
+                productDesktop[0].children[2].lastElementChild.remove();
+            }
+            productDesktop[0].children[2].lastElementChild.after(stockLevelDiv);
+            //productDesktop[0].children[2].lastElementChild.after(findMoreAvailabilityUrl);
+        }
+
+        let iconsDiv = document.createElement('div');
+        iconsDiv.classList.add('row', 'd-flex', 'position-absolute', 'fixed-bottom', 'ml-3', 'mb-2');
+        iconsDiv.appendChild(newAddToList);
+        iconsDiv.appendChild(newAddNote);
+       
+        productDesktop[0].children[1].lastChild.after(iconsDiv);
+       
+        let productMobile = document.querySelectorAll('.product-price > .filaMobile');
+        let addToListMobile = productMobile[0].children[1].children[3];
+        addToListMobile.classList.remove('d-flex', 'align-items-center', 'mt-0', 'flex-grow-1');
+        addToListMobile.children[1].innerHTML = `<add-to-list></add-to-list>`;
+        let addNoteMobile = productMobile[0].children[1].children[4];
+        
+        addNoteMobile.children[1].innerHTML = `<add-to-note></add-to-note>`;
+
+        let iconsDivMobile = document.createElement('div');
+        iconsDivMobile.classList.add('row', 'd-flex', 'justify-content-end');
+        iconsDivMobile.appendChild(addToListMobile);
+        iconsDivMobile.appendChild(addNoteMobile);
+
+        productMobile[0].children[1].lastElementChild.after(iconsDivMobile);
+
+
+        let stockLevelDivMobile = document.createElement('div');
+        stockLevelDivMobile.classList.add('row', 'd-flex', 'position-absolute', 'fixed-bottom', 'p-0');
+        stockLevelDivMobile.innerHTML = `<stock-label data-stocklevel="${randomStockLevel()}"></stock-label>`;
+
+        productMobile[0].children[0].lastElementChild.after(stockLevelDivMobile);
+        productMobile[0].children[1].children[3].classList.add('my-2');
+    }
+
+
+
 
     /* List & mobile views */
     
     [...productsList].map((product) => {
     
         /* mock stock level data for each product - assumption for now is that a data attribute "data-stocklevel" is going to be served from the backend */ 
-        product.setAttribute('data-stocklevel', randomStockLevel());
+        let stock = randomStockLevel();
+        product.setAttribute('data-stocklevel', stock.level);
+        product.setAttribute('data-stocklevel-bgcolor', stock.color);
 
         let stockLevelDiv = document.createElement('div');
         stockLevelDiv.classList.add('stockLevelDiv');
@@ -90,13 +205,12 @@
 
 
         if (directDelivered == 'False' && onlineExclusive == 'False') {
-            stockLevelDiv.innerHTML = `<stock-label data-stocklevel="${product.getAttribute('data-stocklevel')}"></stock-label>`;
+            stockLevelDiv.innerHTML = `<stock-label data-stocklevel="${stock.level}" data-stocklevel-bgcolor="${stock.color}"></stock-label>`;
             desktopProductNode.parentElement.children[0].after(stockLevelDiv);
         }
 
        /* Mobile View - add to list does not show for any products */
-
-        stockLevelDivMobile.innerHTML = (directDelivered == 'False' && onlineExclusive == 'False') ? `<stock-label data-stocklevel="${product.getAttribute('data-stocklevel')}"></stock-label>` : ``;
+        stockLevelDivMobile.innerHTML = (directDelivered == 'False' && onlineExclusive == 'False') ? `<stock-label data-stocklevel="${stock.level}" data-stocklevel-bgcolor="${stock.color}"></stock-label>` : ``;
 
 
         //add d-flex to the div which is going to contain the add to note icon and stock level, and the add to note icon to replace the Add Note link, otherwise just add the stock without the note
@@ -114,7 +228,9 @@
     let gridProductList = document.querySelectorAll('.product-model.d-flex.flex-column');
     
     [...gridProductList].map((product) => {
-        product.setAttribute('data-stocklevel', randomStockLevel());
+        let stock = randomStockLevel();
+        product.setAttribute('data-stocklevel', stock.level);
+        product.setAttribute('data-stocklevel-bgcolor', stock.color);
         let stockLevelDivGrid = document.createElement('div');
         stockLevelDivGrid.classList.add('stockLevelDiv', 'row', 'pl-2');
 
@@ -125,7 +241,7 @@
 
         // add stockLevelDiv to the mobile view, if not direct delivered or online exclusive
 
-        stockLevelDivGrid.innerHTML = (directDelivered == 'False' && onlineExclusive == 'False') ? `<stock-label data-stocklevel="${product.getAttribute('data-stocklevel')}"></stock-label>` : ``;
+        stockLevelDivGrid.innerHTML = (directDelivered == 'False' && onlineExclusive == 'False') ? `<stock-label data-stocklevel="${stock.level}" data-stocklevel-bgcolor="${stock.color}"></stock-label>` : ``;
         
 
         let gridProductNode = product.children[4].children[1].children[0].children[0];
