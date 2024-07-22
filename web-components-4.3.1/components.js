@@ -504,7 +504,6 @@ class ProductCardListCarousel extends HTMLElement {
   .carousel-control-next-icon, .carousel-control-prev-icon {
     background-color: #2356AA;
   }
-
   .carousel-control-prev, .carousel-control-next{
     width: 4vh;
     height: 4vh;
@@ -512,7 +511,6 @@ class ProductCardListCarousel extends HTMLElement {
     transform: translateY(-50%);
     opacity: 1;
   }
- 
   .carousel-inner {
     overflow: visible;
   }
@@ -596,7 +594,7 @@ class ProductCardListCarousel extends HTMLElement {
           `
           <div class="carousel-item productCardListItem ${ (key == this.carouselActiveKey) ? "active" : "" }">
                
-            <div class="card p-3 w-100 mx-2 text-center rounded product${key}" id="${this.products.id}_productCardListCarousel_${key}">
+            <div class="card w-100 p-3 mx-2 text-center rounded product${key}" id="${this.products.id}_productCardListCarousel_${key}">
               <div class="d-flex flex-row">
                 <div class="col">
                   <div class="card-title m-0">
@@ -624,7 +622,7 @@ class ProductCardListCarousel extends HTMLElement {
               </div>
               <div class="d-flex flex-row my-3">
                 <div class="col p-0">
-                  <a href="/Products/ShoppingList/AddProduct?productCode=${p.midascode}&returnUrl=${window.location.href}" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
+                  <a href="/Products/ShoppingList/AddProduct?productCode=${p.midascode}&returnUrl=${window.location.href}" class="addToList"><img class="list-img imagenIni ml-auto" src=https://www.booker.co.uk/images/list-alt.png alt="box"> Add to List</a>
                 </div>
                 <div class="col p-0">
                   <span class="rrp">RRP: ${p.rrp}</span>
@@ -754,6 +752,7 @@ class ProductCardListCarousel extends HTMLElement {
     }
   }
 }
+
 
 
 
