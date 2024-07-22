@@ -654,7 +654,7 @@ class ProductCardListCarousel extends HTMLElement {
           <span class="sr-only">Previous</span>
         </button>
         <a class="carousel-control-next productCarouselSlide" type="button" data-target="#ProductCardListCarousel${this.products.id}" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="carousel-control-next-icon" aria-hidden="true" style="margin-left:-1.2rem"></span>
           <span class="sr-only">Next</span>
         </button>
       </div>
