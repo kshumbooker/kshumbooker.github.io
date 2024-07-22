@@ -197,12 +197,7 @@ class HeroBannerCarousel extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <style>
-    .carousel-control-prev, .carousel-control-next{
-      width: 4vh;
-      height: 4vh;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 1;
+    .carousel-control-prev, .carousel-control-next {
       background: ${this.getAttribute('data-arrowBgColor')};
     }
     
@@ -505,13 +500,7 @@ class ProductCardListCarousel extends HTMLElement {
   .carousel-control-next-icon, .carousel-control-prev-icon {
     background-color: #2356AA;
   }
-  .carousel-control-prev, .carousel-control-next{
-    width: 4vh;
-    height: 4vh;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 1;
-  }
+ 
   .carousel-inner {
     overflow: visible;
   }
