@@ -505,6 +505,10 @@ class ProductCardListCarousel extends HTMLElement {
     background-color: #2356AA;
   }
 
+  a:not([href]):not([tabindex]) {
+    background: transparent;
+  }
+
   .carousel-control-next-icon {
     margin-left: -1.2rem;
   }
