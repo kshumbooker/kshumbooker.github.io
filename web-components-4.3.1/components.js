@@ -759,8 +759,6 @@ class ProductCardListCarousel extends HTMLElement {
 }
 
 
-
-
 class ProductCategory extends HTMLElement {
   constructor() {
     super();  
