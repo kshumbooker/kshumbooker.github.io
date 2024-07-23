@@ -487,7 +487,7 @@ class ProductCardList extends HTMLElement {
           <div class="col p-0">
             <a href="/Products/ShoppingList/AddProduct?productCode=${p.midascode}&returnUrl=${window.location.href}" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
           </div>
-          <div class="col p-0">
+          <div class="col p-0 align-content-center">
             <span class="rrp">RRP: ${p.rrp}</span>
           </div>
         </div>
