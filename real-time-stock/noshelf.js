@@ -30,6 +30,43 @@
 
     let page = window.location.href;
 
+if (page.includes('scanner')) {
+      let tableHeaders = document.querySelectorAll('.table-desktop > thead > tr > th');
+      let newHeader = document.createElement('th');
+      newHeader.colSpan = 2;
+      tableHeaders[tableHeaders.length - 1].before(newHeader);
+      let colSpan = document.querySelectorAll('.table-desktop > tbody > tr');
+      colSpan[colSpan.length - 1].firstElementChild.colSpan = 16;
+      let desktopProducts = document.querySelectorAll('.table-desktop > tbody > .product-row');
+      [...desktopProducts].map(product => {
+        let stock = randomStockLevel();
+        let newCell = document.createElement('td');
+        newCell.colSpan = 2;
+        newCell.innerHTML = `<stock-label data-stocklevel="${stock.level}" data-stocklevel-bgcolor="${stock.color}"></stock-label>`;
+        product.lastElementChild.before(newCell);
+        product.lastElementChild.lastElementChild.lastElementChild.innerHTML = `<add-to-list></add-to-list>`;
+        product.lastElementChild.lastElementChild.classList.add('justify-content-center');
+      });
+
+      let mobileProducts = document.querySelectorAll('.mobile-view > .accordion > .card');
+      [...mobileProducts].map(product => {
+        let stock = randomStockLevel();
+        let headerCells = product.querySelectorAll('table > thead > tr > th');
+        let newHeader = document.createElement('th');
+        newHeader.colSpan = 2;
+        headerCells[0].after(newHeader);
+        
+        let productCells = product.querySelectorAll('table > tbody > tr > td');
+        let newCell = document.createElement('td');
+        newCell.colSpan = 2;
+        newCell.innerHTML = `<stock-label data-stocklevel="${stock.level}" data-stocklevel-bgcolor="${stock.color}"></stock-label>`;
+        productCells[productCells.length - 1].before(newCell);
+        productCells[productCells.length - 1].firstElementChild.firstElementChild.innerHTML = `<add-to-list></add-to-list>`;
+        productCells[productCells.length - 1].firstElementChild.classList.add('justify-content-center');
+      });
+    }
+
+
     if (page.includes('print-product-list')) {
         let headerRow = document.querySelectorAll('#print-table > .table-desktop > thead > tr');
         let tableRows = document.querySelectorAll('#print-table > .table-desktop > tbody > tr');
