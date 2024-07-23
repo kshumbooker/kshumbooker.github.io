@@ -78,6 +78,27 @@ if (page.includes('scanner')) {
         });
     }
 
+if (page.includes('rep-orders')) {
+      let headerRow = document.querySelectorAll('.table-desktop > thead > tr > th');
+      let newHeader = document.createElement('th');
+      newHeader.colSpan = 2;
+      headerRow[headerRow.length - 1].before(newHeader);
+      
+      let productRow = document.querySelectorAll('.table-desktop > tbody > tr');
+      productRow[productRow.length - 1].firstElementChild.colSpan = 16;
+      [...productRow].map(product => {
+        if (product.classList.contains('product-row')) {
+          let stock = randomStockLevel();
+          let newCell = document.createElement('td');
+          newCell.colSpan = 2;
+          newCell.innerHTML = `<stock-label data-stocklevel="${stock.level}" data-stocklevel-bgcolor="${stock.color}"></stock-label>`;
+          product.lastElementChild.before(newCell);
+        }
+      });
+
+
+     }
+
 
     /* product information contains RTS stock locator, need to pass the product to the component */
     if (page.includes('product-information')) {
