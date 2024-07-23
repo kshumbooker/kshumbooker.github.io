@@ -191,6 +191,17 @@ const productsData_CostaCoffee = [
     rrp: 1.59,
     por: 58.5,
     quantity: 0
+  },
+  {
+    title: 'Costa Coffee Frappé Choc Fudge Brownie',
+    volume: '12 x 250ml',
+    image: 'https://static.thcdn.com/images/large/webp//productimg/1600/1600/13809371-1384956514453827.jpg',
+    midascode: 100099,
+    brand: 'costa coffee',
+    price: 16.59,
+    rrp: 1.99,
+    por: 49.3,
+    quantity: 0
   }
 ];
 
