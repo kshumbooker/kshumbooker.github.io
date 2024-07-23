@@ -486,7 +486,7 @@ class ProductCardList extends HTMLElement {
         </div>
         <div class="d-flex flex-row my-3">
           <div class="col p-0">
-            <span class="font-weight-bold">${p.volume}</span>
+            <span class="font-weight-bold price">${p.volume}</span>
           </div>
           <div class="col p-0">
             <span class="font-weight-bold price">&pound;${p.price}</span>
