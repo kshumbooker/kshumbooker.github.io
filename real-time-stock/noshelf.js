@@ -66,19 +66,16 @@ if (page.includes('scanner')) {
       });
     }
 
-
-    if (page.includes('print-product-list')) {
+      if (page.includes('print-product-list')) {
         let headerRow = document.querySelectorAll('#print-table > .table-desktop > thead > tr');
         let tableRows = document.querySelectorAll('#print-table > .table-desktop > tbody > tr');
         let newHeader = document.createElement('th');
         headerRow[0].children[2].after(newHeader);
         [...tableRows].filter(row => row.children[0].attributes.colspan == undefined).map(product => {
             let newCell = document.createElement('td');
-            newCell.innerHTML = `<stock-label data-stocklevel="${randomStockLevel().level}"></stock-label>`;
+            newCell.innerHTML = `<stock-label data-stocklevel="${randomStockLevel().level}" data-stocklevel-bgcolor="${randomStockLevel().color}"></stock-label>`;
             product.children[2].after(newCell);
         });
-       
-    
     }
 
 
