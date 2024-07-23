@@ -247,7 +247,7 @@ class Heading extends HTMLElement {
 }
 
 
-class ProductCardList extends HTMLElement {
+/*class ProductCardList extends HTMLElement {
   constructor() {
     super();
   }
@@ -334,6 +334,180 @@ class ProductCardList extends HTMLElement {
     </div>
     `).join('')}
     </div>
+  </div>
+</div>
+    `;
+  
+  connectedCallback() {
+    this.products = JSON.parse(this.getAttribute('data-product-card-list'));
+    this.timeoutProducts = {};
+    this.render();
+  }
+
+  render() {
+    this.innerHTML = `
+      ${this.template().trim()}
+    `;
+
+    const plus = this.querySelectorAll('.productCardListPlus');
+    const minus = this.querySelectorAll('.productCardListMinus');
+    const productCardListproducts = this.querySelectorAll('.productCardListProducts');
+    [...plus].map((p, index) => p.addEventListener('click', () => { this.productCardListClick(p, index, 'plus') }));
+    [...minus].map((m, index) => m.addEventListener('click', () => { this.productCardListClick(m, index, 'minus') }));
+
+    [...productCardListproducts].map((product, index) => product.addEventListener('keyup', () => { this.productCardListInputQuantity(product, index) }));
+  }
+
+  productCardListClick = (product, index, direction) => {
+    let productCardListId = (product.parentElement.parentElement) ? product.parentElement.parentElement.id : false;
+    let key = productCardListId.split('_')[2];
+    let midasCode = productCardListId.split('_')[3];
+    direction == 'plus' ? this.products.data[key].quantity++ : direction == 'minus' && this.products.data[key].quantity > 0 ? this.products.data[key].quantity-- : false;
+    let quantity = this.products.data[key].quantity;
+    this.render(); 
+    this.bookerTrolleyFunc(midasCode, quantity);
+  }
+
+  productCardListInputQuantity = (product) => {
+    let key = (product.parentElement.parentElement) ? product.parentElement.parentElement.id.split('_') : false;
+    let midasCode = key[3];
+    this.products.data[key[2]].quantity = product.value;
+    let quantity = this.products.data[key[2]].quantity;
+    this.bookerTrolleyFunc(midasCode, quantity);
+  }
+
+  bookerTrolleyFunc = (midasCode, quantity, supplierId = 0) => {
+    if (this.timeoutProducts[midasCode] !== null) {
+      clearTimeout(this.timeoutProducts[midasCode]);
+    }
+    this.timeoutProducts[midasCode] = setTimeout((midasCode, quantity) => {
+      UpdateTrolley2(midasCode,  quantity, supplierId);
+    }, 500, midasCode, quantity);
+  }
+}*/
+
+class ProductCardList extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  template = () => `
+  <style>
+    * {
+      font-family: 'Lato';
+    }
+
+    .productCardList {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 19% !important;
+          flex: 0 0 19% !important;
+  max-width: 19%;
+}
+
+    .card {
+      margin: 0 .25em;
+      box-shadow: 2px 6px 15px 0 rgba(22, 22, 26, 0.18);
+      border: none;
+    }
+    .booker, .booker:hover {
+      background: #2356AA;
+      color: #fff;
+      border: 0;  
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .rrp, .por {
+      font-weight: 700;
+      color: #676767;
+    }
+    
+    .addToList {
+      font-size: 0.7rem;
+    }
+
+    [id*='productCardListQuantity'] {
+      width: 3rem;
+    }
+
+     @media (max-width: 1140px) {
+            .productCardList {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 24% !important;
+          flex: 0 0 24% !important;
+  max-width: 24%;
+}
+      }
+
+       @media (max-width: 992px) {
+            .productCardList {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 32% !important;
+          flex: 0 0 32% !important;
+  max-width: 32%;
+      }
+
+
+      @media (max-width: 768px) {
+            .productCardList {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100% !important;
+          flex: 0 0 100% !important;
+  max-width: 100%;
+}
+      }
+
+  </style>
+  <div class="my-3">
+    <div class="d-flex flex-wrap">
+    ${this.products.data.map((p, key) => `
+    
+      <div class="card p-3 my-3 text-center rounded productCardList" id="productCardList_${this.products.id}_${key}_${p.midascode}">
+        <div class="card-title m-0">
+          <span class="font-weight-bold">${p.midascode}</span>
+        </div>
+        <img src=${p.image} class="my-3" />
+        <div class="row my-3">
+          <div class="col-12">
+            <span class="font-weight-bold">${p.title}</span>
+          </div>
+        </div>
+        <div class="d-flex flex-row my-3">
+          <div class="col p-0">
+            <span class="font-weight-bold">${p.volume}</span>
+          </div>
+          <div class="col p-0">
+            <span class="font-weight-bold price">&pound;${p.price}</span>
+          </div>
+        </div>
+        <div class="d-flex flex-row my-3">
+          <div class="col p-0">
+            <a href="/Products/ShoppingList/AddProduct?productCode=${p.midascode}&returnUrl=${window.location.href}" class="addToList"><img class="list-img imagenIni ml-auto" src="https://www.booker.co.uk/images/list-alt.png" alt="box"> Add to List</a>
+          </div>
+          <div class="col p-0">
+            <span class="rrp">RRP: ${p.rrp}</span>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-6 offset-6 p-0">
+            <span class="por">POR: ${p.por}%</span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <div class="btn rounded-circle booker plus-minus-icon productCardListMinus" id="${p.midascode}">
+            <i class="fas fa-minus"></i>
+          </div>
+          <input type="number" maxlength="3" class="form-control text-center mx-2 p-0 productCardListProducts" id="${this.products.id}_productCardListQuantity_${key}" value=${p.quantity} />
+           <div class="btn rounded-circle booker plus-minus-icon productCardListPlus" id="${p.midascode}">
+            <i class="fas fa-plus"></i>
+          </div>
+        </div>
+      </div>
+
+    `).join('')}
   </div>
 </div>
     `;
