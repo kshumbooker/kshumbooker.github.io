@@ -434,31 +434,40 @@ class ProductCardList extends HTMLElement {
     }
 
      @media (max-width: 1140px) {
-            .productCardList {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 24% !important;
-          flex: 0 0 24% !important;
-  max-width: 24%;
-}
+      .productCardList {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 24% !important;
+        flex: 0 0 24% !important;
+        max-width: 24%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .productCardList {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 32% !important;
+        flex: 0 0 32% !important;
+        max-width: 32%;
       }
 
-       @media (max-width: 992px) {
-            .productCardList {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 32% !important;
-          flex: 0 0 32% !important;
-  max-width: 32%;
-      }
 
-
-      @media (max-width: 768px) {
-            .productCardList {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100% !important;
-          flex: 0 0 100% !important;
-  max-width: 100%;
-}
+    @media (max-width: 768px) {
+      .productCardList {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 48% !important;
+        flex: 0 0 48% !important;
+        max-width: 48%;
       }
+    }
+
+    @media (max-width: 576px) {
+      .productCardList {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100%;
+      }
+    }
 
   </style>
   <div class="my-3">
