@@ -3,6 +3,12 @@
   font-weight: 700;  
 }
 
+.findMoreAvailabilityUrl {
+  color: #2356AA;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
 .PrintProductListUngroup .product-table-col {
   padding: 1em 1em;
 }
