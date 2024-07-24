@@ -103,8 +103,9 @@ if (page.includes('rep-orders')) {
     /* product information contains RTS stock locator, need to pass the product to the component */
     if (page.includes('product-information')) {
 
+        let stock = randomStockLevel();
         let stockLevelDiv = document.createElement('div');
-        stockLevelDiv.innerHTML = `<stock-label data-stocklevel="${randomStockLevel()}"></stock-label>`;
+        stockLevelDiv.innerHTML = `<stock-label data-stocklevel="${stock.level}" data-stocklevel-bgcolor="${stock.color}"></stock-label>`;
 
         let product = document.querySelectorAll('.product-main');
         let midasCode = product[0].children[0].innerText;
@@ -182,11 +183,20 @@ if (page.includes('rep-orders')) {
 
 
         let stockLevelDivMobile = document.createElement('div');
-        stockLevelDivMobile.classList.add('row', 'd-flex', 'position-absolute', 'fixed-bottom', 'p-0');
-        stockLevelDivMobile.innerHTML = `<stock-label data-stocklevel="${randomStockLevel()}"></stock-label>`;
+        stockLevelDivMobile.classList.add('row', 'd-inline-block', 'position-absolute', 'fixed-bottom', 'p-0');
+        stockLevelDivMobile.innerHTML = `<stock-label data-stocklevel="${stock.level}" data-stocklevel-bgcolor="${stock.color}">`;
+
+        let findMoreAvailabilityUrlMobile = document.createElement('a');
+        findMoreAvailabilityUrlMobile.classList.add('findMoreAvailabilityUrl');
+        findMoreAvailabilityUrlMobile.text = `Find More Availability`;
+        findMoreAvailabilityUrlMobile.href = `#`;
+        findMoreAvailabilityUrlMobile.addEventListener('click', findMoreAvailabilityToggle);
+        
+        stockLevelDivMobile.appendChild(findMoreAvailabilityUrlMobile);
 
         productMobile[0].children[0].lastElementChild.after(stockLevelDivMobile);
-        productMobile[0].children[1].children[3].classList.add('my-2');
+        productMobile[0].children[1].children[3].classList.add('my-3');
+
     }
 
 
