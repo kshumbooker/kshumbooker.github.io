@@ -32,7 +32,7 @@ lon: -0.2641662
 {
 id: 329,
 name: 'Luton',
-distance: 25.00,
+distance: 25.02,
 isOpened: true,
 open: 'Monday 9:00AM',
 close: '6:00PM',
@@ -152,7 +152,7 @@ lon: 1.7131574
 
 ];
 
-const products = [
+const productsData = [
 {
   midascode: 286632,
   description: 'Just Cookit BBQ Pork Rack of Ribs 450g',
@@ -179,6 +179,35 @@ const products = [
     {
       id: 533,
       quantity: 0
+    }
+  ]
+},
+{
+  midascode: '056177',
+  description: 'Turkey Butterfly Breast',
+  volume: 'Case of 1',
+  price: 6.49,
+  type: 'Chilled',
+  stock: [
+    {
+      id: 316,
+      quantity: 24
+    },
+    {
+      id: 329,
+      quantity: 55
+    },
+    {
+      id: 503,
+      quantity: 4
+    },
+    {
+      id: 266,
+      quantity: 0
+    },
+    {
+      id: 533,
+      quantity: 33
     }
   ]
 },
@@ -409,6 +438,17 @@ class AddToNote extends HTMLElement {
   }
 }
 
+class StockStatusFilter extends HTMLElement {
+  constructor() {
+    super();
+    this.filter = this.getAttribute('data-stock-status-filter');
+  }
+  
+  connectedCallback() {
+    this.innerHTML = `<span class="text-center mw-100 d-inline-block stockStatusFilter text-white py-1 px-2 rounded mr-2 my-2" value="${this.filter}">${this.filter} <i class="fas fa-solid fa-plus"></i></span>`;
+  }
+}
+
 class StockLabel extends HTMLElement {
   constructor() {
     super();
@@ -417,73 +457,144 @@ class StockLabel extends HTMLElement {
   }
 
   connectedCallback() {
-    this.innerHTML = `<div class="row stockLevel text-center"><div class="col p-0"><span style="background: ${this.bgcolor}" class="text-center mw-100 d-inline-block text-white py-1 px-2 rounded my-2 stockLevel">${this.status}</span></div></div>`; 
+    this.innerHTML = `<div class="row stockLevel"><div class="col p-0"><span style="background: ${this.bgcolor}" class="text-center mw-100 d-inline-block text-white py-1 px-2 rounded my-2 stockLevel">${this.status}</span></div></div>`; 
   }
 }
 
-class NoStockMenu extends HTMLElement {
+class FindMoreAvailability extends HTMLElement {
   constructor() {
     super();
-    this.branches = JSON.parse(this.getAttribute('data-branches'));
-    this.products = JSON.parse(this.getAttribute('data-products'));
   }
 
-  connectedCallback() {
-    this.innerHTML = `
-    <div class="container no-stock-menu booker text-white h-100 p-3" id="no-stock-menu">
+  template = () => 
+    `
+    <style>
+    #find-more-availability.booker, .stockStatusFilter {
+  background: #2356AA;
+}
+
+#find-more-availability a, #find-more-availability .form-control {
+  font-size: 0.8rem;
+  color: #2356AA;
+}
+
+#find-more-availability .closeFilters, .closeFilters, .filterBranches, stock-status-filter {
+  font-size: 0.625rem;
+  cursor: pointer;
+}
+
+
+#find-more-availability {
+  color: #2356AA;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.8rem;
+  z-index: 1500;
+}
+
+#find-more-availability .btn, #find-more-availability .btn:hover {
+  background-color: #00BDF7;
+  color: white;
+}
+
+#find-more-availability .lozenge {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.findBranchesIcon {
+   margin-left: -0.2rem;
+}
+
+@media (min-width: 576px) {
+    .container {
+      max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+  #find-more-availability {  
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 767.9px) {
+  #find-more-availability {
+    width: 100%;
+  }
+}
+    </style>
+    <div class="container d-none find-more-availability booker text-white p-3" id="find-more-availability">
 <div class="row">
-  <div class="col-10">
-    <p>Branches with Stock Available for Collection</p>
-    <p>${this.products[0].description} (${this.products[0].volume})</p>
+  <div class="col-10 p-0">
+    <h5>Branches with Stock Available for Collection</h5>
+    <h6>${this.product.description} (${this.product.volume})</h6>
   </div>
   <div class="col-2">
-    <button type="button" class="close text-white" aria-label="Close">
+    <button type="button" class="close closeFindMoreAvailability text-white" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 </div>
 <div class="row">
   <div class="col-8 p-0">
-    <input type="text" class="form-control" placeholder="Enter postcode or location">
+    <div class="input-group">
+      <input type="text" class="form-control border-0" placeholder="Enter postcode or location">
+        <span class="input-group-text findBranchesIcon bg-white border-0 rounded-right"><i class="fas fa-solid fa-location-crosshairs"></i></span>
+    </div>
   </div>
   <div class="col-4 p-0">
-    <a href="#" class="btn bg-primary d-block">Find Branches</a>
+    <a href="#" class="btn bluebutton d-inline-block float-right">Find Branches</a>
   </div>
 </div>
-<div class="container m-3">
-  <div class="row filters">
-    <div class="col-8">
+<div class="container p-0 my-3">
+  <div class="row">
+    <div class="col-8 filterBy">
       
     </div>
-    <div class="col-4">
-      Filter Branches <i class="fa-solid fa-sliders border p-1"></i>
+    <div class="col-4 text-right">
+      Filter Branches <i class="fas fa-solid fa-sliders border p-1 filterBranches"></i>
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row availableFilters">
-    <div class="col-12">
-      <b>Available Filters</b>
-
+<div class="container p-0 bg-light text-dark availableFilters">
+  <div class="row my-2 p-2 text-dark bg-white">
+    <div class="col-12 p-0">
+      <div class="row">
+        <div class="col-8 p-0">
+          <strong>Available Filters</strong>
+        </div>
+        <div class="col-4 p-0">
+          <span class="close closeFilters">Close (X)</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 p-0">
+          ${this.filters.map(filter => `<stock-status-filter data-stock-status-filter="${filter.status.toUpperCase()}"></stock-status-filter>`).join('')}
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div class="container p-0" id="branches">
-  ${this.products[0].stock.map((product) => 
-    this.branches.map((branch) => product.id == branch.id ? `
-  <div class="row mt-2 p-3 text-dark bg-white">
+  ${this.product.stock.map((productBranch) => 
+    this.branches.map((branch) => productBranch.id == branch.id ? `
+  <div class="row my-2 p-2 text-dark bg-white">
     <div class="col-12 p-0">
       <div class="row text-left">
     <div class="col-8 p-0">
       <a href="#" class="font-weight-bold">BOOKER ${branch.name.toUpperCase()}</a>
     </div>
     <div class="col-4 text-center">
-      <p><b>${branch.distance} Miles</b></p>
+      <span class="distance"><b>${branch.distance} Miles</b></span>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 p-0">${branch.isOpened ? `<span class="lozenge bg-success"></span> <b>Open</b> until ${branch.close}` : `<span class="lozenge bg-danger"></span> <b>Closed</b>. Opens ${branch.open} `}</div>
-    <div class="col-4">${product.quantity > 10 ? `<span class="bg-success d-block text-center text-white">IN STOCK</span>` : product.quantity > 0 && product.quantity <= 5 ? `<span class="bg-warning d-block text-center text-white">LOW STOCK</span>` : `<span class="bg-secondary d-block text-center text-white">NO STOCK</span>`}</div>
+    <div class="col-8 p-0">${branch.isOpened ? `<span class="lozenge bg-success align-middle"></span> <b>Open</b> until ${branch.close}` : `<span class="lozenge bg-danger align-middle"></span> <b>Closed</b>. Opens ${branch.open} `}</div>
+    <div class="col-4 text-center">${productBranch.quantity > 10 ? `<stock-label data-stocklevel="IN STOCK"></stock-label>` : productBranch.quantity > 0 && productBranch.quantity <= 5 ? `<stock-label data-stocklevel="LOW STOCK"></stock-label>` : `<stock-label data-stocklevel="NO STOCK"></stock-label>`}</div>
   </div> 
  </div> 
 </div>    
@@ -495,16 +606,49 @@ class NoStockMenu extends HTMLElement {
 </div>
 <div class="row">
   <div class="col-12 p-0">
-    <a href="#" class="btn d-block p-3 w-100 bg-primary">Close Menu</a>
+    <a href="#" class="btn d-inline-block p-3 w-100 closeFindMoreAvailabilityMenu bluebutton">Close Menu</a>
   </div>
 </div>
 </div>
     `;
+
+  connectedCallback() {
+    this.midascode = this.getAttribute('data-midascode');
+    this.productKey = Object.keys(productsData).find(key => productsData[key].midascode == this.midascode);
+    this.product = productsData[this.productKey];
+    this.branches = branches;
+    this.filters = filters;
+    this.render();
   }
+
+  render() {
+    this.innerHTML = `${this.template().trim()}`;
+
+    const toggleElement = (className) => {
+      this.querySelector(className).classList.toggle('d-none');
+    }
+
+    const filterBy = (filter) => {
+      this.querySelector('.filterBy').innerHTML += `<stock-status-filter data-stock-status-filter="${filter}"></stock-status-filter>`;
+    }
+
+    this.querySelector('.closeFilters').addEventListener('click', () => {toggleElement('.availableFilters')});
+    this.querySelector('.filterBranches').addEventListener('click', () => {toggleElement('.availableFilters')});
+    this.querySelector('.closeFindMoreAvailability').addEventListener('click', () => {toggleElement('.find-more-availability')});
+    this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
+    const stockStatusFilters = this.querySelectorAll('stock-status-filter');
+    [...stockStatusFilters].map(filter => filter.addEventListener('click', () => {filterBy(filter.filter)}));
+  
+  }
+
+  
+
+  
 }
 
 
 customElements.define('add-to-list', AddToList);
 customElements.define('add-to-note', AddToNote);
-customElements.define('no-stock-menu', NoStockMenu);
+customElements.define('find-more-availability', FindMoreAvailability);
 customElements.define('stock-label', StockLabel);
+customElements.define('stock-status-filter', StockStatusFilter);
