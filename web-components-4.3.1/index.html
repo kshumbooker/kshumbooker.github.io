@@ -2,54 +2,77 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="image/x-icon" href="//www.booker.co.uk/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.booker.co.uk/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Booker web components - shop by brand</title>
-    <link rel="stylesheet" href="https://www.booker.co.uk/bundles/css?v=aOWVYmxHytJpv983HLrHB4UQSThXGXzBi-hPkwNmCCs1">
-    <link rel="stylesheet" href="https://www.booker.co.uk/css/facia/booker.css?v=2.1.9.0" />
+    <link rel="stylesheet" href="https://www.booker.co.uk/bundles/css?v=Nrg0BxlmargcCrFzQeKrPKs91VtXzSlushF_UUamKAg1">
+
+    <link rel="stylesheet" href="https://www.booker.co.uk/css/facia/booker.css?v=2.2.33.0" />
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    <link href="https://www.booker.co.uk/css/externalpage-v2.css" rel="stylesheet" />
+    <link href="https://www.booker.co.uk/css/create-an-account.css" rel="stylesheet" />
+
+    <script src="https://www.booker.co.uk/bundles/js?v=7j7OKaMd4yj6_B0wdk_KwEDigj2I4CW2F5G764ZMP0U1"></script>
+
     <style>
-      .shop-by-brand-container {max-width: 1400px; margin: 0 auto;} 
-      .shop-by-brand-container > .container { max-width: 100%;}
+    .shop-by-brand-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .shop-by-brand-container > .container {
+      max-width: 100%;
+    }
     </style>
+
     <script defer src="./app.js"></script>
     <script defer src="./components.js"></script>
   </head>
   <body>
-    <div class="container sitecore-container">
-      <div class="container py-3 text-center">
-        <img src="//assets-global.website-files.com/61f27d3474c2ef62975a0106/61f27d3474c2ef78475a0118_Booker%20logo.svg" width="200" />
-      </div>
-  <div class="container">
-    <product-card-list-carousel
-        data-brand="CostaCoffee"
-      ></product-card-list-carousel>
-  </div>
+    <div class="container" style="background: #000; height: 100px; color: #fff;"><h4>Container outside of shop by brand container</h4></div>
 
-  <div class="container">    
+    <div class="container shop-by-brand-container">
+    <div class="container py-3 text-center">
+      <img src="//assets-global.website-files.com/61f27d3474c2ef62975a0106/61f27d3474c2ef78475a0118_Booker%20logo.svg" width="200" />
+    </div>
+  
+
+    <div class="container">
       <product-card-list-carousel
         data-brand="CocaCola"
       ></product-card-list-carousel>
-  </div>
-
-  <div class="container">
-      <product-card-list-carousel
-        data-brand="Relentless"
-      ></product-card-list-carousel>
-  </div>
-      <hr>
-
-<div class="container">
-    <product-card-list
-    data-brand="CostaCoffee"
-  ></product-card-list>
-
 </div>
 
 <div class="container">
+  <product-card-list-carousel
+        data-brand="CostaCoffee"
+      ></product-card-list-carousel>
+</div>
+
+<div class="container">
+      <product-card-list-carousel
+        data-brand="CocaCola"
+      ></product-card-list-carousel>
+</div>
+
+<div class="container">
+      <product-card-list-carousel
+        data-brand="Relentless"
+      ></product-card-list-carousel>
+</div>
+      <hr>
+
+<div class="container">      
   <product-card-list
+    data-brand="CostaCoffee"
+  ></product-card-list>
+</div>
+
+<div class="container">
+<product-card-list
     data-brand="Relentless"
   ></product-card-list>
 </div>
@@ -67,9 +90,9 @@
   ></product-card-list>
 </div>
 
-    <hr>
+  <hr>
 
-<div class="container">      
+  <div class="container">
       <info-card-a
         id="info-card-a"
         data-heading="[TITLE] SEASONAL PROMOTION BANNER"
@@ -85,10 +108,10 @@
         data-textSize="20px"
         data-textColor="#808080"
       ></info-card-a>
-</div>
+  </div>
     <hr>
 
-<div class="container">
+  <div class="container">
     <info-card-b
       id="info-card-b"
       data-heading="[TITLE] Jack Daniels & Coca Cola"
@@ -105,10 +128,10 @@
       data-cardBgColor="#989898"
       data-centralTextBgColor="#DCDCDC"
     ></info-card-b>
-</div>
+  </div>
     <hr>
-
-<div class="container">
+     
+    <div class="container">
     <product-card
       id="product-card"
       data-description="Coca-Cola Zero Sugar"
@@ -122,17 +145,9 @@
       data-quantity="0"
     ></product-card>
 </div>
-
-      
-     <!-- <product-card-list-carousel
-        id="product-card-list-carousel"
-        data-brand="coca-cola"
-      ></product-card-list-carousel> -->
-
       <hr>
-
-
-<div class="container">      
+    
+  <div class="container">
     <link-to-shop
       id="link-to-shop"
       data-image="https://www.booker.co.uk/-/media/Images/BRP-Supplier-Income/NP4/NP4-NPD3-BRP-Redbull.jpg?h=318&iar=0&w=1600&hash=1800385F19ADADD5DB07685873C5183D"
@@ -140,10 +155,10 @@
       data-url="https://www.redbull.com/gb-en/energydrink/red-bull-pink-edition"
       data-alt="Red Bull Pink Edition"
     ></link-to-shop>
-</div>
+  </div>  
     <hr>
-
-<div class="container">
+   
+    <div class="container">
     <hero-banner-a
       id="hero-banner-a"
       data-image="https://static.thcdn.com/images/xlarge/webp/widgets/190-en/09/Coca-cola-banner-1920x700-073909.png"
@@ -152,10 +167,10 @@
       data-btn-color="#636363"
       data-btn-bg-color="#f4af00"
       ></hero-banner-a>
-</div>
+    </div>
       <hr>
-
-<div class="container">
+    
+    <div class="container">
       <hero-banner-b
         id="hero-banner-b"
         data-image = 'https://static.thcdn.com/images/xlarge/webp/widgets/190-en/57/original-Brands_Banner_Desktop_1920_x_586-020057.png';
@@ -169,23 +184,24 @@
         data-textBgColor = '#ffffff';
         data-buttonUrl = 'https://www.yourcoca-cola.co.uk/contact-us.list';
         data-buttonFontColor = '#ffffff';
-        data-buttonBgColor = '#000000';  
+        data-buttonBgColor = '#000000';
+        data-opacity = '0.5';
       ></hero-banner-b>
-</div>
+    </div>
       <hr>
-
-
-<div class="container">
+    
+    <div class="container">
       <hero-banner-carousel 
         id="hero-banner-carousel"
         data-arrowColor="#cccccc"
         data-arrowBgColor="#ffffff"
         data-arrowShow="true"
       ></hero-banner-carousel>
-</div>
-      <hr>
+    </div>
 
-<div class="container">
+      <hr>
+    
+    <div class="container"> 
       <image-card
         id="image-card"
         data-url="https://www.yourcoca-cola.co.uk/shop.list?pageNumber=1&facetFilters=en_brand_content:Coca-Cola+Original+Taste"
@@ -194,11 +210,10 @@
         data-fontColor="#ffffff"
         data-buttonBgColor="#000000"
       ></image-card>
-</div>
+    </div>
       <hr>
-
-
-<div class="container">
+    
+  <div class="container">
     <custom-button
       id="custom-button"
       data-text="Shop all Coca-Cola products"
@@ -206,7 +221,7 @@
       data-fontColor="#000000"
       data-buttonBgColor="#48a832"
     ></custom-button>
-</div>
+  </div>
     <hr>
 
   <div class="container">
@@ -215,17 +230,17 @@
       data-image="https://static.thcdn.com/images/xlarge/webp/widgets/190-en/19/original-ABBA_Brand_Page_Banner_1-012219.png"
       data-alt="Absolut Vodka"
     ></hero-image>
-  </div>
+  </div>  
     <hr>
-
-<div class="container">
+    
+  <div class="container">
     <sub-page-navigation
       id="sub-page-navigation"
     ></sub-page-navigation>
-</div>
+  </div>
     <hr>
-
-<div class="container">
+    
+  <div class="container">
     <product-category
       id="product-category"
       data-text="Baileys Absolut Vodka & Sprite"
@@ -234,27 +249,28 @@
       data-fontColor="#f8f8f8"
       data-bgColor="#000000"
     ></product-category>
-</div>
+  </div>
     <hr>
-
-<div class="container">
+    
+  <div class="container">
     <custom-heading
       id="custom-heading"
       data-heading="Shop products"
       data-fontColor="#d3d3d3"
       data-fontSize="48px"
     ></custom-heading>
-</div>
+  </div>
     <hr>
-
-<div class="container">
+    
+    <div class="container">
     <product-categories 
       id="product-categories"
     ></product-categories>
-</div>
+  </div>
+
     <hr>
 
-<div class="container">
+  <div class="container">
     <standard-copy
       id="standard-copy"
       data-heading="Shop your favourites"
@@ -264,20 +280,22 @@
       data-textSize="14px"
       data-textColor="#000000"
     ></standard-copy>
-</div>
+  </div>
 
-<div class="container">
+    <hr>
+
+  <div class="container">   
     <link-to-shop-search
       id="link-to-shop-search"
       data-headingText="Browse our range of Mixers & Soft Drinks"
       data-img="https://cdn.worldvectorlogo.com/logos/schweppes-4.svg"
+      data-url="https://www.yourcoca-cola.co.uk/brands/schweppes.list"
       data-urlText="Visit Schweppes Store"
     ></link-to-shop-search>
-</div>
-    
+  </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </div>
-  </body>
+  </div>
+</body>
 </html>
