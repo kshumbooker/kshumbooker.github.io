@@ -66,8 +66,8 @@ main#booker_orderT .colMode .product-list .product .shop .shopping .fa-star {
     margin-left: 1.25rem;
   }
 
-  .stockLevel {
-    margin-left: 0.5rem;
+  .mobileAddNoteStock {
+    column-gap: 1rem;;
   }
 
   .SubCategoriesRow .rowMode .product-list .product .shopping .add-note {
