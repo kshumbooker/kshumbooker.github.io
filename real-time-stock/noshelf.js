@@ -270,7 +270,7 @@ if (page.includes('rep-orders')) {
 
         //add d-flex to the div which is going to contain the add to note icon and stock level, and the add to note icon to replace the Add Note link, otherwise just add the stock without the note
         if (mobileProductNode.parentElement.dataset.showNote == 'True') {
-            mobileProductNode.classList.add('d-flex', 'align-items-center'); 
+            mobileProductNode.classList.add('d-flex', 'align-items-center', 'mobileAddNoteStock'); 
             mobileProductNode.innerHTML = `<add-to-note></add-to-note>`;
             mobileProductNode.innerHTML += stockLevelDivMobile.innerHTML;
         } else {
