@@ -107,7 +107,8 @@ if (page.includes('rep-orders')) {
         let stockLevelDiv = document.createElement('div');
         stockLevelDiv.innerHTML = `<stock-label data-stocklevel="${stock.level}" data-stocklevel-bgcolor="${stock.color}"></stock-label>`;
 
-        let midasCode = product[0].children[0].innerText;
+        let productDetails = document.querySelectorAll('.product-main');
+        let midasCode = productDetails[0].children[0].innerText;
 
         let findMoreAvailability = document.createElement('div');
         findMoreAvailability.innerHTML = `<find-more-availability data-midascode=${midasCode}></find-more-availability>`;
