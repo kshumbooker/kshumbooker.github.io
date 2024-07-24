@@ -1,3 +1,26 @@
+function mockRandomStockLevel() {
+    
+  let stockLevels = [
+    {
+      level: 'IN STOCK',
+      color: '#51AF39'
+    },
+    {
+      level: 'LOW STOCK',
+      color: '#EE8E1B'
+    },
+    {
+      level: 'NO STOCK',
+      color: '#808080'
+    },
+  ];
+  let stock = Math.floor(Math.random() * stockLevels.length);
+  return stockLevels[stock];
+}
+
+
+
+
 const branches = [
   {
     id: 503,
@@ -412,6 +435,8 @@ const filters = [
 ];
 
 
+
+
 branches.sort((a, b) => a.distance - b.distance);
 
 /*let noStockMenuContainer = document.getElementById('rts-no-stock-menu');
@@ -594,11 +619,11 @@ class FindMoreAvailability extends HTMLElement {
   </div>
   <div class="row">
     <div class="col-8 p-0">${branch.isOpened ? `<span class="lozenge bg-success align-middle"></span> <b>Open</b> until ${branch.close}` : `<span class="lozenge bg-danger align-middle"></span> <b>Closed</b>. Opens ${branch.open} `}</div>
-    <div class="col-4 text-center">${productBranch.quantity > 10 ? `<stock-label data-stocklevel="IN STOCK"></stock-label>` : productBranch.quantity > 0 && productBranch.quantity <= 5 ? `<stock-label data-stocklevel="LOW STOCK"></stock-label>` : `<stock-label data-stocklevel="NO STOCK"></stock-label>`}</div>
+    <div class="col-4 text-center"><stock-label data-stocklevel="${mockRandomStockLevel().level}" data-stocklevel-bgcolor="${mockRandomStockLevel().color}"></stock-label></div>
   </div> 
  </div> 
 </div>    
-` : '').join("")).join("")}
+` : '').join('')).join('')}
 <div class="row mt-2 mb-5">
   <div class="col-12 p-0">
     <a href="#" class="btn d-block p-3 w-100 bg-light text-dark">Show more branches</a>
