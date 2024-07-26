@@ -23,7 +23,7 @@ const branches = [{
   id: 503,
   name: 'Kettering',
   distance: 20.92,
-  isOpened: true,
+  status: 'OPEN',
   open: 'Monday 8:30AM',
   close: '3:00PM',
   lat: 52.4090884,
@@ -33,7 +33,7 @@ const branches = [{
   id: 266,
   name: 'Northampton',
   distance: 30.13,
-  isOpened: false,
+  status: 'OPEN',
   open: 'Monday 10:00AM',
   close: '4:00PM',
   lat: 52.2481206,
@@ -43,7 +43,7 @@ const branches = [{
   id: 316,
   name: 'Peterborough',
   distance: 2.51,
-  isOpened: true,
+  status: 'CLOSED',
   open: 'Tuesday 9:00AM',
   close: '5:00PM',
   lat: 52.5548845,
@@ -53,7 +53,7 @@ const branches = [{
   id: 329,
   name: 'Luton',
   distance: 25.02,
-  isOpened: true,
+  status: 'OPEN',
   open: 'Monday 9:00AM',
   close: '6:00PM',
   lat: 51.9220378,
@@ -63,17 +63,17 @@ const branches = [{
   id: 533,
   name: 'Bedford',
   distance: 26.52,
-  isOpened: false,
+  status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '7:00PM',
   lat: 52.1487477,
   lon: -0.4228694
 },
 {
-  id: 533,
+  id: 544,
   name: 'Cambridge',
   distance: 28.53,
-  isOpened: true,
+  status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.1958316,
@@ -83,7 +83,7 @@ const branches = [{
   id: 144,
   name: 'Great Yarmouth',
   distance: 123.00,
-  isOpened: true,
+  status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.6111495,
@@ -93,7 +93,7 @@ const branches = [{
   id: 305,
   name: 'Rugby',
   distance: 123.00,
-  isOpened: true,
+  status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.3735393,
@@ -103,7 +103,7 @@ const branches = [{
   id: 191,
   name: 'Warwick',
   distance: 123.00,
-  isOpened: true,
+  status: 'OPEN',
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.2894239,
@@ -113,7 +113,7 @@ const branches = [{
   id: 302,
   name: 'Coventry',
   distance: 123.00,
-  isOpened: true,
+  status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.4087804,
@@ -123,7 +123,7 @@ const branches = [{
   id: 331,
   name: 'Nuneaton',
   distance: 123.00,
-  isOpened: true,
+  status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.5041024,
@@ -133,7 +133,7 @@ const branches = [{
   id: 337,
   name: 'Birmingham Stirchley',
   distance: 123.00,
-  isOpened: true,
+  status: 'OPEN',
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.4342477,
@@ -143,7 +143,7 @@ const branches = [{
   id: 380,
   name: 'Wolverhampton',
   distance: 123.00,
-  isOpened: true,
+  status: 'OPEN',
   open: 'Monday 9:45AM',
   close: '2:00PM',
   lat: 52.56988,
@@ -153,7 +153,7 @@ const branches = [{
   id: 190,
   name: 'Tamworth',
   distance: 123.00,
-  isOpened: true,
+  status: 'CLOSED',
   open: 'Monday 9:45AM',
   close: '2:00PM',
   lat: 52.6386645,
@@ -163,7 +163,7 @@ const branches = [{
   id: 354,
   name: 'Saltley',
   distance: 123.00,
-  isOpened: true,
+  status: 'OPEN',
   open: 'Monday 9:30AM',
   close: '2:00PM',
   lat: 52.4913606,
@@ -173,7 +173,7 @@ const branches = [{
   id: 369,
   name: 'Ardwick',
   distance: 123.00,
-  isOpened: true,
+  status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 53.4688535,
@@ -183,7 +183,7 @@ const branches = [{
   id: 109,
   name: 'Gorton',
   distance: 123.00,
-  isOpened: false,
+  status: 'OPEN',
   open: 'Monday 9:00AM',
   close: '7:00PM',
   lat: 53.4694801,
@@ -193,7 +193,7 @@ const branches = [{
   id: 276,
   name: 'Stockport',
   distance: 123.00,
-  isOpened: true,
+  status: 'OPEN',
   open: 'Monday 8:00AM',
   close: '5:00PM',
   lat: 53.4062751,
@@ -203,7 +203,7 @@ const branches = [{
   id: 570,
   name: 'Manchester Makro',
   distance: 123.00,
-  isOpened: true,
+  status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '4:30PM',
   lat: 53.4630919,
@@ -213,7 +213,7 @@ const branches = [{
   id: 260,
   name: 'Middleton',
   distance: 123.00,
-  isOpened: false,
+  status: 'OPEN',
   open: 'Monday 7:30AM',
   close: '4:00PM',
   lat: 53.5650443,
@@ -471,7 +471,7 @@ const filters = [
   status: 'Low Stock',
 },
 {
-  status: 'Out of Stock'
+  status: 'No Stock'
 },
 {
   status: 'Open'
@@ -505,10 +505,11 @@ class StockStatusFilter extends HTMLElement {
   constructor() {
     super();
     this.filter = this.getAttribute('data-stock-status-filter');
+    this.active = this.getAttribute('data-filter-active');
   }
   
   connectedCallback() {
-    this.innerHTML = `<span class="text-center mw-100 d-inline-block stockStatusFilter text-white py-1 px-2 rounded mr-2 my-2" value="${this.filter}">${this.filter} <i class="fas fa-solid fa-plus"></i></span>`;
+    this.innerHTML = `<span class="text-center mw-100 d-inline-block stockStatusFilter text-white py-1 px-2 rounded mr-2 my-2" value="${this.filter}">${this.filter} ${this.active == true ? `<i class="fas fa-solid fa-minus"></i>` : '<i class="fas fa-solid fa-plus"></i>'}</span>`;
   }
 }
 
@@ -635,32 +636,31 @@ class FindMoreAvailability extends HTMLElement {
       </div>
       <div class="row">
         <div class="col-12 p-0">
-          ${this.filters.map(filter => `<stock-status-filter data-stock-status-filter="${filter.status.toUpperCase()}"></stock-status-filter>`).join('')}
+          ${this.filters.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter="${filter.status.toUpperCase()}" data-filter-active="false"></stock-status-filter>`).join('')}
         </div>
       </div>
     </div>
   </div>
 </div>
 <div class="container p-0" id="branches">
-  ${this.product.stock.map((productBranch, index) =>
-    this.branches.map((branch) => productBranch.id == branch.id ? `
+  ${this.productBranch.map((productBranch, index) => `
   <div class="row my-2 p-2 text-dark bg-white ${index < 4 ? '' : 'showBranchesHide d-none' }">
     <div class="col-12 p-0">
       <div class="row text-left">
     <div class="col-8 p-0">
-      <a href="#" class="font-weight-bold">BOOKER ${branch.name.toUpperCase()}</a>
+      <a href="#" class="font-weight-bold">BOOKER ${productBranch.name.toUpperCase()}</a>
     </div>
     <div class="col-4 text-center">
-      <span class="distance"><b>${branch.distance} Miles</b></span>
+      <span class="distance"><b>${productBranch.distance} Miles</b></span>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 p-0">${branch.isOpened ? `<span class="lozenge bg-success align-middle"></span> <b>Open</b> until ${branch.close}` : `<span class="lozenge bg-danger align-middle"></span> <b>Closed</b>. Opens ${branch.open} `}</div>
+    <div class="col-8 p-0">${productBranch.status == 'OPEN' ? `<span class="lozenge bg-success align-middle"></span> <b>Open</b> until ${productBranch.close}` : `<span class="lozenge bg-danger align-middle"></span> <b>Closed</b>. Opens ${productBranch.open} `}</div>
     <div class="col-4 text-center"><stock-label data-stocklevel="${productBranch.level}" data-stocklevel-bgcolor="${productBranch.color}"></stock-label></div>
   </div> 
  </div> 
 </div>    
-` : '').join('')).join('')}
+`).join('')}
 <div class="row mt-2 mb-5">
   <div class="col-12 p-0">
     <a href="#" class="btn d-block p-3 w-100 bg-light text-dark findMoreAvailabilityShowMore">Show more branches</a>
@@ -679,12 +679,20 @@ class FindMoreAvailability extends HTMLElement {
     this.productKey = Object.keys(productsData).find(key => productsData[key].midascode == this.midascode);
     this.product = productsData[this.productKey];
     this.branches = branches;
+    this.productBranch = [];
     this.product.stock.map((product) => {
       let stock = mockStockLevel();
       product.level = stock.level;
-      product.color = stock.color;
+      product.color = stock.color; 
+      this.branches.map(branch => {
+        if (product.id == branch.id) {
+          this.productBranch.push({...product, ...branch});
+        }
+      });
     });
+
     this.filters = filters;
+    this.filtersHolder = [];
     this.render();
   }
 
@@ -696,7 +704,30 @@ class FindMoreAvailability extends HTMLElement {
     }
 
     const filterBy = (filter) => {
-      this.querySelector('.filterBy').innerHTML += `<stock-status-filter data-stock-status-filter="${filter}"></stock-status-filter>`;
+      if (!this.filtersHolder.includes(filter.filter)) {
+        this.filtersHolder.push(filter.filter);
+        this.querySelector('.filterBy').innerHTML += `<stock-status-filter class="stock-status-filter" data-stock-status-filter="${filter.filter}" data-filter-active="true"></stock-status-filter>`;
+      }
+      let productBranch = [];
+      this.product.stock.map(product => 
+        this.branches.map(branch => {
+          if (product.id == branch.id) {
+            productBranch.push({...product, ...branch});
+          }
+        })
+      );
+
+
+      let filteredProductBranch = productBranch.filter(product => {
+          return (this.filtersHolder.includes(product.level) && this.filtersHolder.includes(product.status)) || this.filtersHolder.includes(product.level) || this.filtersHolder.includes(product.status);
+        }
+      );
+
+      this.productBranch = filteredProductBranch;
+
+      this.render();
+      this.querySelector('#find-more-availability').classList.remove('d-none');
+
     }
 
     this.querySelector('.closeFilters').addEventListener('click', () => {toggleElement('.availableFilters')});
@@ -705,8 +736,7 @@ class FindMoreAvailability extends HTMLElement {
     this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
     this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {toggleElement('.showBranchesHide')});
     const stockStatusFilters = this.querySelectorAll('stock-status-filter');
-    [...stockStatusFilters].map(filter => filter.addEventListener('click', () => {filterBy(filter.filter)}));
-  
+    [...stockStatusFilters].map(filter => filter.addEventListener('click', () => {filterBy(filter)}));
   }
 }
 
