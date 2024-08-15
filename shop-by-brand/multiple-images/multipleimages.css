@@ -42,6 +42,10 @@
     }
 
     @media (max-width: 768px) {
+        .mz-thumb:only-child {
+            display: none;
+        }
+
         .mz-thumb img {
             max-width: 75px;
         }
@@ -69,3 +73,4 @@
             max-width: 35px;
         }
     }
+
