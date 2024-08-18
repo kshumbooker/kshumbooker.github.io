@@ -1,0 +1,156 @@
+h1, h2, h3, .self-serve--content-container label {
+  color: #253494;
+  font-weight: 700;
+}
+
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.self-serve---delete-beneficiary-popup-content > label {
+  color: #000;
+}
+
+.self-serve-table--delete-button {
+  background: #72AD4C !important;
+}
+
+.self-serve-table--cancel-button {
+  background: #ced4db !important;
+}
+
+.self-serve---delete-beneficiary-popup, .self-serve---delete-popup {
+  background: #fff;
+  border: 15px solid #ccc;
+  border-radius: 0;
+}
+
+.self-serve--section .self-serve--disabled-field p, .self-serve--section .self-serve--disabled-field label, .self-serve--section .self-serve--field label, .btn.self-serve--cancel-btn {
+  font-size: 14px !important;
+}
+
+.viewChangeModal label {
+  color: #000;
+  font-weight: 900;
+  padding: 0;
+}
+
+.self-serve--tooltip-icon[data-open="false"] .self-serve--tooltip-content {
+  display: none;
+}
+
+.self-serve--tooltip-content {
+  position: absolute;
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  border: 1px solid var(--tooltip-text);
+  min-width: 337px;
+  max-width: 337px;
+  padding: 10px;
+  z-index: 10;
+  top: 40px;
+  left: -20px;
+  font-size: var(--small);
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+.self-serve--tooltip-triangle {
+  position: absolute;
+  width: 25px;
+  height: 13px;
+  background-color: var(--tooltip-text);
+  clip-path: polygon(50% 35%, 0% 100%, 100% 100%);
+  top: -13px;
+  left: 16px;
+}
+
+.self-serve--tooltip-triangle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -11px;
+  clip-path: polygon(50% 35%, 0% 100%, 100% 100%);
+  width: 47px;
+  height: 20px;
+  background-color: var(--tooltip-bg);
+}
+
+
+.viewChange, .futureChange, .cancelChange {
+  padding: 5px;
+}
+
+.self-serve--content-container {
+  color: #253494;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+
+.self-serve-page-title {
+  color: #253494;
+  font-weight: 700;
+}
+
+
+.self-serve--cancel-change-btn, .self-serve--cancel-change-btn:active, .self-serve--cancel-change-btn:focus {
+  background-color: #F24726;
+  border-radius: 0;
+  border: none;
+  color: #fff;
+  font-size: 12px !important;
+  padding: 5px;
+}
+
+.self-serve--section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.self-serve--cancel-change-btn:hover {
+  background-color: #999;
+  color: #000;
+}
+
+.self-serve--account-btn {
+  background-color: #00BDF7;
+  color: #fff;
+}
+
+.yourchanges-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.modal-content {
+  border: 15px solid #ccc;
+  border-radius: 0;
+}
+
+.modal-content > .modal-header, .modal-footer {
+  border: 0;
+}
+
+@media (max-width: 768px) {
+
+  .self-serve--tooltip-content {
+    width: 100vw !important;
+    min-width: calc(100vw - 30px) !important;
+    max-width: calc(100vw - 30px) !important;
+    left: 0;
+  }
+
+  .self-serve--section .self-serve--disabled-field, .self-serve--disabled-field {
+    flex-direction: row;
+  }
+
+  .self-serve--cancel-change-btn, .self-serve--cancel-change-btn:active, .self-serve--cancel-change-btn:focus {
+    font-size: 12px;
+  }
+}
