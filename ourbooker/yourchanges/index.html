@@ -16,14 +16,15 @@
     <link rel="stylesheet" href="https://www.ourbooker.co.uk/css/OurBooker/bootstrap-grid.css" />
     <link rel="stylesheet" href="https://www.ourbooker.co.uk/css/OurBooker/base.css" />
     <link rel="stylesheet" href="https://www.ourbooker.co.uk/css/OurBooker/custom.css?v=1.0.1" />
+
     <link rel="stylesheet" href="https://www.ourbooker.co.uk/css/OurBooker/custom-components.css" />
     <link rel="stylesheet" href="https://www.ourbooker.co.uk/css/OurBooker/self-serve.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./yourchanges.css" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <link rel="stylesheet" href="./yourchanges.css" />
 
     <!-- scripts -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d24ac1d9-0917-4f14-847b-be52c018c867" data-blockingmode="auto" type="text/javascript"></script>
@@ -243,14 +244,17 @@
                     <div class="self-serve--disabled-field align-items-center">
                       <label for="#address" class="col-12 col-lg-3 p-0"> Address </label>
                       <p class="col-xs-12 col-sm-8 col-lg-6 p-0"><i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i>
-                      <i class="fa-solid fa-calendar-days futureChange"></i>
+                       <!--  -->
+                       <span class="self-serve--tooltip-icon" data-open="false" data-content="Future Dated 22/09/2024">
+                        <i class="fa-solid fa-calendar-days futureChange"></i>
+                        <span class="self-serve--tooltip-content">
+                          <span class="self-serve--tooltip-triangle"></span>
+                   
+                        </span>
+                      </span>
+                      
                        63 Leamington Road, Leomin... </p>
                       <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-lg-3 cancelChange">Cancel Change</button>
-                      <!--<div class="self-serve--tooltip-content">
-                        <div class="self-serve--tooltip-triangle"></div>
-                          Future Dated to 22/09/2024
-                      </div>-->
-                    </div>
                   </section>
                   <section class="self-serve--section">
                     <div class="self-serve--disabled-field align-items-center">
