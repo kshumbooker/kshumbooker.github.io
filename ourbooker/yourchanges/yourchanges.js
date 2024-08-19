@@ -3,7 +3,6 @@ let viewChanges = document.querySelectorAll('.viewChange');
 let futureChanges = document.querySelectorAll('.futureChange');
 [...cancelChanges].map(cancel => cancel.addEventListener('click', () => cancelViewChange()));
 [...viewChanges].map(view => view.addEventListener('click', () => openViewChange()));
-[...futureChanges].map(future => future.addEventListener('mouseover', () => hoverFutureChange(future)));
 
 
 const cancelViewChange = () => {
@@ -16,8 +15,4 @@ const closeViewChange = () => {
 
 const openViewChange = () => {
   document.querySelector('.viewChangeModal').classList.remove('d-none');
-}
-
-const hoverFutureChange = (future) => {
-   
 }
