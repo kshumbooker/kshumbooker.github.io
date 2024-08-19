@@ -30,6 +30,10 @@ h1, h2, h3, .self-serve--content-container label {
   font-size: 14px !important;
 }
 
+.self-serve--tooltip-icon---svg  {
+  display: none;
+}
+
 .viewChangeModal label {
   color: #000;
   font-weight: 900;
@@ -42,41 +46,17 @@ h1, h2, h3, .self-serve--content-container label {
 
 .self-serve--tooltip-content {
   position: absolute;
-  background-color: var(--tooltip-bg);
-  color: var(--tooltip-text);
-  border: 1px solid var(--tooltip-text);
-  min-width: 337px;
-  max-width: 337px;
-  padding: 10px;
-  z-index: 10;
-  top: 40px;
-  left: -20px;
-  font-size: var(--small);
-  font-weight: 400;
-  line-height: normal;
+  background-color: #E7F0FE;
+  color: #2356AA;
+  border: 1px solid #2356AA;
+  max-width: 75% !important;
 }
 
 
 .self-serve--tooltip-triangle {
-  position: absolute;
-  width: 25px;
-  height: 13px;
-  background-color: var(--tooltip-text);
-  clip-path: polygon(50% 35%, 0% 100%, 100% 100%);
-  top: -13px;
-  left: 16px;
+  background-color: #2356AA;
 }
 
-.self-serve--tooltip-triangle::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -11px;
-  clip-path: polygon(50% 35%, 0% 100%, 100% 100%);
-  width: 47px;
-  height: 20px;
-  background-color: var(--tooltip-bg);
-}
 
 
 .viewChange, .futureChange, .cancelChange {
@@ -140,10 +120,8 @@ i:hover {
 @media (max-width: 768px) {
 
   .self-serve--tooltip-content {
-    width: 100vw !important;
-    min-width: calc(100vw - 30px) !important;
-    max-width: calc(100vw - 30px) !important;
-    left: 0;
+    min-width: 50% !important;
+    max-width: 75% !important;
   }
 
   .self-serve--section .self-serve--disabled-field, .self-serve--disabled-field {
