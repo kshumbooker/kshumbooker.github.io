@@ -233,23 +233,18 @@ const productsData = [
   stock: [
     {
       id: 316,
-      quantity: 50
     },
     {
       id: 329,
-      quantity: 20
     },
     {
       id: 503,
-      quantity: 3
     },
     {
       id: 266,
-      quantity: 100
     },
     {
-      id: 533,
-      quantity: 0
+      id: 533
     }
   ]
 },
@@ -324,24 +319,19 @@ const productsData = [
   type: 'Chilled',
   stock: [
     {
-      id: 316,
-      quantity: 0
+      id: 316
     },
     {
-      id: 329,
-      quantity: 0
+      id: 329
     },
     {
-      id: 503,
-      quantity: 2
+      id: 503
     },
     {
-      id: 266,
-      quantity: 33
+      id: 266
     },
     {
-      id: 533,
-      quantity: 1
+      id: 533
     }
   ]
 },
@@ -353,24 +343,19 @@ const productsData = [
   type: 'Frozen',
   stock: [
     {
-      id: 316,
-      quantity: 4
+      id: 316
     },
     {
-      id: 329,
-      quantity: 0
+      id: 329
     },
     {
-      id: 503,
-      quantity: 33
+      id: 503
     },
     {
-      id: 266,
-      quantity: 0
+      id: 266
     },
     {
-      id: 533,
-      quantity: 55
+      id: 533
     }
   ]
 },
@@ -382,24 +367,19 @@ const productsData = [
   type: 'Ambient',
   stock: [
     {
-      id: 316,
-      quantity: 22
+      id: 316
     },
     {
-      id: 329,
-      quantity: 22
+      id: 329
     },
     {
-      id: 503,
-      quantity: 2
+      id: 503
     },
     {
-      id: 266,
-      quantity: 28
+      id: 266
     },
     {
-      id: 533,
-      quantity: 44
+      id: 533
     }
   ]
 },
@@ -411,24 +391,19 @@ const productsData = [
   type: 'Ambient',
   stock: [
     {
-      id: 316,
-      quantity: 9
+      id: 316
     },
     {
-      id: 329,
-      quantity: 100
+      id: 329
     },
     {
-      id: 503,
-      quantity: 200
+      id: 503
     },
     {
-      id: 266,
-      quantity: 2
+      id: 266
     },
     {
-      id: 533,
-      quantity: 4
+      id: 533
     }
   ]
 },
@@ -440,24 +415,19 @@ const productsData = [
   type: 'Chilled',
   stock: [
     {
-      id: 316,
-      quantity: 4
+      id: 316
     },
     {
-      id: 329,
-      quantity: 69
+      id: 329
     },
     {
-      id: 503,
-      quantity: 20
+      id: 503
     },
     {
-      id: 266,
-      quantity: 3
+      id: 266
     },
     {
-      id: 533,
-      quantity: 4
+      id: 533
     }
   ]
 }
@@ -465,25 +435,39 @@ const productsData = [
 
 const filters = [
 {
-  status: 'In Stock'
+  category: 'level',
+  name: 'IN STOCK',
+  active: false
 },
 {
-  status: 'Low Stock',
+  category: 'level',
+  name: 'LOW STOCK',
+  active: false
 },
 {
-  status: 'No Stock'
+  category: 'level',
+  name: 'NO STOCK',
+  active: false
 },
 {
-  status: 'Open'
+  category: 'status',
+  name: 'OPEN',
+  active: false
 },
 {
-  status: 'Closed'
+  category: 'status',
+  name: 'CLOSED',
+  active: false
 },
 {
-  status: 'Retail'
+  category: 'business',
+  name: 'RETAIL',
+  active: false
 },
 {
-  status: 'Catering'
+  category: 'business',
+  name: 'CATERING',
+  active: false
 }
 ];
 
@@ -504,12 +488,13 @@ class AddToNote extends HTMLElement {
 class StockStatusFilter extends HTMLElement {
   constructor() {
     super();
-    this.filter = this.getAttribute('data-stock-status-filter');
-    this.active = this.getAttribute('data-filter-active');
+    this.name = this.getAttribute('data-stock-status-filter-name');
+    this.active = this.getAttribute('data-stock-status-filter-active');
+    this.category = this.getAttribute('data-stock-status-filter-category');
   }
   
   connectedCallback() {
-    this.innerHTML = `<span class="text-center mw-100 d-inline-block stockStatusFilter text-white py-1 px-2 rounded mr-2 my-2" value="${this.filter}">${this.filter} ${this.active == true ? `<i class="fas fa-solid fa-minus"></i>` : '<i class="fas fa-solid fa-plus"></i>'}</span>`;
+    this.innerHTML = `<span class="text-center mw-100 d-inline-block stockStatusFilter text-white py-1 px-2 rounded mr-2 my-2" value="${this.name}">${this.name} ${this.active == 'true' ? `<i class="fas fa-solid fa-minus"></i>` : '<i class="fas fa-solid fa-plus"></i>'}</span>`;
   }
 }
 
@@ -524,7 +509,6 @@ class StockLabel extends HTMLElement {
     this.innerHTML = `<div class="row stockLevel"><div class="col p-0"><span style="background: ${this.bgcolor}" class="text-center mw-100 d-inline-block text-white py-1 px-2 rounded my-2 stockLevel">${this.status}</span></div></div>`; 
   }
 }
-
 
 class FindMoreAvailability extends HTMLElement {
   constructor() {
@@ -807,8 +791,6 @@ class FindMoreAvailability extends HTMLElement {
   }
   
 }
-
-
 
 
 customElements.define('add-to-list', AddToList);
