@@ -525,16 +525,24 @@ class StockLabel extends HTMLElement {
   }
 }
 
+
 class FindMoreAvailability extends HTMLElement {
   constructor() {
     super();
+    
   }
 
   template = () => 
     `
     <style>
-    #find-more-availability.booker, .stockStatusFilter {
+    #find-more-availability.booker {
   background: #2356AA;
+}
+
+.stockStatusFilter {
+  background: #4A5DA8;
+  border-radius: 2px;
+  border: 1px solid white;
 }
 
 #find-more-availability a, #find-more-availability .form-control {
@@ -610,15 +618,15 @@ class FindMoreAvailability extends HTMLElement {
     </div>
   </div>
   <div class="col-4 p-0">
-    <a href="#" class="btn bluebutton d-inline-block float-right">Find Branches</a>
+    <a href="#" class="btn bluebutton d-block ml-2">Find Branches</a>
   </div>
 </div>
 <div class="container p-0 my-3">
   <div class="row">
-    <div class="col-8 filterBy">
-      
+    <div class="col-8 filterByInFlight p-0">
+      ${this.filtersHolder.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter-name="${filter.name}" data-stock-status-filter-active="${filter.active}" data-stock-status-filter-category="${filter.category}"></stock-status-filter>`).join('')}
     </div>
-    <div class="col-4 text-right">
+    <div class="col-4 text-right p-0">
       Filter Branches <i class="fas fa-solid fa-sliders border p-1 filterBranches"></i>
     </div>
   </div>
@@ -636,13 +644,13 @@ class FindMoreAvailability extends HTMLElement {
       </div>
       <div class="row">
         <div class="col-12 p-0">
-          ${this.filters.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter="${filter.status.toUpperCase()}" data-filter-active="false"></stock-status-filter>`).join('')}
+          ${this.filters.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter-name="${filter.name}" data-stock-status-filter-category="${filter.category}" data-stock-status-filter-active="${filter.active}"></stock-status-filter>`).join('')}
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="container p-0" id="branches">
+<div class="container p-0" id="filteredBranches">
   ${this.productBranch.map((productBranch, index) => `
   <div class="row my-2 p-2 text-dark bg-white ${index < 4 ? '' : 'showBranchesHide d-none' }">
     <div class="col-12 p-0">
@@ -678,56 +686,34 @@ class FindMoreAvailability extends HTMLElement {
     this.midascode = this.getAttribute('data-midascode');
     this.productKey = Object.keys(productsData).find(key => productsData[key].midascode == this.midascode);
     this.product = productsData[this.productKey];
-    this.branches = branches;
     this.productBranch = [];
+    this.filteredProductBranch = [];
     this.product.stock.map((product) => {
       let stock = mockStockLevel();
       product.level = stock.level;
       product.color = stock.color; 
-      this.branches.map(branch => {
+      branches.map(branch => {
         if (product.id == branch.id) {
           this.productBranch.push({...product, ...branch});
         }
       });
     });
 
+    this.productBranchFull = [...this.productBranch];
+
+
     this.filters = filters;
+
     this.filtersHolder = [];
     this.render();
   }
 
+  
+
   render() {
     this.innerHTML = `${this.template().trim()}`;
-
     const toggleElement = (className) => {
       this.querySelectorAll(className).length > 1 ? [...this.querySelectorAll(className)].map(c => c.classList.toggle('d-none')) : this.querySelector(className).classList.toggle('d-none');
-    }
-
-    const filterBy = (filter) => {
-      if (!this.filtersHolder.includes(filter.filter)) {
-        this.filtersHolder.push(filter.filter);
-        this.querySelector('.filterBy').innerHTML += `<stock-status-filter class="stock-status-filter" data-stock-status-filter="${filter.filter}" data-filter-active="true"></stock-status-filter>`;
-      }
-      let productBranch = [];
-      this.product.stock.map(product => 
-        this.branches.map(branch => {
-          if (product.id == branch.id) {
-            productBranch.push({...product, ...branch});
-          }
-        })
-      );
-
-
-      let filteredProductBranch = productBranch.filter(product => {
-          return (this.filtersHolder.includes(product.level) && this.filtersHolder.includes(product.status)) || this.filtersHolder.includes(product.level) || this.filtersHolder.includes(product.status);
-        }
-      );
-
-      this.productBranch = filteredProductBranch;
-
-      this.render();
-      this.querySelector('#find-more-availability').classList.remove('d-none');
-
     }
 
     this.querySelector('.closeFilters').addEventListener('click', () => {toggleElement('.availableFilters')});
@@ -736,9 +722,93 @@ class FindMoreAvailability extends HTMLElement {
     this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
     this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {toggleElement('.showBranchesHide')});
     const stockStatusFilters = this.querySelectorAll('stock-status-filter');
-    [...stockStatusFilters].map(filter => filter.addEventListener('click', () => {filterBy(filter)}));
+    [...stockStatusFilters].map(f => f.addEventListener('click', () => {this.filterBy(f)}));
   }
+
+  filterBy = (f) => {
+    let filterActive = f.getAttribute('data-stock-status-filter-active');
+    let filterName = f.getAttribute('data-stock-status-filter-name');
+    let filterCategory = f.getAttribute('data-stock-status-filter-category');
+
+    if (!this.filtersHolder.find(f => f.name == filterName) && filterActive == 'false') {
+      this.filtersHolder.push({
+        name: filterName,
+        category: filterCategory,
+        active: 'true'         
+      });
+    } else {
+      this.filtersHolder = this.filtersHolder.filter(f => f.name != filterName);
+    }
+
+
+    /* values stored in this array can be level, status and business */
+    let filterCategories = Array.from(new Set(this.filtersHolder.map(f => f.category)));
+
+
+    /*  this.filteredProductBranch = this.productBranchFull.filter(product => {
+        for (let i = 0; i < this.filtersHolder.length; i++) {
+          if (this.filtersHolder[i].name == product[filterCategories]) {
+            return true;
+          }
+        }
+       });
+    */
+    
+  if (filterCategories.includes('level') && filterCategories.length == 1) {
+    this.filteredProductBranch = this.productBranchFull.filter(product => {
+      for (let i = 0; i < this.filtersHolder.length; i++) {
+        if (this.filtersHolder[i].name == product.level) {
+          return true;
+        }
+      }
+    });
+  }
+  
+  if (filterCategories.includes('status') && filterCategories.length == 1) {
+    this.filteredProductBranch = this.productBranchFull.filter(product => {
+      for (let i = 0; i < this.filtersHolder.length; i++) {
+        if (this.filtersHolder[i].name == product.status) {
+          return true;
+        }
+      }
+    });
+  }
+
+  if (filterCategories.includes('level') && filterCategories.length > 1) {
+    this.filteredProductBranch = this.filteredProductBranch.filter(product => {
+      for (let i = 0; i < this.filtersHolder.length; i++) {
+        if (this.filtersHolder[i].name == product.level) {
+          return true;
+        }
+      }
+    });
+  }
+ 
+  if (filterCategories.includes('status') && filterCategories.length > 1) {
+    this.filteredProductBranch = this.filteredProductBranch.filter(product => {
+      for (let i = 0; i < this.filtersHolder.length; i++) {
+        if (this.filtersHolder[i].name == product.status) {
+          return true;
+        }
+      }
+    });
+  }
+
+
+  
+
+  
+
+  
+    this.productBranch = this.filtersHolder.length > 0 ? this.filteredProductBranch : this.productBranchFull;
+
+    this.render();
+    this.querySelector('#find-more-availability').classList.remove('d-none');
+  }
+  
 }
+
+
 
 
 customElements.define('add-to-list', AddToList);
