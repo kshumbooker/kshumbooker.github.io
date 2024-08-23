@@ -20,6 +20,10 @@ h1, h2, h3, .self-serve--content-container label {
   background: #ced4db !important;
 }
 
+header.self-serve-page-title {
+  margin-bottom: 0;
+}
+
 .self-serve---delete-beneficiary-popup, .self-serve---delete-popup {
   background: #fff;
   border: 15px solid #ccc;
@@ -27,7 +31,7 @@ h1, h2, h3, .self-serve--content-container label {
 }
 
 .self-serve--section .self-serve--disabled-field p, .self-serve--section .self-serve--disabled-field label, .self-serve--section .self-serve--field label, .btn.self-serve--cancel-btn {
-  font-size: 14px !important;
+  font-size: 16px !important;
 }
 
 .self-serve--tooltip-icon---svg  {
@@ -57,10 +61,25 @@ h1, h2, h3, .self-serve--content-container label {
   background-color: #2356AA;
 }
 
+.self-serve--section .self-serve--disabled-field, .self-serve--disabled-field {
+  margin-bottom: 0;
+}
 
 
 .viewChange, .futureChange, .cancelChange {
-  padding: 5px;
+  padding: 3px;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+p, label {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.viewChange {
+  border: 2px solid #253494;
+  border-radius: 50%; 
 }
 
 .self-serve--content-container {
@@ -83,8 +102,8 @@ i:hover {
   border-radius: 0;
   border: none;
   color: #fff;
-  font-size: 12px !important;
   padding: 5px;
+  font-size: 12px;
 }
 
 .self-serve--section {
