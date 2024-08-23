@@ -1,21 +1,49 @@
 
     #multipleImagesPanel {
-        padding-top: 10px;
-        padding-left: 15px;
         display: flex;
-        flex-direction: column;
-        float: left;
+        flex-direction: row;
+        justify-content: center;
     }
 
-    #multipleImagesPanelMobile {
-        display: none;
+
+    .multi-icon.left {
+        left: 0%;
     }
 
+    .multi-icon.right {
+        right: 0%;
+    }
+
+  
     a[data-zoom-id] img, .mz-thumb img {
-        border: 2px solid #ccc;
-        border-radius: 5px;
+        border: 4px solid #f1f1f1;
     }
 
+    .mz-thumb.mz-thumb-selected img {
+      border: 5px solid #EBC292;
+    }
+
+    main#product_detail .product-images .product-image {
+        border: 0;
+    }
+
+    .multi-icon {
+        cursor: pointer;
+        position: absolute;
+        display: inline-block;
+        color: #2356AA;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+    }
+
+    
+
+    .disabled {
+        pointer-events: none;
+        cursor: default;
+        opacity: .2;
+    }
 
     .mz-thumb {
         padding: 5px;
@@ -26,51 +54,39 @@
         display: none;
     }
 
-    .mz-thumb img {
-        max-width: 100px;
+    .mz-thumb:nth-child(n + 6) {
+        display: none;
     }
 
-    .mz-thumb.mz-thumb-selected img {
-        border: 5px solid #EBC292;
-        border-radius: 5px;
-    }
 
-    @media (max-width: 992px) {
+    @media (max-width: 1200px) {
         .mz-thumb img {
-            max-width: 75px;
+            width: 39px;
+            max-width: 39px;
+        }
+        .multi-icon.left {
+            left: -5%;
         }
     }
 
     @media (max-width: 768px) {
-        .mz-thumb:only-child {
-            display: none;
+     
+        a[data-zoom-id]:focus img, .mz-thumb:focus img, .mz-thumb img {
+            padding: 5px;
+            background: #d9d9d9;
+            border-radius: 50%;
+            width: 5px;
+            height: 5px;           
         }
 
-        .mz-thumb img {
-            max-width: 75px;
+        .mz-thumb-selected img {
+            background: #EBC292;
         }
 
-        #multipleImagesPanel {
-            display: none;
-        }
-
-        #multipleImagesPanelMobile {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            padding: 15px 0 15px 0;            
+        main#product_detail .product-images .product-image img {
+            height: 0%;
+            width: 0%;
         }
     }
 
-    @media (max-width: 576px) {
-        .mz-thumb img {
-            max-width: 50px;
-        }
-    }
-
-    @media (max-width: 380px) {
-        .mz-thumb img {
-            max-width: 35px;
-        }
-    }
 
