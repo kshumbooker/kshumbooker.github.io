@@ -556,7 +556,7 @@ class StockStatusFilter extends HTMLElement {
   }
   
   connectedCallback() {
-    this.innerHTML = `<span class="text-center mw-100 d-inline-block stockStatusFilter text-white py-1 px-2 rounded mr-2 my-2" value="${this.name}">${this.name} ${this.active == 'true' ? `<i class="fas fa-solid fa-minus"></i>` : '<i class="fas fa-solid fa-plus"></i>'}</span>`;
+    this.innerHTML = `<span class="text-center mw-100 d-inline-block stockStatusFilter text-white py-1 px-2 rounded mr-2 my-2" value="${this.name}">${this.name} ${this.active == 'true' ? `<i class="fas fa-solid fa-xmark pl-1"></i>` : '<i class="fas fa-solid fa-plus pl-1"></i>'}</span>`;
   }
 }
 
@@ -644,7 +644,7 @@ class FindMoreAvailability extends HTMLElement {
   }
 }
     </style>
-    <div class="container d-none find-more-availability booker text-white p-3" id="find-more-availability">
+    <div class="container slide-right find-more-availability booker text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -717,7 +717,7 @@ class FindMoreAvailability extends HTMLElement {
 `).join('')}
 <div class="row mt-2 mb-5">
   <div class="col-12 p-0">
-    <a href="#" class="btn d-block p-3 w-100 bg-light text-dark findMoreAvailabilityShowMore">Show more branches</a>
+    <a href="#" class="btn d-block p-3 w-100 bg-light text-dark findMoreAvailabilityShowMore">Show more branches <span class="showMoreBranchesChevron collapsed"><i class="fa-solid fa-chevron-up"></i></span></a>
   </div>
 </div>
 <div class="row">
@@ -747,7 +747,6 @@ class FindMoreAvailability extends HTMLElement {
 
     this.productBranchFull = [...this.productBranch];
 
-
     this.filters = filters;
 
     this.filtersHolder = [];
@@ -769,6 +768,19 @@ class FindMoreAvailability extends HTMLElement {
     this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {toggleElement('.showBranchesHide')});
     const stockStatusFilters = this.querySelectorAll('stock-status-filter');
     [...stockStatusFilters].map(f => f.addEventListener('click', () => {this.filterBy(f)}));
+
+    const filterByInFlight = this.querySelectorAll('.filterByInFlight > stock-status-filter');
+
+
+    [...filterByInFlight].map(inFlight => {
+      let name = inFlight.getAttribute('data-stock-status-filter-name');
+      let availableFilters = this.querySelectorAll('.availableFilters stock-status-filter');
+      [...availableFilters].map(available => {
+        if (available.name == name) {
+          available.classList.add('d-none');  
+        }
+      })
+    });
   }
 
   filterBy = (f) => {
@@ -790,12 +802,16 @@ class FindMoreAvailability extends HTMLElement {
     let filterCategories = Array.from(new Set(this.filtersHolder.map(f => f.category)));
 
     this.filterData(filterCategories);
+
   
     this.productBranch = this.filtersHolder.length > 0 ? this.filteredProductBranch : this.productBranchFull;
 
     this.render();
     this.querySelector('#find-more-availability').classList.remove('d-none');
   }
+
+
+  
 
   filterData = (categories) => {
     categories.map(category => {
@@ -806,13 +822,14 @@ class FindMoreAvailability extends HTMLElement {
             return true;
           }
           if (this.filtersHolder[i].name == product[category]) {
-            return true;``
+            return true;
           }
         }
       });
     });
-    
+
   }  
+
 }
 
 
