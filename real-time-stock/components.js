@@ -1,3 +1,5 @@
+
+
 function mockStockLevel() {
     
   let stockLevels = [
@@ -27,7 +29,10 @@ const branches = [{
   open: 'Monday 8:30AM',
   close: '3:00PM',
   lat: 52.4090884,
-  lon: -0.7196247
+  lon: -0.7196247,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 266,
@@ -37,7 +42,10 @@ const branches = [{
   open: 'Monday 10:00AM',
   close: '4:00PM',
   lat: 52.2481206,
-  lon: -1.1024259
+  lon: -1.1024259,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 316,
@@ -47,7 +55,10 @@ const branches = [{
   open: 'Tuesday 9:00AM',
   close: '5:00PM',
   lat: 52.5548845,
-  lon: -0.2641662
+  lon: -0.2641662,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 329,
@@ -57,7 +68,10 @@ const branches = [{
   open: 'Monday 9:00AM',
   close: '6:00PM',
   lat: 51.9220378,
-  lon: -1.6340446
+  lon: -1.6340446,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 533,
@@ -67,7 +81,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '7:00PM',
   lat: 52.1487477,
-  lon: -0.4228694
+  lon: -0.4228694,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 544,
@@ -77,7 +94,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.1958316,
-  lon: 0.164765
+  lon: 0.164765,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 144,
@@ -87,7 +107,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.6111495,
-  lon: 1.7131574
+  lon: 1.7131574,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 305,
@@ -97,7 +120,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.3735393,
-  lon: -1.2856324
+  lon: -1.2856324,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 191,
@@ -107,7 +133,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.2894239,
-  lon: -1.59197
+  lon: -1.59197,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 302,
@@ -117,7 +146,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.4087804,
-  lon: -1.5005229
+  lon: -1.5005229,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 331,
@@ -127,7 +159,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.5041024,
-  lon: -1.4765309
+  lon: -1.4765309,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 337,
@@ -137,7 +172,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 52.4342477,
-  lon: -1.9190637
+  lon: -1.9190637,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 380,
@@ -147,7 +185,10 @@ const branches = [{
   open: 'Monday 9:45AM',
   close: '2:00PM',
   lat: 52.56988,
-  lon: -2.1053074
+  lon: -2.1053074,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 190,
@@ -157,7 +198,10 @@ const branches = [{
   open: 'Monday 9:45AM',
   close: '2:00PM',
   lat: 52.6386645,
-  lon: -1.7083861
+  lon: -1.7083861,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 354,
@@ -167,7 +211,10 @@ const branches = [{
   open: 'Monday 9:30AM',
   close: '2:00PM',
   lat: 52.4913606,
-  lon: -1.863292
+  lon: -1.863292,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 369,
@@ -177,7 +224,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '2:00PM',
   lat: 53.4688535,
-  lon: -2.2197266
+  lon: -2.2197266,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 109,
@@ -187,7 +237,10 @@ const branches = [{
   open: 'Monday 9:00AM',
   close: '7:00PM',
   lat: 53.4694801,
-  lon: -2.1759099
+  lon: -2.1759099,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 276,
@@ -197,7 +250,10 @@ const branches = [{
   open: 'Monday 8:00AM',
   close: '5:00PM',
   lat: 53.4062751,
-  lon: -2.1913884
+  lon: -2.1913884,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 },
 {
   id: 570,
@@ -207,7 +263,10 @@ const branches = [{
   open: 'Monday 7:45AM',
   close: '4:30PM',
   lat: 53.4630919,
-  lon: -2.3974046
+  lon: -2.3974046,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: [],
+  smallBusinessService: ['PRODUCT_RANGE', 'CLICK_&_COLLECT']
 },
 {
   id: 260,
@@ -217,7 +276,10 @@ const branches = [{
   open: 'Monday 7:30AM',
   close: '4:00PM',
   lat: 53.5650443,
-  lon: -2.166097
+  lon: -2.166097,
+  caterersServices: ['PRODUCT_RANGE', 'DELIVERY', 'CLICK_&_COLLECT'],
+  retailersServices: ['PRODUCT_RANGE', 'DELIVERY'],
+  smallBusinessService: ['PRODUCT_RANGE', 'DELIVERY']
 }
 ];
 
@@ -461,12 +523,12 @@ const filters = [
 },
 {
   category: 'business',
-  name: 'RETAIL',
+  name: 'RETAILER',
   active: false
 },
 {
   category: 'business',
-  name: 'CATERING',
+  name: 'CATERER',
   active: false
 }
 ];
@@ -724,72 +786,33 @@ class FindMoreAvailability extends HTMLElement {
       this.filtersHolder = this.filtersHolder.filter(f => f.name != filterName);
     }
 
-
     /* values stored in this array can be level, status and business */
     let filterCategories = Array.from(new Set(this.filtersHolder.map(f => f.category)));
 
-
-    /*  this.filteredProductBranch = this.productBranchFull.filter(product => {
-        for (let i = 0; i < this.filtersHolder.length; i++) {
-          if (this.filtersHolder[i].name == product[filterCategories]) {
-            return true;
-          }
-        }
-       });
-    */
-    
-  if (filterCategories.includes('level') && filterCategories.length == 1) {
-    this.filteredProductBranch = this.productBranchFull.filter(product => {
-      for (let i = 0; i < this.filtersHolder.length; i++) {
-        if (this.filtersHolder[i].name == product.level) {
-          return true;
-        }
-      }
-    });
-  }
-  
-  if (filterCategories.includes('status') && filterCategories.length == 1) {
-    this.filteredProductBranch = this.productBranchFull.filter(product => {
-      for (let i = 0; i < this.filtersHolder.length; i++) {
-        if (this.filtersHolder[i].name == product.status) {
-          return true;
-        }
-      }
-    });
-  }
-
-  if (filterCategories.includes('level') && filterCategories.length > 1) {
-    this.filteredProductBranch = this.filteredProductBranch.filter(product => {
-      for (let i = 0; i < this.filtersHolder.length; i++) {
-        if (this.filtersHolder[i].name == product.level) {
-          return true;
-        }
-      }
-    });
-  }
- 
-  if (filterCategories.includes('status') && filterCategories.length > 1) {
-    this.filteredProductBranch = this.filteredProductBranch.filter(product => {
-      for (let i = 0; i < this.filtersHolder.length; i++) {
-        if (this.filtersHolder[i].name == product.status) {
-          return true;
-        }
-      }
-    });
-  }
-
-
-  
-
-  
-
+    this.filterData(filterCategories);
   
     this.productBranch = this.filtersHolder.length > 0 ? this.filteredProductBranch : this.productBranchFull;
 
     this.render();
     this.querySelector('#find-more-availability').classList.remove('d-none');
   }
-  
+
+  filterData = (categories) => {
+    categories.map(category => {
+      let data = (categories.length == 1) ? this.productBranchFull : this.filteredProductBranch;
+      this.filteredProductBranch = data.filter(product => {
+        for (let i = 0; i < this.filtersHolder.length; i++) {
+          if ((this.filtersHolder[i].name == 'RETAILER' || this.filtersHolder[i].name == 'CATERER') && product[this.filtersHolder[i].name.toLowerCase() + 'sServices'].length > 0) {
+            return true;
+          }
+          if (this.filtersHolder[i].name == product[category]) {
+            return true;``
+          }
+        }
+      });
+    });
+    
+  }  
 }
 
 
