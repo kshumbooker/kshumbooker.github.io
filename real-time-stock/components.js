@@ -644,7 +644,7 @@ class FindMoreAvailability extends HTMLElement {
   }
 }
     </style>
-    <div class="container slide-right find-more-availability booker text-white p-3" id="find-more-availability">
+    <div class="container slide-right find-more-availability booker text-white p-3 d-none" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
