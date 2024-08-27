@@ -1,5 +1,3 @@
-
-
 function mockStockLevel() {
     
   let stockLevels = [
@@ -581,8 +579,10 @@ class FindMoreAvailability extends HTMLElement {
   template = () => 
     `
     <style>
-    #find-more-availability.booker {
+
+#find-more-availability.booker {
   background: #2356AA;
+ 
 }
 
 .stockStatusFilter {
@@ -594,6 +594,7 @@ class FindMoreAvailability extends HTMLElement {
 #find-more-availability a, #find-more-availability .form-control {
   font-size: 0.8rem;
   color: #2356AA;
+  border-radius: 0;
 }
 
 #find-more-availability .closeFilters, .closeFilters, .filterBranches, stock-status-filter {
@@ -624,6 +625,7 @@ class FindMoreAvailability extends HTMLElement {
 
 .findBranchesIcon {
    margin-left: -0.2rem;
+   border-radius: 0;
 }
 
 @media (min-width: 576px) {
@@ -644,7 +646,7 @@ class FindMoreAvailability extends HTMLElement {
   }
 }
     </style>
-    <div class="container slide-right find-more-availability booker text-white p-3 d-none" id="find-more-availability">
+    <div class="container slide-right find-more-availability booker text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -660,7 +662,7 @@ class FindMoreAvailability extends HTMLElement {
   <div class="col-8 p-0">
     <div class="input-group">
       <input type="text" class="form-control border-0" placeholder="Enter postcode or location">
-        <span class="input-group-text findBranchesIcon bg-white border-0 rounded-right"><i class="fas fa-solid fa-location-crosshairs"></i></span>
+        <span class="input-group-text findBranchesIcon bg-white border-0"><i class="fas fa-solid fa-location-crosshairs"></i></span>
     </div>
   </div>
   <div class="col-4 p-0">
@@ -668,7 +670,7 @@ class FindMoreAvailability extends HTMLElement {
   </div>
 </div>
 <div class="container p-0 my-3">
-  <div class="row">
+  <div class="row py-2">
     <div class="col-8 filterByInFlight p-0">
       ${this.filtersHolder.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter-name="${filter.name}" data-stock-status-filter-active="${filter.active}" data-stock-status-filter-category="${filter.category}"></stock-status-filter>`).join('')}
     </div>
@@ -678,7 +680,7 @@ class FindMoreAvailability extends HTMLElement {
   </div>
 </div>
 <div class="container p-0 bg-light text-dark availableFilters">
-  <div class="row my-2 p-2 text-dark bg-white">
+  <div class="row my-2 p-3 text-dark bg-white">
     <div class="col-12 p-0">
       <div class="row">
         <div class="col-8 p-0">
@@ -698,7 +700,7 @@ class FindMoreAvailability extends HTMLElement {
 </div>
 <div class="container p-0" id="filteredBranches">
   ${this.productBranch.map((productBranch, index) => `
-  <div class="row my-2 p-2 text-dark bg-white ${index < 4 ? '' : 'showBranchesHide d-none' }">
+  <div class="row my-2 p-3 text-dark bg-white ${index < 4 ? '' : 'showBranchesHide d-none' }">
     <div class="col-12 p-0">
       <div class="row text-left">
     <div class="col-8 p-0">
