@@ -634,7 +634,9 @@ class FindMoreAvailability extends HTMLElement {
   font-size: 120%;
 }
 
-
+.showMoreBranchesChevron {
+  float: right;
+}
 
 .findBranchesIcon {
    margin-left: -0.2rem;
