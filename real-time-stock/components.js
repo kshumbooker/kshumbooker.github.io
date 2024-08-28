@@ -623,6 +623,18 @@ class FindMoreAvailability extends HTMLElement {
   display: inline-block;
 }
 
+.branchName {
+  text-decoration: underline;
+  font-size: 120% !important;
+}
+
+.distance, .branchName {
+  font-weight: 900;
+  font-size: 120%;
+}
+
+
+
 .findBranchesIcon {
    margin-left: -0.2rem;
    border-radius: 0;
@@ -704,13 +716,13 @@ class FindMoreAvailability extends HTMLElement {
     <div class="col-12 p-0">
       <div class="row text-left">
     <div class="col-8 p-0">
-      <a href="#" class="font-weight-bold">BOOKER ${productBranch.name.toUpperCase()}</a>
+      <a href="#" class="branchName">BOOKER ${productBranch.name.toUpperCase()}</a>
     </div>
     <div class="col-4 text-center">
-      <span class="distance"><b>${productBranch.distance} Miles</b></span>
+      <span class="distance">${productBranch.distance} Miles</span>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-2">
     <div class="col-8 p-0">${productBranch.status == 'OPEN' ? `<span class="lozenge bg-success align-middle"></span> <b>Open</b> until ${productBranch.close}` : `<span class="lozenge bg-danger align-middle"></span> <b>Closed</b>. Opens ${productBranch.open} `}</div>
     <div class="col-4 text-center"><stock-label data-stocklevel="${productBranch.level}" data-stocklevel-bgcolor="${productBranch.color}"></stock-label></div>
   </div> 
