@@ -621,6 +621,7 @@ class FindMoreAvailability extends HTMLElement {
   width: 12px;
   border-radius: 50%;
   display: inline-block;
+  margin-top: -3px;
 }
 
 .branchName {
