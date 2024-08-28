@@ -41,21 +41,24 @@
 
     const brandbankImages = document.querySelectorAll('.multipleImagesPanel > a');
 
-    [...brandbankImages].map((b, i) => {
-      b.addEventListener('click', () => {clickCarouselImg(b, i)});
+
+    [...brandbankImages].map((b, i, arr) => {
+      if (arr.length > 5 && i == 5) {
+        b.classList.add('d-none');
+      }
+       b.addEventListener('click', () => {clickCarouselImg(b, i, arr)})
     });
 
     const multiImagesSliders = document.querySelectorAll('.multi-icon > a');
 
     [...multiImagesSliders].map(m => {
-      
       m.addEventListener('click', () => {slide(m)});
     });
 
     document.querySelector('.multi-icon.left').classList.add('disabled');
 
-    const clickCarouselImg = (img, index) => {
-     activeSliders(index, brandbankImages.length);
+    const clickCarouselImg = (b, index, brandbankImages) => {
+     activeSliders(index, brandbankImages);
     }
     
     const slide = (s) => {
@@ -74,7 +77,7 @@
           activeKey = (direction == 'next' && index < mzThumbSelected.length) ? index + 1 : (direction == 'prev' && index > 0) ? index - 1 : false;     
         }
 
-        activeSliders(activeKey, mzThumbSelected.length);
+        activeSliders(activeKey, mzThumbSelected);
       });     
 
       
@@ -84,10 +87,19 @@
       magicZoomImg.href = currentImage.src = mzLensImg.src = mzZoomWindowImg.src = currentImgUrl;
     }
 
-    const activeSliders = (index, elementsSize) => {
+    const activeSliders = (index, thumbs) => {
+      if (thumbs.length > 5 && index >= 4) {
+        thumbs[0].classList.add('d-none');
+        thumbs[5].classList.remove('d-none');
+      } else {
+        thumbs[5].classList.add('d-none');
+        thumbs[0].classList.remove('d-none');
+      }
+
+
       if (index == 0) {
         document.querySelector('.multi-icon.left').classList.add('disabled');
-      } else if (index == elementsSize - 1) {
+      } else if (index == thumbs.length - 1) {
         document.querySelector('.multi-icon.right').classList.add('disabled');
       } else {
         document.querySelector('.multi-icon.left').classList.remove('disabled');
@@ -95,4 +107,3 @@
       }
     }
 
-    
