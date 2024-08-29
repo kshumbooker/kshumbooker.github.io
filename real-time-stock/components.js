@@ -616,12 +616,23 @@ class FindMoreAvailability extends HTMLElement {
   color: white;
 }
 
+.showMoreBranchesChevron {
+  float: right;
+}
+
+.showMoreBranchesChevron.collapsed .fa-chevron-up {
+  transform: rotate(180deg);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
 #find-more-availability .lozenge {
   height: 12px;
   width: 12px;
   border-radius: 50%;
   display: inline-block;
   margin-top: -3px;
+  margin-right: 3px;
 }
 
 .branchName {
@@ -632,10 +643,6 @@ class FindMoreAvailability extends HTMLElement {
 .distance, .branchName {
   font-weight: 900;
   font-size: 120%;
-}
-
-.showMoreBranchesChevron {
-  float: right;
 }
 
 .findBranchesIcon {
@@ -661,7 +668,7 @@ class FindMoreAvailability extends HTMLElement {
   }
 }
     </style>
-    <div class="container slide-right find-more-availability booker text-white p-3 d-none" id="find-more-availability">
+    <div class="container slide-right find-more-availability booker text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -782,12 +789,15 @@ class FindMoreAvailability extends HTMLElement {
     this.querySelector('.filterBranches').addEventListener('click', () => {toggleElement('.availableFilters')});
     this.querySelector('.closeFindMoreAvailability').addEventListener('click', () => {toggleElement('.find-more-availability')});
     this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
-    this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {toggleElement('.showBranchesHide')});
+    this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {
+      toggleElement('.showBranchesHide');
+      this.querySelector('.showMoreBranchesChevron').classList.toggle('collapsed');
+    });
+
     const stockStatusFilters = this.querySelectorAll('stock-status-filter');
-    [...stockStatusFilters].map(f => f.addEventListener('click', () => {this.filterBy(f)}));
+    [...stockStatusFilters].map(f => f.addEventListener('click', () => {this.filterBy(f)})); 
 
     const filterByInFlight = this.querySelectorAll('.filterByInFlight > stock-status-filter');
-
 
     [...filterByInFlight].map(inFlight => {
       let name = inFlight.getAttribute('data-stock-status-filter-name');
