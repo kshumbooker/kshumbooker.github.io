@@ -592,6 +592,11 @@ find-more-availability a, find-more-availability .form-control, find-more-availa
   border-radius: 0;
 }
 
+find-more-availability .openClosed {
+  margin-top: 10px;
+}
+
+
 find-more-availability .closeFilters, .closeFilters, .filterBranches, stock-status-filter {
   font-size: 0.625rem;
   cursor: pointer;
@@ -605,11 +610,6 @@ find-more-availability {
   font-size: 0.8rem;
   min-height: 100%;
   z-index: 1500;
-}
-
-find-more-availability .btn, #find-more-availability .btn:hover {
-  background-color: #00BDF7;
-  color: white;
 }
 
 .showMoreBranchesChevron {
@@ -631,6 +631,10 @@ find-more-availability .lozenge {
   margin-right: 3px;
 }
 
+.findMoreAvailabilityShowMore {
+  background: #d3d3d3;
+}
+
 .branchName {
   text-decoration: underline;
   font-size: 120% !important;
@@ -644,6 +648,20 @@ find-more-availability .lozenge {
 .findBranchesIcon {
    margin-left: -0.2rem;
    border-radius: 0;
+}
+
+#filteredBranches, #filteredBranches a:hover {
+  text-decoration: none;
+}
+
+#filteredBranches .branchName {
+  color: #2356AA;
+}
+
+#filteredBranches .fa-chevron-right {
+  position: absolute;
+  top: 50%;
+  right: 0%;
 }
 
 @media (min-width: 576px) {
@@ -664,7 +682,7 @@ find-more-availability .lozenge {
   }
 }
     </style>
-    <div class="find-more-availability d-none text-white p-3" id="find-more-availability">
+    <div class="find-more-availability text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -718,26 +736,30 @@ find-more-availability .lozenge {
 </div>
 <div class="container p-0" id="filteredBranches">
   ${this.productBranch.map((productBranch, index) => `
-  <div class="row my-2 p-3 text-dark bg-white ${index < 4 ? '' : 'showBranchesHide d-none' }">
+ <a href="https://www.booker.co.uk/branch-locator/search/" target="_blank">  
+    <div class="row my-2 p-3 text-dark bg-white ${index < 4 ? '' : 'showBranchesHide d-none' }">
+   
     <div class="col-12 p-0">
-      <div class="row text-left">
-    <div class="col-8 p-0">
-      <a href="#" class="branchName">BOOKER ${productBranch.name.toUpperCase()}</a>
-    </div>
-    <div class="col-4 text-center">
-      <span class="distance">${productBranch.distance} Miles</span>
-    </div>
+      <div class="row">
+      <div class="col-8 p-0">
+        <span class="branchName">BOOKER ${productBranch.name.toUpperCase()}</span>
+      </div>
+      <div class="col-4 text-center">
+        <span class="distance">${productBranch.distance} Miles</span>
+      </div>
   </div>
-  <div class="row mt-2">
-    <div class="col-8 p-0">${productBranch.status == 'OPEN' ? `<span class="lozenge bg-success align-middle"></span> <b>Open</b> until ${productBranch.close}` : `<span class="lozenge bg-danger align-middle"></span> <b>Closed</b>. Opens ${productBranch.open} `}</div>
+  <div class="row">
+    <div class="col-8 p-0"><p class="openClosed">${productBranch.status == 'OPEN' ? `<span class="lozenge bg-success align-middle"></span> <b>Open</b> until ${productBranch.close}` : `<span class="lozenge bg-danger align-middle"></span> <b>Closed</b>. Opens ${productBranch.open} `}</p></div>
     <div class="col-4 text-center"><stock-label data-stocklevel="${productBranch.level}" data-stocklevel-bgcolor="${productBranch.color}"></stock-label></div>
-  </div> 
- </div> 
-</div>    
+  </div>
+  <i class="fa-solid fa-chevron-right"></i> 
+ </div>
+</div> 
+</a>   
 `).join('')}
 <div class="row my-2 d-flex min-vh-100">
   <div class="col-12 p-0">
-    <a href="#" class="btn d-block p-3 w-100 bg-light text-dark findMoreAvailabilityShowMore">Show more branches <span class="showMoreBranchesChevron collapsed"><i class="fa-solid fa-chevron-up"></i></span></a>
+    <a href="#" class="btn d-block p-3 w-100 text-dark findMoreAvailabilityShowMore">Show more branches <span class="showMoreBranchesChevron collapsed"><i class="fa-solid fa-chevron-up"></i></span></a>
   </div>
 </div>
 <div class="row">
