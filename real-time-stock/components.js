@@ -578,40 +578,36 @@ class FindMoreAvailability extends HTMLElement {
 
   template = () => 
     `
-    <style>
-
-#find-more-availability.booker {
-  background: #2356AA;
- 
-}
-
+  <style>
+  
 .stockStatusFilter {
   background: #4A5DA8;
   border-radius: 2px;
   border: 1px solid white;
 }
 
-#find-more-availability a, #find-more-availability .form-control {
+find-more-availability a, find-more-availability .form-control, find-more-availability .btn {
   font-size: 0.8rem;
   color: #2356AA;
   border-radius: 0;
 }
 
-#find-more-availability .closeFilters, .closeFilters, .filterBranches, stock-status-filter {
+find-more-availability .closeFilters, .closeFilters, .filterBranches, stock-status-filter {
   font-size: 0.625rem;
   cursor: pointer;
 }
 
-#find-more-availability {
-  color: #2356AA;
+find-more-availability {
+  background: #2356AA;
   position: absolute;
   top: 0;
   right: 0;
   font-size: 0.8rem;
+  min-height: 100%;
   z-index: 1500;
 }
 
-#find-more-availability .btn, #find-more-availability .btn:hover {
+find-more-availability .btn, #find-more-availability .btn:hover {
   background-color: #00BDF7;
   color: white;
 }
@@ -626,7 +622,7 @@ class FindMoreAvailability extends HTMLElement {
   transition: all 0.3s ease-out;
 }
 
-#find-more-availability .lozenge {
+find-more-availability .lozenge {
   height: 12px;
   width: 12px;
   border-radius: 50%;
@@ -651,24 +647,24 @@ class FindMoreAvailability extends HTMLElement {
 }
 
 @media (min-width: 576px) {
-    .container {
-      max-width: 100%;
-    }
+  .container {
+    max-width: 100%;
+  }
 }
 
 @media (min-width: 768px) {
-  #find-more-availability {  
+  find-more-availability {  
     max-width: 500px;
   }
 }
 
 @media (max-width: 767.9px) {
-  #find-more-availability {
+  find-more-availability {
     width: 100%;
   }
 }
     </style>
-    <div class="container slide-right find-more-availability booker text-white p-3" id="find-more-availability">
+    <div class="find-more-availability text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -739,7 +735,7 @@ class FindMoreAvailability extends HTMLElement {
  </div> 
 </div>    
 `).join('')}
-<div class="row mt-2 mb-5">
+<div class="row my-2 d-flex min-vh-100">
   <div class="col-12 p-0">
     <a href="#" class="btn d-block p-3 w-100 bg-light text-dark findMoreAvailabilityShowMore">Show more branches <span class="showMoreBranchesChevron collapsed"><i class="fa-solid fa-chevron-up"></i></span></a>
   </div>
@@ -829,7 +825,6 @@ class FindMoreAvailability extends HTMLElement {
     let filterCategories = Array.from(new Set(this.filtersHolder.map(f => f.category)));
 
     this.filterData(filterCategories);
-
   
     this.productBranch = this.filtersHolder.length > 0 ? this.filteredProductBranch : this.productBranchFull;
 
