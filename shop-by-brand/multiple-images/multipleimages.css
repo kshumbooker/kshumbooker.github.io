@@ -104,6 +104,6 @@
         }
 
         .MagicZoom, .mz-figure {
-            display: unset;
+            display: table-row;
         }
     }
