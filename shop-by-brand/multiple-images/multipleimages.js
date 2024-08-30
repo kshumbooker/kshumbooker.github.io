@@ -46,7 +46,8 @@
       if (arr.length > 5 && i == 5) {
         b.classList.add('d-none');
       }
-       b.addEventListener('click', () => {clickCarouselImg(b, i, arr)})
+       b.addEventListener('click', () => {clickCarouselImg(b, i, arr)});
+        b.addEventListener('touchstart', () => {clickCarouselImg(b, i, arr)});
     });
 
     const multiImagesSliders = document.querySelectorAll('.multi-icon > a');
