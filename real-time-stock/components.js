@@ -35,7 +35,7 @@ const branches = [{
 {
   id: 266,
   name: 'Northampton',
-  distance: 30.13,
+  distance: 30.1,
   status: 'OPEN',
   open: 'Monday 10:00AM',
   close: '4:00PM',
@@ -48,7 +48,7 @@ const branches = [{
 {
   id: 316,
   name: 'Peterborough',
-  distance: 2.51,
+  distance: 2.5,
   status: 'CLOSED',
   open: 'Tuesday 9:00AM',
   close: '5:00PM',
@@ -61,7 +61,7 @@ const branches = [{
 {
   id: 329,
   name: 'Luton',
-  distance: 25.02,
+  distance: 25.0,
   status: 'OPEN',
   open: 'Monday 9:00AM',
   close: '6:00PM',
@@ -74,7 +74,7 @@ const branches = [{
 {
   id: 533,
   name: 'Bedford',
-  distance: 26.52,
+  distance: 26.5,
   status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '7:00PM',
@@ -87,7 +87,7 @@ const branches = [{
 {
   id: 544,
   name: 'Cambridge',
-  distance: 28.53,
+  distance: 28.5,
   status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
@@ -100,7 +100,7 @@ const branches = [{
 {
   id: 144,
   name: 'Great Yarmouth',
-  distance: 123.00,
+  distance: 123.0,
   status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
@@ -113,7 +113,7 @@ const branches = [{
 {
   id: 305,
   name: 'Rugby',
-  distance: 123.00,
+  distance: 123.0,
   status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
@@ -126,7 +126,7 @@ const branches = [{
 {
   id: 191,
   name: 'Warwick',
-  distance: 123.00,
+  distance: 123.0,
   status: 'OPEN',
   open: 'Monday 7:45AM',
   close: '2:00PM',
@@ -139,7 +139,7 @@ const branches = [{
 {
   id: 302,
   name: 'Coventry',
-  distance: 123.00,
+  distance: 123.0,
   status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
@@ -152,7 +152,7 @@ const branches = [{
 {
   id: 331,
   name: 'Nuneaton',
-  distance: 123.00,
+  distance: 123.0,
   status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
@@ -165,7 +165,7 @@ const branches = [{
 {
   id: 337,
   name: 'Birmingham Stirchley',
-  distance: 123.00,
+  distance: 123.0,
   status: 'OPEN',
   open: 'Monday 7:45AM',
   close: '2:00PM',
@@ -178,7 +178,7 @@ const branches = [{
 {
   id: 380,
   name: 'Wolverhampton',
-  distance: 123.00,
+  distance: 123.0,
   status: 'OPEN',
   open: 'Monday 9:45AM',
   close: '2:00PM',
@@ -191,7 +191,7 @@ const branches = [{
 {
   id: 190,
   name: 'Tamworth',
-  distance: 123.00,
+  distance: 123.0,
   status: 'CLOSED',
   open: 'Monday 9:45AM',
   close: '2:00PM',
@@ -204,7 +204,7 @@ const branches = [{
 {
   id: 354,
   name: 'Saltley',
-  distance: 123.00,
+  distance: 123.0,
   status: 'OPEN',
   open: 'Monday 9:30AM',
   close: '2:00PM',
@@ -217,7 +217,7 @@ const branches = [{
 {
   id: 369,
   name: 'Ardwick',
-  distance: 123.00,
+  distance: 123.0,
   status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '2:00PM',
@@ -230,7 +230,7 @@ const branches = [{
 {
   id: 109,
   name: 'Gorton',
-  distance: 123.00,
+  distance: 123.0,
   status: 'OPEN',
   open: 'Monday 9:00AM',
   close: '7:00PM',
@@ -243,7 +243,7 @@ const branches = [{
 {
   id: 276,
   name: 'Stockport',
-  distance: 123.00,
+  distance: 123.0,
   status: 'OPEN',
   open: 'Monday 8:00AM',
   close: '5:00PM',
@@ -256,7 +256,7 @@ const branches = [{
 {
   id: 570,
   name: 'Manchester Makro',
-  distance: 123.00,
+  distance: 123.0,
   status: 'CLOSED',
   open: 'Monday 7:45AM',
   close: '4:30PM',
@@ -269,7 +269,7 @@ const branches = [{
 {
   id: 260,
   name: 'Middleton',
-  distance: 123.00,
+  distance: 123.0,
   status: 'OPEN',
   open: 'Monday 7:30AM',
   close: '4:00PM',
@@ -587,26 +587,37 @@ class FindMoreAvailability extends HTMLElement {
 }
 
 find-more-availability a, find-more-availability .form-control, find-more-availability .btn {
-  font-size: 0.8rem;
   color: #2356AA;
   border-radius: 0;
 }
 
-find-more-availability .openClosed {
-  margin-top: 10px;
+stock-status-filter {
+  font-size: 0.625rem;
+  cursor: pointer;
+}
+
+.productDescription {
+  color: #B9E0FF;
 }
 
 
-find-more-availability .closeFilters, .closeFilters, .filterBranches, stock-status-filter {
-  font-size: 0.625rem;
+.filterBranches {
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.closeFilters {
   cursor: pointer;
 }
 
 find-more-availability {
   background: #2356AA;
-  position: absolute;
   top: 0;
   right: 0;
+  bottom: 0;
+  position: fixed;
+  overflow-y: scroll;
   font-size: 0.8rem;
   min-height: 100%;
   z-index: 1500;
@@ -650,9 +661,19 @@ find-more-availability .lozenge {
    border-radius: 0;
 }
 
+.findBranches {
+  border-bottom: 2px solid #00BDF7;
+}
+
 #filteredBranches, #filteredBranches a:hover {
   text-decoration: none;
 }
+
+.availableHeadings, .closeFilters {
+  font-size: 1rem; 
+}
+
+
 
 #filteredBranches .branchName {
   color: #2356AA;
@@ -660,53 +681,74 @@ find-more-availability .lozenge {
 
 #filteredBranches .fa-chevron-right {
   position: absolute;
-  top: 50%;
+  top: 40%;
   right: 0%;
+  font-size: larger;
 }
+
+.d-none-important {
+  display: none !important;
+}
+
+
 
 @media (min-width: 576px) {
   .container {
     max-width: 100%;
   }
+
+  
 }
 
 @media (min-width: 768px) {
   find-more-availability {  
     max-width: 500px;
   }
+
 }
 
 @media (max-width: 767.9px) {
   find-more-availability {
     width: 100%;
   }
+
+  body {
+    overflow-y: hidden;
+  }
 }
+
+@media (max-width: 576px) {
+  .enterTownPostCode, .findBranches {
+    font-size: 80%;
+  }
+}
+
     </style>
-    <div class="find-more-availability d-none text-white p-3" id="find-more-availability">
+    <div class="find-more-availability text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
-    <h6>${this.product.description} (${this.product.volume})</h6>
+    <h6 class="productDescription">${this.product.description} (${this.product.volume})</h6>
   </div>
-  <div class="col-2">
+  <div class="col-2 p-0">
     <button type="button" class="close closeFindMoreAvailability text-white" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 </div>
-<div class="row">
+<div class="row my-3 d-flex align-items-center">
   <div class="col-8 p-0">
     <div class="input-group">
-      <input type="text" class="form-control border-0" placeholder="Enter postcode or location">
+      <input type="text" class="form-control border-0 enterTownPostCode" placeholder="Enter postcode or location">
         <span class="input-group-text findBranchesIcon bg-white border-0"><i class="fas fa-solid fa-location-crosshairs"></i></span>
     </div>
   </div>
   <div class="col-4 p-0">
-    <a href="#" class="btn bluebutton d-block ml-2">Find Branches</a>
+    <a href="#" class="btn bluebutton findBranches ml-2 d-block">Find Branches</a>
   </div>
 </div>
 <div class="container p-0 my-3">
-  <div class="row py-2">
+  <div class="row d-flex align-items-center py-2">
     <div class="col-8 filterByInFlight p-0">
       ${this.filtersHolder.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter-name="${filter.name}" data-stock-status-filter-active="${filter.active}" data-stock-status-filter-category="${filter.category}"></stock-status-filter>`).join('')}
     </div>
@@ -715,10 +757,10 @@ find-more-availability .lozenge {
     </div>
   </div>
 </div>
-<div class="container p-0 bg-light text-dark availableFilters">
+<div class="container d-none p-0 bg-light text-dark availableFilters">
   <div class="row my-2 p-3 text-dark bg-white">
     <div class="col-12 p-0">
-      <div class="row">
+      <div class="row d-flex align-items-center availableHeadings">
         <div class="col-8 p-0">
           <strong>Available Filters</strong>
         </div>
@@ -726,7 +768,7 @@ find-more-availability .lozenge {
           <span class="close closeFilters">Close (X)</span>
         </div>
       </div>
-      <div class="row">
+      <div class="row my-2">
         <div class="col-12 p-0">
           ${this.filters.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter-name="${filter.name}" data-stock-status-filter-category="${filter.category}" data-stock-status-filter-active="${filter.active}"></stock-status-filter>`).join('')}
         </div>
@@ -737,7 +779,7 @@ find-more-availability .lozenge {
 <div class="container p-0" id="filteredBranches">
   ${this.productBranch.map((productBranch, index) => `
  <a href="https://www.booker.co.uk/branch-locator/search/" target="_blank">  
-    <div class="row my-2 p-3 text-dark bg-white ${index < 4 ? '' : 'showBranchesHide d-none' }">
+    <div class="row my-2 pt-3 px-3 pb-2 text-dark bg-white ${index < 4 ? '' : 'showBranchesHide d-none' }">
    
     <div class="col-12 p-0">
       <div class="row">
@@ -748,8 +790,8 @@ find-more-availability .lozenge {
         <span class="distance">${productBranch.distance} Miles</span>
       </div>
   </div>
-  <div class="row">
-    <div class="col-8 p-0"><p class="openClosed">${productBranch.status == 'OPEN' ? `<span class="lozenge bg-success align-middle"></span> <b>Open</b> until ${productBranch.close}` : `<span class="lozenge bg-danger align-middle"></span> <b>Closed</b>. Opens ${productBranch.open} `}</p></div>
+  <div class="row d-flex align-items-center">
+    <div class="col-8 p-0"><span class="openClosed">${productBranch.status == 'OPEN' ? `<span class="lozenge bg-success align-middle"></span> <b>Open</b> until ${productBranch.close}` : `<span class="lozenge bg-danger align-middle"></span> <b>Closed</b>. Opens ${productBranch.open} `}</span></div>
     <div class="col-4 text-center"><stock-label data-stocklevel="${productBranch.level}" data-stocklevel-bgcolor="${productBranch.color}"></stock-label></div>
   </div>
   <i class="fa-solid fa-chevron-right"></i> 
@@ -757,14 +799,14 @@ find-more-availability .lozenge {
 </div> 
 </a>   
 `).join('')}
-<div class="row my-2 d-flex min-vh-100">
+<div class="row my-2 d-flex">
   <div class="col-12 p-0">
     <a href="#" class="btn d-block p-3 w-100 text-dark findMoreAvailabilityShowMore">Show more branches <span class="showMoreBranchesChevron collapsed"><i class="fa-solid fa-chevron-up"></i></span></a>
   </div>
 </div>
 <div class="row">
   <div class="col-12 p-0">
-    <a href="#" class="btn d-inline-block p-3 w-100 closeFindMoreAvailabilityMenu bluebutton">Close Menu</a>
+    <a href="#" class="btn d-inline-block p-3 w-100 h-100 closeFindMoreAvailabilityMenu bluebutton">Close Menu</a>
   </div>
 </div>
 </div>
@@ -809,6 +851,7 @@ find-more-availability .lozenge {
     this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
     this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {
       toggleElement('.showBranchesHide');
+      //this.querySelector('.findMoreAvailabilityShowMore').classList.add('d-none-important');
       this.querySelector('.showMoreBranchesChevron').classList.toggle('collapsed');
     });
 
@@ -822,6 +865,8 @@ find-more-availability .lozenge {
       let availableFilters = this.querySelectorAll('.availableFilters stock-status-filter');
       [...availableFilters].map(available => {
         if (available.name == name) {
+          this.querySelector('.availableFilters').classList.remove('d-none');
+          //this.querySelector('.findMoreAvailabilityShowMore').classList.add('d-none-important');
           available.classList.add('d-none');  
         }
       })
@@ -855,11 +900,24 @@ find-more-availability .lozenge {
   }
 
 
-  
-
   filterData = (categories) => {
+    
+    /*let data = this.productBranchFull.filter(product => {
+      for (let i = 0; i < this.filtersHolder.length; i++) {
+        if ((this.filtersHolder[i].name == 'RETAILER' || this.filtersHolder[i].name == 'CATERER') && product[this.filtersHolder[i].name.toLowerCase() + 'sServices'].length > 0) {
+          return true;
+        }
+
+        console.log(this.filtersHolder);
+        if (this.filtersHolder[i].name == product[category]) {
+          return true;
+        }
+      }
+    });*/
+    
     categories.map(category => {
       let data = (categories.length == 1) ? this.productBranchFull : this.filteredProductBranch;
+
       this.filteredProductBranch = data.filter(product => {
         for (let i = 0; i < this.filtersHolder.length; i++) {
           if ((this.filtersHolder[i].name == 'RETAILER' || this.filtersHolder[i].name == 'CATERER') && product[this.filtersHolder[i].name.toLowerCase() + 'sServices'].length > 0) {
@@ -871,7 +929,6 @@ find-more-availability .lozenge {
         }
       });
     });
-
   }  
 
 }
