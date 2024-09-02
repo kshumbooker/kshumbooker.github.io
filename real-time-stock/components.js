@@ -646,6 +646,10 @@ find-more-availability .lozenge {
   background: #d3d3d3;
 }
 
+.enterTownPostCode, .findBranches {
+    font-size: 90%;
+  }
+
 .branchName {
   text-decoration: underline;
   font-size: 120% !important;
