@@ -808,7 +808,6 @@ stock-status-filter {
     this.productKey = Object.keys(productsData).find(key => productsData[key].midascode == this.midascode);
     this.product = productsData[this.productKey];
     this.productBranch = [];
-    this.filteredProductBranch = [];
     this.product.stock.map((product) => {
       let stock = mockStockLevel();
       product.level = stock.level;
@@ -823,6 +822,8 @@ stock-status-filter {
     this.productBranchFull = [...this.productBranch];
 
     this.productBranch = this.productBranch.filter(product => product.level == 'IN STOCK' || product.level == 'LOW STOCK');
+
+    this.filteredProductBranch = this.productBranch;
       
     this.filters = filters;
 
