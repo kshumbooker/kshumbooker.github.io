@@ -839,6 +839,8 @@ stock-status-filter {
         active: 'true'     
       }
     ];
+
+    
     
     this.render();
   }
@@ -925,9 +927,8 @@ stock-status-filter {
       this.filtersHolder = this.filtersHolder.filter(f => f.name != filterName);
     }
 
-    /* values stored in this array can be level, status and business */
     let filterCategories = Array.from(new Set(this.filtersHolder.map(f => f.category)));
-
+    
     this.filterData(filterCategories);
   
     this.productBranch = this.filtersHolder.length > 0 ? this.filteredProductBranch : this.productBranchFull;
@@ -939,38 +940,48 @@ stock-status-filter {
   filterData = (categories) => {
     categories.map(category => {
       let data = (categories.length == 1) ? this.productBranchFull : this.filteredProductBranch;
-
       this.filteredProductBranch = data.filter(product => {
         for (let i = 0; i < this.filtersHolder.length; i++) {
+          
           if ((this.filtersHolder[i].name == 'RETAILER' || this.filtersHolder[i].name == 'CATERER') && product[this.filtersHolder[i].name.toLowerCase() + 'sServices'].length > 0) {
             return true;
           }
+
           if (this.filtersHolder[i].name == product[category]) {
             return true;
           }
         }
       });
-    });
+    }); 
+    
+    /*let tempArr = [];
 
-  /*  for (let i = 0; i < this.filtersHolder.length; i++) {
-      this.filteredProductBranch = [];
-      for (let j = 0; j < this.productBranchFull.length; j++) {
-        if ((this.filtersHolder[i].name == 'RETAILER' || this.filtersHolder[i].name == 'CATERER') && this.productBranchFull[j][this.filtersHolder[i].name.toLowerCase() + 'sServices'].length > 0) {
-          this.filteredProductBranch.push(this.productBranchFull[j]);
+      for (let i = 0; i < this.productBranchFull.length; i++) {
+
+        for (let j = 0; j < this.filtersHolder.length; j++) {
+        if ((this.filtersHolder[j].name == 'RETAILER' || this.filtersHolder[j].name == 'CATERER') && this.productBranchFull[i][this.filtersHolder[j].name.toLowerCase() + 'sServices'].length > 0) {
+          tempArr.push(this.productBranchFull[i]);
         }
 
-        if (this.filtersHolder[i].name == this.productBranchFull[j].level) {
-          this.filteredProductBranch.push(this.productBranchFull[j]);
+        if (this.filtersHolder[j].name == this.productBranchFull[i].level) {
+          tempArr.push(this.productBranchFull[i]);
         }
           
-        if (this.filtersHolder[i].name == this.productBranchFull[j].status) {
-          this.filteredProductBranch.push(this.productBranchFull[j]);
+        if (this.filtersHolder[j].name == this.productBranchFull[i].status) {
+          tempArr.push(this.productBranchFull[i]);
         }
       }
     }
 
-    console.log(this.filteredProductBranch); */
-  }  
+    this.removeDups(tempArr); */
+  }
+
+  /*removeDups = (arr) => {
+    let jsonArr = arr.map(JSON.stringify);
+    let uniqueSet = new Set(jsonArr);
+    let uniqueArr = Array.from(uniqueSet).map(JSON.parse);
+    console.log(uniqueArr);
+  }*/
 
 }
 
