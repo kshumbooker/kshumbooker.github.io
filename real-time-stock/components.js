@@ -648,13 +648,6 @@ stock-status-filter {
   background: #d3d3d3;
 }
 
-.closeFindMoreAvailabilityRow {
-  position: absolute;
-  left: 15px;
-  right: 15px;
-  bottom: 0;
-}
-
 .branchName {
   text-decoration: underline;
   font-size: 120% !important;
@@ -847,9 +840,10 @@ stock-status-filter {
       this.querySelectorAll(className).length > 1 ? [...this.querySelectorAll(className)].map(c => c.classList.toggle('d-none')) : this.querySelector(className).classList.toggle('d-none');
     }
 
-    let height = $(document).height() + 50;
+    let height = $(document).height();
       $('#find-more-availability').css('min-height', height + 'px');
-
+      
+      this.findMoreAvailableCss();
 
     $(window).resize(function() {
       let height = $(document).height();
@@ -867,6 +861,8 @@ stock-status-filter {
       toggleElement('.showBranchesHide');
       //this.querySelector('.findMoreAvailabilityShowMore').classList.add('d-none-important');
       this.querySelector('.showMoreBranchesChevron').classList.toggle('collapsed');
+      this.toggleFindMoreAvailableCss();
+      
     });
 
     const stockStatusFilters = this.querySelectorAll('stock-status-filter');
@@ -887,6 +883,23 @@ stock-status-filter {
     });
   }
 
+  toggleFindMoreAvailableCss = () => {
+    if ($('.closeFindMoreAvailabilityRow').css('position') == 'absolute') {
+      $('.closeFindMoreAvailabilityRow').css('position', '');
+      $('.closeFindMoreAvailabilityRow').css('left', '0');
+      $('.closeFindMoreAvailabilityRow').css('right', '0');
+      $('.closeFindMoreAvailabilityRow').css('bottom', '0');
+    } else {
+      this.findMoreAvailableCss();
+    }
+  }
+  
+  findMoreAvailableCss = () => {
+    $('.closeFindMoreAvailabilityRow').css('position', 'absolute');
+    $('.closeFindMoreAvailabilityRow').css('left', '15px');
+    $('.closeFindMoreAvailabilityRow').css('right', '15px');
+    $('.closeFindMoreAvailabilityRow').css('bottom', '15px');
+  }
 
   filterBy = (f) => {
     let filterActive = f.getAttribute('data-stock-status-filter-active');
