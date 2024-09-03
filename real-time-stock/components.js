@@ -648,6 +648,13 @@ stock-status-filter {
   background: #d3d3d3;
 }
 
+.closeFindMoreAvailabilityRow {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+}
+
 .branchName {
   text-decoration: underline;
   font-size: 120% !important;
@@ -663,9 +670,6 @@ stock-status-filter {
    border-radius: 0;
 }
 
-.enterTownPostCode, .findBranches {
-    font-size: 100%;
-  }
 
 .findBranches {
   border-bottom: 2px solid #00BDF7;
@@ -721,7 +725,7 @@ stock-status-filter {
 }
 
     </style>
-    <div class="find-more-availability text-white p-3" id="find-more-availability">
+    <div class="find-more-availability text-white p-3 d-none" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -802,7 +806,7 @@ stock-status-filter {
     <a href="#" class="btn d-block p-3 w-100 text-dark findMoreAvailabilityShowMore">Show more branches <span class="showMoreBranchesChevron collapsed"><i class="fa-solid fa-chevron-up"></i></span></a>
   </div>
 </div>
-<div class="row my-2 d-flex">
+<div class="row my-2 d-block closeFindMoreAvailabilityRow">
   <div class="col-12 p-0">
     <a href="#" class="btn d-block p-3 w-100 closeFindMoreAvailabilityMenu bluebutton">Close Menu</a>
   </div>
