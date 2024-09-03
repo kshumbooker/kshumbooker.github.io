@@ -698,15 +698,11 @@ stock-status-filter {
   }
 }
 
-@media (min-width: 768px) {
-  .find-more-availability {  
-    max-width: 500px;
-  }
-}
 
 @media (max-width: 767.9px) {
   .find-more-availability {
     width: 100%;
+    max-width: 100%;
   }
 
 }
@@ -718,7 +714,7 @@ stock-status-filter {
 }
 
     </style>
-    <div class="find-more-availability text-white p-3 d-none" id="find-more-availability">
+    <div class="find-more-availability text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -842,7 +838,7 @@ stock-status-filter {
 
     let height = $(document).height();
       $('#find-more-availability').css('min-height', height + 'px');
-      
+
       this.findMoreAvailableCss();
 
     $(window).resize(function() {
