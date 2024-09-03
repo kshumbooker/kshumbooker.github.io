@@ -714,7 +714,7 @@ stock-status-filter {
 }
 
     </style>
-    <div class="find-more-availability text-white p-3 d-none" id="find-more-availability">
+    <div class="find-more-availability text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -819,16 +819,29 @@ stock-status-filter {
         }
       });
     });
-
+    
     this.productBranchFull = [...this.productBranch];
 
+    this.productBranch = this.productBranch.filter(product => product.level == 'IN STOCK' || product.level == 'LOW STOCK');
+      
     this.filters = filters;
 
-    this.filtersHolder = [];
+    this.filtersHolder = [
+      {
+        name: 'IN STOCK',
+        category: 'level',
+        active: 'true'         
+      },
+      {
+        name: 'LOW STOCK',
+        category: 'level',
+        active: 'true'     
+      }
+    ];
+    
     this.render();
   }
 
-  
 
   render() {
     this.innerHTML = `${this.template().trim()}`;
@@ -836,33 +849,33 @@ stock-status-filter {
       this.querySelectorAll(className).length > 1 ? [...this.querySelectorAll(className)].map(c => c.classList.toggle('d-none')) : this.querySelector(className).classList.toggle('d-none');
     }
 
+ 
     let height = $(document).height();
-      $('#find-more-availability').css('min-height', height + 'px');
+      $('#find-more-availability').css('min-height', height + 30 + 'px');
 
-      this.findMoreAvailableCss();
+    this.findMoreAvailableCss();
 
     $(window).resize(function() {
       let height = $(document).height();
-      console.log(height);
+
       $('#find-more-availability').css('min-height', height + 'px');
     });
 
-    this.querySelector('.closeFilters').addEventListener('click', () => {toggleElement('.availableFilters')});
     this.querySelector('.filterBranches').addEventListener('click', () => {toggleElement('.availableFilters')});
     this.querySelector('.closeFindMoreAvailability').addEventListener('click', () => {toggleElement('.find-more-availability')});
     this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
     
-    
     this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {
       toggleElement('.showBranchesHide');
-      //this.querySelector('.findMoreAvailabilityShowMore').classList.add('d-none-important');
       this.querySelector('.showMoreBranchesChevron').classList.toggle('collapsed');
       this.toggleFindMoreAvailableCss();
-      
     });
 
-    const stockStatusFilters = this.querySelectorAll('stock-status-filter');
-    [...stockStatusFilters].map(f => f.addEventListener('click', () => {this.filterBy(f)})); 
+    const stockStatusFilters = this.querySelectorAll('stock-status-filter');    
+
+    [...stockStatusFilters].map(f => {
+      f.addEventListener('click', () =>  this.filterBy(f));
+    }); 
 
     const filterByInFlight = this.querySelectorAll('.filterByInFlight > stock-status-filter');
 
@@ -872,7 +885,6 @@ stock-status-filter {
       [...availableFilters].map(available => {
         if (available.name == name) {
           this.querySelector('.availableFilters').classList.remove('d-none');
-          //this.querySelector('.findMoreAvailabilityShowMore').classList.add('d-none-important');
           available.classList.add('d-none');  
         }
       })
@@ -923,7 +935,6 @@ stock-status-filter {
     this.querySelector('#find-more-availability').classList.remove('d-none');
   }
 
-
   filterData = (categories) => {
     categories.map(category => {
       let data = (categories.length == 1) ? this.productBranchFull : this.filteredProductBranch;
@@ -940,7 +951,6 @@ stock-status-filter {
       });
     });
 
-  
   /*  for (let i = 0; i < this.filtersHolder.length; i++) {
       this.filteredProductBranch = [];
       for (let j = 0; j < this.productBranchFull.length; j++) {
