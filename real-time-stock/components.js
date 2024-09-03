@@ -579,14 +579,27 @@ class FindMoreAvailability extends HTMLElement {
   template = () => 
     `
   <style>
-  
+
+.find-more-availability {
+  background: #2356AA;
+  top: 0;
+  right: 0;
+  position: absolute;
+  font-size: 0.8rem;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  max-width: 500px;
+}
+
 .stockStatusFilter {
   background: #4A5DA8;
   border-radius: 2px;
   border: 1px solid white;
 }
 
-find-more-availability a, find-more-availability .form-control, find-more-availability .btn {
+.find-more-availability a, .find-more-availability .form-control, .find-more-availability .btn {
   color: #2356AA;
   border-radius: 0;
 }
@@ -611,17 +624,6 @@ stock-status-filter {
   cursor: pointer;
 }
 
-find-more-availability {
-  background: #2356AA;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-  overflow-y: scroll;
-  font-size: 0.8rem;
-  min-height: 100%;
-  z-index: 1500;
-}
 
 .showMoreBranchesChevron {
   float: right;
@@ -633,7 +635,7 @@ find-more-availability {
   transition: all 0.3s ease-out;
 }
 
-find-more-availability .lozenge {
+.find-more-availability .lozenge {
   height: 12px;
   width: 12px;
   border-radius: 50%;
@@ -645,10 +647,6 @@ find-more-availability .lozenge {
 .findMoreAvailabilityShowMore {
   background: #d3d3d3;
 }
-
-.enterTownPostCode, .findBranches {
-    font-size: 90%;
-  }
 
 .branchName {
   text-decoration: underline;
@@ -665,6 +663,10 @@ find-more-availability .lozenge {
    border-radius: 0;
 }
 
+.enterTownPostCode, .findBranches {
+    font-size: 100%;
+  }
+
 .findBranches {
   border-bottom: 2px solid #00BDF7;
 }
@@ -676,7 +678,6 @@ find-more-availability .lozenge {
 .availableHeadings, .closeFilters {
   font-size: 1rem; 
 }
-
 
 
 #filteredBranches .branchName {
@@ -694,31 +695,23 @@ find-more-availability .lozenge {
   display: none !important;
 }
 
-
-
 @media (min-width: 576px) {
   .container {
     max-width: 100%;
   }
-
-  
 }
 
 @media (min-width: 768px) {
-  find-more-availability {  
+  .find-more-availability {  
     max-width: 500px;
   }
-
 }
 
 @media (max-width: 767.9px) {
-  find-more-availability {
+  .find-more-availability {
     width: 100%;
   }
 
-  body {
-    overflow-y: hidden;
-  }
 }
 
 @media (max-width: 576px) {
@@ -728,7 +721,7 @@ find-more-availability .lozenge {
 }
 
     </style>
-    <div class="find-more-availability text-white p-3 d-none" id="find-more-availability">
+    <div class="find-more-availability text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -757,7 +750,7 @@ find-more-availability .lozenge {
       ${this.filtersHolder.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter-name="${filter.name}" data-stock-status-filter-active="${filter.active}" data-stock-status-filter-category="${filter.category}"></stock-status-filter>`).join('')}
     </div>
     <div class="col-4 text-right p-0">
-      Filter Branches <i class="fas fa-solid fa-sliders border p-1 filterBranches"></i>
+      <span>Filter Branches <i class="fas fa-solid fa-sliders border p-1 filterBranches"></i></span>
     </div>
   </div>
 </div>
@@ -803,14 +796,15 @@ find-more-availability .lozenge {
 </div> 
 </a>   
 `).join('')}
+</div>
 <div class="row my-2 d-flex">
   <div class="col-12 p-0">
     <a href="#" class="btn d-block p-3 w-100 text-dark findMoreAvailabilityShowMore">Show more branches <span class="showMoreBranchesChevron collapsed"><i class="fa-solid fa-chevron-up"></i></span></a>
   </div>
 </div>
-<div class="row">
+<div class="row my-2 d-flex">
   <div class="col-12 p-0">
-    <a href="#" class="btn d-inline-block p-3 w-100 h-100 closeFindMoreAvailabilityMenu bluebutton">Close Menu</a>
+    <a href="#" class="btn d-block p-3 w-100 closeFindMoreAvailabilityMenu bluebutton">Close Menu</a>
   </div>
 </div>
 </div>
@@ -849,10 +843,22 @@ find-more-availability .lozenge {
       this.querySelectorAll(className).length > 1 ? [...this.querySelectorAll(className)].map(c => c.classList.toggle('d-none')) : this.querySelector(className).classList.toggle('d-none');
     }
 
+    let height = $(document).height() + 50;
+      $('#find-more-availability').css('min-height', height + 'px');
+
+
+    $(window).resize(function() {
+      let height = $(document).height();
+      console.log(height);
+      $('#find-more-availability').css('min-height', height + 'px');
+    });
+
     this.querySelector('.closeFilters').addEventListener('click', () => {toggleElement('.availableFilters')});
     this.querySelector('.filterBranches').addEventListener('click', () => {toggleElement('.availableFilters')});
     this.querySelector('.closeFindMoreAvailability').addEventListener('click', () => {toggleElement('.find-more-availability')});
     this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
+    
+    
     this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {
       toggleElement('.showBranchesHide');
       //this.querySelector('.findMoreAvailabilityShowMore').classList.add('d-none-important');
@@ -876,6 +882,7 @@ find-more-availability .lozenge {
       })
     });
   }
+
 
   filterBy = (f) => {
     let filterActive = f.getAttribute('data-stock-status-filter-active');
@@ -905,20 +912,6 @@ find-more-availability .lozenge {
 
 
   filterData = (categories) => {
-    
-    /*let data = this.productBranchFull.filter(product => {
-      for (let i = 0; i < this.filtersHolder.length; i++) {
-        if ((this.filtersHolder[i].name == 'RETAILER' || this.filtersHolder[i].name == 'CATERER') && product[this.filtersHolder[i].name.toLowerCase() + 'sServices'].length > 0) {
-          return true;
-        }
-
-        console.log(this.filtersHolder);
-        if (this.filtersHolder[i].name == product[category]) {
-          return true;
-        }
-      }
-    });*/
-    
     categories.map(category => {
       let data = (categories.length == 1) ? this.productBranchFull : this.filteredProductBranch;
 
@@ -933,6 +926,26 @@ find-more-availability .lozenge {
         }
       });
     });
+
+  
+  /*  for (let i = 0; i < this.filtersHolder.length; i++) {
+      this.filteredProductBranch = [];
+      for (let j = 0; j < this.productBranchFull.length; j++) {
+        if ((this.filtersHolder[i].name == 'RETAILER' || this.filtersHolder[i].name == 'CATERER') && this.productBranchFull[j][this.filtersHolder[i].name.toLowerCase() + 'sServices'].length > 0) {
+          this.filteredProductBranch.push(this.productBranchFull[j]);
+        }
+
+        if (this.filtersHolder[i].name == this.productBranchFull[j].level) {
+          this.filteredProductBranch.push(this.productBranchFull[j]);
+        }
+          
+        if (this.filtersHolder[i].name == this.productBranchFull[j].status) {
+          this.filteredProductBranch.push(this.productBranchFull[j]);
+        }
+      }
+    }
+
+    console.log(this.filteredProductBranch); */
   }  
 
 }
