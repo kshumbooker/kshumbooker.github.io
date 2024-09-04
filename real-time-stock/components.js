@@ -864,9 +864,13 @@ stock-status-filter {
       $('#find-more-availability').css('min-height', height + 'px');
     });
 
+    
     this.querySelector('.filterBranches').addEventListener('click', () => {toggleElement('.availableFilters')});
     this.querySelector('.closeFindMoreAvailability').addEventListener('click', () => {toggleElement('.find-more-availability')});
     this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
+    this.querySelector('.closeFilters').addEventListener('click', () => {
+      this.querySelector('.availableFilters').classList.add('d-none');
+    })
     
     this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {
       toggleElement('.showBranchesHide');
@@ -938,50 +942,104 @@ stock-status-filter {
   }
 
   filterData = (categories) => {
-    categories.map(category => {
+    console.log(this.productBranchFull);
+
+    let cats = [];
+    for (let i = 0; i < this.filtersHolder.length; i++) {
+      cats.push(this.filtersHolder[i].category);
+    }
+    
+    let status = this.countOccurrences(cats, 'status');
+    let level = this.countOccurrences(cats, 'level');
+    let business = this.countOccurrences(cats, 'business');
+    let filters = this.filtersHolder.map(f => f.name);
+
+    /*categories.map(category => {
       let data = (categories.length == 1) ? this.productBranchFull : this.filteredProductBranch;
       this.filteredProductBranch = data.filter(product => {
+        
         for (let i = 0; i < this.filtersHolder.length; i++) {
-          
           if ((this.filtersHolder[i].name == 'RETAILER' || this.filtersHolder[i].name == 'CATERER') && product[this.filtersHolder[i].name.toLowerCase() + 'sServices'].length > 0) {
             return true;
           }
 
+          
           if (this.filtersHolder[i].name == product[category]) {
             return true;
           }
         }
       });
-    }); 
-    
-    /*let tempArr = [];
-
-      for (let i = 0; i < this.productBranchFull.length; i++) {
-
-        for (let j = 0; j < this.filtersHolder.length; j++) {
-        if ((this.filtersHolder[j].name == 'RETAILER' || this.filtersHolder[j].name == 'CATERER') && this.productBranchFull[i][this.filtersHolder[j].name.toLowerCase() + 'sServices'].length > 0) {
-          tempArr.push(this.productBranchFull[i]);
-        }
-
-        if (this.filtersHolder[j].name == this.productBranchFull[i].level) {
-          tempArr.push(this.productBranchFull[i]);
-        }
-          
-        if (this.filtersHolder[j].name == this.productBranchFull[i].status) {
-          tempArr.push(this.productBranchFull[i]);
-        }
+    });*/
+    this.filteredProductBranch = this.productBranchFull.filter(product => {
+      product.businessServices = [];
+      if (product.caterersServices.length > 0) {
+        product.businessServices.push('CATERER');
       }
-    }
+      if (product.retailersServices.length > 0) {
+        product.businessServices.push('RETAILER');
+      }
 
-    this.removeDups(tempArr); */
+      if (level > 0 && status > 0 && business > 0) {
+        if (filters.includes(product.level) && filters.includes(product.status) && product.businessServices.some(p => filters.includes(p))) {
+          return true;
+        }
+        return;
+      }
+
+      if (level == 0 && status > 0 && business > 0) {
+        if (filters.includes(product.status) && product.businessServices.some(p => filters.includes(p))) {
+          return true;
+        }
+        return;
+      }
+
+      if (level == 0 && status == 0 && business > 0) {
+        if (product.businessServices.some(p => filters.includes(p))) {
+          return true;
+        }
+        return;
+      }
+
+      if (level > 0 && status > 0) {
+        if (filters.includes(product.level) && filters.includes(product.status)) {
+          return true;
+        }
+        return;
+      }
+      
+      if (level > 0 && status == 0) {
+        if (filters.includes(product.level)) {
+          return true;
+        }
+        return;
+      }
+
+      if (status > 0 && business > 0) {
+        if (filters.includes(product.status) && product.businessServices.some(p => filters.includes(p))) {
+          return true;
+        }
+        return;
+      }
+
+      if (status > 0) {
+        if (filters.includes(product.status)) {
+          return true;
+        }
+        return;
+      }
+
+      if (business > 0) {
+        if (product.businessServices.some(p => filters.includes(p))) {
+          return true;
+        }
+        return;
+      }
+
+    });    
   }
 
-  /*removeDups = (arr) => {
-    let jsonArr = arr.map(JSON.stringify);
-    let uniqueSet = new Set(jsonArr);
-    let uniqueArr = Array.from(uniqueSet).map(JSON.parse);
-    console.log(uniqueArr);
-  }*/
+
+  countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
 
 }
 
