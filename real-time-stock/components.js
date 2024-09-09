@@ -22,7 +22,7 @@ function mockStockLevel() {
 const branches = [{
   id: 503,
   name: 'Kettering',
-  distance: 20.92,
+  distance: 20.9,
   status: 'OPEN',
   open: 'Monday 8:30AM',
   close: '3:00PM',
@@ -493,43 +493,6 @@ const productsData = [
 }
 ];
 
-const filters = [
-{
-  category: 'level',
-  name: 'IN STOCK',
-  active: false
-},
-{
-  category: 'level',
-  name: 'LOW STOCK',
-  active: false
-},
-{
-  category: 'level',
-  name: 'NO STOCK',
-  active: false
-},
-{
-  category: 'status',
-  name: 'OPEN',
-  active: false
-},
-{
-  category: 'status',
-  name: 'CLOSED',
-  active: false
-},
-{
-  category: 'business',
-  name: 'RETAILER',
-  active: false
-},
-{
-  category: 'business',
-  name: 'CATERER',
-  active: false
-}
-];
 
 class AddToList extends HTMLElement {
   constructor() {
@@ -548,9 +511,9 @@ class AddToNote extends HTMLElement {
 class StockStatusFilter extends HTMLElement {
   constructor() {
     super();
-    this.name = this.getAttribute('data-stock-status-filter-name');
-    this.active = this.getAttribute('data-stock-status-filter-active');
-    this.category = this.getAttribute('data-stock-status-filter-category');
+    this.name = this.getAttribute('data-rts-filter-name');
+    this.active = this.getAttribute('data-rts-filter-active');
+    this.category = this.getAttribute('data-rts-filter-category');
   }
   
   connectedCallback() {
@@ -688,9 +651,7 @@ stock-status-filter {
   font-size: larger;
 }
 
-.d-none-important {
-  display: none !important;
-}
+
 
 @media (min-width: 576px) {
   .container {
@@ -714,7 +675,7 @@ stock-status-filter {
 }
 
     </style>
-    <div class="find-more-availability d-none text-white p-3" id="find-more-availability">
+    <div class="find-more-availability text-white p-3" id="find-more-availability">
 <div class="row">
   <div class="col-10 p-0">
     <h5>Branches with Stock Available for Collection</h5>
@@ -740,7 +701,7 @@ stock-status-filter {
 <div class="container p-0 my-3">
   <div class="row d-flex align-items-center py-2">
     <div class="col-8 filterByInFlight p-0">
-      ${this.filtersHolder.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter-name="${filter.name}" data-stock-status-filter-active="${filter.active}" data-stock-status-filter-category="${filter.category}"></stock-status-filter>`).join('')}
+      ${this.filtersHolder.map(filter => `<stock-status-filter class="stock-status-filter ${filter.active == false ? 'd-none': ''}" data-rts-filter-name="${filter.name}" data-rts-filter-active="${filter.active}" data-rts-filter-category="${filter.category}"></stock-status-filter>`).join('')}
     </div>
     <div class="col-4 text-right p-0">
       <span>Filter Branches <i class="fas fa-solid fa-sliders border p-1 filterBranches"></i></span>
@@ -760,7 +721,7 @@ stock-status-filter {
       </div>
       <div class="row my-2">
         <div class="col-12 p-0">
-          ${this.filters.map(filter => `<stock-status-filter class="stock-status-filter" data-stock-status-filter-name="${filter.name}" data-stock-status-filter-category="${filter.category}" data-stock-status-filter-active="${filter.active}"></stock-status-filter>`).join('')}
+          ${this.filtersHolder.map(filter => `<stock-status-filter class="stock-status-filter ${filter.active == true ? 'd-none' : ''}" data-rts-filter-name="${filter.name}" data-rts-filter-category="${filter.category}" data-rts-filter-active="${filter.active}"></stock-status-filter>`).join('')}
         </div>
       </div>
     </div>
@@ -824,23 +785,44 @@ stock-status-filter {
     this.productBranch = this.productBranch.filter(product => product.level == 'IN STOCK' || product.level == 'LOW STOCK');
 
     this.filteredProductBranch = this.productBranch;
-      
-    this.filters = filters;
 
     this.filtersHolder = [
       {
-        name: 'IN STOCK',
         category: 'level',
-        active: 'true'         
+        name: 'IN STOCK',
+        active: true
       },
       {
-        name: 'LOW STOCK',
         category: 'level',
-        active: 'true'     
+        name: 'LOW STOCK',
+        active: true
+      },
+      {
+        category: 'level',
+        name: 'NO STOCK',
+        active: false
+      },
+      {
+        category: 'status',
+        name: 'OPEN',
+        active: false
+      },
+      {
+        category: 'status',
+        name: 'CLOSED',
+        active: false
+      },
+      {
+        category: 'business',
+        name: 'RETAILER',
+        active: false
+      },
+      {
+        category: 'business',
+        name: 'CATERER',
+        active: false
       }
     ];
-
-    
     
     this.render();
   }
@@ -852,15 +834,13 @@ stock-status-filter {
       this.querySelectorAll(className).length > 1 ? [...this.querySelectorAll(className)].map(c => c.classList.toggle('d-none')) : this.querySelector(className).classList.toggle('d-none');
     }
 
- 
     let height = $(document).height();
       $('#find-more-availability').css('min-height', height + 30 + 'px');
 
     this.findMoreAvailableCss();
 
-    $(window).resize(function() {
+    $(window).resize(() => {
       let height = $(document).height();
-
       $('#find-more-availability').css('min-height', height + 'px');
     });
 
@@ -870,32 +850,35 @@ stock-status-filter {
     this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
     this.querySelector('.closeFilters').addEventListener('click', () => {
       this.querySelector('.availableFilters').classList.add('d-none');
-    })
-    
+    });
+
     this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {
       toggleElement('.showBranchesHide');
       this.querySelector('.showMoreBranchesChevron').classList.toggle('collapsed');
       this.toggleFindMoreAvailableCss();
     });
 
-    const stockStatusFilters = this.querySelectorAll('stock-status-filter');    
-
-    [...stockStatusFilters].map(f => {
-      f.addEventListener('click', () =>  this.filterBy(f));
-    }); 
-
-    const filterByInFlight = this.querySelectorAll('.filterByInFlight > stock-status-filter');
-
-    [...filterByInFlight].map(inFlight => {
-      let name = inFlight.getAttribute('data-stock-status-filter-name');
-      let availableFilters = this.querySelectorAll('.availableFilters stock-status-filter');
-      [...availableFilters].map(available => {
-        if (available.name == name) {
-          this.querySelector('.availableFilters').classList.remove('d-none');
-          available.classList.add('d-none');  
-        }
-      })
+    const availableFilters = this.querySelectorAll('.availableFilters stock-status-filter');
+    
+    [...availableFilters].map(f => {
+      f.addEventListener('click', () => 
+        {
+          this.clickFilter(f);
+        });
     });
+
+    const inFlightFilters = this.querySelectorAll('.filterByInFlight > stock-status-filter');
+
+    [...inFlightFilters].map(f => {
+      f.addEventListener('click', () => {
+        this.clickFilter(f);
+      });
+    });
+  }
+
+  clickFilter = (filter) => {
+    this.filterBy(filter);
+    this.querySelector('.availableFilters').classList.toggle('d-none');
   }
 
   toggleFindMoreAvailableCss = () => {
@@ -917,59 +900,35 @@ stock-status-filter {
   }
 
   filterBy = (f) => {
-    let filterActive = f.getAttribute('data-stock-status-filter-active');
-    let filterName = f.getAttribute('data-stock-status-filter-name');
-    let filterCategory = f.getAttribute('data-stock-status-filter-category');
+    let filterName = f.getAttribute('data-rts-filter-name');
 
-    if (!this.filtersHolder.find(f => f.name == filterName) && filterActive == 'false') {
-      this.filtersHolder.push({
-        name: filterName,
-        category: filterCategory,
-        active: 'true'         
-      });
-    } else {
-      this.filtersHolder = this.filtersHolder.filter(f => f.name != filterName);
-    }
+    this.filtersHolder.forEach(f => {
+      if (f.name == filterName) {
+        f.active = !f.active;
+      }
+    });
 
-    let filterCategories = Array.from(new Set(this.filtersHolder.map(f => f.category)));
-    
-    this.filterData(filterCategories);
+   
+    this.filterData();
   
-    this.productBranch = this.filtersHolder.length > 0 ? this.filteredProductBranch : this.productBranchFull;
+    this.productBranch = this.filtersHolder.filter(f => f.active == true).length > 0 ? this.filteredProductBranch : this.productBranchFull;
+
 
     this.render();
     this.querySelector('#find-more-availability').classList.remove('d-none');
   }
 
-  filterData = (categories) => {
-    console.log(this.productBranchFull);
 
-    let cats = [];
-    for (let i = 0; i < this.filtersHolder.length; i++) {
-      cats.push(this.filtersHolder[i].category);
-    }
-    
-    let status = this.countOccurrences(cats, 'status');
-    let level = this.countOccurrences(cats, 'level');
-    let business = this.countOccurrences(cats, 'business');
-    let filters = this.filtersHolder.map(f => f.name);
+  filterData = () => {
+    let activeFilters = this.filtersHolder.filter(f => f.active !== false);
 
-    /*categories.map(category => {
-      let data = (categories.length == 1) ? this.productBranchFull : this.filteredProductBranch;
-      this.filteredProductBranch = data.filter(product => {
-        
-        for (let i = 0; i < this.filtersHolder.length; i++) {
-          if ((this.filtersHolder[i].name == 'RETAILER' || this.filtersHolder[i].name == 'CATERER') && product[this.filtersHolder[i].name.toLowerCase() + 'sServices'].length > 0) {
-            return true;
-          }
+    let activeFiltersCat = activeFilters.map(f => f.category);
+    let status = this.countOccurrences(activeFiltersCat, 'status');
+    let level = this.countOccurrences(activeFiltersCat, 'level');
+    let business = this.countOccurrences(activeFiltersCat, 'business');
+  
+    let filters = activeFilters.map(f => f.name);
 
-          
-          if (this.filtersHolder[i].name == product[category]) {
-            return true;
-          }
-        }
-      });
-    });*/
     this.filteredProductBranch = this.productBranchFull.filter(product => {
       product.businessServices = [];
       if (product.caterersServices.length > 0) {
@@ -986,15 +945,8 @@ stock-status-filter {
         return;
       }
 
-      if (level == 0 && status > 0 && business > 0) {
+      if (status > 0 && business > 0) {
         if (filters.includes(product.status) && product.businessServices.some(p => filters.includes(p))) {
-          return true;
-        }
-        return;
-      }
-
-      if (level == 0 && status == 0 && business > 0) {
-        if (product.businessServices.some(p => filters.includes(p))) {
           return true;
         }
         return;
@@ -1006,16 +958,16 @@ stock-status-filter {
         }
         return;
       }
-      
-      if (level > 0 && status == 0) {
-        if (filters.includes(product.level)) {
+
+      if (status > 0 && business > 0) {
+        if (filters.includes(product.status) && product.businessServices.some(p => filters.includes(p))) {
           return true;
         }
         return;
       }
 
-      if (status > 0 && business > 0) {
-        if (filters.includes(product.status) && product.businessServices.some(p => filters.includes(p))) {
+      if (level > 0) {
+        if (filters.includes(product.level)) {
           return true;
         }
         return;
@@ -1034,10 +986,8 @@ stock-status-filter {
         }
         return;
       }
-
     });    
   }
-
 
   countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
 
