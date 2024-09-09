@@ -945,8 +945,8 @@ stock-status-filter {
         return;
       }
 
-      if (status > 0 && business > 0) {
-        if (filters.includes(product.status) && product.businessServices.some(p => filters.includes(p))) {
+      if (level > 0 && business > 0) {
+        if (filters.includes(product.level) && product.businessServices.some(p => filters.includes(p))) {
           return true;
         }
         return;
