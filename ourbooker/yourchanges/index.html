@@ -36,13 +36,11 @@
     <script src="https://player.vimeo.com/api/player.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     
-   
-    
-    
   </head>
   <body>
     <header class="main-header">
       <div class="container">
+
         <div class="row">
           <div class="col-md-5 col-12">
             <h1 id="logo">
@@ -202,53 +200,54 @@
     </nav>
     <main class="main">
       <div class="container">
+
           <div class="self-serve--content-container my-3">
             <header class="self-serve-page-title">
               <h1>Your Changes</h1>
               <p>You can cancel any changes you've made up to midnight on the same day. After this time they are sent for approval & processing.</p>
             </header>
             <script src="/scripts/OurBooker/myaccount.js"></script>
-            <div class="row my-3">
-              <div class="col-12 col-lg-6">
-                <div class="container bg-white my-3 p-4">
+            <div class="row my-3 d-flex">
+              <div class="col-12 col-lg-6 my-3">
+                <div class="container bg-white my-3 p-4 h-100">
                   <h2 class="mb-md-3 font-weight-bolder">Personal Details</h2>
                   <section class="self-serve--section">
                     <div class="self-serve--disabled-field align-items-center">
-                      <label for="#first-name" class="col-12 col-lg-3 p-0"> First Name</label>
-                      <p class="col-xs-12 col-sm-8 col-lg-6 p-0">
-                          <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i>
-                       John
+                      <label for="#first-name" class="col-12 col-xl-3"> First Name</label>
+                      <p class="col-xs-12 col-sm-8 col-lg-8 col-xl-6 p-0">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i>
+                        <span class="dataFields first-name"></span>
                       </p>
-                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-lg-3 cancelChange">Cancel Change</button>
+                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-xl-3 cancelChange">Cancel Change</button>
                     </div>
                   </section>
                   <section class="self-serve--section">
                     <div class="self-serve--disabled-field align-items-center">
-                      <label for="#last-name" class="col-12 col-lg-3 p-0"> Last Name </label>
-                      <p class="col-xs-12 col-sm-8 col-lg-6 p-0">
+                      <label for="#last-name" class="col-12 col-xl-3"> Last Name </label>
+                      <p class="col-xs-12 col-sm-8 col-lg-8 col-xl-6 p-0">
                         <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i>
-                         Pickerton-Smith </p>
-                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-lg-3 cancelChange">Cancel Change</button>
+                         <span class="dataFields last-name"></span></p>
+                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-xl-3 cancelChange">Cancel Change</button>
                     </div>
                   </section>
                   <section class="self-serve--section">
                     <div class="self-serve--disabled-field align-items-center">
-                      <label for="#gender" class="col-12 col-lg-3 p-0"> Gender</label>
-                      <p class="col-xs-12 col-sm-8 col-lg-6 p-0">
+                      <label for="#gender" class="col-12 col-xl-3"> Gender</label>
+                      <p class="col-xs-12 col-sm-8 col-lg-8 col-xl-6 p-0">
                         <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i>
-                         Male</p>
-                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-lg-3 cancelChange">Cancel Change</button>
+                        <span class="dataFields gender"></span></p>
+                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-xl-3 cancelChange">Cancel Change</button>
                     </div>
                   </section>
                 </div>
               </div>
-              <div class="col-12 col-lg-6">
-                <div class="container bg-white my-3 p-4">
+              <div class="col-12 col-lg-6 my-3">
+                <div class="container bg-white my-3 p-4 h-100">
                   <h2 class="mb-md-3 font-weight-bolder">Contact Details</h2>
                   <section class="self-serve--section">
                     <div class="self-serve--disabled-field align-items-center">
-                      <label for="#address" class="col-12 col-lg-3 p-0"> Address </label>
-                      <p class="col-xs-12 col-sm-8 col-lg-6 p-0">
+                      <label for="#address" class="col-12 col-xl-3"> Address </label>
+                      <p class="col-xs-12 col-sm-8 col-lg-8 col-xl-6 p-0">
                         <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i>
                       
                        <span class="self-serve--tooltip-icon" data-open="false" data-content="Future Dated 22/09/2024">
@@ -259,26 +258,25 @@
                         </span>
                       </span>
                       
-                       63 Leamington Road, Leomin... </p>
-                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-lg-3 cancelChange">Cancel Change</button>
+                       <span class="dataFields address"></span></p>
+                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-xl-3 cancelChange">Cancel Change</button>
                   </section>
                   <section class="self-serve--section">
                     <div class="self-serve--disabled-field align-items-center">
-                      <label for="#email-address" class="col-12 col-lg-3 p-0"> Email Address </label>
-                      <p class="col-xs-12 col-sm-8 col-lg-6 p-0">
+                      <label for="#email-address" class="col-12 col-xl-3"> Email Address </label>
+                      <p class="col-xs-12 col-sm-8 col-lg-8 col-xl-6 p-0">
                         <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i>
-                        
-                       jpickerton-smith@gmail.com </p>
-                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-lg-3 cancelChange">Cancel Change</button>
+                       <span class="dataFields email-address"></span></p>
+                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-xl-3 cancelChange">Cancel Change</button>
                     </div>
                   </section>
                   <section class="self-serve--section">
                     <div class="self-serve--disabled-field align-items-center">
-                      <label for="#phone-number" class="col-12 col-lg-3 p-0"> Phone Number </label>
-                      <p class="col-xs-12 col-sm-8 col-lg-6 p-0">
+                      <label for="#phone-number" class="col-12 col-xl-3"> Phone Number </label>
+                      <p class="col-xs-12 col-sm-8 col-lg-8 col-xl-6 p-0">
                         <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i>
-                         01933371000</p>
-                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-lg-3 cancelChange">Cancel Change</button>
+                         <span class="dataFields phone-number"></span></p>
+                      <button class="btn self-serve--cancel-change-btn col-xs-12 col-sm-4 col-xl-3 cancelChange">Cancel Change</button>
                     </div>
                   </section>
                 </div>
@@ -291,26 +289,46 @@
               <h1>Changes Being Reviewed</h1>
               <p>These changes have been sent for review & approval, and can no longer be cancelled. You can submit a subsequent change to override these at any time.</p>
             </header>
-            <div class="row">
-              <div class="col-12 col-lg-6">
-                <div class="container my-3 bg-white p-4">
+            <div class="row d-flex">
+              <div class="col-12 col-lg-6 my-3">
+                <div class="container my-3 bg-white p-4 h-100">
                   <h2 class="mb-md-3 font-weight-bolder">Personal Details</h2>
-                  <section class="self-serve--section">
+                  <section class="self-serve--section my-3">
+                    <label for="sent-for-approval" class="col-sm-3 offset-sm-9 p-0">Sent for Approval</label>
                     <div class="self-serve--disabled-field align-items-center">
-                      <label for="#preferred-name" class="col-xs-12 col-sm-8 col-lg-3 p-0"> Preferred Name</label>
-                      <p class="col-xs-12 col-sm-8 col-lg-6 p-0">
-                        
-                          <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i>
-                       John <span class="self-serve--tooltip-icon" data-open="false" data-content="Sent for Approval 22/08/2024">
-                        <i class="fa-solid fa-calendar-days futureChange"></i>
-                        <span class="self-serve--tooltip-content">
-                          <span class="self-serve--tooltip-triangle"></span>
-                   
-                        </span>
-                      </span></p>
+                      <label for="#preferred-name" class="col-xs-12 col-sm-3"> Preferred Name</label>
+                      <p class="col-xs-12 col-sm-6 p-0">  
+                          <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i> <span class="self-serve--tooltip-icon" data-open="false" data-content="Sent for Approval 22/08/2024">
+                            <i class="fa-solid fa-calendar-days futureChange"></i>
+                            <span class="self-serve--tooltip-content">
+                              <span class="self-serve--tooltip-triangle"></span>
+                            </span>
+                          </span>
+                       <span class="dataFields preferred-name-reviewed"></span></p>
+                       <p class="col-xs-12 col-sm-3 sent-for-approval p-0">22/08/2024</p>
                     </div>
                   </section>
                 </div>
+              </div>
+            <div class="col-12 col-lg-6 my-3">
+              <div class="container my-3 bg-white p-4 h-100">
+                <h2 class="mb-md-3 font-weight-bolder">Contact Details</h2>
+                <section class="self-serve--section my-3">
+                  <label for="sent-for-approval" class="col-sm-3 offset-sm-9 p-0">Sent for Approval</label>
+                  <div class="self-serve--disabled-field align-items-center">
+                    <label for="#preferred-name" class="col-xs-12 col-sm-3"> Address</label>
+                    <p class="col-xs-12 col-sm-6 p-0">  
+                        <i class="fa-sharp fa-solid fa-magnifying-glass viewChange"></i> <span class="self-serve--tooltip-icon" data-open="false" data-content="Sent for Approval 22/08/2024">
+                          <i class="fa-solid fa-calendar-days futureChange"></i>
+                          <span class="self-serve--tooltip-content">
+                            <span class="self-serve--tooltip-triangle"></span>
+                          </span>
+                        </span>
+                        <span class="dataFields address-reviewed"></span></p>
+                     
+                     <p class="col-xs-12 col-sm-3 sent-for-approval p-0">25/08/2024</p>
+                  </div>
+                </section>
               </div>
             </div>
 
