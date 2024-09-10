@@ -18,7 +18,7 @@ let colleague = {
 
 const truncateData = (data, width) => {
  
-  let length = (width > 992 || width < 576) ? 20 : 40;
+  let length = ((width > 576 && width < 992) || width > 992) ? 20 : 40;
 
   return (data.length > length) ? data.slice(0, length) + '...' : data;
 }
@@ -50,4 +50,6 @@ const fieldSizePageWidth = () => {
 
 fieldSizePageWidth();
 
-window.onresize = fieldSizePageWidth();
+window.onresize = () => {
+ fieldSizePageWidth();
+}
