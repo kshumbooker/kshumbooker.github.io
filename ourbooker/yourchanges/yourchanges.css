@@ -1,6 +1,6 @@
 h1, h2, h3, .self-serve--content-container label {
   color: #253494;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .btn:focus,.btn:active {
@@ -21,7 +21,7 @@ h1, h2, h3, .self-serve--content-container label {
 }
 
 header.self-serve-page-title {
-  margin-bottom: 0;
+  margin-bottom: 25px;
 }
 
 .self-serve---delete-beneficiary-popup, .self-serve---delete-popup {
@@ -30,9 +30,6 @@ header.self-serve-page-title {
   border-radius: 0;
 }
 
-.self-serve--section .self-serve--disabled-field p, .self-serve--section .self-serve--disabled-field label, .self-serve--section .self-serve--field label, .btn.self-serve--cancel-btn {
-  font-size: 16px !important;
-}
 
 .self-serve--tooltip-icon---svg  {
   display: none;
@@ -72,6 +69,11 @@ header.self-serve-page-title {
   margin-bottom: .5rem;
 }
 
+.futureChange {
+  margin-left: -5px;
+  margin-right: 5px;
+}
+
 p, label {
   margin-top: .5rem;
   margin-bottom: .5rem;
@@ -80,6 +82,7 @@ p, label {
 .viewChange {
   border: 2px solid #253494;
   border-radius: 50%; 
+  margin-right: 5px;
 }
 
 .self-serve--content-container {
@@ -103,12 +106,6 @@ i:hover {
   border: none;
   color: #fff;
   padding: 5px;
-  font-size: 12px;
-}
-
-.self-serve--section {
-  margin-top: 15px;
-  margin-bottom: 15px;
 }
 
 .self-serve--cancel-change-btn:hover {
@@ -136,6 +133,13 @@ i:hover {
   border: 0;
 }
 
+@media (max-width: 992px) {
+  .self-serve--section {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
 @media (max-width: 768px) {
 
   .self-serve--tooltip-content {
@@ -146,8 +150,23 @@ i:hover {
   .self-serve--section .self-serve--disabled-field, .self-serve--disabled-field {
     flex-direction: row;
   }
+}
 
-  .self-serve--cancel-change-btn, .self-serve--cancel-change-btn:active, .self-serve--cancel-change-btn:focus {
-    font-size: 12px;
+@media (max-width: 576px) {
+  label[for=sent-for-approval] {
+    display: none;
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 992px) { 
+  .sent-for-approval, label[for=sent-for-approval] {
+    text-align: right;
+  }
+}
+
+@media (min-width: 992.01px) { 
+  .sent-for-approval, label[for=sent-for-approval] {
+    text-align: right;
   }
 }
