@@ -23,8 +23,8 @@ header .suggestions-result div a {
 
 
 header .suggestions-result {
-  left: 145px;
-  width: calc(100% - 12em);
+  left: 140px;
+  width: calc(100% - 11.5em);
 	border: 0;
 	box-shadow: none;
 }
@@ -43,8 +43,7 @@ header .suggestions-result {
 	  border-top-left-radius: 5px !important;
 	  border-bottom-left-radius: 5px !important;
 	  border-right:0; 
-	  padding-left:1em; 
-	  padding-right: 1em; 
+	  width: 140px;
 	  display:inline-block; 
 	  font-weight:bold; 
 	  color:#fff;
@@ -60,6 +59,7 @@ header .suggestions-result {
 	  font-weight: 500 !important; 
 	  color:#fff;
 	  background-color: #2356AA;
+		text-align: center;
   }
 
   
@@ -86,9 +86,27 @@ header .suggestions-result {
     }
   }
 
+	@media (min-width: 900px) {
+		.scanner-picker {
+			display: none;
+		}
+	}
+
+	@media (max-width: 900px) {
+		header .suggestions-result {
+			left: 140px;
+			width: calc(100% - 15.5em);
+			border: 0;
+			box-shadow: none;
+		}
+	}
+
 	@media (max-width: 576px) {
     
-		
+		.searchDropdownParent {
+			width: 20px;
+		}
+
 		header .suggestions-result {
 			left: 0;
 			width: 100%;
@@ -103,4 +121,3 @@ header .suggestions-result {
 			padding-right: 0;
 		}
   }
-	
