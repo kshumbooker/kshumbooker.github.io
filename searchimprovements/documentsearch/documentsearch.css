@@ -21,6 +21,13 @@ header .suggestions-result div a {
   margin: 0;
 }
 
+.searchDropdownParent select:focus {
+	width: 140px;
+}
+
+.searchDropdownParent select > option {
+	text-align: center;
+}
 
 header .suggestions-result {
   left: 140px;
@@ -52,8 +59,8 @@ header .suggestions-result {
   
   .searchDropdown {
 	  display:block;
-	  margin-left: auto;
-	  margin-right: auto;
+		margin-left: auto;
+		margin-right: auto;
 	  height:100%; 
 	  border:0px; 
 	  padding-right:0.5em; 
@@ -124,7 +131,7 @@ header .suggestions-result {
 		}
 
 		.searchDropdownParent select:focus {
-			width: 200px;
+			max-width: 125px;
 		}
 
   }
