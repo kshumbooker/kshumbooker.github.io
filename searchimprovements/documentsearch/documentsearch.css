@@ -51,8 +51,7 @@ header .suggestions-result {
   }
   
   .searchDropdown {
-	  display:block; 
-	  width:100%; 
+	  display:block;
 	  height:100%; 
 	  border:0px; 
 	  padding-right:0.5em; 
@@ -62,17 +61,7 @@ header .suggestions-result {
 		text-align: center;
   }
 
-  
-  .searchDropdown option {
-	display: block;
-	border-radius: 0;
-	padding: 1em;
-	font-weight: 400;
-	border-bottom: 2px solid #2356AA;
-	color:#fff;
-	background-color: #2356AA;
-  }
-  
+
   #search-input button {
 	border-radius: 5px !important;
 	border-top-left-radius: 0 !important;
@@ -102,10 +91,6 @@ header .suggestions-result {
 	}
 
 	@media (max-width: 576px) {
-    
-		.searchDropdownParent {
-			width: 20px;
-		}
 
 		header .suggestions-result {
 			left: 0;
@@ -119,5 +104,26 @@ header .suggestions-result {
 		.searchDropdownParent {
 			padding-left: 0;
 			padding-right: 0;
+			width: 18px;
 		}
+
+		.searchDropdown {
+			width: 100%;
+		}
+
+		.searchDropdownParent select {
+			direction: rtl;
+		}
+
+		.searchDropdownParent select > text {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+
+		.searchDropdownParent select:focus {
+			width: 200px;
+		}
+
   }
+	
