@@ -20,6 +20,7 @@
   
     a[data-zoom-id] img, .mz-thumb img {
         border: 4px solid #f1f1f1;
+        max-width: 75px;
     }
 
     .mz-thumb.mz-thumb-selected img {
@@ -84,17 +85,25 @@
 
     @media (max-width: 768px) {
         
-        .mz-thumb > img {
+        .mz-thumb img {
             background: #f1f1f1; 
             border-radius: 50%;
-            width: 5px;
-            height: 5px;
+            width: 10px;
+            height: 10px;
         }
         
 
         .mz-thumb.mz-thumb-selected img {
             background: #EBC292 !important;
+            border: 0;
+            border-bottom: 7px solid transparent;
         }
+
+        a[data-zoom-id] img, .mz-thumb img {
+            border: 0;
+            border-bottom: 7px solid transparent;
+        }
+
 
         main#product_detail .product-images .product-image img {
             height: 0%;
