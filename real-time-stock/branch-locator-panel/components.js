@@ -696,14 +696,6 @@ stock-status-filter {
   font-size: larger;
 }
 
-/*.closeFindMoreAvailabilityRow {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
-}*/
-
-
 
 @media (min-width: 576px) {
   .container {
@@ -887,26 +879,20 @@ stock-status-filter {
 
   render() {
     this.innerHTML = `${this.template().trim()}`;
+
+    this.setBranchLocatorHeight();
     const toggleElement = (className) => {
       this.querySelectorAll(className).length > 1 ? [...this.querySelectorAll(className)].map(c => c.classList.toggle('d-none')) : this.querySelector(className).classList.toggle('d-none');
     }
 
 
-    let height = $(document).height();
-    if (window.innerWidth > 768) {
-      $('#find-more-availability').css('min-height', height + 'px');
-    }
-
-    $(window).resize(() => {
-      let height = $(document).height();
-      if (window.innerWidth > 768) {
-        $('#find-more-availability').css('min-height', height + 'px');
-      } 
-    });
+      $(window).resize(() => {
+        this.setBranchLocatorHeight();
+      });
 
     this.querySelector('.filterBranches').addEventListener('click', () => {toggleElement('.availableFilters')});
     this.querySelector('.closeFindMoreAvailability').addEventListener('click', () => {toggleElement('.find-more-availability'); $('#product_detail').css('display', 'block'); });
-    this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability');});
+    this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability'); $('#product_detail').css('display', 'block');});
     this.querySelector('.closeFilters').addEventListener('click', () => {
       this.querySelector('.availableFilters').classList.add('d-none');
     });
@@ -939,6 +925,11 @@ stock-status-filter {
     this.querySelector('.availableFilters').classList.toggle('d-none');
   }
 
+
+  setBranchLocatorHeight = () => {
+    let height = $(document).height();
+    $('#find-more-availability').css('min-height', height + 'px');
+  }
 
   filterBy = (f) => {
     let filterName = f.getAttribute('data-rts-filter-name');
