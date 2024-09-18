@@ -893,25 +893,16 @@ stock-status-filter {
 
 
     let height = $(document).height();
-    $('#find-more-availability').css('min-height', height + 'px');
+    if (window.innerWidth > 768) {
+      $('#find-more-availability').css('min-height', height + 'px');
+    }
 
     $(window).resize(() => {
       let height = $(document).height();
-      $('#find-more-availability').css('min-height', height + 'px');
-      if (window.innerWidth < 768 && !document.querySelector('#find-more-availability').classList.contains('d-none')) {
-        $('#product_detail').css('display', 'none'); 
+      if (window.innerWidth > 768) {
+        $('#find-more-availability').css('min-height', height + 'px');
       } 
     });
-
-
-    /*this.querySelector('.findMoreAvailabilityUrl').addEventListener('click', () => {
- 
-      if (window.innerWidth < 768 && !document.querySelector('#find-more-availability').classList.contains('d-none')) {
-        $('#product_detail').css('display', 'none');
-      } else {
-        $('#product_detail').css('display', 'block');
-      }
-    });*/
 
     this.querySelector('.filterBranches').addEventListener('click', () => {toggleElement('.availableFilters')});
     this.querySelector('.closeFindMoreAvailability').addEventListener('click', () => {toggleElement('.find-more-availability'); $('#product_detail').css('display', 'block'); });
