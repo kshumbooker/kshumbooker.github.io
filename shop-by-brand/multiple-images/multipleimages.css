@@ -74,6 +74,12 @@
         }
     }
 
+    @media (max-width: 1090px) {
+        #multipleImagesPanel {
+            max-width: 100%;
+        }
+    }
+
     @media (max-width: 992px) {
         .multi-icon.left {
             left: -10%;
@@ -105,8 +111,8 @@
         }
 
         a[data-zoom-id] img, .mz-thumb img {
-            border: 0;
-            border-bottom: 7px solid transparent;
+            border: 5px solid #f1f1f1;
+            border-bottom: 0;
         }
 
 
