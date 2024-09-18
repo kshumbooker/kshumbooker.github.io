@@ -690,7 +690,7 @@
 
             //document.querySelector('find-more-availability').populate();
             $('.find-more-availability').toggleClass('d-none');
-            if (window.innerWidth < 768 && !$('.find-more-availability').hasClass('d-none')) {
+            if (window.innerWidth <= 768 && !$('.find-more-availability').hasClass('d-none')) {
                 $('#product_detail').css('display', 'none');
             } else {
                 $('#product_detail').css('display', 'block');
