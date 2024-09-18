@@ -284,6 +284,45 @@ const branches = [{
 
 
 const productsData = [
+  {
+    midascode: 941390,
+    description: 'Blakemans Fresh Lincolnshire Sausage Meat 2.27kg',
+    volume: 'Case of 5',
+    price: 52.43,
+    type: 'Chilled',
+    stock: [
+      {
+        id: 316
+      },
+      {
+        id: 329
+      },
+      {
+        id: 503
+      },
+      {
+        id: 266
+      },
+      {
+        id: 533
+      },
+      {
+        id: 369
+      },
+      {
+        id: 109
+      },
+      {
+        id: 276
+      },
+      {
+        id: 570
+      },
+      {
+        id: 260
+      }
+    ]
+  },
 {
   midascode: 286632,
   description: 'Just Cookit BBQ Pork Rack of Ribs 450g',
@@ -552,6 +591,7 @@ class FindMoreAvailability extends HTMLElement {
   z-index: 1500;
   display: flex;
   flex-direction: column;
+  flex: 1;
   width: 500px;
   max-width: 500px;
 }
@@ -574,6 +614,11 @@ stock-status-filter {
 
 .productDescription {
   color: #B9E0FF;
+}
+
+.closeFindMoreAvailabilityRow {
+  width: 100%;
+  margin-top: auto !important;
 }
 
 
@@ -652,7 +697,6 @@ stock-status-filter {
 }
 
 
-
 @media (min-width: 576px) {
   .container {
     max-width: 100%;
@@ -664,6 +708,7 @@ stock-status-filter {
   .find-more-availability {
     width: 100%;
     max-width: 100%;
+    min-height: 100vh !important;
   }
 
 }
@@ -671,6 +716,10 @@ stock-status-filter {
 @media (max-width: 576px) {
   .enterTownPostCode, .findBranches {
     font-size: 80%;
+  }
+
+  .filterBranchesLabel {
+    display: none;
   }
 }
 
@@ -704,7 +753,7 @@ stock-status-filter {
       ${this.filtersHolder.map(filter => `<stock-status-filter class="stock-status-filter ${filter.active == false ? 'd-none': ''}" data-rts-filter-name="${filter.name}" data-rts-filter-active="${filter.active}" data-rts-filter-category="${filter.category}"></stock-status-filter>`).join('')}
     </div>
     <div class="col-4 text-right p-0">
-      <span>Filter Branches <i class="fas fa-solid fa-sliders border p-1 filterBranches"></i></span>
+      <span class="filterBranchesLabel">Filter Branches</span> <i class="fas fa-solid fa-sliders border p-1 filterBranches"></i>
     </div>
   </div>
 </div>
@@ -731,7 +780,6 @@ stock-status-filter {
   ${this.productBranch.map((productBranch, index) => `
  <a href="https://www.booker.co.uk/branch-locator/search/" target="_blank">  
     <div class="row my-2 pt-3 px-3 pb-2 text-dark bg-white ${index < 4 ? '' : 'showBranchesHide d-none' }">
-   
     <div class="col-12 p-0">
       <div class="row">
       <div class="col-8 p-0">
@@ -756,7 +804,7 @@ stock-status-filter {
     <a href="#" class="btn d-block p-3 w-100 text-dark findMoreAvailabilityShowMore">Show more branches <span class="showMoreBranchesChevron collapsed"><i class="fa-solid fa-chevron-up"></i></span></a>
   </div>
 </div>
-<div class="row my-2 d-block closeFindMoreAvailabilityRow">
+<div class="row my-2 d-flex closeFindMoreAvailabilityRow">
   <div class="col-12 p-0">
     <a href="#" class="btn d-block p-3 w-100 closeFindMoreAvailabilityMenu bluebutton">Close Menu</a>
   </div>
@@ -779,6 +827,7 @@ stock-status-filter {
         }
       });
     });
+
     
     this.productBranchFull = [...this.productBranch];
 
@@ -830,24 +879,20 @@ stock-status-filter {
 
   render() {
     this.innerHTML = `${this.template().trim()}`;
+
+    this.setBranchLocatorHeight();
     const toggleElement = (className) => {
       this.querySelectorAll(className).length > 1 ? [...this.querySelectorAll(className)].map(c => c.classList.toggle('d-none')) : this.querySelector(className).classList.toggle('d-none');
     }
 
-    let height = $(document).height();
-      $('#find-more-availability').css('min-height', height + 30 + 'px');
 
-    this.findMoreAvailableCss();
+      $(window).resize(() => {
+        this.setBranchLocatorHeight();
+      });
 
-    $(window).resize(() => {
-      let height = $(document).height();
-      $('#find-more-availability').css('min-height', height + 'px');
-    });
-
-    
     this.querySelector('.filterBranches').addEventListener('click', () => {toggleElement('.availableFilters')});
-    this.querySelector('.closeFindMoreAvailability').addEventListener('click', () => {toggleElement('.find-more-availability')});
-    this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability')});
+    this.querySelector('.closeFindMoreAvailability').addEventListener('click', () => {toggleElement('.find-more-availability'); $('#product_detail').css('display', 'block'); });
+    this.querySelector('.closeFindMoreAvailabilityMenu').addEventListener('click', () => {toggleElement('.find-more-availability'); $('#product_detail').css('display', 'block');});
     this.querySelector('.closeFilters').addEventListener('click', () => {
       this.querySelector('.availableFilters').classList.add('d-none');
     });
@@ -855,7 +900,6 @@ stock-status-filter {
     this.querySelector('.findMoreAvailabilityShowMore').addEventListener('click', () => {
       toggleElement('.showBranchesHide');
       this.querySelector('.showMoreBranchesChevron').classList.toggle('collapsed');
-      this.toggleFindMoreAvailableCss();
     });
 
     const availableFilters = this.querySelectorAll('.availableFilters stock-status-filter');
@@ -881,22 +925,10 @@ stock-status-filter {
     this.querySelector('.availableFilters').classList.toggle('d-none');
   }
 
-  toggleFindMoreAvailableCss = () => {
-    if ($('.closeFindMoreAvailabilityRow').css('position') == 'absolute') {
-      $('.closeFindMoreAvailabilityRow').css('position', '');
-      $('.closeFindMoreAvailabilityRow').css('left', '0');
-      $('.closeFindMoreAvailabilityRow').css('right', '0');
-      $('.closeFindMoreAvailabilityRow').css('bottom', '0');
-    } else {
-      this.findMoreAvailableCss();
-    }
-  }
-  
-  findMoreAvailableCss = () => {
-    $('.closeFindMoreAvailabilityRow').css('position', 'absolute');
-    $('.closeFindMoreAvailabilityRow').css('left', '15px');
-    $('.closeFindMoreAvailabilityRow').css('right', '15px');
-    $('.closeFindMoreAvailabilityRow').css('bottom', '15px');
+
+  setBranchLocatorHeight = () => {
+    let height = $(document).height();
+    $('#find-more-availability').css('min-height', height + 'px');
   }
 
   filterBy = (f) => {
