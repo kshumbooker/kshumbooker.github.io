@@ -58,7 +58,6 @@ const multiImagesSliders = document.querySelectorAll('.multi-icon > a');
 document.querySelector('.multi-icon.left').classList.add('disabled');
 
 const clickCarouselImg = (b, index, brandbankImages) => {
-  console.log(b);
   activeSliders(index, brandbankImages);
 }
 
