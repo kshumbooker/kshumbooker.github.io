@@ -40,22 +40,26 @@ images.map(image => {
 
 const brandbankImages = document.querySelectorAll('.multipleImagesPanel > a');
 
-[...brandbankImages].map((b, i, arr) => {
-  if (arr.length > 5 && i == 5) {
-    b.classList.add('d-none');
-  }
-  b.addEventListener('click', () => {clickCarouselImg(b, i, arr)});
-});
+  [...brandbankImages].map((b, i, arr) => {
+    if (arr.length > 5 && i == 5 && window.innerWidth > 768) {
+      b.classList.add('d-none');
+    }
+    b.addEventListener('click', () => {clickCarouselImg(b, i, arr)});
+    b.addEventListener('touchstart', () => {clickCarouselImg(b, i, arr)});
+  });
+
 
 const multiImagesSliders = document.querySelectorAll('.multi-icon > a');
 
 [...multiImagesSliders].map(m => {
   m.addEventListener('click', () => {slide(m)});
+  m.addEventListener('touchstart', () => {slide(m)});
 });
 
 document.querySelector('.multi-icon.left').classList.add('disabled');
 
 const clickCarouselImg = (b, index, brandbankImages) => {
+  console.log(b);
   activeSliders(index, brandbankImages);
 }
 
@@ -67,6 +71,7 @@ const slide = (s) => {
   let mzLensImg = document.querySelector('.mz-lens > img');
   let mzZoomWindowImg = document.querySelector('.mz-zoom-window > img');
   let activeKey;
+
 
   [...mzThumbSelected].map((mz, index) => {
     if (mz.classList.contains('mz-thumb-selected')) {
@@ -84,13 +89,14 @@ const slide = (s) => {
 }
 
 const activeSliders = (index, thumbs) => {
-  
-  if (thumbs.length > 5 && index >= 4) {
-    thumbs[0].classList.add('d-none');
-    thumbs[5].classList.remove('d-none');
-  } else {
-    thumbs[5].classList.add('d-none');
-    thumbs[0].classList.remove('d-none');
+  if (window.innerWidth > 768) {
+    if (thumbs.length > 5 && index >= 4) {
+      thumbs[0].classList.add('d-none');
+      thumbs[5].classList.remove('d-none');
+    } else {
+      thumbs[5].classList.add('d-none');
+      thumbs[0].classList.remove('d-none');
+    }
   }
 
   if (index == 0) {
