@@ -1,5 +1,4 @@
-
-    #multipleImagesPanel {
+#multipleImagesPanel {
         max-width: 80%;
         display: flex;
         justify-content: center;
@@ -95,9 +94,15 @@
         #multipleImagesPanel {
             max-width: 100%;
         }
+
+        .mz-thumb:nth-child(n+6) {
+            display: block;
+        }
         
         .mz-thumb img {
-            background: #f1f1f1; 
+            background: #EBC292 !important;
+            border: 0;
+            border-bottom: 7px solid transparent;
             border-radius: 50%;
             width: 10px;
             height: 10px;
@@ -111,8 +116,9 @@
         }
 
         a[data-zoom-id] img, .mz-thumb img {
-            border: 5px solid #f1f1f1;
-            border-bottom: 0;
+            background: #f1f1f1 !important;
+            border: 0;
+            border-bottom: 7px solid transparent;
         }
 
 
