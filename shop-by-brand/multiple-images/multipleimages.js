@@ -53,7 +53,6 @@ const multiImagesSliders = document.querySelectorAll('.multi-icon > a');
 
 [...multiImagesSliders].map(m => {
   m.addEventListener('click', () => {slide(m)});
-  m.addEventListener('touchstart', () => {slide(m)});
 });
 
 document.querySelector('.multi-icon.left').classList.add('disabled');
