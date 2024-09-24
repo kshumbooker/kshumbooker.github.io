@@ -100,7 +100,7 @@ header .suggestions-result {
 	@media (min-width: 2550px) {
 		
 		.keywordsuggestion {
-			padding: 40px;
+			padding: 0;
 		}
 
 		.col-sm-2, .col-xl-2 {
