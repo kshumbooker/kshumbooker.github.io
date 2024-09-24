@@ -257,10 +257,10 @@ let newSearchInputHtml = `
     searchDocuments.map(document => {
       html += `
         <div class="keywordsuggestion row d-flex justify-content-center align-items-center py-3">
-          <div class="col-xs-12 col-sm-2">
+          <div class="col-xs-12 col-xl-2">
             ${document.icon}
           </div>
-          <div class="col-xs-12 col-sm-10">
+          <div class="col-xs-12 col-xl-10">
             <a href="/documents/search?name=${document.description}">${document.description}</a>
             <p class="category">${document.category}</p>
           </div>
@@ -269,4 +269,3 @@ let newSearchInputHtml = `
     });
     return html;
 }
-	
