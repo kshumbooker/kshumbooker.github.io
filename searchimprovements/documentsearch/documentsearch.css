@@ -103,7 +103,7 @@ header .suggestions-result {
 			padding: 0;
 		}
 
-		.col-sm-2, .col-xl-2 {
+		header .suggestions-result .col-xl-2 {
 			flex: 0 0 8.333333%;
 			max-width: 8.333333%;
 			display: flex;
@@ -128,7 +128,6 @@ header .suggestions-result {
 		header .suggestions-result {
 			left: 140px;
 			width: calc(100% - 15.5em);
-			border: 0;
 			box-shadow: none;
 		}
 	}
