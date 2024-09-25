@@ -88,7 +88,7 @@ let searchProducts = [
     rrp: 1.25,
     por: 27.3,
     price: 9.09
-  },
+  }
 ];
 
 let searchDocuments = [
@@ -141,7 +141,8 @@ let searchDocuments = [
     icon: '<i class="fa-regular fa-file-excel fa-2xl"></i>',
     url: ''
   },
-]
+];
+
 
 let searchInput = document.querySelectorAll('#search-input.input-group');
 
@@ -153,7 +154,7 @@ let newSearchInputHtml = `
       </select>
     </div>
     <input name="keywords" type="text" class="suggestion-keywords form-control" placeholder="Search by Product code, description or barcode">
-    <div class="suggestions-result">
+    <div class="suggestions-result" style="display: none">
        
     </div>
     <div class="scanner-picker">
@@ -201,6 +202,7 @@ let newSearchInputHtml = `
 });
 
   let suggestionResults = document.querySelectorAll('.suggestions-result');
+
   let productDocumentSelect = document.querySelectorAll('.searchDropdown');
 
 
@@ -269,3 +271,8 @@ let newSearchInputHtml = `
     });
     return html;
 }
+
+document.querySelector('#search-input input[type=text]').addEventListener('blur', () => {
+  $('.suggestions-result').fadeOut();
+  
+});
