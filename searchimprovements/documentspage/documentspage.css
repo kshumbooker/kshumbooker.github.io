@@ -113,6 +113,13 @@
 
 @media (min-width: 1440px) {
   .document-list .rowMode .documentList .category {
-    width: 50%;
+    width: 75%;
+  }
+}
+
+@media (min-width: 2560px) {
+  .document-list .col-xl-3 {
+    flex: 0 0 12%;
+    max-width: 12%;
   }
 }
