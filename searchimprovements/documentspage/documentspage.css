@@ -1,20 +1,19 @@
-.document-list .gridMode .documentList .icon, .document-list .rowMode .documentList .icon {
+.document-list .documentList .icon {
   display: flex;
   justify-content: center;
   font-size: 2em;
 }
 
-.document-list .gridMode .documentList {
+.document-list .documentList {
   display: flex;
   justify-content: center;
 }
 
 .document-list .rowMode .documentList {
-  display: flex;
   align-items: center;
 }
 
-.document-list .gridMode .documentList .fa-2xl, .document-list .rowMode .documentList .fa-2xl {
+.document-list .documentList .fa-2xl {
   line-height: 1.5em;
 }
 
@@ -38,18 +37,11 @@
   font-weight: bold;
 }
 
-.document {
-  border: 1px solid #ccc;
-}
 
 .documentList.row {
   border: 1px solid #ccc;
   padding: 0;
   margin: 0;
-}
-
-.gridMode .documentList {
-  display: flex;
 }
 
 .document-list .gridMode .content .description {
@@ -75,7 +67,7 @@
 	margin-bottom: 0;
 }
 
-.document-list .gridMode .documentList .category, .document-list .rowMode .documentList .category {
+.document-list .documentList .category {
   background: #2356AA;
   display: inline-block;
   border-radius: 5px;
@@ -83,7 +75,7 @@
   color: #ffffff;
 }
 
-.document-list .rowMode .documentList .category, .document-list .gridMode .documentList .category {
+.document-list .documentList .category {
   width: 100%;
 }
 
@@ -99,7 +91,7 @@
 }
 
 @media (max-width: 576px) {
-  .document-list .gridMode .documentList, .document-list .rowMode .documentList {
+  .document-list .documentList {
     text-align: center;
   }
 
