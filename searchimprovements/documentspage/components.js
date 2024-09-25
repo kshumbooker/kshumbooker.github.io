@@ -76,10 +76,10 @@ const documentListRowMode = () => {
         </div>
         <div class="categoryPublished">
           <div class="row">
-            <div class="col-xs-12 col-sm-5">
+            <div class="col-xs-12 col-sm-4 col-xl-3">
               <span class="category">${document.category}</span> 
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-7 col-xl-8">
               <span class="published">Published ${document.published}</span>
             </div>
             <div class="col-sm-1"><i class="fa-solid fa-chevron-right"></i></div>
