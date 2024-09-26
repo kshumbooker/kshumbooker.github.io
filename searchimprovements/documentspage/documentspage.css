@@ -27,6 +27,7 @@
 .document-list .gridMode .content {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .document-list .gridMode {
@@ -102,6 +103,10 @@
 @media (max-width: 576px) {
   .document-list .documentList {
     text-align: center;
+  }
+
+  .document-list .gridMode .content .description {
+    justify-content: center;
   }
 
   .documentList .fa-solid.fa-chevron-right {
