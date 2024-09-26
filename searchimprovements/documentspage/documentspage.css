@@ -29,7 +29,8 @@
 
 .document-list .categoryPublished {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+  font-size: 12px;
 }
 
 .document-list .gridMode .documentList .category, .document-list .rowMode .documentList .category {
@@ -104,22 +105,32 @@
   }
 }
 
+@media (max-width: 576px) {
+  .document-list .documentList {
+    text-align: center;
+  }
 
-@media (min-width: 768px) {
-  .document-list .rowMode .documentList .category {
-    width: 75%;
+  .documentList .fa-solid.fa-chevron-right {
+    display: none;
   }
 }
 
+
 @media (min-width: 1440px) {
-  .document-list .rowMode .documentList .category {
-    width: 75%;
+
+  .document-list .col-xl-3 {
+    flex: 0 0 16.666666%;
+    max-width: 16.666666%;
   }
 }
 
 @media (min-width: 2560px) {
+  .document-list .rowMode .documentList .category {
+    width: 100%;
+  }
+
   .document-list .col-xl-3 {
-    flex: 0 0 12%;
-    max-width: 12%;
+    flex: 0 0 8.333333%;
+    max-width: 8.333333%;
   }
 }
