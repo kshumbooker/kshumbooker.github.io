@@ -94,17 +94,15 @@ const documentListGridMode = () => {
   documentListHtml.innerHTML = `<div class="gridMode">${searchDocuments.map(document => `
     <div class="documentList col-xs-12 col-sm-4 col-md-3 col-lg-2 py-3">
       <div class="content">
-      <div class="icon d-flex justify-content-center">
-        ${document.icon}
-      </div>
-      <div class="description my-3">
-        <a href="/documents/search?name=${document.description}">${document.description}</a>
-      </div>
-      <div class="categoryPublished">
-        <span class="published">Published ${document.published}</span>
-      </div>
-      <div>
-        <span class="category">${document.category}</span>    
+        <div class="icon d-flex justify-content-center">
+          ${document.icon}
+        </div>
+        <div class="description my-3">
+          <a href="/documents/search?name=${document.description}">${document.description}</a>
+        </div>
+        <div class="categoryPublished">
+          <span class="published">Published ${document.published}</span>
+          <span class="category">${document.category}</span>    
       </div>
     </div>
   </div>
