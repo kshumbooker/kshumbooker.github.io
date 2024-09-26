@@ -109,12 +109,20 @@ const documentListGridMode = () => {
   `).join('')}</div>`;
 }
 
-document.onload = documentListRowMode();
+$(document).ready(function() {
+  if (document.querySelector('#subCatCol').classList.contains('dark-blue-btn')) {
+    documentListGridMode();  
+  }
+  if (document.querySelector('#subCatRow').classList.contains('dark-blue-btn')) {
+    documentListRowMode();
+  }
 
-document.querySelector('#subCatCol').addEventListener('click', () => {
-  documentListGridMode();
-});
+  document.querySelector('#subCatCol').addEventListener('click', () => {
+    documentListGridMode();
+  });
+  
+  document.querySelector('#subCatRow').addEventListener('click', () => {
+    documentListRowMode();
+  });
 
-document.querySelector('#subCatRow').addEventListener('click', () => {
-  documentListRowMode();
 });
