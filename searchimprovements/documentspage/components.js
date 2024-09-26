@@ -74,7 +74,7 @@ const documentListRowMode = () => {
             <a href="/documents/search?name=${document.description}">${document.description}</a>
           </div>
         </div>
-        <div class="categoryPublished">
+        <div class="categoryPublished my-1">
           <div class="row">
             <div class="col-xs-12 col-sm-11">
               <span class="category">${document.category}</span> 
@@ -95,7 +95,7 @@ const documentListGridMode = () => {
         <div class="icon d-flex justify-content-center">
           ${document.icon}
         </div>
-        <div class="description my-3">
+        <div class="description my-1">
           <a href="/documents/search?name=${document.description}">${document.description}</a>
         </div>
         <div class="categoryPublished">
