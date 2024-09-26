@@ -9,6 +9,13 @@
   justify-content: center;
 }
 
+.subcategories,
+.departments, 
+.filter-by,
+.result {
+  display: none;
+}
+
 .document-list .rowMode .documentList {
   align-items: center;
 }
