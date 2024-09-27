@@ -136,8 +136,8 @@ header .suggestions-result {
 			appearance: none;
 		}
 
-		.searchDropdownParent select:focus {
-			max-width: 125px;
+		.searchDropdownParent select:focus, .searchDropdown option {
+			width: 100px;
 		}
-
   }
+	
