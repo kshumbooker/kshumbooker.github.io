@@ -75,6 +75,11 @@ header .suggestions-result {
 	  color:#fff;
   }
 
+.searchDropdown	option  {
+   background-color: #ffffff;
+   color: #2356AA;
+}
+
 
   #search-input button {
 	border-radius: 5px !important;
