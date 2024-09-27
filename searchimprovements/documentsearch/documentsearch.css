@@ -37,18 +37,9 @@ header .suggestions-result div a:hover {
   margin: 0;
 }
 
-.searchDropdownParent select, .searchDropdownParent select:focus {
-	width: 140px;
-}
-
-.searchDropdownParent select > option {
-	text-align: center;
-}
-
 header .suggestions-result {
-  left: 143px;
+  left: 140px;
   width: calc(100% - 11.5em);
-	border: 1px solid #2356AA;
 	max-height: 500px;
 	overflow: auto;
 	box-shadow: none;
@@ -57,27 +48,20 @@ header .suggestions-result {
 	padding-bottom: 10px;
 }
 
-.suggestion-keywords {
-	border: 2px solid #2356AA !important;
-	color: #777 !important;
-  }
   
-  .suggestion-keywords::placeholder {
-	color: #9b9ec4 !important;
-  }
-
-  
-  .searchDropdown {
-	  height: 100%; 
-		text-align: center;
-	  border-top-left-radius: 5px !important;
-	  border-bottom-left-radius: 5px !important;
-	  color:#fff;
-  }
+.searchDropdown {
+	height: 100%; 
+	text-align: center;
+	border-top-left-radius: 5px !important;
+	border-bottom-left-radius: 5px !important;
+	color:#fff;
+	width: 140px;
+	background-color: #43AC32;
+}
 
 .searchDropdown	option  {
-   background-color: #ffffff;
-   color: #2356AA;
+	background-color: #ffffff;
+	color: #2356AA;
 }
 
 
