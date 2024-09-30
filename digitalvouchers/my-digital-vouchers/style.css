@@ -1,3 +1,101 @@
-.digitalVouchers {
+digital-voucher, .digitalVouchers {
   color: #2356AA;
+}
+
+.digitalVouchers h2 {
+  font-weight: 900;
+}
+
+.digitalVouchers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.digitalVouchers digital-voucher {
+  border-radius: 10px;
+  margin: 30px 10px 0 0;
+  min-width: 32%;
+  max-width: 32%;
+  border: transparent;
+}
+
+digital-voucher .card {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+digital-voucher .card .expiry {
+  color: #000;
+}
+
+digital-voucher .card .card-description {
+  font-weight: bold;
+}
+
+digital-voucher .card .card-bottom {
+  margin-top: auto;
+}
+
+digital-voucher .card .btn {
+  float: inline-end;
+}
+
+digital-voucher .card .card-title {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+digital-voucher .card .card-body {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+digital-voucher .card .card-title p {
+  font-weight: bold;
+}
+
+digital-voucher .card .card-bottom,
+digital-voucher .card .card-text,
+digital-voucher .card .card-title p {
+  padding: 10px;
+}
+
+
+digital-voucher .card .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #0454A1;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+
+@media (max-width: 992px) {
+
+  .digitalVouchers digital-voucher {
+    -webkit-box-flex: 0;
+      -ms-flex: 0 0 48% !important;
+          flex: 0 0 48% !important;
+  max-width: 48%;
+  }
+
+  digital-voucher .card .btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .digitalVouchers digital-voucher {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100%;
+  }
 }
