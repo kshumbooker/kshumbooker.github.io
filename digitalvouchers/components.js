@@ -92,6 +92,17 @@ let digitalVouchers = [
   }
 ];
 
+let digitalVouchersApplied = {
+  title: 'You have Vouchers Applied!!',
+  description: 'Click the button below to see all your Vouchers',
+  btnText: 'View All Vouchers',
+  descriptionColor: '#2356AA',
+  titleBgColor: '#2356AA',
+  titleFontColor: '#ffffff',
+  btnBgColor: '#2356AA',
+  btnFontColor: '#ffffff',
+}
+
 
 let digitalVouchersContent = document.querySelector('.digitalVouchers');
 
@@ -146,8 +157,9 @@ class DigitalVoucher extends HTMLElement {
 
   template = () => `
   <div class="card h-100">
+    <span class="cutaway left"></span>
     <div class="card-body">
-      <div class="card-title" style="background: ${this.voucher.titleBgColor}; color: ${this.voucher.titleFontColor}"><p>${this.voucher.promotion} Voucher</p></div>
+      <div class="card-title" style="background: ${this.voucher.titleBgColor}; color: ${this.voucher.titleFontColor}"><span class="promotion">${this.voucher.promotion} Voucher</span></div>
       <div class="card-text">
         <p class="card-description">${this.voucher.description}</p>
       </div>
@@ -155,8 +167,51 @@ class DigitalVoucher extends HTMLElement {
         <p><span class="dot"></span> <span class="expiry">Expiring in ${this.voucher.expiry} days</span>  <a href="${this.voucher.url}" class="btn" style="background: ${this.voucher.btnBgColor}; color: ${this.voucher.btnFontColor}">${this.voucher.btnText}</a></p>
       </div>
     </div>
+    <span class="cutaway right"></span>
+  </div>
+  `;
+}
+
+
+class DigitalVoucherApplied extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.voucherApplied = {
+      title: this.getAttribute('data-title'),
+      description: this.getAttribute('data-description'),
+      btnText: this.getAttribute('data-btn-text'),
+      descriptionColor: this.getAttribute('data-description-color'),
+      titleBgColor: this.getAttribute('data-title-bg-color'),
+      titleFontColor: this.getAttribute('data-title-font-color'),
+      btnBgColor: this.getAttribute('data-btn-bg-color'),
+      btnFontColor: this.getAttribute('data-btn-font-color'),
+    }
+    this.render();
+  }
+
+  render = () => {
+    this.innerHTML = `
+      ${this.template().trim()}
+    `;
+  }
+
+  template = () => `
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title" style="background: ${this.voucherApplied.titleBgColor}; color: ${this.voucherApplied.titleFontColor}"><p>${this.voucherApplied.title}</p></div>
+      <div class="card-text">
+        <p class="card-description">${this.voucherApplied.description}</p>
+      </div>
+      <div class="card-bottom">
+        <p><span class="dot"></span> <span class="expiry">Expiring in ${this.voucherApplied.expiry} days</span>  <a href="${this.voucherApplied.url}" class="btn" style="background: ${this.voucherApplied.btnBgColor}; color: ${this.voucherApplied.btnFontColor}">${this.voucherApplied.btnText}</a></p>
+      </div>
+    </div>
   </div>
   `;
 }
 
 customElements.define('digital-voucher', DigitalVoucher);
+customElements.define('digital-voucher-applied', DigitalVoucherApplied);
