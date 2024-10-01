@@ -54,7 +54,32 @@ let searchDocuments = [
     icon: '<i class="fa-regular fa-file-excel fa-2xl"></i>',
     published: '25/12/2024',
     url: ''
+  },
+  {
+    id: 8,
+    description: 'De komst van de hoogste windmolens ooit op land en het Ontwerpbesluit windturbines leefomgeving',
+    category: 'PDF File',
+    icon: '<i class="fa-regular fa-file-pdf fa-2xl"></i>',
+    published: '25/09/2024',
+    url: ''
+  },
+  {
+    id: 9,
+    description: 'product-info',
+    category: 'Static Web Page',
+    icon: '<i class="fa-regular fa-file-code fa-2xl"></i>',
+    published: '26/09/2024',
+    url: ''
+  },
+  {
+    id: 10,
+    description: 'safety-data-sheets',
+    category: 'Static Web Page',
+    icon: '<i class="fa-regular fa-file-code fa-2xl"></i>',
+    published: '26/09/2024',
+    url: ''
   }
+
 ];
 
 let documentListHtml = document.querySelector('.document-list');
