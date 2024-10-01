@@ -90,6 +90,12 @@
   margin-right: 10px;
 }
 
+.document-list .documentList .details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
 
 .documentList .published {
   color: #2356AA;
