@@ -93,7 +93,7 @@ const documentListRowMode = () => {
           ${document.icon}
         </div>
       </div>
-      <div class="col-xs-12 col-sm-11">
+      <div class="col-xs-12 col-sm-11 details">
         <div class="col-12">
           <div class="description">
             <a href="/documents/search?name=${document.description}">${document.description}</a>
