@@ -4,16 +4,9 @@
   font-size: 2em;
 }
 
-.document-list .documentList {
-  display: flex;
-  justify-content: center;
-}
-
-.subcategories,
-.departments, 
-.filter-by,
-.result {
-  display: none;
+.document-list a, .document-list a:hover {
+ color: #000000;
+ text-decoration: none;
 }
 
 .document-list .rowMode .documentList {
@@ -24,18 +17,12 @@
   line-height: 1.5em;
 }
 
-.document-list .gridMode .content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
 .document-list .gridMode {
   display: flex;
   flex-wrap: wrap;
 }
 
-.document-list .categoryPublished {
+.document-list .rowMode .categoryPublished {
   display: flex;
   flex-direction: column;
   row-gap: 8px;
@@ -45,6 +32,14 @@
 .document-list .gridMode .documentList .category, .document-list .rowMode .documentList .category {
   margin-top: auto;
   font-weight: bold;
+}
+
+.document-list .gridMode .categoryPublished {
+  margin-top: auto;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
 }
 
 
@@ -59,6 +54,12 @@
   flex-grow: 1;
 }
 
+.document-list .content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .document-list .gridMode .documentList .category {
   width: max-content;
 }
@@ -67,14 +68,8 @@
   border: 1px solid #ccc;
 }
 
-.documentList .description a {
-	color: #000000;
+.documentList .description {
   font-weight: bold;
-  text-decoration: none;
-}
-
-.documentList .description a:hover {
-	color: #2356AA;
 }
 
 .documentList p {
@@ -93,7 +88,7 @@
 .document-list .documentList .details {
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
+  row-gap: 5px;
 }
 
 
@@ -108,10 +103,10 @@
 
 @media (max-width: 576px) {
   .document-list .documentList {
-    text-align: center;
+    justify-content: center;
   }
 
-  .document-list .gridMode .content .description {
+  .document-list .gridMode .content {
     justify-content: center;
   }
 
@@ -127,12 +122,16 @@
     margin-bottom: 5px;
   }
 
-
+  .document-list .description, .document-list .gridMode .content .description {
+    display: block;
+    text-align: center;
+  }
 
   .document-list .categoryPublished {
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-size: 11px;
+    text-align: center;
   }
 }
