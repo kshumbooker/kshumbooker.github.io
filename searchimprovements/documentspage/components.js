@@ -5,7 +5,7 @@ let searchDocuments = [
     category: 'Web Page',
     icon: '<i class="fa-regular fa-file fa-2xl"></i>',
     published: '25/12/2024',
-    url: ''
+    url: '/website-terms-and-conditions'
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ let searchDocuments = [
     category: 'PDF Document',
     icon: '<i class="fa-regular fa-file-pdf fa-2xl"></i>',
     published: '25/12/2024',
-    url: ''
+    url: '/booker-retail-partners-allocations-guide'
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ let searchDocuments = [
     category: 'PDF Document',
     icon: '<i class="fa-regular fa-file-pdf fa-2xl"></i>',
     published: '25/12/2024',
-    url: ''
+    url: '/booker-oil-return-service'
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ let searchDocuments = [
     category: 'Word Document',
     icon: '<i class="fa-regular fa-file-word fa-2xl"></i>',
     published: '25/12/2024',
-    url: ''
+    url: '/summer-2025-pre-sell'
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ let searchDocuments = [
     category: 'Web Page',
     icon: '<i class="fa-regular fa-file fa-2xl"></i>',
     published: '25/12/2024',
-    url: ''
+    url: '/summer-sales-pre-sell-2023-coca-cola'
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ let searchDocuments = [
     category: 'Web Page',
     icon: '<i class="fa-regular fa-file fa-2xl"></i>',
     published: '25/12/2024',
-    url: ''
+    url: '/privacy-policy-cookies'
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ let searchDocuments = [
     category: 'Excel Document',
     icon: '<i class="fa-regular fa-file-excel fa-2xl"></i>',
     published: '25/12/2024',
-    url: ''
+    url: 'tobacco-pricing-changes-2024-budget'
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ let searchDocuments = [
     category: 'PDF File',
     icon: '<i class="fa-regular fa-file-pdf fa-2xl"></i>',
     published: '25/09/2024',
-    url: ''
+    url: '/De-komst-van-de-hoogste-windmolens-ooit-op-land-en-het-Ontwerpbesluit-windturbines-leefomgeving'
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ let searchDocuments = [
     category: 'Static Web Page',
     icon: '<i class="fa-regular fa-file-code fa-2xl"></i>',
     published: '26/09/2024',
-    url: ''
+    url: '/product-info'
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ let searchDocuments = [
     category: 'Static Web Page',
     icon: '<i class="fa-regular fa-file-code fa-2xl"></i>',
     published: '26/09/2024',
-    url: ''
+    url: '/safety-data-sheets'
   }
 
 ];
@@ -87,6 +87,7 @@ documentListHtml.innerHTML = ``;
 
 const documentListRowMode = () => {
   documentListHtml.innerHTML = `<div class="rowMode">${searchDocuments.map(document => `
+  <a href="/documents/search?name=${document.description}">  
     <div class="documentList row py-4">
       <div class="col-xs-12 col-sm-1">
         <div class="icon">
@@ -96,7 +97,7 @@ const documentListRowMode = () => {
       <div class="col-xs-12 col-sm-11 details">
         <div class="col-12">
           <div class="description">
-            <a href="/documents/search?name=${document.description}">${document.description}</a>
+            ${document.description}
           </div>
         </div>
         <div class="categoryPublished my-1">
@@ -110,25 +111,28 @@ const documentListRowMode = () => {
         </div>
       </div>
     </div>
+  </a>
   `).join('')}</div>`; 
 }
 
 const documentListGridMode = () => {
   documentListHtml.innerHTML = `<div class="gridMode">${searchDocuments.map(document => `
     <div class="documentList col-xs-12 col-sm-4 col-md-3 col-lg-2 py-3">
-      <div class="content">
-        <div class="icon d-flex justify-content-center">
-          ${document.icon}
+      <a href="/documents/search?name=${document.description}">   
+        <div class="content">
+          <div class="icon d-flex">
+            ${document.icon}
+          </div>
+          <div class="description my-1">
+            ${document.description}
+          </div>
+          <div class="categoryPublished">
+            <span class="published">Published ${document.published}</span>
+            <span class="category">${document.category}</span>    
+          </div>
         </div>
-        <div class="description my-1">
-          <a href="/documents/search?name=${document.description}">${document.description}</a>
-        </div>
-        <div class="categoryPublished">
-          <span class="published">Published ${document.published}</span>
-          <span class="category">${document.category}</span>    
-      </div>
+      </a>
     </div>
-  </div>
   `).join('')}</div>`;
 }
 
