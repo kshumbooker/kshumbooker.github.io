@@ -1,4 +1,3 @@
-
 let searchProducts = [
   {
     midascode: 286188,
