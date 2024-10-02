@@ -118,10 +118,8 @@ var suggestion = {
       ];
 
       $.each(searchProducts, function (key, value) {
-         $('.suggestions-result').append('<div class="keywordsuggestion row d-flex justify-content-center align-items-center py-3"><div class="col-lg-12 col-xl-2"><img src="' + value.img + '" style="max-width: 50px;"></div><div class="col-lg-12 col-xl-7"><a class="searchUrl" href="/products/search?keywords=' + value.description + '">' + value.description + '</a><p class="volume">Case of ' + value.volume + '</p></div><div class="col-lg-12 col-xl-3"><p class="price">&pound;' + value.price + '</p><p class="rrp">RRP: &pound;' + value.rrp + '</p></div></div>');
+         $('.suggestions-result').append('<div class="keywordsuggestion row d-flex justify-content-center align-items-center py-3"><div class="col-lg-12 col-xl-1 productImg"><img src="' + value.img + '"></div><div class="col-lg-12 col-xl-8 productDetails"><a class="searchUrl" href="/products/search?keywords=' + value.description + '">' + value.description + '</a><p class="volume">Case of ' + value.volume + '</p></div><div class="col-lg-12 col-xl-3 priceRrp"><p class="price">&pound;' + value.price + '</p><p class="rrp">RRP: &pound;' + value.rrp + '</p></div></div>');
       });
-
-
 
       $('.suggestions-result').css('display', 'block');
   }
