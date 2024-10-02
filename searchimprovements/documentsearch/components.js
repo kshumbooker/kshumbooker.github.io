@@ -147,12 +147,14 @@ let searchDocuments = [
 let searchInput = document.querySelectorAll('#search-input.input-group');
 
 let newSearchInputHtml = `
-    <div class="searchDropdownParent">
-      <select class="form-select searchDropdown" id="searchDropdown">
-        <option value="products">Products</option>
-        <option value="documents">Documents</option>
-      </select>
+    <div class="input-group-prepend documentSearchPrepend">
+      <button class="btn btn-outline-secondary dropdown-toggle documentSearchBtn" type="button" data-toggle="dropdown" data-target="products" aria-haspopup="true" aria-expanded="false">Products</button>
+      <ul class="dropdown-menu text-center border-top-0 m-0 p-0">
+        <li class="dropdown-item" data-target="products">Products</li>
+        <li class="dropdown-item" data-target="documents">Documents</li>
+      </ul>
     </div>
+
     <input name="keywords" type="text" class="suggestion-keywords form-control" placeholder="Search by Product code, description or barcode">
     <div class="suggestions-result" style="display: none">
        
@@ -197,21 +199,42 @@ let newSearchInputHtml = `
     </div>
 `;
 
+
+
 [...searchInput].map(search => {
   search.innerHTML = newSearchInputHtml;
 });
 
   let suggestionResults = document.querySelectorAll('.suggestions-result');
 
-  let productDocumentSelect = document.querySelectorAll('.searchDropdown');
+  let productDocumentUl = document.querySelectorAll('.documentSearchPrepend');
 
+  [...productDocumentUl].map(product => {
+    product.addEventListener('click', (event) => {
+      let selected = event.target.getAttribute('data-target');
+      if (selected == null) return;
+      let options = document.querySelectorAll('.documentSearchPrepend .dropdown-menu');
+      [...options].map(option => {
+        let lis = option.getElementsByTagName('li');
+        [...lis].map(li => {
+          if (li.getAttribute('data-target') == selected) {
+            li.classList.add('d-none');
+          } else {
+            li.classList.remove('d-none');
+          }
+        })
 
-  [...productDocumentSelect].map(product => {
-    product.addEventListener('change', (event) => {
-      let value = event.target.value;
-      placeholderChange(value);
+      });
+    
+      let documentSearchBtns = document.querySelectorAll('.documentSearchBtn');
+      [...documentSearchBtns].map(btn => {
+        btn.innerHTML = selected.charAt(0).toUpperCase() + selected.slice(1);
+        
+      })
+      placeholderChange(selected);
     });
   });
+
 
   const placeholderChange = (value) => {
     [...suggestionResults].map(results => {
@@ -237,14 +260,14 @@ let newSearchInputHtml = `
     searchProducts.map(product => {
       html += `
         <div class="keywordsuggestion row d-flex justify-content-center align-items-center py-3">
-          <div class="col-lg-12 col-xl-2">
-            <img src="${product.img}" style="max-width: 50px;">
+          <div class="col-lg-12 col-xl-2 productImage">
+            <img src="${product.img}">
           </div>
-          <div class="col-lg-12 col-xl-7">
-            <a class="searchUrl" href="/products/search?keywords=${product.description}">${product.description}</a>
-            <p class="volume">Case of ${product.volume}</p>
-          </div>
-          <div class="col-lg-12 col-xl-3">
+            <div class="col-lg-12 col-xl-7">
+              <a class="searchUrl" href="/products/search?keywords=${product.description}">${product.description}</a>
+              <p class="volume">Case of ${product.volume}</p>
+            </div>
+          <div class="col-lg-12 col-xl-3 priceRrp">
             <p class="price">&pound;${product.price}</p>
             <p class="rrp">RRP: &pound;${product.rrp}</p>
           </div>
@@ -259,10 +282,10 @@ let newSearchInputHtml = `
     searchDocuments.map(document => {
       html += `
         <div class="keywordsuggestion row d-flex justify-content-center align-items-center py-3">
-          <div class="col-xs-12 col-xl-2">
+          <div class="col-xs-12 col-xl-1">
             ${document.icon}
           </div>
-          <div class="col-xs-12 col-xl-10">
+          <div class="col-xs-12 col-xl-11">
             <a href="/documents/search?name=${document.description}">${document.description}</a>
             <p class="category">${document.category}</p>
           </div>
@@ -272,7 +295,9 @@ let newSearchInputHtml = `
     return html;
 }
 
-document.querySelector('#search-input input[type=text]').addEventListener('blur', () => {
-  $('.suggestions-result').fadeOut();
-  
+let searchInputs = document.querySelectorAll('#search-input input[type=text]');
+[...searchInputs].map(search => {
+  search.addEventListener('blur', () => {
+    $('.suggestions-result').fadeOut();
+  });
 });
