@@ -1,3 +1,4 @@
+
 let searchProducts = [
   {
     midascode: 286188,
@@ -260,13 +261,15 @@ let newSearchInputHtml = `
     searchProducts.map(product => {
       html += `
         <div class="keywordsuggestion row d-flex justify-content-center align-items-center py-3">
-          <div class="col-lg-12 col-xl-2 productImage">
-            <img src="${product.img}">
+          <div class="col-lg-12 col-xl-1 productImg">
+            <div><img src="${product.img}"></div>
           </div>
-            <div class="col-lg-12 col-xl-7">
+          <div class="col-lg-12 col-xl-8 productDetails">
+            <div>
               <a class="searchUrl" href="/products/search?keywords=${product.description}">${product.description}</a>
               <p class="volume">Case of ${product.volume}</p>
             </div>
+          </div>
           <div class="col-lg-12 col-xl-3 priceRrp">
             <p class="price">&pound;${product.price}</p>
             <p class="rrp">RRP: &pound;${product.rrp}</p>
