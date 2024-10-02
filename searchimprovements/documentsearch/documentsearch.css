@@ -1,4 +1,3 @@
-
 .keywordsuggestion {
 	width: 100%;
 	position: relative;
@@ -90,18 +89,20 @@ header .suggestions-result {
 	padding: 0.5rem;
 }
 
-.keywordsuggestion .productImage img {
-	max-width: 50px;
+.keywordsuggestion .imageDetails {
+	display: flex;
 }
 
-.keywordsuggestion .productImage {
-	display: flex;
-	justify-content: center;
+.keywordsuggestion img {
+	max-width: 35px;
 }
 
 
 	@media (min-width: 2550px) {
 		
+		.keywordsuggestion {
+			padding: 0 60px;
+		}
 
 		header .suggestions-result .col-xl-2 {
 			flex: 0 0 8.333333%;
@@ -117,9 +118,8 @@ header .suggestions-result {
       text-align: left;
     }
 
-		.keywordsuggestion .productImage{
-			display: flex;
-			justify-content: start;
+		.keywordsuggestion img {
+			max-width: 50px;
 		}
   }
 
