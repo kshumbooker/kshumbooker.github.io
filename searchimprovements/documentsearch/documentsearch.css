@@ -73,9 +73,10 @@ header .suggestions-result {
 	color: #2356AA;
 }
 
-/*.documentSearchPrepend .dropdown-item.active, .documentSearchPrepend .dropdown-item:active, .documentSearchPrepend .dropdown-item:hover {
-	background-color: #43AC32 !important;
-}*/
+.documentSearchPrepend .dropdown-item:hover {
+	cursor: pointer;
+}
+
 
 .documentSearchPrepend .dropdown-menu {
 	color: #2356AA ;
