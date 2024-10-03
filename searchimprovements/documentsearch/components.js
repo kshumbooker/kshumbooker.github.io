@@ -209,10 +209,13 @@ let newSearchInputHtml = `
 
   let productDocumentUl = document.querySelectorAll('.documentSearchPrepend');
 
+  let selectedOption;
+
   [...productDocumentUl].map(product => {
     product.addEventListener('click', (event) => {
-      let selected = event.target.getAttribute('data-target');
+      let selected = event.target.getAttribute('data-target');     
       if (selected == null) return;
+      
       let options = document.querySelectorAll('.documentSearchPrepend .dropdown-menu');
       [...options].map(option => {
         let lis = option.getElementsByTagName('li');
@@ -244,13 +247,10 @@ let newSearchInputHtml = `
       if (value == 'products') {
         sdd[1].placeholder = 'Search by product code, description, or barcode'; 
         sdd[2].placeholder = 'Search by product code, description, or barcode'; 
-        results.innerHTML = loadSearchProducts();
-      } else {
+       } else {
         sdd[1].placeholder = 'Search for content using keywords or a phrase';
         sdd[2].placeholder = 'Search for content using keywords or a phrase';
-        results.innerHTML = loadSearchDocuments();
-      }
-      $('.suggestions-result').css('display', 'block');
+        }
     });
   }
 
@@ -303,3 +303,4 @@ let searchInputs = document.querySelectorAll('#search-input input[type=text]');
     $('.suggestions-result').fadeOut();
   });
 });
+
