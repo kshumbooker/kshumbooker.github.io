@@ -1,7 +1,6 @@
 .keywordsuggestion {
 	width: 100%;
 	position: relative;
-	padding: 20px;
 }
 
 .documentSearchBtn,
@@ -115,9 +114,6 @@ header .suggestions-result {
 
 	@media (min-width: 2560px) {
 		
-		.keywordsuggestion {
-			padding: 0 30px;
-		}
 
 		header .suggestions-result .col-xl-2 {
 			flex: 0 0 8.333333%;
