@@ -1,4 +1,4 @@
-let sitecore = {
+let myDigitalVouchersPage = {
   title: 'My Digital Vouchers',
   description: 'To redeem a voucher, simply add a product to the trolley by searching for that product individually or within a qualifying Aisle or Shelf. You can view more details about where the voucher is applied using the "View Details" link or simply shop straight away using the "Shop now" button.'
 };
@@ -106,25 +106,49 @@ let digitalVouchersApplied = {
 
 let digitalVouchersContent = document.querySelector('.digitalVouchers');
 
-digitalVouchersContent.innerHTML = `<h2 class="digitalVouchersPageTitle">${sitecore.title}</h2><p class="digitalVouchersPageText">${sitecore.description}</p>`;
+if (digitalVouchersContent) {
 
-digitalVouchersContent.innerHTML += digitalVouchers.map(voucher =>
- `
- <digital-voucher 
-  data-id="${voucher.id}"
-  data-midascode="${voucher.midascode}"
-  data-promotion="${voucher.promotion}"
-  data-description="${voucher.description}"
-  data-expiry="${voucher.expiry}"
-  data-url="${voucher.url}"
-  data-title-bg-color="${voucher.titleBgColor}"
-  data-title-font-color="${voucher.titleFontColor}"
-  data-btn-bg-color="${voucher.btnBgColor}"
-  data-btn-text="${voucher.btnText}"
-  data-btn-font-color="${voucher.btnFontColor}"
-  ></digital-voucher>
-`).join('');
+  digitalVouchersContent.innerHTML = `<h2 class="digitalVouchersPageTitle">${myDigitalVouchersPage.title}</h2><p class="digitalVouchersPageText">${myDigitalVouchersPage.description}</p>`;
 
+  digitalVouchersContent.innerHTML += digitalVouchers.map(voucher => `
+  <digital-voucher 
+    data-id="${voucher.id}"
+    data-midascode="${voucher.midascode}"
+    data-promotion="${voucher.promotion}"
+    data-description="${voucher.description}"
+    data-expiry="${voucher.expiry}"
+    data-url="${voucher.url}"
+    data-title-bg-color="${voucher.titleBgColor}"
+    data-title-font-color="${voucher.titleFontColor}"
+    data-btn-bg-color="${voucher.btnBgColor}"
+    data-btn-text="${voucher.btnText}"
+    data-btn-font-color="${voucher.btnFontColor}"
+    ></digital-voucher>
+  `).join('');
+}
+
+
+let digitalVouchersAppliedContent = document.querySelector('.digitalVouchersApplied');
+
+if (digitalVouchersAppliedContent) {
+
+  digitalVouchersAppliedContent.innerHTML = `
+    <digital-voucher-applied
+      data-title="${digitalVouchersApplied.title}"
+      data-description="${digitalVouchersApplied.description}"
+      data-btn-text="${digitalVouchersApplied.btnText}"
+      data-description-color="${digitalVouchersApplied.descriptionColor}"
+      data-title-bg-color="${digitalVouchersApplied.titleBgColor}"
+      data-title-font-color="${digitalVouchersApplied.titleFontColor}"
+      data-btn-bg-color="${digitalVouchersApplied.btnBgColor}"
+      data-btn-font-color="${digitalVouchersApplied.btnFontColor}"
+    ></digital-voucher-applied>
+  `;
+
+  let height = $('#shopping-header-desktop').height();
+  $('#booker_trolley_first_aside').css('position', 'sticky');
+  $('#booker_trolley_first_aside').css('top', height + 'px');
+}
 
 
 class DigitalVoucher extends HTMLElement {
@@ -164,7 +188,7 @@ class DigitalVoucher extends HTMLElement {
         <p class="card-description">${this.voucher.description}</p>
       </div>
       <div class="card-bottom">
-        <p><span class="dot"></span> <span class="expiry">Expiring in ${this.voucher.expiry} days</span>  <a href="${this.voucher.url}" class="btn" style="background: ${this.voucher.btnBgColor}; color: ${this.voucher.btnFontColor}">${this.voucher.btnText}</a></p>
+        <p><span class="dot"></span> <span class="expiry">Expiring in ${this.voucher.expiry} days</span>  <a href="${this.voucher.url}" class="btn digitalVoucher" style="background: ${this.voucher.btnBgColor}; color: ${this.voucher.btnFontColor}">${this.voucher.btnText}</a></p>
       </div>
     </div>
     <span class="cutaway right"></span>
@@ -188,6 +212,7 @@ class DigitalVoucherApplied extends HTMLElement {
       titleFontColor: this.getAttribute('data-title-font-color'),
       btnBgColor: this.getAttribute('data-btn-bg-color'),
       btnFontColor: this.getAttribute('data-btn-font-color'),
+      url: this.getAttribute('data-url')
     }
     this.render();
   }
@@ -199,16 +224,18 @@ class DigitalVoucherApplied extends HTMLElement {
   }
 
   template = () => `
-  <div class="card">
+  <div class="card h-100">
+    <span class="cutaway left"></span>
     <div class="card-body">
-      <div class="card-title" style="background: ${this.voucherApplied.titleBgColor}; color: ${this.voucherApplied.titleFontColor}"><p>${this.voucherApplied.title}</p></div>
-      <div class="card-text">
+      <div class="card-title" style="background: ${this.voucherApplied.titleBgColor}; color: ${this.voucherApplied.titleFontColor}"><span class="title">${this.voucherApplied.title}</span></div>
+      <div class="card-text" style="color: ${this.voucherApplied.descriptionColor}">
         <p class="card-description">${this.voucherApplied.description}</p>
       </div>
       <div class="card-bottom">
-        <p><span class="dot"></span> <span class="expiry">Expiring in ${this.voucherApplied.expiry} days</span>  <a href="${this.voucherApplied.url}" class="btn" style="background: ${this.voucherApplied.btnBgColor}; color: ${this.voucherApplied.btnFontColor}">${this.voucherApplied.btnText}</a></p>
+        <a href="${this.voucherApplied.url}" class="btn" style="background: ${this.voucherApplied.btnBgColor}; color: ${this.voucherApplied.btnFontColor}">${this.voucherApplied.btnText}</a></p>
       </div>
     </div>
+    <span class="cutaway right"></span>
   </div>
   `;
 }
