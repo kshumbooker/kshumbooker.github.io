@@ -1,3 +1,8 @@
+let selected = document.querySelector('.documentSearchBtn');
+
+
+
+
 var suggestion = {
   branch: '',
   getKeywordSuggestion: function (keywords) {
@@ -117,9 +122,65 @@ var suggestion = {
         },
       ];
 
+      let searchDocuments = [
+        {
+          id: 1,
+          description: 'Website Terms and Conditions',
+          category: 'Web Page',
+          icon: '<i class="fa-regular fa-file fa-2xl"></i>',
+          url: ''
+        },
+        {
+          id: 2,
+          description: 'Booker Retail Partners Allocations Guide',
+          category: 'PDF Document',
+          icon: '<i class="fa-regular fa-file-pdf fa-2xl"></i>',
+          url: ''
+        },
+        {
+          id: 3,
+          description: 'Booker Oil Return Service - Get £5 Per Litre',
+          category: 'PDF Document',
+          icon: '<i class="fa-regular fa-file-pdf fa-2xl"></i>',
+          url: ''
+        },
+        {
+          id: 4,
+          description: 'Summer 2025 Pre-Sell',
+          category: 'Word Document',
+          icon: '<i class="fa-regular fa-file-word fa-2xl"></i>',
+          url: ''
+        },
+        {
+          id: 5,
+          description: 'Summer Sales Pre-Sell 2023 - Coca-Cola',
+          category: 'Web Page',
+          icon: '<i class="fa-regular fa-file fa-2xl"></i>',
+          url: ''
+        },
+        {
+          id: 6,
+          description: 'Privacy Policy & Cookies',
+          category: 'Web Page',
+          icon: '<i class="fa-regular fa-file fa-2xl"></i>',
+          url: ''
+        },
+        {
+          id: 7,
+          description: 'Tobacco Pricing Changes - 2024 Budget',
+          category: 'Excel Document',
+          icon: '<i class="fa-regular fa-file-excel fa-2xl"></i>',
+          url: ''
+        },
+      ];
+
       $.each(searchProducts, function (key, value) {
          $('.suggestions-result').append('<div class="keywordsuggestion row d-flex justify-content-center align-items-center py-3"><div class="col-lg-12 col-xl-1 productImg"><img src="' + value.img + '"></div><div class="col-lg-12 col-xl-8 productDetails"><a class="searchUrl" href="/products/search?keywords=' + value.description + '">' + value.description + '</a><p class="volume">Case of ' + value.volume + '</p></div><div class="col-lg-12 col-xl-3 priceRrp"><p class="price">&pound;' + value.price + '</p><p class="rrp">RRP: &pound;' + value.rrp + '</p></div></div>');
       });
+
+      $.each(searchDocuments, function (key, value) {
+        $('.suggestions-result').append('<div class="keywordsuggestion row d-flex justify-content-center align-items-center py-3"><div class="col-xs-12 col-xl-1">' + value.icon + '</div><div class="col-xs-12 col-xl-11"><a href="/documents/search?name=' + value.description + '">' + value.description + '</a><p class="category">' + value.category + '</p></div></div>');
+     });
 
       $('.suggestions-result').css('display', 'block');
   }
