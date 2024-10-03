@@ -19,7 +19,7 @@ digital-voucher, .digitalVouchers {
   border: transparent;
 }
 
-digital-voucher .card {
+digital-voucher .card, digital-voucher-applied .card {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -29,11 +29,11 @@ digital-voucher .card .expiry {
   color: #000;
 }
 
-digital-voucher .card .card-description {
+digital-voucher .card .card-description, digital-voucher-applied  .card .card-description{
   font-weight: bold;
 }
 
-digital-voucher .card .card-bottom {
+digital-voucher .card .card-bottom, digital-voucher-applied .card .card-bottom {
   margin-top: auto;
 }
 
@@ -41,13 +41,13 @@ digital-voucher .card .btn {
   float: inline-end;
 }
 
-digital-voucher .card .card-title {
+digital-voucher .card .card-title, digital-voucher-applied .card .card-title {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 5px 0;
 }
 
-digital-voucher .card .cutaway {
+digital-voucher .card .cutaway, digital-voucher-applied .card .cutaway {
   position: absolute;
   top: 20%;
   transform: translateY(25%);
@@ -57,34 +57,42 @@ digital-voucher .card .cutaway {
   border-radius: 50%;
 }
 
-digital-voucher .card .cutaway.left {
+digital-voucher .card .cutaway.left, digital-voucher-applied .card .cutaway.left {
   left: -3%;
   border-right: 1px solid rgba(0,0,0,.125);
 }
 
-digital-voucher .card .cutaway.right {
+digital-voucher .card .cutaway.right, digital-voucher-applied .card .cutaway.right {
   right: -3%;
   border-left: 1px solid rgba(0,0,0,.125);
 }
   
 
-digital-voucher .card .card-body {
+digital-voucher .card .card-body, digital-voucher-applied .card .card-body {
   padding: 0;
   display: flex;
   flex-direction: column;
 }
 
-digital-voucher .card .card-title p {
+#booker_trolley_first_aside digital-voucher-applied .card-body {
+  padding: 0;
+}
+
+
+digital-voucher .card .card-title p, digital-voucher-applied .card .card-title p {
   font-weight: bold;
 }
 
 digital-voucher .card .card-bottom,
 digital-voucher .card .card-text,
-digital-voucher .card .card-title .promotion {
-  padding: 5px 20px;
+digital-voucher .card .card-title .promotion, 
+digital-voucher-applied .card .card-bottom,
+digital-voucher-applied .card .card-text,
+digital-voucher-applied .card .card-title .title {
+  padding: 0px 20px;
 }
 
-digital-voucher .card .card-title .promotion {
+digital-voucher .card .card-title .promotion, digital-voucher-applied .card .card-title .title {
   font-weight: bold;
 }
 
@@ -96,6 +104,11 @@ digital-voucher .card .dot {
   background: #0454A1;
   vertical-align: middle;
   margin-right: 5px;
+}
+
+digital-voucher .btn.digitalVoucher {
+  border-radius: 10px;
+  padding: 1px 3px;
 }
 
 
