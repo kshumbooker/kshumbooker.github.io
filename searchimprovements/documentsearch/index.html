@@ -15,8 +15,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
     <!--<link rel="stylesheet" href="https://www.booker.co.uk/css/facia/booker.css?v=2.7.8.0" />-->
-	
-    <link rel="stylesheet" href="./booker.css" />	
+
+   
+   
+   
+    <link rel="stylesheet" href="./booker.css" />
+
+   <!-- <link rel="stylesheet" href="./londis.css" /> -->
 
     <link rel="stylesheet" href="./documentsearch.css" />
 
@@ -385,6 +390,286 @@
         var value = document.cookie.match('(^|[^;]+)\\s*' + cookieName + '\\s*=\\s*([^;]+)');
         return value ? value.pop() : '';
     }
+
+</script>
+
+<script nonce="lWbMTX4kthWw+b5+9Lm9BoHRV+QFhjfisWYyQWVM7DE=">
+
+    if (typeof trolley_mode == 'undefined') {
+        trolley_mode = 1;
+    }
+
+    /*window.onerror = function (message, source, lineno, colno, error) {
+        console.log("Global error: " + error.message + ", lineno: " + lineno);
+
+        try {
+            logEvent('ERROR:' + error.message + ', source:' + source + ', Line:' + lineno);
+        } catch (err) {
+            console.error(err);
+        }
+
+        return true;
+    };*/
+
+    function logEvent(message) {
+        }
+
+    
+    let scanditBarcodePicker;
+    var symbologies = ["ean8","ean13","upca","upce","code128","code39","itf"];
+    ScanditSDK.configure("AfvAc9OBRzaIQ7ijGAacMPcsV0INI01XdWAZIV1r1qjvLjxOvn3pqNZlK6aXcIrndEo+OhxXpIjOSwuPGQHZPtINrNaHb8hnVBXa3/ZvfPzVHjoBWwmikzJ8EcQzIcoTNEz1NMtgbsu6HEocFD40UcUHBqBNFt11lQ7NRcO/FI6OPhzOjC0bRc5qDQRIsXeStxmm6VXtsu5nJbVd3FuqyIX7hsZQB8Sjuwwj3vaLhi0j63gppTNz2bzWTYvOLK47cp5NpVasiGGfC5dcyhsY/suxHBkrdIP8Axr9MRoUaQ6NXFdMiKraLvCIN5+ENiVUzvfp9GpjpHkExczOZ0vCMUh+NhhEl+s3wFhyoyMB/HBmqrVcWCrtyUhtP/istb2F3w937ZwBZbvuiuKZLm7u9FsI8tT9KEtY1RmK0geQJYhBuUI2lmxZzoj75tgSedqQ9nrjArJvfXgzZB660WmWyDz9PRSTAcvJgygA3q+f27PJmv8OyO3l4xQamCtzkFKyS2zGtr44z3jJ6huROh09bgVD9egXXrEDxB8hfrQo8HUAGbq5PpEbEWeOI70LyteMxGFoFcmVqT1HGrPdMRdgj6KkYEo9t3PiUzOpIIGezxDsghbJQSHScNC3P2q1cHSC0R1/yjiqihTJRhSAJN8oIQ5lebWXYZ0QDCc8pJfJBqwQFVJi/VlpqFx9RO+Urk7SLh5P6d9GRz1bAZwmxR5eaqF4MGu978agwq6HE0z0wmgmEJtwswv2bES/xYxPKepDyRkZShebelsNlyOBFActq3BHEVKaQaw5HSMpCBPIxWinvzgICLhfR4j4Nmtw5L54PIOXnqLyOlo=", {
+        engineLocation: "https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build",
+    })
+        .then(function () {
+            return ScanditSDK.BarcodePicker.create(document.getElementById("barcode-picker"), {
+                scanningPaused: true,
+                accessCamera: false,
+                visible: false,
+                playSoundOnScan: true,
+                vibrateOnScan: false,
+                videoFit: "cover",
+                enableCameraSwitcher: false
+            }).then(function (barcodePicker) {
+                scanditBarcodePicker = barcodePicker;
+                const scanSettings = new ScanditSDK.ScanSettings({
+                    enabledSymbologies: symbologies,
+                    codeDuplicateFilter: 7000,
+                });
+
+                scanSettings.setSearchArea({ x: 0, y: 0.1, width: 1, height: 0.2 });
+
+                barcodePicker.applyScanSettings(scanSettings);
+                barcodePicker.on("ready", function () {
+                    document.getElementById("barcode-picker-starter-button").hidden = false;
+                    //checkResumeScan();
+                });
+
+                barcodePicker.on("scan", function (scanResult) {
+                    if ($('.scanner-notification').is(":hidden")) $('.scanner-notification').slideToggle();
+                    //console.log(scanResult.barcodes[0].data);
+                    hasSearchResults(scanResult.barcodes[0].data, handleSearchResult);
+                });
+
+                barcodePicker.on("scanError", function (error) {
+                    $('.scanner-notification').addClass('bg-danger').find('p').text('An error has occured, please try again');
+                    console.error(error);
+                });
+            });
+        })
+        .catch(function (error) {
+            alert(error);
+        });
+
+
+    function startBarcodePicker() {
+        if (scanditBarcodePicker.getActiveCamera()) {
+            scanditBarcodePicker.pauseScanning(true);
+            $('#scanner-modal').hide();
+        } else {
+            scanditBarcodePicker.accessCamera().then(function () {
+                scanditBarcodePicker.setVisible(true).resumeScanning();
+                $('#scanner-modal').attr("style", "display: block !important");
+            });
+        }
+        initScannerMinicart();
+    }
+
+    function stopBarcodePicker() {
+        scanditBarcodePicker.pauseScanning(true);
+        $('#scanner-modal, .scanner-notification').hide();
+        $('.scanner-notification').removeClass('bg-success').find('p').text('Searching...');
+        $('.scanner-product-list .rowMode').empty();
+        if ($('.scanner-note-modal') != null) {
+            $('.scanner-note-modal').empty();
+        }
+    }
+    
+
+
+    function appScannerStart() {
+            //try {
+            //    window.flutter_inappwebview.callHandler('appScannerStart');
+
+            //    $('.scanLine').remove();
+            //    $('#scanner-modal').attr("style", "display: block !important");
+
+            //    initScannerMinicart();
+            //} catch (err) {
+                startBarcodePicker();
+            //}
+    }
+
+    function appScannerStop() {
+        $('#scanner-modal, .scanner-notification').hide();
+        $('.scanner-notification').removeClass('bg-success').find('p').text('Searching...');
+        $('.scanner-product-list .rowMode').empty();
+        if ($('.scanner-note-modal') != null) {
+            $('.scanner-note-modal').empty();
+        }
+    }
+
+    function appScanned( barcode) {
+        if ($('.scanner-notification').is(":hidden")) $('.scanner-notification').slideToggle();
+        hasSearchResults(barcode, handleSearchResult);
+    }
+
+
+
+
+    function clearSearchResults() {
+        $('.scanner-notification').hide().removeClass('bg-success').find('p').text('Searching...');
+        $('.scanner-product-list .rowMode').empty();
+        if ($('.scanner-note-modal') != null) {
+            $('.scanner-note-modal').empty();
+        }
+        //$('#barcode-picker').css("height", "100%");
+    }
+
+    function initScannerMinicart() {
+
+        logEvent('initScannerMinicart');
+
+        //get the values from the main minicart
+        var colt = $('#mini-trolley-mobile #click-collect .labels p:first-child').text(),
+            delt = $('#mini-trolley-mobile #delivery .labels p:first-child').text();
+        //update scanner minicart
+        $('#scanner-minicart').html("<div class='scanner-trolley'><img src='/images/orange-trolley.png' alt='orange trolley' width='20' class='aligin-middle'> <span class='colt mr-1'>" + colt + "</span></div><div class='scanner-truck'><img src='/images/green-truck.png' alt='green truck' width='20' class='aligin-middle'> <span class='delt'>" + delt + "</span></div>")
+        console.log(colt + " " + delt);
+
+        determineTrolleyType();
+
+        MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+        var target = $('#mini-trolley-mobile')[0];
+        var observer = new MutationObserver(function (mutations, observer) {
+            console.log('updated');
+            mutations.forEach(function (mutation) {
+
+                var colt = $('#mini-trolley-mobile #click-collect .labels p:first-child').text(),
+                    delt = $('#mini-trolley-mobile #delivery .labels p:first-child').text();
+
+                determineTrolleyType();
+
+                $('#scanner-minicart span.colt').text(colt);
+                $('#scanner-minicart span.delt').text(delt);
+
+            });
+        });
+
+        observer.observe(target, {
+            subtree: true,
+            attributes: true,
+            childList: true,
+            characterData: true
+        });
+    }
+
+    function hasSearchResults(scanResultBarcode, handleResult) {
+
+        logEvent('hasSearchResults:' + scanResultBarcode);
+
+        var hasResults = true;
+        $.ajax({
+            type: "POST",
+            url: '/api/sitecore/ProductListing/HasSearchResult',
+            data: JSON.stringify({ keyword: scanResultBarcode }),
+            contentType: "application/json; charset=utf-8",
+            xhrFields: { withCredentials: true },
+            success: function (data) {
+                if (data && data.HasResults) {
+                    hasResults = true;
+                }
+                //handleResult(scanResultBarcode, hasResults);
+            }
+        });
+        handleResult(scanResultBarcode, hasResults);
+        return hasResults;
+    }
+
+    function handleSearchResult(scanResultBarcode, hasSearchResult) {
+        logEvent('handleSearchResult:' + scanResultBarcode);
+
+        if (hasSearchResult) {
+            //console.log('has results');
+            setTimeout(function () {
+                $.ajax({
+                    type: "GET",
+                    url: 'https://www.booker.co.uk/products/product-list?keywords=' + scanResultBarcode + '&barcodeScan=true',
+                    success: function (data) {
+                        if (data) {
+                            var products = $(data).find('.rowMode .product-list').parent().html(),
+                                items = $(products).find('div.product'),
+                                noteModal = $(data).filter('#add-note').prop('outerHTML'),
+                                count = items.length;
+
+                            $('.scanner-notification').addClass('bg-success').find('p').addClass('text-white').text(count + ' product(s) found');
+
+                            $('.scanner-product-list .rowMode').empty().hide().append(products);
+
+                            $('.scanner-note-modal').empty().append(noteModal);
+
+                            //$('#barcode-picker').height($(window).height() - $('.scanner-product-list').height());
+
+                            logEvent('handleSearchResult:count:' + count);
+                        }
+                    }
+                });
+            }, 300);
+        } else {
+            $('.scanner-notification').addClass('bg-danger').find('p').text('Product could not be found');
+            //console.log('No search results for that scan');
+
+            logEvent('handleSearchResult:' + scanResultBarcode + ':Product Not Found');
+        }
+    }
+
+    function determineTrolleyType() {
+        if (false) {
+            changeToClickAndCollectTrolley();
+        }
+        else {
+            changeToDeliveryTrolley();
+        }
+    }
+
+    function changeToClickAndCollectTrolley() {
+        $('.scanner-header').addClass("scanner-header-orange");
+        $('.scanner-header').removeClass("scanner-header-green");
+
+        $('#scanner-modal').addClass("scanner-modal-orange");
+        $('#scanner-modal').removeClass("scanner-modal-green");
+
+        $('.modalComponents').addClass("modalComponentsOrange");
+
+        $("#scanner-minicart .scanner-trolley").show();
+        $("#scanner-minicart .scanner-truck").hide();
+    }
+
+    function changeToDeliveryTrolley() {
+        $('.scanner-header').addClass("scanner-header-green");
+        $('.scanner-header').removeClass("scanner-header-orange");
+
+        $('#scanner-modal').addClass("scanner-modal-green");
+        $('#scanner-modal').removeClass("scanner-modal-orange");
+
+        $('.modalComponents').removeClass("modalComponentsOrange");
+
+        $("#scanner-minicart .scanner-truck").show();
+        $("#scanner-minicart .scanner-trolley").hide();
+    }
+
+    $(document).ready(function () {
+        var altProductsModal = $("#alternative-products");
+        if (altProductsModal == null || altProductsModal.length == 0) {
+            $("#scanner-components").html('<div class="modalComponents"><div id = "alternative-products" class= "modal p-0" >            <div class="modal-dialog mw-100 modal-dialog-scrollable">                <div class="modal-content delist-modal w-100">                    <div class="modal-header">                        <h2 class="modal-title">Alternative products</h2>                        <button type="button" class="btn grey-btn cancel" data-dismiss="modal">                            <i class="fas fa-times"></i> Close                    </button>                    </div>                    <div id="page-content" class="modal-body">                    </div>                </div>            </div>    </div ></div >');
+        };
+    });
+
+    $(".scanner-picker").keypress(
+        function (event) {
+            if (event.which == '13') {
+                event.preventDefault();
+            }
+        });
 
 </script>
 
@@ -2606,12 +2891,11 @@ e.g. No Bigger than 6kg"
 
 <script type='text/javascript' src='https://www.booker.co.uk/scripts/main-nav/main-nav.js?version=2.7.8.0'></script>
 <script type='text/javascript' src='https://www.booker.co.uk/scripts/suggestion/keyword-suggestion.js?version=2.7.8.0'></script>
+
 <script type='text/javascript' src='./keyword-suggestion.js'></script>
 <script type='text/javascript' nonce='SZv3k1c7xbxoEd3twaqJbhpmEa/kOfMvFNa4Kn7IT2o='>
 $(document).ready(function(){ suggestion.branch = 'B26600';})
 pageSearchUrl = '/products/search'
 </script>
-
 <script src="./components.js"></script>
-
 </html>
