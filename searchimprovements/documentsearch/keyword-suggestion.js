@@ -1,8 +1,6 @@
 let selected = document.querySelector('.documentSearchBtn');
 
 
-
-
 var suggestion = {
   branch: '',
   getKeywordSuggestion: function (keywords) {
@@ -13,7 +11,7 @@ var suggestion = {
       }).done(function (data) {
           suggestion.append(data);
 
-      }).fail(function () { console.error(this); });
+      }).fail(function (data) { suggestion.append(data); });
   },
   $resultSelector: $('.suggestions-result'),
   append: function (data) {
@@ -203,4 +201,5 @@ $(document).ready(function () {
   $("#search-input input[type=text]").on("blur", function () {
       suggestion.$resultSelector.fadeOut();
   });
+  
 });
