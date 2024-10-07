@@ -74,10 +74,6 @@ header .suggestions-result {
 	border-bottom: none;
 }
 
-.keywordsuggestion .productImage img {
-	max-width: 50px;
-}
-
 
 .documentSearchPrepend .dropdown-menu {
 	color: #2356AA;
@@ -85,12 +81,13 @@ header .suggestions-result {
 	text-decoration: none;
 }
 
-
-
 .documentSearchPrepend .dropdown-item:hover {
 	cursor: pointer;
 }
 
+.keywordsuggestion.row {
+	padding: 0 10px;
+}
 
 .documentSearchPrepend .dropdown-item {
 	padding: 0.5rem;
@@ -192,4 +189,3 @@ header .suggestions-result {
 		}
 
   }
-	
