@@ -86,7 +86,7 @@ header .suggestions-result {
 }
 
 .keywordsuggestion.row {
-	padding: 0 10px;
+	padding: 10px;
 }
 
 .documentSearchPrepend .dropdown-item {
