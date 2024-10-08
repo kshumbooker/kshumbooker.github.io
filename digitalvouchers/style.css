@@ -1,5 +1,6 @@
 digital-voucher, .digitalVouchers {
   color: #2356AA;
+
 }
 
 .digitalVouchers h2 {
@@ -11,9 +12,9 @@ digital-voucher, .digitalVouchers {
   flex-wrap: wrap;
 }
 
-.digitalVouchers digital-voucher {
+.digitalVouchers digital-voucher, .digitalVouchersApplied digital-voucher-applied  {
   border-radius: 10px;
-  margin: 30px 10px 0 0;
+  margin: 20px 0px;
   min-width: 32%;
   max-width: 32%;
   border: transparent;
@@ -47,9 +48,14 @@ digital-voucher .card .card-title, digital-voucher-applied .card .card-title {
   padding: 5px 0;
 }
 
+#booker_trolley_first_aside {
+  position: sticky;
+  top: 0;
+}
+
 digital-voucher .card .cutaway, digital-voucher-applied .card .cutaway {
   position: absolute;
-  top: 20%;
+  top: 25%;
   transform: translateY(25%);
   width: 20px;
   height: 20px;
@@ -58,12 +64,12 @@ digital-voucher .card .cutaway, digital-voucher-applied .card .cutaway {
 }
 
 digital-voucher .card .cutaway.left, digital-voucher-applied .card .cutaway.left {
-  left: -3%;
+  left: -2%;
   border-right: 1px solid rgba(0,0,0,.125);
 }
 
 digital-voucher .card .cutaway.right, digital-voucher-applied .card .cutaway.right {
-  right: -3%;
+  right: -2%;
   border-left: 1px solid rgba(0,0,0,.125);
 }
   
@@ -106,31 +112,34 @@ digital-voucher .card .dot {
   margin-right: 5px;
 }
 
-digital-voucher .btn.digitalVoucher {
+digital-voucher .btn.digitalVoucher, .digitalVouchersApplied, digital-voucher {
   border-radius: 10px;
   padding: 1px 3px;
 }
 
-
 @media (max-width: 992px) {
 
-  .digitalVouchers digital-voucher {
+  .digitalVouchers digital-voucher, .digitalVouchersApplied digital-voucher-applied  {
     -webkit-box-flex: 0;
-      -ms-flex: 0 0 48% !important;
-          flex: 0 0 48% !important;
-  max-width: 48%;
-  }
+    -ms-flex: 0 0 50% !important;
+    flex: 0 0 50% !important;
+    min-width: 50%;
+    max-width: 50%;
+     }
 
   digital-voucher .card .btn {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
+
   }
+
+  digital-voucher .card, digital-voucher-applied .card {
+    padding-bottom: 10px;
+  }
+
 }
 
 @media (max-width: 576px) {
 
-  .digitalVouchers digital-voucher {
+  .digitalVouchers digital-voucher, .digitalVouchersApplied, digital-voucher {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 100% !important;
     flex: 0 0 100% !important;
@@ -145,5 +154,12 @@ digital-voucher .btn.digitalVoucher {
   digital-voucher .card .cutaway.right {
     right: -2%;
     border-left: 1px solid rgba(0,0,0,.125);
+  }
+}
+
+@media (max-width: 319.9px) {
+
+  .digitalVouchers digital-voucher, .digitalVouchersApplied, digital-voucher, .digitalVouchersApplied, digital-voucher a, .digitalVouchers digital-voucher a {
+    font-size: 75%;
   }
 }
