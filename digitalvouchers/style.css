@@ -1,6 +1,5 @@
 digital-voucher, .digitalVouchers {
   color: #2356AA;
-
 }
 
 .digitalVouchers h2 {
@@ -10,6 +9,10 @@ digital-voucher, .digitalVouchers {
 .digitalVouchers {
   display: flex;
   flex-wrap: wrap;
+}
+
+.btn.digitalVoucher {
+  font-size: 90%;
 }
 
 .digitalVouchers digital-voucher, .digitalVouchersApplied digital-voucher-applied  {
