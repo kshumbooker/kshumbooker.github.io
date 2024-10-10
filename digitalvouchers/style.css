@@ -1,9 +1,14 @@
 digital-voucher, .digitalVouchers {
   color: #2356AA;
+
 }
 
-.digitalVouchers h2 {
+digital-vouchers-panel h2, digital-vouchers-panel h3,  digital-vouchers-panel h4, .digitalVouchers h2 {
   font-weight: 900;
+}
+
+.btn.digitalVoucher {
+  font-size: 90%;
 }
 
 .digitalVouchers {
@@ -11,8 +16,25 @@ digital-voucher, .digitalVouchers {
   flex-wrap: wrap;
 }
 
-.btn.digitalVoucher {
-  font-size: 90%;
+.dotExpiry {
+  display: block;
+  width: 100%;
+}
+
+digital-vouchers-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 325px;
+  z-index: 1500;
+  background: #DCDCDC;
+  color: #2356AA;
+  display: flex;
+  flex-direction: column;
+}
+
+digital-vouchers-panel .top {
+  justify-content: space-between;
 }
 
 .digitalVouchers digital-voucher, .digitalVouchersApplied digital-voucher-applied  {
@@ -129,11 +151,7 @@ digital-voucher .btn.digitalVoucher, .digitalVouchersApplied, digital-voucher {
     min-width: 50%;
     max-width: 50%;
      }
-
-  digital-voucher .card .btn {
-
-  }
-
+     
   digital-voucher .card, digital-voucher-applied .card {
     padding-bottom: 10px;
   }
@@ -158,6 +176,15 @@ digital-voucher .btn.digitalVoucher, .digitalVouchersApplied, digital-voucher {
     right: -2%;
     border-left: 1px solid rgba(0,0,0,.125);
   }
+
+  digital-vouchers-panel {
+    width: 100%;
+    z-index: 1500;
+    background: #DCDCDC;
+    color: #2356AA;
+    display: flex;
+    flex-direction: column;
+  }  
 }
 
 @media (max-width: 319.9px) {
