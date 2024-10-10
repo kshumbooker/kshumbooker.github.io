@@ -110,10 +110,7 @@ let digitalVouchersApplied = {
 
 let digitalVouchersContent = document.querySelector('.digitalVouchers');
 
-//viewAllVouchersBtn.addEventListener('click', () => digitalVouchersPanel.classList.toggle('d-none'));
-
 let digitalVouchersPanel = document.querySelector('.digitalVouchersPanel');
-
 
 if (digitalVouchersPanel) {
 
@@ -122,13 +119,6 @@ if (digitalVouchersPanel) {
   `;
 
   $('digital-vouchers-panel').css('height', $('body').height());
-
-  let digitalVouchersPanelClose = document.querySelector('.digitalVouchersPanelClose');
-
-  $('.digitalVouchersPanelClose').on('click', function() {
-    console.log('test');
-  });
-
 }
 
 
@@ -173,13 +163,13 @@ if (digitalVouchersAppliedContent) {
   `;
 }
 
-/*$(window).scroll(() => {
+$(window).scroll(() => {
   if ($(window).scrollTop() >= $('#booker_trolley_first_main').offset().top + $('#booker_trolley_first_main').outerHeight() - window.innerHeight) {
     $('#booker_trolley_first_aside').css('position', 'fixed');
   } else {
     $('#booker_trolley_first_aside').css('position', 'sticky');
   }
-});*/
+});
 
 class DigitalVoucher extends HTMLElement {
   constructor() {
@@ -213,7 +203,7 @@ class DigitalVoucher extends HTMLElement {
   <div class="card pb-2 h-100">
     <span class="cutaway left"></span>
     <div class="card-body">
-      <div class="card-title" style="background: ${this.voucher.titleBgColor}; color: ${this.voucher.titleFontColor}"><span class="promotion">${this.voucher.promotion} Voucher</span></div>
+      <div class="card-title" style="background: ${this.voucher.titleBgColor}; color: ${this.voucher.titleFontColor}"><span class="promotion">${this.voucher.promotion} Voucher</span><span class="viewDetails"><a href="" class="viewDetailsLink">View Details</a></span></div>
       <div class="card-text">
         <p class="card-description">${this.voucher.description}</p>
       </div>
@@ -246,12 +236,6 @@ class DigitalVoucherApplied extends HTMLElement {
     this.render();
   }
 
-  render = () => {
-    this.innerHTML = `
-      ${this.template().trim()}
-    `;
-  }
-
   template = () => `
   <div class="card h-100">
     <span class="cutaway left"></span>
@@ -267,6 +251,20 @@ class DigitalVoucherApplied extends HTMLElement {
     <span class="cutaway right"></span>
   </div>
   `;
+
+  render = () => {
+    this.innerHTML = `
+      ${this.template().trim()}
+    `;
+
+    let viewAllVouchersBtn = document.querySelector('.viewAllVouchers');
+
+    viewAllVouchersBtn.addEventListener('click', () => {
+      $(window).scrollTop(0);
+      document.querySelector('.digitalVouchersPanel').classList.toggle('d-none');
+    });
+  }
+
 }
 
 
@@ -277,12 +275,6 @@ class DigitalVouchersPanel extends HTMLElement {
 
   connectedCallback() {
    this.render();
-  }
-
-  render = () => {
-    this.innerHTML = `
-    ${this.template().trim()}
-  `;
   }
 
   template = () => `
@@ -337,6 +329,19 @@ class DigitalVouchersPanel extends HTMLElement {
       </div>
   </div>
   `;
+
+  render = () => {
+    this.innerHTML = `
+      ${this.template().trim()}
+    `;
+
+    let digitalVouchersPanelClose = document.querySelector('.digitalVouchersPanelClose');
+
+
+    digitalVouchersPanelClose.addEventListener('click', () => {
+      document.querySelector('.digitalVouchersPanel').classList.toggle('d-none');
+    });
+  }
 
 }
 
