@@ -27,7 +27,7 @@ digital-vouchers-panel {
   right: 0;
   width: 325px;
   z-index: 1500;
-  background: #DCDCDC;
+  background: #ffffff;
   color: #2356AA;
   display: flex;
   flex-direction: column;
@@ -51,6 +51,7 @@ digital-voucher .card, digital-voucher-applied .card {
   flex-direction: column;
 }
 
+
 digital-voucher .card .expiry {
   color: #000;
 }
@@ -71,6 +72,19 @@ digital-voucher .card .card-title, digital-voucher-applied .card .card-title {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+digital-voucher .card .viewDetails {
+  margin-right: 20px;
+}
+
+digital-voucher .card .viewDetailsLink {
+  text-decoration: none;
+  color: #ffffff;
+
 }
 
 #booker_trolley_first_aside {
@@ -142,7 +156,7 @@ digital-voucher .btn.digitalVoucher, .digitalVouchersApplied, digital-voucher {
   padding: 1px 3px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
 
   .digitalVouchers digital-voucher, .digitalVouchersApplied digital-voucher-applied  {
     -webkit-box-flex: 0;
@@ -158,7 +172,7 @@ digital-voucher .btn.digitalVoucher, .digitalVouchersApplied, digital-voucher {
 
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
 
   .digitalVouchers digital-voucher, .digitalVouchersApplied, digital-voucher {
     -webkit-box-flex: 0;
@@ -177,14 +191,6 @@ digital-voucher .btn.digitalVoucher, .digitalVouchersApplied, digital-voucher {
     border-left: 1px solid rgba(0,0,0,.125);
   }
 
-  digital-vouchers-panel {
-    width: 100%;
-    z-index: 1500;
-    background: #DCDCDC;
-    color: #2356AA;
-    display: flex;
-    flex-direction: column;
-  }  
 }
 
 @media (max-width: 319.9px) {
