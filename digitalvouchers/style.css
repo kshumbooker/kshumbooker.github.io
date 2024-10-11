@@ -25,12 +25,13 @@ digital-vouchers-panel {
   position: absolute;
   top: 0;
   right: 0;
-  width: 325px;
+  max-width: 325px;
   z-index: 1500;
   background: #ffffff;
   color: #2356AA;
   display: flex;
   flex-direction: column;
+  font-size: 80%;
 }
 
 digital-vouchers-panel .top {
