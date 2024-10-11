@@ -104,12 +104,12 @@ digital-voucher .card .cutaway, digital-voucher-applied .card .cutaway {
 }
 
 digital-voucher .card .cutaway.left, digital-voucher-applied .card .cutaway.left {
-  left: -2%;
+  left: -1%;
   border-right: 1px solid rgba(0,0,0,.125);
 }
 
 digital-voucher .card .cutaway.right, digital-voucher-applied .card .cutaway.right {
-  right: -2%;
+  right: -1%;
   border-left: 1px solid rgba(0,0,0,.125);
 }
   
