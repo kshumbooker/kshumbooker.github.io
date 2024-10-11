@@ -184,7 +184,9 @@ digital-voucher .btn.digitalVoucher, digital-voucher {
 
   digital-vouchers-panel {
     font-size: 100%;
+    width: 100%;
     max-width: 100vw;
+    min-height: 100vh !important;
   }
 
   .digitalVouchers digital-voucher, .digitalVouchersApplied, digital-voucher {
