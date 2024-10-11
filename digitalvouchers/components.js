@@ -281,7 +281,7 @@ class DigitalVouchersPanel extends HTMLElement {
   <div class="container">
     <div class="d-flex my-3 top">
       <h3>My Digital Vouchers</h3>
-      <span class="digitalVouchersPanelClose"><i class="fa-solid fa-circle-xmark"></i></span>
+      <span class="digitalVouchersPanelClose"><i class="fa-solid fa-circle-xmark fa-2xl"></i></span>
     </div>
     <div class="panel panel-default my-3">
       <div class="panel-heading">
