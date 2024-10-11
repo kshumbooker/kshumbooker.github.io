@@ -152,9 +152,14 @@ digital-voucher .card .dot {
   margin-right: 5px;
 }
 
-digital-voucher .btn.digitalVoucher, .digitalVouchersApplied, digital-voucher {
+digital-voucher .btn.digitalVoucher, digital-voucher {
   border-radius: 10px;
   padding: 1px 3px;
+}
+
+.digitalVouchersApplied {
+  border-radius: 10px;
+  padding: 10px;
 }
 
 @media (max-width: 1200px) {
