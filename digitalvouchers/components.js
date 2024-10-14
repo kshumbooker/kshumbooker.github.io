@@ -1,16 +1,16 @@
-let myDigitalVouchersPage = {
+const myDigitalVouchersPage = {
   title: 'My Digital Vouchers',
   description: 'To redeem a voucher, simply add a product to the trolley by searching for that product individually or within a qualifying Aisle or Shelf. You can view more details about where the voucher is applied using the "View Details" link or simply shop straight away using the "Shop now" button.'
 };
 
-let voucherColor = {
+const voucherColor = {
   money: '#0454A1',
   percentage: '#D6901A',
   free: '#3CAD43',
   button: '#0454A1',
 }
 
-let digitalVouchers = [
+const digitalVouchers = [
   {
     id: 1,
     midascode: 123456,
@@ -97,7 +97,7 @@ let digitalVouchers = [
   }
 ];
 
-let digitalVouchersApplied = {
+const digitalVouchersApplied = {
   title: 'You have Vouchers Applied!!',
   description: 'Click the button below to see all your Vouchers',
   btnText: 'View All Vouchers',
@@ -108,9 +108,9 @@ let digitalVouchersApplied = {
   btnFontColor: '#ffffff',
 }
 
-let digitalVouchersContent = document.querySelector('.digitalVouchers');
+const digitalVouchersContent = document.querySelector('.digitalVouchers');
 
-let digitalVouchersPanel = document.querySelector('.digitalVouchersPanel');
+const digitalVouchersPanel = document.querySelector('.digitalVouchersPanel');
 
 if (digitalVouchersPanel) {
 
@@ -257,7 +257,7 @@ class DigitalVoucherApplied extends HTMLElement {
       ${this.template().trim()}
     `;
 
-    let viewAllVouchersBtn = document.querySelector('.viewAllVouchers');
+    const viewAllVouchersBtn = document.querySelector('.viewAllVouchers');
 
     viewAllVouchersBtn.addEventListener('click', () => {
       $(window).scrollTop(0);
@@ -328,14 +328,15 @@ class DigitalVouchersPanel extends HTMLElement {
           ` : ``).join('')}
       </div>
   </div>
-  `;
+</div>
+`;
 
   render = () => {
     this.innerHTML = `
       ${this.template().trim()}
     `;
 
-    let digitalVouchersPanelClose = document.querySelector('.digitalVouchersPanelClose');
+    const digitalVouchersPanelClose = document.querySelector('.digitalVouchersPanelClose');
 
 
     digitalVouchersPanelClose.addEventListener('click', () => {
