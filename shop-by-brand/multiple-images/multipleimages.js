@@ -24,11 +24,11 @@ let images = [
     shotTypeId: 31,
     path: 'https://media.booker.co.uk/bbimages/1/388701c1-f5a9-4d88-b162-74386daca7ea.jpg'
   },
-  /*{
+  {
     title: 'Walkers Crisps Cheese & Onion 32.5g',
     shotTypeId: 4,
     path: 'https://media.booker.co.uk/bbimages/1/11212c08-1d10-48f0-9556-53fbe2c7b703.jpg'
-  }*/
+  }
 ];
 
 if (images.length <= 1) {
