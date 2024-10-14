@@ -24,12 +24,17 @@ let images = [
     shotTypeId: 31,
     path: 'https://media.booker.co.uk/bbimages/1/388701c1-f5a9-4d88-b162-74386daca7ea.jpg'
   },
-  {
+  /*{
     title: 'Walkers Crisps Cheese & Onion 32.5g',
     shotTypeId: 4,
     path: 'https://media.booker.co.uk/bbimages/1/11212c08-1d10-48f0-9556-53fbe2c7b703.jpg'
-  }
+  }*/
 ];
+
+if (images.length <= 1) {
+  $('.multi-icon').css('display', 'none');
+}
+
 
 images.sort((a, b) => a.shotTypeId - b.shotTypeId);
 
@@ -88,12 +93,14 @@ const slide = (s) => {
 
 const activeSliders = (index, thumbs) => {
   if (window.innerWidth > 768) {
-    if (thumbs.length > 5 && index >= 4) {
-      thumbs[0].classList.add('d-none');
-      thumbs[5].classList.remove('d-none');
-    } else {
-      thumbs[5].classList.add('d-none');
-      thumbs[0].classList.remove('d-none');
+    if (thumbs.length > 5) {
+      if (index >= 4) {
+        thumbs[0].classList.add('d-none');
+        thumbs[5].classList.remove('d-none');
+      } else {
+        thumbs[5].classList.add('d-none');
+        thumbs[0].classList.remove('d-none');
+      }
     }
   }
 
