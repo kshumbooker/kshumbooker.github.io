@@ -11,11 +11,11 @@
 }
 
 .multi-icon.left {
-    left: -8%;
+    left: -5%;
 }
 
 .multi-icon.right {
-    right: -8%;
+    right: -5%;
 }
 
 
@@ -104,9 +104,7 @@ a[data-zoom-id] img, .mz-thumb img {
         border-bottom: 7px solid #f1f1f1;
     }
 
-    .MagicZoom, .mz-figure {
-        display: table-row;
-    }
+
 }
 
 @media (max-width: 375px) {
