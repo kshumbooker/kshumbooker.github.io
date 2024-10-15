@@ -93,8 +93,16 @@ digital-voucher .card .viewDetails {
 digital-voucher .card .viewDetailsLink {
   text-decoration: none;
   color: #ffffff;
-
 }
+
+digital-voucher .card .viewDetailsLink:hover {
+  cursor: pointer;
+}
+
+.digitalVoucherModal .termsAndConditions {
+  color: #000;
+}
+
 
 #booker_trolley_first_aside {
   position: sticky;
