@@ -23,7 +23,8 @@ const digitalVouchers = [
     btnBgColor: voucherColor.button,
     btnText: 'Shop now',
     btnFontColor: '#ffffff',
-    applied: true
+    applied: true,
+    termsAndConditions: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
   },
   {
     id: 2,
@@ -93,7 +94,8 @@ const digitalVouchers = [
     btnBgColor: voucherColor.button,
     btnText: 'Shop now',
     btnFontColor: '#ffffff',
-    applied: false
+    applied: false,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
   }
 ];
 
@@ -140,6 +142,7 @@ if (digitalVouchersContent) {
     data-btn-bg-color="${voucher.btnBgColor}"
     data-btn-text="${voucher.btnText}"
     data-btn-font-color="${voucher.btnFontColor}"
+    data-terms-and-conditions="${voucher.termsAndConditions}"
     ></digital-voucher>
   `).join('');
 }
@@ -171,6 +174,7 @@ $(window).scroll(() => {
   }
 });
 
+
 class DigitalVoucher extends HTMLElement {
   constructor() {
     super();
@@ -188,7 +192,8 @@ class DigitalVoucher extends HTMLElement {
       titleFontColor: this.getAttribute('data-title-font-color'),
       btnBgColor: this.getAttribute('data-btn-bg-color'),
       btnText: this.getAttribute('data-btn-text'),
-      btnFontColor: this.getAttribute('data-btn-font-color')
+      btnFontColor: this.getAttribute('data-btn-font-color'),
+      termsAndConditions: this.getAttribute('data-terms-and-conditions')
     }
     this.render();
   }
@@ -203,7 +208,7 @@ class DigitalVoucher extends HTMLElement {
   <div class="card pb-2 h-100">
     <span class="cutaway left"></span>
     <div class="card-body">
-      <div class="card-title" style="background: ${this.voucher.titleBgColor}; color: ${this.voucher.titleFontColor}"><span class="promotion">${this.voucher.promotion} Voucher</span><span class="viewDetails"><a href="" class="viewDetailsLink">View Details</a></span></div>
+      <div class="card-title" style="background: ${this.voucher.titleBgColor}; color: ${this.voucher.titleFontColor}"><span class="promotion">${this.voucher.promotion} Voucher</span><span class="viewDetails">${this.voucher.termsAndConditions !== 'undefined' ? `<a data-target="#digitalVoucherModal${this.voucher.id}" data-toggle="modal" class="viewDetailsLink">View Details</a>` : ``}</span></div>
       <div class="card-text">
         <p class="card-description">${this.voucher.description}</p>
       </div>
@@ -213,6 +218,23 @@ class DigitalVoucher extends HTMLElement {
     </div>
     <span class="cutaway right"></span>
   </div>
+  ${this.voucher.termsAndConditions !== 'undefined' ? `
+    <div class="modal fade digitalVoucherModal" id="digitalVoucherModal${this.voucher.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">${this.voucher.promotion} Voucher terms and conditions</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="termsAndConditions">${this.voucher.termsAndConditions}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    ` : ``}
   `;
 }
 
@@ -301,6 +323,7 @@ class DigitalVouchersPanel extends HTMLElement {
             data-btn-bg-color="${voucher.btnBgColor}"
             data-btn-text="${voucher.btnText}"
             data-btn-font-color="${voucher.btnFontColor}"
+            data-terms-and-conditions="${voucher.termsAndConditions}"
               ></digital-voucher>
           ` : ``).join('')}
       </div>
@@ -324,6 +347,7 @@ class DigitalVouchersPanel extends HTMLElement {
             data-btn-bg-color="${voucher.btnBgColor}"
             data-btn-text="${voucher.btnText}"
             data-btn-font-color="${voucher.btnFontColor}"
+            data-terms-and-conditions="${voucher.termsAndConditions}"
           ></digital-voucher> 
           ` : ``).join('')}
       </div>
