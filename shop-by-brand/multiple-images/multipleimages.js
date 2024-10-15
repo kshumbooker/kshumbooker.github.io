@@ -35,7 +35,6 @@ if (images.length <= 1) {
   $('.multi-icon').css('display', 'none');
 }
 
-
 images.sort((a, b) => a.shotTypeId - b.shotTypeId);
 
 images.map(image => {
@@ -44,15 +43,17 @@ images.map(image => {
 });
 
 const brandbankImages = document.querySelectorAll('.multipleImagesPanel > a');
-
+window.onload = window.onresize = () => {
   [...brandbankImages].map((b, i, arr) => {
     if (arr.length > 5 && i == 5 && window.innerWidth > 768) {
       b.classList.add('d-none');
+    } else {
+      b.classList.remove('d-none');
     }
     b.addEventListener('click', () => {clickCarouselImg(b, i, arr)});
     b.addEventListener('touchstart', () => {clickCarouselImg(b, i, arr)});
   });
-
+}
 
 const multiImagesSliders = document.querySelectorAll('.multi-icon > a');
 
@@ -106,7 +107,9 @@ const activeSliders = (index, thumbs) => {
 
   if (index == 0) {
     document.querySelector('.multi-icon.left').classList.add('disabled');
+    document.querySelector('.multi-icon.right').classList.remove('disabled');
   } else if (index == thumbs.length - 1) {
+    document.querySelector('.multi-icon.left').classList.remove('disabled');
     document.querySelector('.multi-icon.right').classList.add('disabled');
   } else {
     document.querySelector('.multi-icon.left').classList.remove('disabled');
