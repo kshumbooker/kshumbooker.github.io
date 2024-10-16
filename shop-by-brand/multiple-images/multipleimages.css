@@ -41,7 +41,7 @@ a[data-zoom-id] img, .mz-thumb img {
     z-index: 5;
 }
 
-.disabled {
+.product-image .disabled {
     pointer-events: none;
     cursor: default;
     opacity: .2;
@@ -91,9 +91,6 @@ a[data-zoom-id] img, .mz-thumb img {
     }
     
     .mz-thumb img {
-        background: #EBC292 !important;
-        border: 0;
-        border-bottom: 7px solid transparent;
         border-radius: 50%;
         width: 10px;
         height: 10px;
@@ -114,13 +111,10 @@ a[data-zoom-id] img, .mz-thumb img {
     .mz-thumb:not(.mz-thumb-selected):hover img {
         border-bottom: 7px solid #f1f1f1;
     }
-
-
 }
 
 @media (max-width: 375px) {
-    main#product_detail img {
-       width: 10px;
+    .multipleImagesPanel img {
+        width: 10px !important;
     }
 }
-
