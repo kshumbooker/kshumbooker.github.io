@@ -1,4 +1,3 @@
-
 #multipleImagesPanel {
     max-width: 80%;
     display: flex;
@@ -41,8 +40,6 @@ a[data-zoom-id] img, .mz-thumb img {
     transform: translateY(-50%);
     z-index: 5;
 }
-
-
 
 .disabled {
     pointer-events: none;
@@ -126,3 +123,4 @@ a[data-zoom-id] img, .mz-thumb img {
        width: 10px;
     }
 }
+
