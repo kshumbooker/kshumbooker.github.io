@@ -5,17 +5,21 @@
     justify-content: center;
 }
 
+main#product_detail .product-images .product-image {
+  border: 0;
+}
+
 
 .mz-thumb.mz-thumb-selected img {
     border-bottom-color: transparent;
 }
 
 .multi-icon.left {
-    left: -5%;
+    left: -10%;
 }
 
 .multi-icon.right {
-    right: -5%;
+    right: -10%;
 }
 
 
@@ -54,6 +58,16 @@ a[data-zoom-id] img, .mz-thumb img {
 .mz-thumb:only-child {
     display: none;
 } 
+
+@media (min-width: 768px) and (max-width: 768px) {
+    .multi-icon.left {
+        left: -5%;
+    }
+    
+    .multi-icon.right {
+        right: -5%;
+    }
+}
 
 
 @media (max-width: 1200px) {
