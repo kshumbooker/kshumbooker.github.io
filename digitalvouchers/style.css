@@ -95,7 +95,7 @@ digital-voucher .card .viewDetailsLink {
   color: #ffffff;
 }
 
-digital-voucher .card .viewDetailsLink:hover {
+digital-voucher .card .viewDetailsLink:hover, digital-vouchers-panel .fa-circle-xmark:hover {
   cursor: pointer;
 }
 
