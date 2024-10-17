@@ -52,7 +52,8 @@ const digitalVouchers = [
     btnBgColor: voucherColor.button,
     btnText: 'Shop now',
     btnFontColor: '#ffffff',
-    applied: false
+    applied: false,
+    termsAndConditions: 'TEST TEST TEST'
   },
   {
     id: 4,
@@ -66,7 +67,8 @@ const digitalVouchers = [
     btnBgColor: voucherColor.button,
     btnText: 'Shop now',
     btnFontColor: '#ffffff',
-    applied: true
+    applied: true,
+    termsAndConditions: ''
   },
   {
     id: 5,
@@ -208,7 +210,7 @@ class DigitalVoucher extends HTMLElement {
   <div class="card pb-2 h-100">
     <span class="cutaway left"></span>
     <div class="card-body">
-      <div class="card-title" style="background: ${this.voucher.titleBgColor}; color: ${this.voucher.titleFontColor}"><span class="promotion">${this.voucher.promotion} Voucher</span><span class="viewDetails">${this.voucher.termsAndConditions !== 'undefined' ? `<a data-target="#digitalVoucherModal${this.voucher.id}" data-toggle="modal" class="viewDetailsLink">View Details</a>` : ``}</span></div>
+      <div class="card-title" style="background: ${this.voucher.titleBgColor}; color: ${this.voucher.titleFontColor}"><span class="promotion">${this.voucher.promotion} Voucher</span><span class="viewDetails">${this.voucher.termsAndConditions !== 'undefined' && this.voucher.termsAndConditions !== '' ? `<a data-target="#digitalVoucherModal${this.voucher.id}" data-toggle="modal" class="viewDetailsLink">View Details</a>` : ``}</span></div>
       <div class="card-text">
         <p class="card-description">${this.voucher.description}</p>
       </div>
@@ -218,7 +220,7 @@ class DigitalVoucher extends HTMLElement {
     </div>
     <span class="cutaway right"></span>
   </div>
-  ${this.voucher.termsAndConditions !== 'undefined' ? `
+  ${this.voucher.termsAndConditions !== 'undefined' && this.voucher.termsAndConditions !== '' ? `
     <div class="modal fade digitalVoucherModal" id="digitalVoucherModal${this.voucher.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
