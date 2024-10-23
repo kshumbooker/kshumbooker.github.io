@@ -1,0 +1,126 @@
+#business-details .detail-label {
+  min-width: 200px !important;
+}
+
+#business-details .changeCcBranchDiv {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#business-details .changeCcBranchDiv .changeCcBranchBtn, #shopping-header-desktop .changeCcBranchBtn {
+  width: max-content !important;
+}
+
+.branches-result .table thead {
+  background: #ccc;
+}
+
+.branches-result .table th {
+  font-weight: 900;
+}
+
+#collect-no-delivery-option-button .btn {
+  line-height: 70px;
+  height: 100% !important;
+}
+
+#changeCcModal .branches-result .yourSelectedBranch {
+  color: #28a745;
+  font-weight: 700;
+}
+
+#changeCcModal .branches-result .table td, .table th {
+  vertical-align: middle;
+}
+
+#changeCcModal .branches-result .selectBranch {
+  text-align: center;
+}
+
+#changeCcModal .branches-result .form-check-input {
+  margin-left: 0;
+}
+
+#changeCcModal .table {
+  border: 1px solid #dee2e6;
+}
+
+#changeCcModal .modal-footer {
+  border-top: 0;
+}
+
+header.shopping-header .greeting {
+  margin-left: 4rem;
+}
+
+#mini-trolley .clickAndCollectBranch {
+  font-weight: 900;
+  color: #C98D05;
+}
+
+#mini-trolley .deliveryBranch {
+  font-weight: 900;
+  color: #82B279;
+}
+
+#changeCcModal .btn, #changeCcModal .fa-search {
+  background: #2356AA;
+  color: #fff;
+}
+
+#changeCcModal .btn.cancel {
+  background: #999;
+}
+
+#changeCcModal .fa-times {
+  margin-right: 3px;
+}
+
+#changeCcModal .btn-success {
+  background: #28a745;
+  border-color: #28a745;
+}
+
+#changeCcModal .modal-header {
+  border-bottom: 0;
+}
+
+#changeCcModal .modal-title {
+  font-weight: 900;
+}
+
+#changeCcModal .form-check-input {
+  position: relative;
+}
+
+header#shopping-header-desktop #search-bar #mini-trolley .btn {
+  height: 100% !important;
+  line-height: 69px !important;
+}
+
+
+header#shopping-header-desktop #mini-trolley #click-collect, header#shopping-header-mobile #mini-trolley-mobile #click-collect {
+  border: 1px solid #fdead3;
+}
+
+body:has(header#shopping-header-desktop #mini-trolley #delivery) {
+  margin-left: 10px;
+}
+
+
+header#shopping-header-desktop #mini-trolley #delivery, header#shopping-header-mobile #mini-trolley-mobile #delivery {
+  border: 1px solid #E3F5E8;
+}
+
+header#shopping-header-desktop .changeCcBranchBtn:hover {
+  cursor: pointer;
+}
+
+header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile .changeCcBranchBtn, header#shopping-header-desktop .browseOtherBranchRangesBtn, header#shopping-header-mobile .browseOtherBranchRangesBtn {
+  background: #00BDF7 !important; color: #fff;
+}
+
+header#shopping-header-desktop .browseOtherBranchRangesBtn {
+  width: 170px;
+  height: 85px;
+}
