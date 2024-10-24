@@ -24,28 +24,28 @@
   height: 100% !important;
 }
 
-#changeCcModal .branches-result .yourSelectedBranch {
+#changeBranchModal .branches-result .yourSelectedBranch {
   color: #28a745;
   font-weight: 700;
 }
 
-#changeCcModal .branches-result .table td, .table th {
+#changeBranchModal .branches-result .table td, .table th {
   vertical-align: middle;
 }
 
-#changeCcModal .branches-result .selectBranch {
+#changeBranchModal .branches-result .selectBranch {
   text-align: center;
 }
 
-#changeCcModal .branches-result .form-check-input {
+#changeBranchModal .branches-result .form-check-input {
   margin-left: 0;
 }
 
-#changeCcModal .table {
+#changeBranchModal .table {
   border: 1px solid #dee2e6;
 }
 
-#changeCcModal .modal-footer {
+#changeBranchModal .modal-footer {
   border-top: 0;
 }
 
@@ -63,48 +63,56 @@ header.shopping-header .greeting {
   color: #82B279;
 }
 
-#changeCcModal .btn, #changeCcModal .fa-search {
+#changeBranchModal .btn, #changeBranchModal .fa-search {
   background: #2356AA;
   color: #fff;
 }
 
-#changeCcModal .btn.cancel {
+#changeBranchModal .btn.cancel, #productsInTrolleyModal .btn.cancel {
   background: #999;
+  color: #fff;
 }
 
-#changeCcModal .fa-times {
+#changeBranchModal .fa-times, #productsInTrolleyModal .fa-times {
   margin-right: 3px;
 }
 
-#changeCcModal .btn-success {
+#productsInTrolleyModal .btn-secondary, #productsInTrolleyModal .btn-secondary:hover, #productsInTrolleyModal .btn-secondary:focus {
+  text-decoration: none;
+}
+
+#changeBranchModal .btn-success {
   background: #28a745;
   border-color: #28a745;
 }
 
-#changeCcModal .modal-header {
+#changeBranchModal .modal-header {
   border-bottom: 0;
 }
 
-#changeCcModal .modal-title {
+#changeBranchModal .modal-title {
   font-weight: 900;
 }
 
-#changeCcModal .form-check-input {
+#changeBranchModal .form-check-input {
   position: relative;
+}
+
+#productsInTrolleyModal .btn-primary {
+  text-decoration: none;
+}
+
+#productsInTrolleyModal .btn-primary:hover {
+  border: 0;
 }
 
 header#shopping-header-desktop #search-bar #mini-trolley .btn {
   height: 100% !important;
-  line-height: 69px !important;
 }
 
 
 header#shopping-header-desktop #mini-trolley #click-collect, header#shopping-header-mobile #mini-trolley-mobile #click-collect {
   border: 1px solid #fdead3;
-}
-
-body:has(header#shopping-header-desktop #mini-trolley #delivery) {
-  margin-left: 10px;
 }
 
 
@@ -120,7 +128,20 @@ header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile
   background: #00BDF7 !important; color: #fff;
 }
 
+header#shopping-header-mobile .changeCcBranchBtn, header#shopping-header-mobile .browseOtherBranchRangesBtn {
+  width: 48%;
+}
+
 header#shopping-header-desktop .browseOtherBranchRangesBtn {
-  width: 170px;
-  height: 85px;
+  width: 135px !important;
+  margin-right: 15px;
+}
+
+header#shopping-header-mobile .browseOtherBranchRangesBtn {
+  width: 100%;
+}
+
+header#shopping-header-desktop #checkout .btn {
+  display: flex;
+  align-items: center;
 }
