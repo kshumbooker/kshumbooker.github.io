@@ -89,28 +89,22 @@ const sitecoreGlobalDatasource = {
   }
 }
 
-const clickAndCollectBtn = () => {
-  const button = document.createElement('a');
-  button.href = '#';
-  button.classList.add('btn', 'changeCcBranchBtn'
-    , 'd-flex', 'align-items-center', 'justify-content-center', 'm-2');
-  button.setAttribute('data-toggle', 'modal');
-  button.setAttribute('data-target', '#changeBranchModal');
-  button.innerText = 'Change Click & Collect Branch';
-  return button;
-}
-
-const browseOtherBranchRangesBtn = () => {
+const homeBranchRangeBtns = (buttonVars) => {
   const buttonDiv = document.createElement('div');
+  buttonDiv.classList.add('homeBranchRangeBtnDiv');
   const button = document.createElement('a');
   button.href = '#';
-  button.classList.add('btn', 'browseOtherBranchRangesBtn', 'd-flex', 'align-items-center', 'justify-content-center');
+  button.classList.add('btn', buttonVars.type, 'd-flex', 'align-items-center', 'justify-content-center');
   button.setAttribute('data-toggle', 'modal');
   button.setAttribute('data-target', '#changeBranchModal');
-  button.innerText = sitecoreGlobalDatasource.browseOtherBranchBtn;
+  button.innerText = buttonVars.text;
+  if (buttonVars.type == 'changeCcBranchBtn') {
+    return button;
+  }
   buttonDiv.appendChild(button);
   return buttonDiv;
 }
+
 
 const myBusinessDetails = document.querySelector('#business-details .Details');
 if (myBusinessDetails) {
@@ -138,7 +132,7 @@ myBusinessDetails.parentElement.appendChild(changeClickCollectBranch);
 
 const changeBranchModal = (modal) => {
   return `
-  <div id="changeBranchModal" class="modal" tabindex="-1">
+  <div id="changeBranchModal" class="modal">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -193,7 +187,7 @@ const changeBranchModal = (modal) => {
 
 const productsInTrolleyModal = (modal) => {
   return `
-  <div id="productsInTrolleyModal" class="modal" tabindex="-1">
+  <div id="productsInTrolleyModal" class="modal">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -207,8 +201,8 @@ const productsInTrolleyModal = (modal) => {
         </div>
         <div class="modal-footer claim-form-links">
           <button class="btn cancel ml-2" data-dismiss="modal"><i class="fas fa-times"></i>Cancel</button>
-          <button class="btn continue ml-2 btn-secondary" data-dismiss="modal">Clear & Continue</button>
-          <button class="btn continue ml-2 btn-success" data-dismiss="modal">Continue</button>
+          <button class="btn clearAndContinue ml-2">Clear & Continue</button>
+          <button class="btn continue ml-2 btn-success">Continue</button>
         </div>
       </div>
     </div>
@@ -216,11 +210,36 @@ const productsInTrolleyModal = (modal) => {
   `;
 }
 
+
+const changingBranchTrolleyModal = (modal) => {
+  return `
+  <div id="changingBranchTrolleyModal" class="modal">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">${modal.title}</h4>
+        </div>
+        <div class="modal-body">
+          <p>${modal.text}</p>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <i class="fa fa-spinner fa-spin"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+}
+
+
 const clickAndCollectTrolley = document.querySelector('#shopping-header-desktop #click-collect');
 const deliveryTrolley = document.querySelector('#shopping-header-desktop #delivery');
 
-if (clickAndCollectTrolley) {
-
+const hasClickAndCollect = () => {
+  const buttonVars = {
+    type: 'changeCcBranchBtn',
+    text: sitecoreGlobalDatasource.changeCcBranchBtn
+  }
   const mobileCheckoutDiv = document.querySelector('#shopping-header-mobile #mini-trolley-mobile #checkout');
   mobileCheckoutDiv.classList.remove('w-50');
   mobileCheckoutDiv.classList.add('w-100');
@@ -232,53 +251,91 @@ if (clickAndCollectTrolley) {
   clickAndCollectBranch.innerText = account.clickCollectBranch;
   clickAndCollectTrolley.children[0].after(clickAndCollectBranch);
   const greeting = document.querySelector('#shopping-header-desktop .greeting');
-  greeting.insertAdjacentElement('afterend', clickAndCollectBtn());
-
+  
+  greeting.insertAdjacentElement('afterend', homeBranchRangeBtns(buttonVars));
   const clickAndCollectTrolleyMobile = document.querySelector('#shopping-header-mobile #mini-trolley-mobile #checkout');
-  clickAndCollectTrolleyMobile.children[0].before(clickAndCollectBtn());
+  clickAndCollectTrolleyMobile.children[0].before(homeBranchRangeBtns(buttonVars));
   const branchModal = document.createElement('div');
   branchModal.innerHTML = changeBranchModal(sitecoreGlobalDatasource.chooseCcBranchModal);
   document.body.appendChild(branchModal);
   const inTrolleyModal = document.createElement('div');
   inTrolleyModal.innerHTML = productsInTrolleyModal(sitecoreGlobalDatasource.productsInTrolleyModal);
   document.body.appendChild(inTrolleyModal);
-} else if (deliveryTrolley) {
+}
+
+const hasDelivery = () => {
   const deliveryBranch = document.createElement('p');
   deliveryBranch.classList.add('deliveryBranch', 'p-0', 'm-0');
   deliveryBranch.innerText = account.deliveryBranch;
   deliveryTrolley.children[0].after(deliveryBranch);
+  const buttonVars = {
+    type: 'browseOtherBranchRangesBtn',
+    text: sitecoreGlobalDatasource.browseOtherBranchBtn
+  }
   if (!clickAndCollectTrolley) {
-    deliveryTrolley.parentElement.firstChild.before(browseOtherBranchRangesBtn());
+    deliveryTrolley.parentElement.firstChild.before(homeBranchRangeBtns(buttonVars));
     const deliveredTrolleyMobile = document.querySelector('#shopping-header-mobile #mini-trolley-mobile');
     const deliveredTrolleyMobileDiv = document.createElement('div');
     deliveredTrolleyMobileDiv.classList.add('col', 'my-3');
-    deliveredTrolleyMobileDiv.appendChild(browseOtherBranchRangesBtn());
+    deliveredTrolleyMobileDiv.appendChild(homeBranchRangeBtns(buttonVars));
     deliveredTrolleyMobile.insertAdjacentElement('afterend', deliveredTrolleyMobileDiv);
+  
+    const browseOtherBranchModalDiv = document.createElement('div');
+    browseOtherBranchModalDiv.innerHTML = changeBranchModal(sitecoreGlobalDatasource.browseOtherBranchModal);
+    document.body.appendChild(browseOtherBranchModalDiv);
+    const inTrolleyModal = document.createElement('div');
+    inTrolleyModal.innerHTML = productsInTrolleyModal(sitecoreGlobalDatasource.productsInTrolleyModal);
+    document.body.appendChild(inTrolleyModal);
   }
-  const browseOtherBranchModalDiv = document.createElement('div');
-  browseOtherBranchModalDiv.innerHTML = changeBranchModal(sitecoreGlobalDatasource.browseOtherBranchModal);
-  document.body.appendChild(browseOtherBranchModalDiv);
-  const inTrolleyModal = document.createElement('div');
-  inTrolleyModal.innerHTML = productsInTrolleyModal(sitecoreGlobalDatasource.productsInTrolleyModal);
-  document.body.appendChild(inTrolleyModal);
-} else {
-  //
+}
+
+const hasExtendedRange = () => {
+
 }
 
 
+if (clickAndCollectTrolley && deliveryTrolley) {
+  hasClickAndCollect();
+  hasDelivery();
+  const changeBranchTrolleyModal = document.createElement('div');
+  changeBranchTrolleyModal.innerHTML = changingBranchTrolleyModal(sitecoreGlobalDatasource.changingBranchModal);
+  document.body.appendChild(changeBranchTrolleyModal);
+} else if (clickAndCollectTrolley) {
+  hasClickAndCollect();
+  const changeBranchTrolleyModal = document.createElement('div');
+  changeBranchTrolleyModal.innerHTML = changingBranchTrolleyModal(sitecoreGlobalDatasource.changingBranchModal);
+  document.body.appendChild(changeBranchTrolleyModal);
+} else if (deliveryTrolley) {
+  hasDelivery();
+  const changeBranchTrolleyModal = document.createElement('div');
+  changeBranchTrolleyModal.innerHTML = changingBranchTrolleyModal(sitecoreGlobalDatasource.changingBranchModal);
+  document.body.appendChild(changeBranchTrolleyModal);
+} else {
+  hasExtendedRange();
+}
+
 const getChangeBranchModal = document.querySelector('#changeBranchModal');
 const getProductsInTrolleyModal = document.querySelector('#productsInTrolleyModal');
-
 
 const chooseBranchModalBtn = document.querySelector('#chooseBranchModalBtn');
 
 const productsInTrolleyModalBtns = document.querySelectorAll('#productsInTrolleyModal .btn');
 
 [...productsInTrolleyModalBtns].map(button => {
-  button.addEventListener('click', () => {
-    $('#productsInTrolleyModal').hide();
-  });
+  
+  if (button.classList.contains('cancel')) {
+    button.addEventListener('click', () => {
+      $('#productsInTrolleyModal').hide();
+    });
+  }
+  if (button.classList.contains('continue') || button.classList.contains('clearAndContinue')) {
+    button.addEventListener('click', () => {
+      $('#productsInTrolleyModal').hide();
+      $('#changingBranchTrolleyModal').show();
+    });
+  }
 });
+
 
 chooseBranchModalBtn.addEventListener('click', () => {
   $('#productsInTrolleyModal').show();
