@@ -49,8 +49,12 @@
   border-top: 0;
 }
 
+#shopping-header-desktop #search-bar {
+  margin-top: 10px !important;
+}
+
 header.shopping-header .greeting {
-  margin-left: 4rem;
+  margin-left: 0.7rem;
 }
 
 #mini-trolley .clickAndCollectBranch {
@@ -128,20 +132,30 @@ header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile
   background: #00BDF7 !important; color: #fff;
 }
 
-header#shopping-header-mobile .changeCcBranchBtn, header#shopping-header-mobile .browseOtherBranchRangesBtn {
+header#shopping-header-mobile .changeCcBranchBtn {
   width: 48%;
+  margin-right: 8px;
 }
 
-header#shopping-header-desktop .browseOtherBranchRangesBtn {
-  width: 135px !important;
-  margin-right: 15px;
+#changingBranchTrolleyModal .fa-spinner {
+  font-size: 5em;
+  color: #2356AA;
 }
 
 header#shopping-header-mobile .browseOtherBranchRangesBtn {
   width: 100%;
 }
 
+header#shopping-header-desktop .homeBranchRangeBtnDiv {
+  margin-right: 15px;
+}
+
 header#shopping-header-desktop #checkout .btn {
   display: flex;
   align-items: center;
+}
+
+#productsInTrolleyModal .clearAndContinue {
+  background-color: #00BDF7;
+  color: white;
 }
