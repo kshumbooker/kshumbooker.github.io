@@ -89,12 +89,12 @@ const sitecoreGlobalDatasource = {
   }
 }
 
-const homeBranchRangeBtns = (buttonVars) => {
+const homeBranchRangeBtns = (buttonVars, size = 'normal') => {
   const buttonDiv = document.createElement('div');
   buttonDiv.classList.add('homeBranchRangeBtnDiv');
   const button = document.createElement('a');
   button.href = '#';
-  button.classList.add('btn', buttonVars.type, 'd-flex', 'align-items-center', 'justify-content-center');
+  button.classList.add('btn', buttonVars.type, size, 'd-flex', 'align-items-center', 'justify-content-center');
   button.setAttribute('data-toggle', 'modal');
   button.setAttribute('data-target', '#changeBranchModal');
   button.innerText = buttonVars.text;
@@ -235,7 +235,6 @@ const changingBranchTrolleyModal = (modal) => {
 const clickAndCollectTrolley = document.querySelector('#shopping-header-desktop #click-collect');
 const deliveryTrolley = document.querySelector('#shopping-header-desktop #delivery');
 
-
 const hasClickAndCollect = () => {
   const buttonVars = {
     type: 'changeCcBranchBtn',
@@ -243,10 +242,6 @@ const hasClickAndCollect = () => {
   }
 
   const hasRequestDeliveriesBtn = document.querySelector('#collect-no-delivery-option-button');
-
-  if (!hasRequestDeliveriesBtn) {
-
-  }
 
   const mobileCheckoutDiv = document.querySelector('#shopping-header-mobile #mini-trolley-mobile #checkout');
   mobileCheckoutDiv.classList.remove('w-50');
@@ -260,7 +255,12 @@ const hasClickAndCollect = () => {
   clickAndCollectTrolley.children[0].after(clickAndCollectBranch);
   const greeting = document.querySelector('#shopping-header-desktop .greeting');
   
-  greeting.insertAdjacentElement('afterend', homeBranchRangeBtns(buttonVars));
+  if (!hasRequestDeliveriesBtn && !deliveryTrolley) {
+    const trolley = document.querySelector('#shopping-header-desktop #mini-trolley #click-collect');
+    trolley.insertAdjacentElement('beforebegin', homeBranchRangeBtns(buttonVars, 'small'));
+  } else {
+    greeting.insertAdjacentElement('afterend', homeBranchRangeBtns(buttonVars));
+  }
   const clickAndCollectTrolleyMobile = document.querySelector('#shopping-header-mobile #mini-trolley-mobile #checkout');
   clickAndCollectTrolleyMobile.children[0].before(homeBranchRangeBtns(buttonVars));
   const branchModal = document.createElement('div');
@@ -348,3 +348,4 @@ const productsInTrolleyModalBtns = document.querySelectorAll('#productsInTrolley
 chooseBranchModalBtn.addEventListener('click', () => {
   $('#productsInTrolleyModal').show();
 });
+
