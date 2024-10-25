@@ -11,6 +11,11 @@
   width: max-content !important;
 }
 
+#shopping-header-desktop .changeCcBranchBtn.small {
+  width: 150px !important;
+  margin-right: 15px;
+}
+
 .branches-result .table thead {
   background: #ccc;
 }
