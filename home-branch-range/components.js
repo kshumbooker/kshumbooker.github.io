@@ -235,11 +235,19 @@ const changingBranchTrolleyModal = (modal) => {
 const clickAndCollectTrolley = document.querySelector('#shopping-header-desktop #click-collect');
 const deliveryTrolley = document.querySelector('#shopping-header-desktop #delivery');
 
+
 const hasClickAndCollect = () => {
   const buttonVars = {
     type: 'changeCcBranchBtn',
     text: sitecoreGlobalDatasource.changeCcBranchBtn
   }
+
+  const hasRequestDeliveriesBtn = document.querySelector('#collect-no-delivery-option-button');
+
+  if (!hasRequestDeliveriesBtn) {
+
+  }
+
   const mobileCheckoutDiv = document.querySelector('#shopping-header-mobile #mini-trolley-mobile #checkout');
   mobileCheckoutDiv.classList.remove('w-50');
   mobileCheckoutDiv.classList.add('w-100');
@@ -340,5 +348,3 @@ const productsInTrolleyModalBtns = document.querySelectorAll('#productsInTrolley
 chooseBranchModalBtn.addEventListener('click', () => {
   $('#productsInTrolleyModal').show();
 });
-
-
