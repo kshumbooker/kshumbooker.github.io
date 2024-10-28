@@ -89,18 +89,21 @@ const sitecoreGlobalDatasource = {
   }
 }
 
-const homeBranchRangeBtns = (buttonVars, size = 'normal') => {
+const homeBranchRangeBtns = (buttonVars, size = 'normal', percent = '') => {
   const buttonDiv = document.createElement('div');
   buttonDiv.classList.add('homeBranchRangeBtnDiv');
+  if (percent !== '') {
+    buttonDiv.classList.add('w-50', 'p-2');
+  }
   const button = document.createElement('a');
   button.href = '#';
   button.classList.add('btn', buttonVars.type, size, 'd-flex', 'align-items-center', 'justify-content-center');
   button.setAttribute('data-toggle', 'modal');
   button.setAttribute('data-target', '#changeBranchModal');
   button.innerText = buttonVars.text;
-  if (buttonVars.type == 'changeCcBranchBtn') {
+  /*if (buttonVars.type == 'changeCcBranchBtn') {
     return button;
-  }
+  }*/
   buttonDiv.appendChild(button);
   return buttonDiv;
 }
@@ -243,12 +246,15 @@ const hasClickAndCollect = () => {
 
   const hasRequestDeliveriesBtn = document.querySelector('#collect-no-delivery-option-button');
 
-  const mobileCheckoutDiv = document.querySelector('#shopping-header-mobile #mini-trolley-mobile #checkout');
-  mobileCheckoutDiv.classList.remove('w-50');
-  mobileCheckoutDiv.classList.add('w-100');
-  mobileCheckoutDiv.lastElementChild.classList.remove('w-100');
-  mobileCheckoutDiv.lastElementChild.classList.add('w-50');
-
+  const clickAndCollectTrolleyMobile = document.querySelector('#shopping-header-mobile #mini-trolley-mobile');
+  clickAndCollectTrolleyMobile.classList.add('col', 'my-3');
+  
+  if (!deliveryTrolley) { 
+    clickAndCollectTrolleyMobile.children[0].after(homeBranchRangeBtns(buttonVars, 'full'));
+  } else {
+    const mobileCheckoutDiv = document.querySelector('#shopping-header-mobile #mini-trolley-mobile #checkout');
+    mobileCheckoutDiv.before(homeBranchRangeBtns(buttonVars, 'full', 50));
+  }
   const clickAndCollectBranch = document.createElement('p');
   clickAndCollectBranch.classList.add('clickAndCollectBranch', 'p-0', 'm-0');
   clickAndCollectBranch.innerText = account.clickCollectBranch;
@@ -261,8 +267,6 @@ const hasClickAndCollect = () => {
   } else {
     greeting.insertAdjacentElement('afterend', homeBranchRangeBtns(buttonVars));
   }
-  const clickAndCollectTrolleyMobile = document.querySelector('#shopping-header-mobile #mini-trolley-mobile #checkout');
-  clickAndCollectTrolleyMobile.children[0].before(homeBranchRangeBtns(buttonVars));
   const branchModal = document.createElement('div');
   branchModal.innerHTML = changeBranchModal(sitecoreGlobalDatasource.chooseCcBranchModal);
   document.body.appendChild(branchModal);
@@ -297,9 +301,6 @@ const hasDelivery = () => {
   }
 }
 
-const hasExtendedRange = () => {
-
-}
 
 
 if (clickAndCollectTrolley && deliveryTrolley) {
@@ -319,7 +320,7 @@ if (clickAndCollectTrolley && deliveryTrolley) {
   changeBranchTrolleyModal.innerHTML = changingBranchTrolleyModal(sitecoreGlobalDatasource.changingBranchModal);
   document.body.appendChild(changeBranchTrolleyModal);
 } else {
-  hasExtendedRange();
+  hasClickAndCollect();
 }
 
 const getChangeBranchModal = document.querySelector('#changeBranchModal');
@@ -348,4 +349,3 @@ const productsInTrolleyModalBtns = document.querySelectorAll('#productsInTrolley
 chooseBranchModalBtn.addEventListener('click', () => {
   $('#productsInTrolleyModal').show();
 });
-
