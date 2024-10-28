@@ -82,6 +82,18 @@ header.shopping-header .greeting {
   color: #82B279;
 }
 
+#booker_trolley_first_aside .clickAndCollect {
+  background-color: #fdead3;
+  padding: 10px;
+  color: #C98D05;
+}
+
+#booker_trolley_first_aside .delivery {
+  background-color: #E3F5E8;
+  padding: 10px;
+  color: #82B279;
+}
+
 #changeBranchModal .btn, #changeBranchModal .fa-search {
   background: #2356AA;
   color: #fff;
