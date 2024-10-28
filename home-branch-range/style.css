@@ -13,7 +13,17 @@
 
 #shopping-header-desktop .changeCcBranchBtn.small {
   width: 150px !important;
-  margin-right: 15px;
+}
+
+#shopping-header-mobile .changeCcBranchBtn.full {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#shopping-header-mobile .changeCcBranchBtn, #shopping-header-mobile .browseOtherBranchRangesBtn {
+  height: 4em;
 }
 
 .branches-result .table thead {
@@ -124,9 +134,17 @@ header#shopping-header-desktop #mini-trolley #click-collect, header#shopping-hea
   border: 1px solid #fdead3;
 }
 
+header#shopping-header-desktop #mini-trolley #click-collect {
+  margin-right: 1em;
+}
+
 
 header#shopping-header-desktop #mini-trolley #delivery, header#shopping-header-mobile #mini-trolley-mobile #delivery {
   border: 1px solid #E3F5E8;
+}
+
+header#shopping-header-desktop #mini-trolley #delivery {
+  margin-right: 1em;
 }
 
 header#shopping-header-desktop .changeCcBranchBtn:hover {
@@ -137,10 +155,7 @@ header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile
   background: #00BDF7 !important; color: #fff;
 }
 
-header#shopping-header-mobile .changeCcBranchBtn {
-  width: 48%;
-  margin-right: 8px;
-}
+
 
 #changingBranchTrolleyModal .fa-spinner {
   font-size: 5em;
@@ -152,7 +167,7 @@ header#shopping-header-mobile .browseOtherBranchRangesBtn {
 }
 
 header#shopping-header-desktop .homeBranchRangeBtnDiv {
-  margin-right: 15px;
+  margin-right: 1em;
 }
 
 header#shopping-header-desktop #checkout .btn {
