@@ -349,3 +349,27 @@ const productsInTrolleyModalBtns = document.querySelectorAll('#productsInTrolley
 chooseBranchModalBtn.addEventListener('click', () => {
   $('#productsInTrolleyModal').show();
 });
+
+
+
+
+const trolleyTypeOnLoad = () => {
+
+  const miniTrolleys = document.querySelector('#mini-trolley').children;
+  const summaryHeader = document.querySelector('#booker_trolley_first_aside').firstElementChild;
+  const deliveryMethodSummaryHeader = document.createElement('div');
+
+  [...miniTrolleys].map(t => {
+    if (t.classList.contains('orange-background')) {
+      deliveryMethodSummaryHeader.classList.add('clickAndCollect');
+      deliveryMethodSummaryHeader.innerHTML = `<span class="clickAndCollectBranch">Order for <strong>Click And Collect</strong> at <strong>${account.clickCollectBranch}</strong></span>`;
+      summaryHeader.insertAdjacentElement('afterbegin', deliveryMethodSummaryHeader);
+    } else {
+      deliveryMethodSummaryHeader.classList.add('delivery');
+      deliveryMethodSummaryHeader.innerHTML = `<span class="deliveryBranch">Order for <strong>Delivery</strong> at <strong>${account.deliveryBranch}</strong></span>`;
+      summaryHeader.insertAdjacentElement('afterbegin', deliveryMethodSummaryHeader);
+    } 
+  });
+}
+
+trolleyTypeOnLoad();
