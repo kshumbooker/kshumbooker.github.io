@@ -301,26 +301,23 @@ const hasDelivery = () => {
   }
 }
 
+const populateChangingBranchModal = () => {
+  const changeBranchTrolleyModal = document.createElement('div');
+  changeBranchTrolleyModal.innerHTML = changingBranchTrolleyModal(sitecoreGlobalDatasource.changingBranchModal);
+  document.body.appendChild(changeBranchTrolleyModal);
+}
 
 
 if (clickAndCollectTrolley && deliveryTrolley) {
   hasClickAndCollect();
   hasDelivery();
-  const changeBranchTrolleyModal = document.createElement('div');
-  changeBranchTrolleyModal.innerHTML = changingBranchTrolleyModal(sitecoreGlobalDatasource.changingBranchModal);
-  document.body.appendChild(changeBranchTrolleyModal);
+  populateChangingBranchModal();
 } else if (clickAndCollectTrolley) {
   hasClickAndCollect();
-  const changeBranchTrolleyModal = document.createElement('div');
-  changeBranchTrolleyModal.innerHTML = changingBranchTrolleyModal(sitecoreGlobalDatasource.changingBranchModal);
-  document.body.appendChild(changeBranchTrolleyModal);
+  populateChangingBranchModal();
 } else if (deliveryTrolley) {
   hasDelivery();
-  const changeBranchTrolleyModal = document.createElement('div');
-  changeBranchTrolleyModal.innerHTML = changingBranchTrolleyModal(sitecoreGlobalDatasource.changingBranchModal);
-  document.body.appendChild(changeBranchTrolleyModal);
-} else {
-  hasClickAndCollect();
+  populateChangingBranchModal();
 }
 
 const getChangeBranchModal = document.querySelector('#changeBranchModal');
@@ -355,12 +352,10 @@ chooseBranchModalBtn.addEventListener('click', () => {
 
 const trolleyTypeOnLoad = () => {
 
-  const miniTrolleys = document.querySelector('#mini-trolley').children;
   const summaryHeader = document.querySelector('#booker_trolley_first_aside').firstElementChild;
   const deliveryMethodSummaryHeader = document.createElement('div');
 
-  [...miniTrolleys].map(t => {
-    if (t.classList.contains('orange-background')) {
+    if (isClickAndCollect) {
       deliveryMethodSummaryHeader.classList.add('clickAndCollect');
       deliveryMethodSummaryHeader.innerHTML = `<span class="clickAndCollectBranch">Order for <strong>Click And Collect</strong> at <strong>${account.clickCollectBranch}</strong></span>`;
       summaryHeader.insertAdjacentElement('afterbegin', deliveryMethodSummaryHeader);
@@ -369,7 +364,7 @@ const trolleyTypeOnLoad = () => {
       deliveryMethodSummaryHeader.innerHTML = `<span class="deliveryBranch">Order for <strong>Delivery</strong> at <strong>${account.deliveryBranch}</strong></span>`;
       summaryHeader.insertAdjacentElement('afterbegin', deliveryMethodSummaryHeader);
     } 
-  });
+  
 }
 
 trolleyTypeOnLoad();
