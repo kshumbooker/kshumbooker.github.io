@@ -93,7 +93,7 @@ const homeBranchRangeBtns = (buttonVars, size = 'normal', percent = '') => {
   const buttonDiv = document.createElement('div');
   buttonDiv.classList.add('homeBranchRangeBtnDiv');
   if (percent !== '') {
-    buttonDiv.classList.add('w-50', 'p-2');
+    buttonDiv.classList.add('w-50', 'px-2');
   }
   const button = document.createElement('a');
   button.href = '#';
