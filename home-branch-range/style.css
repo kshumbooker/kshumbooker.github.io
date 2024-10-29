@@ -11,6 +11,10 @@
   width: max-content !important;
 }
 
+#shopping-header-mobile #search-bar .header-button.green-background {
+  margin-right: 0em !important;
+}
+
 #shopping-header-desktop .changeCcBranchBtn.small {
   width: 150px !important;
 }
@@ -60,7 +64,7 @@
   border: 1px solid #dee2e6;
 }
 
-#changeBranchModal .modal-footer {
+#changeBranchModal .modal-footer, #productsInTrolleyModal .modal-footer {
   border-top: 0;
 }
 
@@ -146,6 +150,10 @@ header#shopping-header-desktop #mini-trolley #click-collect, header#shopping-hea
   border: 1px solid #fdead3;
 }
 
+header#shopping-header-mobile #mini-trolley-mobile #delivery {
+  width: 98%;
+}
+
 header#shopping-header-desktop #mini-trolley #click-collect {
   margin-right: 1em;
 }
@@ -187,7 +195,6 @@ header#shopping-header-desktop #checkout .btn {
   align-items: center;
 }
 
-#productsInTrolleyModal .clearAndContinue {
-  background-color: #00BDF7;
-  color: white;
+#changingBranchTrolleyModal .modal-footer {
+  border-top: 0;
 }
