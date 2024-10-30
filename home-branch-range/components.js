@@ -355,11 +355,9 @@ if (chooseBranchModalBtn) {
 const alternativeButtonPosition = () => {
   const miniTrolley = document.querySelector('#shopping-header-desktop #mini-trolley #click-collect');
   const changeCcBranchBtn = document.querySelector('.changeCcBranchBtn');
-  $('#shopping-header-desktop .changeCcBranchBtn').attr('style', 'width: auto !important; margin-top: 5px; font-size: 9px');
-  $('#shopping-header-desktop #click-collect .header-button').css('margin-top', '0px');
-  $('#shopping-header-desktop #click-collect .header-button').css('height', 'fit-content');
-  $('#shopping-header-desktop #delivery .header-button').css('margin-top', '0px');
-
+  $('#shopping-header-desktop .changeCcBranchBtn').attr('style', 'width: auto !important; margin-top: 5px; font-size: 9px; height: fit-content;');
+  $('#shopping-header-desktop #search-bar .header-button').css('margin-top', '0');
+  $('#shopping-header-desktop #delivery').css('align-content', 'end');
   miniTrolley.children[0].before(changeCcBranchBtn);
 }
 
