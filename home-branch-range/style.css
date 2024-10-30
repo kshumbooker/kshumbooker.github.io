@@ -180,11 +180,6 @@ header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-deskto
   font-size: 12px;
 }
 
-header#shopping-header-desktop .changeCcBranchBtn {
-  position: relative;
-  left: 37px;
-}
-
 #changingBranchTrolleyModal .fa-spinner {
   font-size: 5em;
   color: #2356AA;
