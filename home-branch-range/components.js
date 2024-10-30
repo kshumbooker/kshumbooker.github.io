@@ -308,6 +308,7 @@ const populateChangingBranchModal = () => {
 
 if (clickAndCollectTrolley && deliveryTrolley) {
   injectHbrChangeCcButton();
+  $('#shopping-header-desktop .changeCcBranchBtn').css('margin-right', '5px');
   addHomeBranchRangeName('clickAndCollect');
   addHomeBranchRangeName('delivery');
 
