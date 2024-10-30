@@ -196,6 +196,7 @@ header#shopping-header-mobile .browseOtherBranchRangesBtn {
 
 header#shopping-header-desktop .homeBranchRangeBtnDiv {
   margin-right: 1em;
+  align-content: center;
 }
 
 header#shopping-header-desktop #checkout .btn {
