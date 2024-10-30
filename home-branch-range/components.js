@@ -266,7 +266,6 @@ const injectHbrChangeCcButton = () => {
 }
 
 const injectHbrDeliveryButton = () => {
-  addHomeBranchRangeName('delivery');
   const buttonVars = {
     type: 'browseOtherBranchRangesBtn',
     text: sitecoreGlobalDatasource.browseOtherBranchBtn
