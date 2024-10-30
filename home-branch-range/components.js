@@ -266,6 +266,7 @@ const injectHbrChangeCcButton = () => {
 }
 
 const injectHbrDeliveryButton = () => {
+ 
   const buttonVars = {
     type: 'browseOtherBranchRangesBtn',
     text: sitecoreGlobalDatasource.browseOtherBranchBtn
@@ -307,9 +308,9 @@ const populateChangingBranchModal = () => {
 
 if (clickAndCollectTrolley && deliveryTrolley) {
   injectHbrChangeCcButton();
-  $('#shopping-header-desktop .changeCcBranchBtn').css('left', '-6px');
   addHomeBranchRangeName('clickAndCollect');
   addHomeBranchRangeName('delivery');
+
   populateChangingBranchModal();
 } else if (clickAndCollectTrolley) {
   injectHbrChangeCcButton();
@@ -351,7 +352,14 @@ if (chooseBranchModalBtn) {
 }
 
 const alternativeButtonPosition = () => {
-  
+  const miniTrolley = document.querySelector('#shopping-header-desktop #mini-trolley #click-collect');
+  const changeCcBranchBtn = document.querySelector('.changeCcBranchBtn');
+  $('#shopping-header-desktop .changeCcBranchBtn').attr('style', 'width: auto !important; margin-top: 5px; font-size: 9px');
+  $('#shopping-header-desktop #click-collect .header-button').css('margin-top', '0px');
+  $('#shopping-header-desktop #click-collect .header-button').css('height', 'fit-content');
+  $('#shopping-header-desktop #delivery .header-button').css('margin-top', '0px');
+
+  miniTrolley.children[0].before(changeCcBranchBtn);
 }
 
 
@@ -378,5 +386,16 @@ const trolleyTypeOnLoad = () => {
   
 }
 
-trolleyTypeOnLoad();
+if (document.querySelector('#booker_trolley_first_aside') !== null ) {
+  trolleyTypeOnLoad();
+}
+
+const currentUrl = window.location.search;
+
+const urlParams = new URLSearchParams(currentUrl);
+
+const alternative = urlParams.get('view') ? urlParams.get('view') : '';
+if (alternative == 'alt') {
+  alternativeButtonPosition();
+}
 
