@@ -247,7 +247,6 @@ const injectHbrChangeCcButton = () => {
     text: sitecoreGlobalDatasource.changeCcBranchBtn 
   }
   const hasRequestDeliveriesBtn = document.querySelector('#collect-no-delivery-option-button');
-  //clickAndCollectTrolleyMobile.classList.add('col', 'my-3');
   
   if (!isDelivery) { 
     clickAndCollectTrolleyMobile.children[0].after(homeBranchRangeBtns(buttonVars, 'full'));
@@ -351,7 +350,9 @@ if (chooseBranchModalBtn) {
   });
 }
 
-
+const alternativeButtonPosition = () => {
+  
+}
 
 
 const trolleyTypeOnLoad = () => {
@@ -378,3 +379,4 @@ const trolleyTypeOnLoad = () => {
 }
 
 trolleyTypeOnLoad();
+
