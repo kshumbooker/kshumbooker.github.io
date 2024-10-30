@@ -73,7 +73,8 @@
 }
 
 header.shopping-header .greeting {
-  margin-left: 0.7rem;
+  width: 270px;
+
 }
 
 #mini-trolley .clickAndCollectBranch {
@@ -175,7 +176,14 @@ header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile
   background: #00BDF7 !important; color: #fff;
 }
 
+header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-desktop .browseOtherBranchRangesBtn {
+  font-size: 12px;
+}
 
+header#shopping-header-desktop .changeCcBranchBtn {
+  position: relative;
+  left: 37px;
+}
 
 #changingBranchTrolleyModal .fa-spinner {
   font-size: 5em;
