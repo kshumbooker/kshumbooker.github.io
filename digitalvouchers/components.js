@@ -87,8 +87,23 @@ const digitalVouchers = [
   {
     id: 6,
     midascode: 678901,
+    promotion: 'Money off',
+    description: 'Get £2.99 off when purchasing any product!!!',
+    expiry: 10,
+    url: '',
+    titleBgColor: voucherColor.money,
+    titleFontColor: '#ffffff',
+    btnBgColor: voucherColor.button,
+    btnText: 'Buy now',
+    btnFontColor: '#ffffff',
+    applied: true,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+  },
+  {
+    id: 7,
+    midascode: 789012,
     promotion: 'Percentage off',
-    description: 'Get 5% off when purchasing any product in the Takeaway Food containers Shelf',
+    description: 'Get 10% off when purchasing any product in the ',
     expiry: 10,
     url: '',
     titleBgColor: voucherColor.percentage,
@@ -101,6 +116,11 @@ const digitalVouchers = [
   }
 ];
 
+const numberOfAppliedAvailable = (appliedOrAvailable) => {
+  let number = appliedOrAvailable == 'applied' ? digitalVouchers.filter(v => v.applied === true).length : appliedOrAvailable == 'available' ? digitalVouchers.filter(v => v.applied === false).length : false;
+  return number;
+}
+
 const digitalVouchersApplied = {
   title: 'You have Vouchers Applied!!',
   description: 'Click the button below to see all your Vouchers',
@@ -110,6 +130,28 @@ const digitalVouchersApplied = {
   titleFontColor: '#ffffff',
   btnBgColor: '#2356AA',
   btnFontColor: '#ffffff',
+}
+
+const digitalVouchersAvailable = {
+  title: `You have ${numberOfAppliedAvailable('available')} vouchers Available!!`,
+  description: `Click the button below to see all your ${numberOfAppliedAvailable('available')} Available Vouchers`,
+  btnText: 'View All Available Vouchers',
+  descriptionColor: '#2356AA',
+  titleBgColor: '#2356AA',
+  titleFontColor: '#ffffff',
+  btnBgColor: '#2356AA',
+  btnFontColor: '#ffffff'
+}
+
+const digitalVouchersAppliedAvailable = {
+  title: `You have ${numberOfAppliedAvailable('applied')} vouchers Applied and ${numberOfAppliedAvailable('available')} vouchers Available!!`,
+  description: `Click the button below to see all your ${numberOfAppliedAvailable('available')} vouchers available and ${numberOfAppliedAvailable('applied')} Applied Vouchers`,
+  btnText: 'View All Available and Applied Vouchers',
+  descriptionColor: '#2356AA',
+  titleBgColor: '#2356AA',
+  titleFontColor: '#ffffff',
+  btnBgColor: '#2356AA',
+  btnFontColor: '#ffffff'
 }
 
 const digitalVouchersContent = document.querySelector('.digitalVouchers');
@@ -151,11 +193,13 @@ if (digitalVouchersContent) {
 
 
 let digitalVouchersAppliedContent = document.querySelector('.digitalVouchersApplied');
+let digitalVouchersAvailableContent = document.querySelector('.digitalVouchersAvailable');
+let digitalVouchersAppliedAvailableContent = document.querySelector('.digitalVouchersAppliedAvailable');
 
 if (digitalVouchersAppliedContent) {
 
   digitalVouchersAppliedContent.innerHTML = `
-    <digital-voucher-applied class="my-3"
+    <digital-vouchers-applied class="my-3"
       data-title="${digitalVouchersApplied.title}"
       data-description="${digitalVouchersApplied.description}"
       data-btn-text="${digitalVouchersApplied.btnText}"
@@ -165,6 +209,42 @@ if (digitalVouchersAppliedContent) {
       data-btn-bg-color="${digitalVouchersApplied.btnBgColor}"
       data-btn-font-color="${digitalVouchersApplied.btnFontColor}"
     ></digital-voucher-applied>
+  `;
+}
+
+if (digitalVouchersAvailableContent) {
+
+  digitalVouchersAvailableContent.innerHTML = `
+    <digital-vouchers-available class="my-3"
+      data-title="${digitalVouchersAvailable.title}"
+      data-description="${digitalVouchersAvailable.description}"
+      data-btn-text="${digitalVouchersAvailable.btnText}"
+      data-description-color="${digitalVouchersAvailable.descriptionColor}"
+      data-title-bg-color="${digitalVouchersAvailable.titleBgColor}"
+      data-title-font-color="${digitalVouchersAvailable.titleFontColor}"
+      data-btn-bg-color="${digitalVouchersAvailable.btnBgColor}"
+      data-btn-font-color="${digitalVouchersAvailable.btnFontColor}"
+      data-number-vouchers-applied="${digitalVouchersAvailable.vouchersApplied}"
+      data-number-vouchers-available="${digitalVouchersAvailable.vouchersAvailable}"
+    ></digital-voucher-available>
+  `;
+}
+
+if (digitalVouchersAppliedAvailableContent) {
+
+  digitalVouchersAppliedAvailableContent.innerHTML = `
+    <digital-vouchers-applied-available class="my-3"
+      data-title="${digitalVouchersAppliedAvailable.title}"
+      data-description="${digitalVouchersAppliedAvailable.description}"
+      data-btn-text="${digitalVouchersAppliedAvailable.btnText}"
+      data-description-color="${digitalVouchersAppliedAvailable.descriptionColor}"
+      data-title-bg-color="${digitalVouchersAppliedAvailable.titleBgColor}"
+      data-title-font-color="${digitalVouchersAppliedAvailable.titleFontColor}"
+      data-btn-bg-color="${digitalVouchersAppliedAvailable.btnBgColor}"
+      data-btn-font-color="${digitalVouchersAppliedAvailable.btnFontColor}"
+      data-number-vouchers-applied="${digitalVouchersAppliedAvailable.vouchersApplied}"
+      data-number-vouchers-available="${digitalVouchersAppliedAvailable.vouchersAvailable}"
+    ></digital-voucher-applied-available>
   `;
 }
 
@@ -241,7 +321,7 @@ class DigitalVoucher extends HTMLElement {
 }
 
 
-class DigitalVoucherApplied extends HTMLElement {
+class DigitalVouchersApplied extends HTMLElement {
   constructor() {
     super();
   }
@@ -269,11 +349,12 @@ class DigitalVoucherApplied extends HTMLElement {
         <p class="card-description">${this.voucherApplied.description}</p>
       </div>
       <div class="card-bottom">
-        <button class="btn viewAllVouchers" style="background: ${this.voucherApplied.btnBgColor}; color: ${this.voucherApplied.btnFontColor}">${this.voucherApplied.btnText}</button></p>
+        <button class="btn viewAllVouchers" style="background: ${this.voucherApplied.btnBgColor}; color: ${this.voucherApplied.btnFontColor}">${this.voucherApplied.btnText}</button>
       </div>
     </div>
     <span class="cutaway right"></span>
   </div>
+  
   `;
 
   render = () => {
@@ -362,9 +443,9 @@ class DigitalVouchersPanel extends HTMLElement {
       ${this.template().trim()}
     `;
 
+    const panel = document.querySelector('.digitalVouchersPanel');
     const digitalVouchersPanelClose = document.querySelector('.digitalVouchersPanelClose');
-
-
+    
     digitalVouchersPanelClose.addEventListener('click', () => {
       document.querySelector('.digitalVouchersPanel').classList.toggle('d-none');
     });
@@ -372,7 +453,108 @@ class DigitalVouchersPanel extends HTMLElement {
 
 }
 
+class DigitalVouchersAvailable extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.vouchersAvailable = {
+      title: this.getAttribute('data-title'),
+      description: this.getAttribute('data-description'),
+      btnText: this.getAttribute('data-btn-text'),
+      descriptionColor: this.getAttribute('data-description-color'),
+      titleBgColor: this.getAttribute('data-title-bg-color'),
+      titleFontColor: this.getAttribute('data-title-font-color'),
+      btnBgColor: this.getAttribute('data-btn-bg-color'),
+      btnFontColor: this.getAttribute('data-btn-font-color'),
+    }
+    this.render();
+  }
+
+  template = () => `
+  <div class="card h-100">
+    <span class="cutaway left"></span>
+    <div class="card-body">
+      <div class="card-title" style="background: ${this.vouchersAvailable.titleBgColor}; color: ${this.vouchersAvailable.titleFontColor}"><span class="title">${this.vouchersAvailable.title}</span></div>
+      <div class="card-text" style="color: ${this.vouchersAvailable.descriptionColor}">
+        <p class="card-description">${this.vouchersAvailable.description}</p>
+      </div>
+      <div class="card-bottom">
+        <button class="btn viewAllVouchers" style="background: ${this.vouchersAvailable.btnBgColor}; color: ${this.vouchersAvailable.btnFontColor}">${this.vouchersAvailable.btnText}</button></p>
+      </div>
+    </div>
+    <span class="cutaway right"></span>
+  </div>
+  `;
+
+  render = () => {
+    this.innerHTML = `
+      ${this.template().trim()}
+    `;
+
+    const viewAllVouchersBtn = document.querySelector('.viewAllVouchers');
+
+    viewAllVouchersBtn.addEventListener('click', () => {
+      $(window).scrollTop(0);
+      document.querySelector('.digitalVouchersPanel').classList.toggle('d-none');
+    });
+  }
+}
+
+
+class DigitalVouchersAppliedAvailable extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.vouchersAppliedAvailable = {
+      title: this.getAttribute('data-title'),
+      description: this.getAttribute('data-description'),
+      btnText: this.getAttribute('data-btn-text'),
+      descriptionColor: this.getAttribute('data-description-color'),
+      titleBgColor: this.getAttribute('data-title-bg-color'),
+      titleFontColor: this.getAttribute('data-title-font-color'),
+      btnBgColor: this.getAttribute('data-btn-bg-color'),
+      btnFontColor: this.getAttribute('data-btn-font-color'),
+    }
+    this.render();
+  }
+
+  template = () => `
+  <div class="card h-100">
+    <span class="cutaway left"></span>
+    <div class="card-body">
+      <div class="card-title" style="background: ${this.vouchersAppliedAvailable.titleBgColor}; color: ${this.vouchersAppliedAvailable.titleFontColor}"><span class="title">${this.vouchersAppliedAvailable.title}</span></div>
+      <div class="card-text" style="color: ${this.vouchersAppliedAvailable.descriptionColor}">
+        <p class="card-description">${this.vouchersAppliedAvailable.description}</p>
+      </div>
+      <div class="card-bottom">
+        <button class="btn viewAllVouchers" style="background: ${this.vouchersAppliedAvailable.btnBgColor}; color: ${this.vouchersAppliedAvailable.btnFontColor}">${this.vouchersAppliedAvailable.btnText}</button></p>
+      </div>
+    </div>
+    <span class="cutaway right"></span>
+  </div>
+  `;
+
+  render = () => {
+    this.innerHTML = `
+      ${this.template().trim()}
+    `;
+
+    const viewAllVouchersBtn = document.querySelector('.viewAllVouchers');
+
+    viewAllVouchersBtn.addEventListener('click', () => {
+      $(window).scrollTop(0);
+      document.querySelector('.digitalVouchersPanel').classList.toggle('d-none');
+    });
+  }
+}
+
 
 customElements.define('digital-voucher', DigitalVoucher);
-customElements.define('digital-voucher-applied', DigitalVoucherApplied);
+customElements.define('digital-vouchers-applied', DigitalVouchersApplied);
 customElements.define('digital-vouchers-panel', DigitalVouchersPanel);
+customElements.define('digital-vouchers-available', DigitalVouchersAvailable);
+customElements.define('digital-vouchers-applied-available', DigitalVouchersAppliedAvailable);
