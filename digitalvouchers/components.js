@@ -446,8 +446,14 @@ class DigitalVouchersPanel extends HTMLElement {
     const panel = document.querySelector('.digitalVouchersPanel');
     const digitalVouchersPanelClose = document.querySelector('.digitalVouchersPanelClose');
     
+    window.addEventListener('mouseup', (event) => {
+      if (!event.target.closest('.digitalVouchersPanel')) {
+        panel.classList.add('d-none');
+      }
+    });
+
     digitalVouchersPanelClose.addEventListener('click', () => {
-      document.querySelector('.digitalVouchersPanel').classList.toggle('d-none');
+      panel.classList.add('d-none');
     });
   }
 
