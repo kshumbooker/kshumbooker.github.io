@@ -144,7 +144,7 @@ const digitalVouchersAvailable = {
 }
 
 const digitalVouchersAppliedAvailable = {
-  title: `You have ${numberOfAppliedAvailable('applied')} vouchers Applied and ${numberOfAppliedAvailable('available')} vouchers Available!!`,
+  title: `You have vouchers applied and vouchers available!!`,
   description: `Click the button below to see all your ${numberOfAppliedAvailable('available')} vouchers available and ${numberOfAppliedAvailable('applied')} Applied Vouchers`,
   btnText: 'View All Available and Applied Vouchers',
   descriptionColor: '#2356AA',
