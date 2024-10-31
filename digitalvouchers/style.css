@@ -35,6 +35,7 @@ digital-vouchers-panel {
   box-shadow: 10px 10px 10px 10px #d3d3d3;
 }
 
+
 digital-vouchers-panel .top {
   justify-content: space-between;
 }
@@ -47,7 +48,7 @@ digital-vouchers-panel h4 {
   font-size: 1.25rem;
 }
 
-.digitalVouchers digital-voucher, .digitalVouchersApplied digital-voucher-applied  {
+.digitalVouchers digital-voucher, .digitalVouchersApplied digital-vouchers-applied, .digitalVouchersAvailable digital-vouchers-available, .digitalVouchersAppliedAvailable digital-vouchers-applied-available {
   border-radius: 10px;
   margin: 20px 0px;
   min-width: 32%;
@@ -55,7 +56,7 @@ digital-vouchers-panel h4 {
   border: transparent;
 }
 
-digital-voucher .card, digital-voucher-applied .card {
+digital-voucher .card, digital-vouchers-applied .card, digital-vouchers-available .card, digital-vouchers-applied-available .card {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -66,11 +67,11 @@ digital-voucher .card .expiry {
   color: #000;
 }
 
-digital-voucher .card .card-description, digital-voucher-applied  .card .card-description{
+digital-voucher .card .card-description, digital-vouchers-applied .card .card-description, digital-vouchers-available .card .card-description, digital-vouchers-applied-available .card .card-description {
   font-weight: bold;
 }
 
-digital-voucher .card .card-bottom, digital-voucher-applied .card .card-bottom {
+digital-voucher .card .card-bottom, digital-vouchers-applied .card .card-bottom, digital-vouchers-available .card .card-bottom, digital-vouchers-applied-available .card .card-bottom {
   margin-top: auto;
 }
 
@@ -78,7 +79,7 @@ digital-voucher .card .btn {
   float: inline-end;
 }
 
-digital-voucher .card .card-title, digital-voucher-applied .card .card-title {
+digital-voucher .card .card-title, digital-vouchers-applied .card .card-title, digital-vouchers-available .card .card-title, digital-vouchers-applied-available .card .card-title {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 5px 0;
@@ -110,7 +111,7 @@ digital-voucher .card .viewDetailsLink:hover, digital-vouchers-panel .fa-circle-
   top: 0;
 }
 
-digital-voucher .card .cutaway, digital-voucher-applied .card .cutaway {
+digital-voucher .card .cutaway, digital-vouchers-applied .card .cutaway, digital-vouchers-available .card .cutaway, digital-vouchers-applied-available .card .cutaway {
   position: absolute;
   top: 25%;
   transform: translateY(25%);
@@ -120,42 +121,48 @@ digital-voucher .card .cutaway, digital-voucher-applied .card .cutaway {
   border-radius: 50%;
 }
 
-digital-voucher .card .cutaway.left, digital-voucher-applied .card .cutaway.left {
+digital-voucher .card .cutaway.left, digital-vouchers-applied .card .cutaway.left, digital-vouchers-available .card .cutaway.left, digital-vouchers-applied-available .card .cutaway.left {
   left: -1%;
   border-right: 1px solid rgba(0,0,0,.125);
 }
 
-digital-voucher .card .cutaway.right, digital-voucher-applied .card .cutaway.right {
+digital-voucher .card .cutaway.right, digital-vouchers-applied .card .cutaway.right, digital-vouchers-available .card .cutaway.right, digital-vouchers-applied-available .card .cutaway.right {
   right: -1%;
   border-left: 1px solid rgba(0,0,0,.125);
 }
   
 
-digital-voucher .card .card-body, digital-voucher-applied .card .card-body {
+digital-voucher .card .card-body, digital-vouchers-applied .card .card-body, digital-vouchers-available .card .card-body, digital-vouchers-applied-available .card .card-body {
   padding: 0;
   display: flex;
   flex-direction: column;
 }
 
-#booker_trolley_first_aside digital-voucher-applied .card-body {
+#booker_trolley_first_aside digital-vouchers-applied .card-body, #booker_trolley_first_aside digital-vouchers-available .card-body, #booker_trolley_first_aside digital-vouchers-applied-available .card-body {
   padding: 0;
 }
 
 
-digital-voucher .card .card-title p, digital-voucher-applied .card .card-title p {
+digital-voucher .card .card-title p, digital-vouchers-applied .card .card-title p, digital-vouchers-available .card .card-title p, digital-vouchers-applied-available .card .card-title p {
   font-weight: bold;
 }
 
 digital-voucher .card .card-bottom,
 digital-voucher .card .card-text,
 digital-voucher .card .card-title .promotion, 
-digital-voucher-applied .card .card-bottom,
-digital-voucher-applied .card .card-text,
-digital-voucher-applied .card .card-title .title {
+digital-vouchers-applied .card .card-bottom,
+digital-vouchers-applied .card .card-text,
+digital-vouchers-applied .card .card-title .title,
+digital-vouchers-available .card .card-bottom,
+digital-vouchers-available .card .card-text,
+digital-vouchers-available .card .card-title .title,
+digital-vouchers-applied-available .card .card-bottom,
+digital-vouchers-applied-available .card .card-text,
+digital-vouchers-applied-available .card .card-title .title {
   padding: 0px 20px;
 }
 
-digital-voucher .card .card-title .promotion, digital-voucher-applied .card .card-title .title {
+digital-voucher .card .card-title .promotion, digital-vouchers-applied .card .card-title .title, digital-vouchers-available .card .card-title .title, digital-vouchers-applied-available .card .card-title .title {
   font-weight: bold;
 }
 
@@ -183,7 +190,7 @@ digital-voucher .btn.digitalVoucher, digital-voucher {
 
 @media (max-width: 1200px) {
 
-  .digitalVouchers digital-voucher, .digitalVouchersApplied digital-voucher-applied  {
+  .digitalVouchers digital-voucher, .digitalVouchersApplied digital-vouchers-applied, .digitalVouchersAvailable digital-vouchers-available, .digitalVouchersAppliedAvailable digital-vouchers-applied-available  {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 50% !important;
     flex: 0 0 50% !important;
@@ -191,7 +198,7 @@ digital-voucher .btn.digitalVoucher, digital-voucher {
     max-width: 50%;
      }
      
-  digital-voucher .card, digital-voucher-applied .card {
+  digital-voucher .card, digital-vouchers-applied .card, digital-vouchers-available .card, digital-vouchers-applied-available .card {
     padding-bottom: 10px;
   }
 
