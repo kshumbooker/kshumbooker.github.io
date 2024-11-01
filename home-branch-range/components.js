@@ -68,11 +68,11 @@ const sitecoreGlobalDatasource = {
   browseOtherBranchBtn: `Browse Other Branch Range`,
   chooseCcBranchModal: {
     title: `Choose Your Click & Collect Branch`,
-    text: `You can select a Branch below to either view the range or select a Branch to use for Click & Collect`
+    text: `You can select a Branch below to either view the range or select a Branch to use for Click & Collect.`
   },
   browseOtherBranchModal: {
     title: `Browse Your Other Branch`,
-    text: `You can select a Branch below to view the range`  
+    text: `You can select a Branch below to view the range.`  
   },
   productsInTrolleyModal: {
     title: `You have products in your trolley`,
@@ -81,11 +81,11 @@ const sitecoreGlobalDatasource = {
   },
   changingBranchModal: {
     title: `Changing Branch`,
-    text: `We are changing your Click & Collect branch. Please wait`
+    text: `We are changing your Click & Collect branch. Please wait.`
   },
-  changingTrolleyModal: {
+  switchingTrolleyModal: {
     title: `Changing Trolleys`,
-    text: `We are changing your trolley to. Please wait`
+    text: `We are changing your trolley to "TROLLEY_TYPE". Please wait.`
   }
 }
 
@@ -214,6 +214,26 @@ const productsInTrolleyModal = (modal) => {
 const changingBranchTrolleyModal = (modal) => {
   return `
   <div id="changingBranchTrolleyModal" class="modal">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">${modal.title}</h4>
+        </div>
+        <div class="modal-body">
+          <p>${modal.text}</p>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <i class="fa fa-spinner fa-spin"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+}
+
+const switchTrolleyModal = (modal) => {
+  return `
+  <div id="switchTrolleyModal" class="modal">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -382,10 +402,9 @@ const trolleyTypeOnLoad = () => {
     summaryHeader.insertAdjacentElement('afterbegin', deliveryMethodSummaryHeader);
   } 
     
-  
 }
 
-if (document.querySelector('#booker_trolley_first_aside') !== null ) {
+if (document.querySelector('#booker_trolley_first_aside') !== null) {
   trolleyTypeOnLoad();
 }
 
@@ -398,3 +417,14 @@ if (alternative == 'alt') {
   alternativeButtonPosition();
 }
 
+if (document.querySelector('#click-collect') && document.querySelector('#delivery')) {
+  const switchTrolleyModalDiv = document.createElement('div');
+  switchTrolleyModalDiv.innerHTML = switchTrolleyModal(sitecoreGlobalDatasource.switchingTrolleyModal);
+  document.body.appendChild(switchTrolleyModalDiv);
+  document.querySelector('#click-collect').addEventListener('click', () => {     
+    $('#switchTrolleyModal').show();
+  });
+  document.querySelector('#delivery').addEventListener('click', () => {
+    $('#switchTrolleyModal').show();
+  });
+}
