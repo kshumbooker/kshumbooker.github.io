@@ -74,8 +74,9 @@
 
 header.shopping-header .greeting {
   width: 235px;
-
 }
+
+
 
 #mini-trolley .clickAndCollectBranch {
   font-weight: 900;
@@ -176,7 +177,11 @@ header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile
   background: #00BDF7 !important; color: #fff;
 }
 
-#changingBranchTrolleyModal .fa-spinner {
+header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-desktop .browseOtherBranchRangesBtn {
+  font-size: 12px;
+}
+
+#changingBranchTrolleyModal .fa-spinner, #switchTrolleyModal .fa-spinner {
   font-size: 5em;
   color: #2356AA;
 }
@@ -195,6 +200,6 @@ header#shopping-header-desktop #checkout .btn {
   align-items: center;
 }
 
-#changingBranchTrolleyModal .modal-footer {
+#changingBranchTrolleyModal .modal-footer, #switchTrolleyModal .modal-footer {
   border-top: 0;
 }
