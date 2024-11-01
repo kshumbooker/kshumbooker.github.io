@@ -85,7 +85,7 @@ const sitecoreGlobalDatasource = {
   },
   switchingTrolleyModal: {
     title: `Changing Trolleys`,
-    text: `We are changing your trolley to "TROLLEY_TYPE". Please wait.`
+    text: `We are changing your trolley to <strong>"TROLLEY_TYPE"</strong>. Please wait.`
   }
 }
 
