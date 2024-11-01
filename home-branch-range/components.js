@@ -81,7 +81,7 @@ const sitecoreGlobalDatasource = {
   },
   changingBranchModal: {
     title: `Changing Branch`,
-    text: `We are changing your Click & Collect branch. Please wait.`
+    text: `We are changing your <strong>"TROLLEY_TYPE"</strong> branch. Please wait.`
   },
   switchingTrolleyModal: {
     title: `Changing Trolleys`,
