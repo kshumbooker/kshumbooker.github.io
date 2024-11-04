@@ -53,6 +53,7 @@ digital-vouchers-panel h4 {
   min-width: 32%;
   max-width: 32%;
   border: transparent;
+  margin: 0px 5px;
 }
 
 digital-voucher .card, digital-vouchers-applied .card, digital-vouchers-available .card, digital-vouchers-applied-available .card {
@@ -193,10 +194,10 @@ digital-voucher .btn.digitalVoucher, digital-voucher {
 
   .digitalVouchers digital-voucher, .digitalVouchersApplied digital-vouchers-applied, .digitalVouchersAvailable digital-vouchers-available, .digitalVouchersAppliedAvailable digital-vouchers-applied-available  {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 50% !important;
-    flex: 0 0 50% !important;
-    min-width: 50%;
-    max-width: 50%;
+    -ms-flex: 0 0 48% !important;
+    flex: 0 0 48% !important;
+    min-width: 48%;
+    max-width: 48%;
      }
      
   digital-voucher .card, digital-vouchers-applied .card, digital-vouchers-available .card, digital-vouchers-applied-available .card {
