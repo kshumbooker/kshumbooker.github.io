@@ -59,7 +59,7 @@ digital-voucher .card, digital-vouchers-applied .card, digital-vouchers-availabl
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 0px 1px #d3d3d3;
+  box-shadow: 0px 0px 0px 2px #d3d3d3;
   border: 0;
 }
 
