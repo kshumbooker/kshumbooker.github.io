@@ -50,7 +50,7 @@ digital-vouchers-panel h4 {
 
 .digitalVouchers digital-voucher, .digitalVouchersApplied digital-vouchers-applied, .digitalVouchersAvailable digital-vouchers-available, .digitalVouchersAppliedAvailable digital-vouchers-applied-available {
   border-radius: 10px;
-  margin: 20px 0px;
+  margin: 20px 5px;
   min-width: 32%;
   max-width: 32%;
   border: transparent;
