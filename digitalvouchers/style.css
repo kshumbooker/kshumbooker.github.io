@@ -50,7 +50,6 @@ digital-vouchers-panel h4 {
 
 .digitalVouchers digital-voucher, .digitalVouchersApplied digital-vouchers-applied, .digitalVouchersAvailable digital-vouchers-available, .digitalVouchersAppliedAvailable digital-vouchers-applied-available {
   border-radius: 10px;
-  margin: 20px 5px;
   min-width: 32%;
   max-width: 32%;
   border: transparent;
@@ -60,7 +59,8 @@ digital-voucher .card, digital-vouchers-applied .card, digital-vouchers-availabl
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 2px 2px #d3d3d3;
+  box-shadow: 0px 0px 0px 1px #d3d3d3;
+  border: 0;
 }
 
 
@@ -124,12 +124,12 @@ digital-voucher .card .cutaway, digital-vouchers-applied .card .cutaway, digital
 
 digital-voucher .card .cutaway.left, digital-vouchers-applied .card .cutaway.left, digital-vouchers-available .card .cutaway.left, digital-vouchers-applied-available .card .cutaway.left {
   left: -2%;
-  border-right: 4px solid #d3d3d3;
+  border-right: 3px solid #d3d3d3;
 }
 
 digital-voucher .card .cutaway.right, digital-vouchers-applied .card .cutaway.right, digital-vouchers-available .card .cutaway.right, digital-vouchers-applied-available .card .cutaway.right {
   right: -2%;
-  border-left: 4px solid #d3d3d3;
+  border-left: 3px solid #d3d3d3;
 }
   
 
