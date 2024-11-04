@@ -16,7 +16,7 @@ digital-vouchers-panel h2, digital-vouchers-panel h3,  digital-vouchers-panel h4
   flex-wrap: wrap;
 }
 
-.dotExpiry {
+.dotExpiry, .digitalVouchersPageText {
   display: block;
   width: 100%;
 }
