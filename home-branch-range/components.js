@@ -244,7 +244,7 @@ const productsInTrolleyModal = (modal) => {
 
 const changingBranchTrolleyModal = (modal) => {
   return `
-  <div id="changingBranchTrolleyModal" class="modal">
+  <div id="changingBranchTrolleyModal" class="modal" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -264,7 +264,7 @@ const changingBranchTrolleyModal = (modal) => {
 
 const switchTrolleyModal = (modal) => {
   return `
-  <div id="switchTrolleyModal" class="modal">
+  <div id="switchTrolleyModal" class="modal" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -398,27 +398,6 @@ const chooseBranchModalBtn = document.querySelector('#chooseBranchModalBtn');
 
 const productsInTrolleyModalBtns = document.querySelectorAll('#productsInTrolleyModal .btn');
 
-/*[...productsInTrolleyModalBtns].map(button => {
-  
-  if (button.classList.contains('cancel')) {
-    button.addEventListener('click', () => {
-      $('#productsInTrolleyModal').hide();
-    });
-  }
-  if (button.classList.contains('continue') || button.classList.contains('clearAndContinue')) {
-    button.addEventListener('click', () => {
-      $('#productsInTrolleyModal').hide();
-      $('#changingBranchTrolleyModal').show();
-    });
-  }
-});
-
-
-if (chooseBranchModalBtn) {
-  chooseBranchModalBtn.addEventListener('click', () => {
-    $('#productsInTrolleyModal').show();
-  });
-}*/
 
 const alternativeButtonPosition = () => {
   const miniTrolley = document.querySelector('#shopping-header-desktop #mini-trolley #click-collect');
@@ -469,9 +448,6 @@ if (document.querySelector('#click-collect') && document.querySelector('#deliver
   const switchTrolleyModalDiv = document.createElement('div');
   switchTrolleyModalDiv.innerHTML = switchTrolleyModal(sitecoreGlobalDatasource.switchingTrolleyModal);
   document.body.appendChild(switchTrolleyModalDiv);
-  document.querySelector('#click-collect').addEventListener('click', () => {     
-    $('#switchTrolleyModal').modal('show');
-  });
   document.querySelector('#delivery').addEventListener('click', () => {
     $('#switchTrolleyModal').modal('show');
   });
