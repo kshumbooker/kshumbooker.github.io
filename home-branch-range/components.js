@@ -199,7 +199,7 @@ const changeBranchModal = (modal, trolley) => {
                       <td>${branch.address.street ? branch.address.street + `,<br>` : ''}${branch.address.address2 ? branch.address.address2 + `,<br>` : ''} ${branch.address.townCity ? branch.address.townCity + `,<br>` : ''} ${branch.address.postCode ? branch.address.postCode : ''}</td>
                       <td>${branch.currentBranch === true && branch[trolleyTypeMapping(trolley)] === true ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch[trolleyTypeMapping(trolley)] === true ? `Available at this Branch ` : `Not available at this branch` }</td>
                       <td class="selectBranch">
-                        <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``}>
+                        <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``} value="${branch.id}">
                       </td>
                     </tr>`).join('')}
                 </tbody>
@@ -209,7 +209,7 @@ const changeBranchModal = (modal, trolley) => {
         </div>
         <div class="modal-footer claim-form-links">
           <button class="btn cancel ml-2" data-dismiss="modal"><i class="fas fa-times"></i>Cancel</button>
-          <button class="btn continue ml-2 btn-success" data-dismiss="modal" data-toggle="modal" data-target="#productsInTrolleyModal" id="chooseBranchModalBtn">Choose Branch</button>
+          <button class="btn continue ml-2 btn-success" data-dismiss="modal" data-toggle="modal" data-target="#productsInTrolleyModal" id="chooseBranchModalBtn" disabled>Choose Branch</button>
         </div>
       </div>
     </div>
