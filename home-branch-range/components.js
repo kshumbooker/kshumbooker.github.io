@@ -452,3 +452,16 @@ if (document.querySelector('#click-collect') && document.querySelector('#deliver
     $('#switchTrolleyModal').modal('show');
   });
 }
+
+const changeBranchModalRadios = document.querySelectorAll('#changeBranchModal input[type="radio"]');
+
+[...changeBranchModalRadios].map(radio => {
+  radio.addEventListener('change', (e) => {
+    if (e.target.value != account.branchId) {
+      const chooseBranchModalBtn = document.querySelector('#chooseBranchModalBtn');
+      chooseBranchModalBtn.removeAttribute('disabled');
+    } else {
+      chooseBranchModalBtn.setAttribute('disabled', '');
+    }
+  });
+});
