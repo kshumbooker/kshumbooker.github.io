@@ -15,6 +15,8 @@ const branches = [
       postCode: 'NN3 9UD'
     },
     clickAndCollect: true,
+    delivery: true,
+    extendedRange: true,
     currentBranch: true
   },
   {
@@ -26,7 +28,9 @@ const branches = [
       townCity: 'Kettering', 
       postCode: 'NN16 9ND'
     },
-    clickAndCollect: true
+    clickAndCollect: true,
+    delivery: true,
+    extendedRange: true,
   },
   {
     id: 533,
@@ -37,7 +41,9 @@ const branches = [
       townCity: 'Bedford', 
       postCode: 'MK41 0HU'
     },
-    clickAndCollect: true
+    clickAndCollect: true,
+    delivery: false,
+    extendedRange: false
   },
   {
     id: 329,
@@ -48,7 +54,9 @@ const branches = [
       townCity: 'Luton', 
       postCode: 'LU3 3AN'
     },
-    clickAndCollect: false
+    clickAndCollect: true,
+    delivery: false,
+    extendedRange: false
   },
   {
     id: 316,
@@ -59,12 +67,14 @@ const branches = [
       townCity: 'Peterborough', 
       postCode: 'PE2 7BP'
     },
-    clickAndCollect: true
-  },
+    clickAndCollect: false,
+    delivery: true,
+    extendedRange: false,
+  }
 ];
 
 const sitecoreGlobalDatasource = {
-  changeCcBranchBtn: `Change Your Click & Collect Branch`,
+  changeCcBranchBtn: `Change Click & Collect Branch`,
   browseOtherBranchBtn: `Browse Other Branch Range`,
   chooseCcBranchModal: {
     title: `Choose Your Click & Collect Branch`,
@@ -72,7 +82,7 @@ const sitecoreGlobalDatasource = {
   },
   browseOtherBranchModal: {
     title: `Browse Your Other Branch`,
-    text: `You can select a Branch below to view the range.`  
+    text: `You can select a Branch below to view the range.`
   },
   productsInTrolleyModal: {
     title: `You have products in your trolley`,
@@ -131,7 +141,26 @@ myBusinessDetails.parentElement.appendChild(changeClickCollectBranch);
 }
 
 
-const changeBranchModal = (modal) => {
+const trolleyTypeMapping = (type) => {
+  let trolley;
+  switch (type) {
+    case 'Click & Collect':
+      trolley = 'clickAndCollect';
+      break;
+    case 'Extended Range Collect':
+      trolley = 'extendedRange';
+      break;
+    case 'Delivery':
+      trolley = 'delivery';
+      break;
+    default:
+      trolley = '';
+  }
+  return trolley;
+}
+
+
+const changeBranchModal = (modal, trolley) => {
   return `
   <div id="changeBranchModal" class="modal">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -158,7 +187,7 @@ const changeBranchModal = (modal) => {
                   <tr> 
                     <th>Branch Name</th>
                     <th>Address</th>
-                    <th>Click And Collect</th>
+                    <th>${trolley}</th>
                     <th>Select</th>
                   </tr>
                 </thead>
@@ -167,9 +196,9 @@ const changeBranchModal = (modal) => {
                     <tr>
                       <td>${branch.name}</td>
                       <td>${branch.address.street ? branch.address.street + `,<br>` : ''}${branch.address.address2 ? branch.address.address2 + `,<br>` : ''} ${branch.address.townCity ? branch.address.townCity + `,<br>` : ''} ${branch.address.postCode ? branch.address.postCode : ''}</td>
-                      <td>${branch.currentBranch ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch.clickAndCollect ? `Available at this Branch ` : `Extended Range Only` }</td>
+                      <td>${branch.currentBranch === true && branch[trolleyTypeMapping(trolley)] === true ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch[trolleyTypeMapping(trolley)] === true ? `Available at this Branch ` : `Not available at this branch` }</td>
                       <td class="selectBranch">
-                        <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch == true ? `checked` : ``}>
+                        <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``}>
                       </td>
                     </tr>`).join('')}
                 </tbody>
@@ -253,10 +282,12 @@ const switchTrolleyModal = (modal) => {
 
 
 const clickAndCollectTrolley = document.querySelector('#shopping-header-desktop #click-collect');
+const miniTrolleyDiv = document.querySelector('#shopping-header-desktop #mini-trolley');
 const clickAndCollectTrolleyMobile = document.querySelector('#shopping-header-mobile #mini-trolley-mobile');
 const mobileCheckoutDiv = document.querySelector('#shopping-header-mobile #mini-trolley-mobile #checkout');
 const deliveryTrolley = document.querySelector('#shopping-header-desktop #delivery');
-const trolleyTypeText = document.querySelector('#click-collect') ? document.querySelector('#click-collect .title').innerText : '';
+const trolleyTypeText = document.querySelector('#mini-trolley #click-collect') ? document.querySelector('#mini-trolley #click-collect .title').innerText : document.querySelector('#mini-trolley #delivery') ? document.querySelector('#mini-trolley #delivery .title').innerText : '';
+const hasRequestDeliveriesBtn = document.querySelector('#collect-no-delivery-option-button');
 
 const injectHbrChangeCcButton = () => {
   const buttonVars = trolleyTypeText === 'Extended Range Collect' ? {
@@ -266,23 +297,40 @@ const injectHbrChangeCcButton = () => {
     type: 'changeCcBranchBtn',
     text: sitecoreGlobalDatasource.changeCcBranchBtn 
   }
-  const hasRequestDeliveriesBtn = document.querySelector('#collect-no-delivery-option-button');
   
   if (!isDelivery) { 
     clickAndCollectTrolleyMobile.children[0].after(homeBranchRangeBtns(buttonVars, 'full'));
   } else {
     mobileCheckoutDiv.before(homeBranchRangeBtns(buttonVars, 'full', 50));
   }
-
-  const greeting = document.querySelector('#shopping-header-desktop .greeting');
   
   if (!hasRequestDeliveriesBtn && !isDelivery) {
-    const trolley = document.querySelector('#shopping-header-desktop #mini-trolley #click-collect');
-    trolley.insertAdjacentElement('beforebegin', homeBranchRangeBtns(buttonVars, 'small'));
+    miniTrolleyDiv.insertAdjacentElement('beforebegin', homeBranchRangeBtns(buttonVars, 'small'));
+    
+  } else if (hasRequestDeliveriesBtn) {
+    hasRequestDeliveriesBtn.firstElementChild.insertAdjacentElement('beforebegin', homeBranchRangeBtns(buttonVars, 'full'));
+    $('#collect-no-delivery-option-button').css('position', 'relative');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv').css('position', 'absolute');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv').css('z-index', '1');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv').css('top', '-50px');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv').css('width', '-webkit-fill-available');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv .browseOtherBranchRangesBtn').css('line-height', 'inherit');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv .browseOtherBranchRangesBtn').css('margin-right', '0');
+    $('header#shopping-header-desktop .changeCcBranchBtn').css('font-size', '10px');
+    $('header#shopping-header-desktop .browseOtherBranchRangesBtn').css('font-size', '10px');
   } else {
-    greeting.insertAdjacentElement('afterend', homeBranchRangeBtns(buttonVars));
+    const clickAndCollectMiniTrolleyDiv = document.querySelector('#shopping-header-desktop #mini-trolley #click-collect');
+    clickAndCollectMiniTrolleyDiv.children[0].before(homeBranchRangeBtns(buttonVars));
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv').css('position', 'absolute');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv').css('width', '-webkit-fill-available');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv').css('top', '-50px');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv').css('margin-right', '0');
+    $('header#shopping-header-desktop .homeBranchRangeBtnDiv').css('left', '0');
+    $('header#shopping-header-desktop .changeCcBranchBtn').css('font-size', '10px');
+
   }
-  trolleyTypeText === 'Extended Range Collect' ? chooseOrBrowseModal(sitecoreGlobalDatasource.browseOtherBranchModal) : chooseOrBrowseModal(sitecoreGlobalDatasource.chooseCcBranchModal);
+
+  trolleyTypeText === 'Extended Range Collect' ? chooseOrBrowseModal(sitecoreGlobalDatasource.browseOtherBranchModal, trolleyTypeText) : chooseOrBrowseModal(sitecoreGlobalDatasource.chooseCcBranchModal, 'Click & Collect');
 }
 
 const injectHbrDeliveryButton = () => {
@@ -297,12 +345,13 @@ const injectHbrDeliveryButton = () => {
     deliveredTrolleyMobileDiv.classList.add('col', 'my-2');
     deliveredTrolleyMobileDiv.appendChild(homeBranchRangeBtns(buttonVars));
     deliveredTrolleyMobile.insertAdjacentElement('afterend', deliveredTrolleyMobileDiv);
-    chooseOrBrowseModal(sitecoreGlobalDatasource.browseOtherBranchModal);
+    chooseOrBrowseModal(sitecoreGlobalDatasource.browseOtherBranchModal, trolleyTypeText);
 }
 
-const chooseOrBrowseModal = (chooseOrBrowse) => {
+const chooseOrBrowseModal = (chooseOrBrowse, trolleyType) => {
+
   const branchModal = document.createElement('div');
-  branchModal.innerHTML = changeBranchModal(chooseOrBrowse);
+  branchModal.innerHTML = changeBranchModal(chooseOrBrowse, trolleyType);
   document.body.appendChild(branchModal);
   const inTrolleyModal = document.createElement('div');
   inTrolleyModal.innerHTML = productsInTrolleyModal(sitecoreGlobalDatasource.productsInTrolleyModal);
@@ -328,7 +377,7 @@ const populateChangingBranchModal = () => {
 
 if (clickAndCollectTrolley && deliveryTrolley) {
   injectHbrChangeCcButton();
-  $('#shopping-header-desktop .changeCcBranchBtn').css('margin-right', '5px');
+  //$('#shopping-header-desktop .changeCcBranchBtn').css('margin-right', '5px');
   addHomeBranchRangeName('clickAndCollect');
   addHomeBranchRangeName('delivery');
 
