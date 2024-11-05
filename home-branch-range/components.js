@@ -363,10 +363,14 @@ const chooseOrBrowseModal = (chooseOrBrowse, trolleyType) => {
 
 const addHomeBranchRangeName = (type) => {
   const branch = document.createElement('p');
-  const branchType = type + 'Branch'
+  const branchType = type + 'Branch';
   branch.classList.add(branchType, 'p-0', 'm-0');
   branch.innerText = account[branchType];
-  eval(type + 'Trolley').children[0].after(branch);
+  [...eval(type + 'Trolley').children].map(child => {
+    if (child.classList.contains('title')) {
+      child.after(branch);
+    }
+  });
 }
 
 
