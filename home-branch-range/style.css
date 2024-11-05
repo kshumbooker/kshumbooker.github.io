@@ -26,7 +26,6 @@ header.shopping-header #search-bar {
 header.shopping-header #search-bar .btn.changeCcBranchBtn.small {
   width: 150px !important;
   height: 100%;
-  align-items: normal !important;
 }
 
 #shopping-header-desktop .changeCcBranchBtn {
