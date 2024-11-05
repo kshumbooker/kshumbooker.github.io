@@ -7,8 +7,8 @@
   flex-direction: row-reverse;
 }
 
-#business-details .changeCcBranchDiv .changeCcBranchBtn, #shopping-header-desktop .changeCcBranchBtn {
-  width: max-content !important;
+#shopping-header-desktop .btn.changeCcBranchBtn, #shopping-header-desktop .btn.browseOtherBranchRangesBtn {
+  padding: 10px;
 }
 
 #shopping-header-mobile #search-bar .header-button.green-background {
@@ -17,6 +17,10 @@
 
 #shopping-header-desktop .changeCcBranchBtn.small {
   width: 150px !important;
+}
+
+#shopping-header-desktop .changeCcBranchBtn {
+  line-height: inherit;
 }
 
 #shopping-header-mobile .changeCcBranchBtn.full {
@@ -38,10 +42,17 @@
   font-weight: 900;
 }
 
-#collect-no-delivery-option-button .btn {
-  line-height: 70px;
-  height: 100% !important;
+#collect-no-delivery-option-button {
+  align-self: normal;
 }
+
+#collect-no-delivery-option-button .btn {
+  height: 100%;
+  align-content: center;
+}
+
+
+
 
 #changeBranchModal .branches-result .yourSelectedBranch {
   color: #28a745;
@@ -68,12 +79,11 @@
   border-top: 0;
 }
 
-#shopping-header-desktop #search-bar {
-  margin-top: 10px !important;
-}
 
 header.shopping-header .greeting {
   width: 235px;
+  max-width: 235px;
+  display: block;
 }
 
 
@@ -147,6 +157,10 @@ header#shopping-header-desktop #search-bar #mini-trolley .btn {
   height: 100%;
 }
 
+header#shopping-header-desktop #mini-trolley {
+  position: relative;
+}
+
 
 header#shopping-header-desktop #mini-trolley #click-collect, header#shopping-header-mobile #mini-trolley-mobile #click-collect {
   border: 1px solid #fdead3;
@@ -177,9 +191,9 @@ header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile
   background: #00BDF7 !important; color: #fff;
 }
 
-header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-desktop .browseOtherBranchRangesBtn {
+/*header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-desktop .browseOtherBranchRangesBtn {
   font-size: 12px;
-}
+}*/
 
 #changingBranchTrolleyModal .fa-spinner, #switchTrolleyModal .fa-spinner {
   font-size: 5em;
