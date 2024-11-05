@@ -9,6 +9,7 @@
 
 #shopping-header-desktop .btn.changeCcBranchBtn, #shopping-header-desktop .btn.browseOtherBranchRangesBtn {
   padding: 10px;
+  height: 100%;
 }
 
 #shopping-header-mobile #search-bar .header-button.green-background {
