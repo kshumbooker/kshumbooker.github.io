@@ -465,14 +465,14 @@ if (alternative == 'alt') {
   alternativeButtonPosition();
 }
 
-/*if (document.querySelector('#click-collect') && document.querySelector('#delivery')) {
+if (document.querySelector('#click-collect') && document.querySelector('#delivery')) {
   const switchTrolleyModalDiv = document.createElement('div');
   switchTrolleyModalDiv.innerHTML = switchTrolleyModal(sitecoreGlobalDatasource.switchingTrolleyModal);
   document.body.appendChild(switchTrolleyModalDiv);
   document.querySelector('#click-collect').addEventListener('click', () => {     
-    $('#switchTrolleyModal').show();
+    $('#switchTrolleyModal').modal('show');
   });
   document.querySelector('#delivery').addEventListener('click', () => {
-    $('#switchTrolleyModal').show();
+    $('#switchTrolleyModal').modal('show');
   });
-}*/
+}
