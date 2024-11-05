@@ -182,6 +182,7 @@ const changeBranchModal = (modal, trolley) => {
             </div>
           </div>
           <div class="branches-result my-3">
+            <div class="table-responsive">
               <table class="table">
                 <thead> 
                   <tr> 
@@ -204,10 +205,11 @@ const changeBranchModal = (modal, trolley) => {
                 </tbody>
               </table>
             </div>
+          </div>
         </div>
         <div class="modal-footer claim-form-links">
           <button class="btn cancel ml-2" data-dismiss="modal"><i class="fas fa-times"></i>Cancel</button>
-          <button class="btn continue ml-2 btn-success" data-dismiss="modal" data-toggle="modal" id="chooseBranchModalBtn">Choose Branch</button>
+          <button class="btn continue ml-2 btn-success" data-dismiss="modal" data-toggle="modal" data-target="#productsInTrolleyModal" id="chooseBranchModalBtn">Choose Branch</button>
         </div>
       </div>
     </div>
@@ -231,7 +233,7 @@ const productsInTrolleyModal = (modal) => {
         </div>
         <div class="modal-footer claim-form-links">
           <button class="btn cancel ml-2" data-dismiss="modal"><i class="fas fa-times"></i>Cancel</button>
-          <button class="btn clearAndContinue ml-2 btn-success">Clear & Continue</button>
+          <button class="btn clearAndContinue ml-2 btn-success" data-dismiss="modal" data-toggle="modal" data-target="#changingBranchTrolleyModal" id="productsInTrolleyModalBtn">Clear & Continue</button>
         </div>
       </div>
     </div>
@@ -377,20 +379,17 @@ const populateChangingBranchModal = () => {
 
 if (clickAndCollectTrolley && deliveryTrolley) {
   injectHbrChangeCcButton();
-  //$('#shopping-header-desktop .changeCcBranchBtn').css('margin-right', '5px');
   addHomeBranchRangeName('clickAndCollect');
   addHomeBranchRangeName('delivery');
-
-  populateChangingBranchModal();
 } else if (clickAndCollectTrolley) {
   injectHbrChangeCcButton();
   addHomeBranchRangeName('clickAndCollect');
-  populateChangingBranchModal();
 } else {
   injectHbrDeliveryButton();
   addHomeBranchRangeName('delivery');
-  populateChangingBranchModal();
 }
+
+populateChangingBranchModal();
 
 const getChangeBranchModal = document.querySelector('#changeBranchModal');
 const getProductsInTrolleyModal = document.querySelector('#productsInTrolleyModal');
@@ -399,7 +398,7 @@ const chooseBranchModalBtn = document.querySelector('#chooseBranchModalBtn');
 
 const productsInTrolleyModalBtns = document.querySelectorAll('#productsInTrolleyModal .btn');
 
-[...productsInTrolleyModalBtns].map(button => {
+/*[...productsInTrolleyModalBtns].map(button => {
   
   if (button.classList.contains('cancel')) {
     button.addEventListener('click', () => {
@@ -419,7 +418,7 @@ if (chooseBranchModalBtn) {
   chooseBranchModalBtn.addEventListener('click', () => {
     $('#productsInTrolleyModal').show();
   });
-}
+}*/
 
 const alternativeButtonPosition = () => {
   const miniTrolley = document.querySelector('#shopping-header-desktop #mini-trolley #click-collect');
@@ -466,7 +465,7 @@ if (alternative == 'alt') {
   alternativeButtonPosition();
 }
 
-if (document.querySelector('#click-collect') && document.querySelector('#delivery')) {
+/*if (document.querySelector('#click-collect') && document.querySelector('#delivery')) {
   const switchTrolleyModalDiv = document.createElement('div');
   switchTrolleyModalDiv.innerHTML = switchTrolleyModal(sitecoreGlobalDatasource.switchingTrolleyModal);
   document.body.appendChild(switchTrolleyModalDiv);
@@ -476,4 +475,4 @@ if (document.querySelector('#click-collect') && document.querySelector('#deliver
   document.querySelector('#delivery').addEventListener('click', () => {
     $('#switchTrolleyModal').show();
   });
-}
+}*/
