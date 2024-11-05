@@ -88,6 +88,10 @@ header.shopping-header #search-bar .btn.changeCcBranchBtn.small {
   border-top: 0;
 }
 
+#changeBranchModal .modal-content {
+  max-height: 575px;
+  overflow: auto;
+}
 
 header.shopping-header .greeting {
   width: 235px;
