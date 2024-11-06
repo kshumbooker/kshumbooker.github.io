@@ -23,6 +23,7 @@ const digitalVouchers = [
     promotion: 'Money off',
     description: 'Get £10 off when purchasing any product in the Fresh Beef aisle',
     expiry: 10,
+    expired: false,
     url: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
@@ -38,6 +39,7 @@ const digitalVouchers = [
     promotion: 'Percentage off',
     description: 'Get £10 off when purchasing any product in the Fresh Fish aisle',
     expiry: 8,
+    expired: false,
     url: '',
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
@@ -52,6 +54,7 @@ const digitalVouchers = [
     promotion: 'Free Product',
     description: 'Get a free case of Chef\'s Larder Chip',
     expiry: 5,
+    expired: false,
     url: '',
     titleBgColor: voucherColor.free,
     titleFontColor: '#ffffff',
@@ -67,6 +70,7 @@ const digitalVouchers = [
     promotion: 'Money off',
     description: 'Get £0.50 off Chef\'s Larder Steak Cut Chips',
     expiry: 12,
+    expired: false,
     url: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
@@ -81,7 +85,8 @@ const digitalVouchers = [
     midascode: 567890,
     promotion: 'Money off',
     description: 'Get £2.75 off Chef\'s Larder Premium Real Mayonnaise 5 Litres',
-    expiry: true,
+    expiry: 6,
+    expired: false,
     url: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
@@ -96,6 +101,7 @@ const digitalVouchers = [
     promotion: 'Money off',
     description: 'Get £2.99 off when purchasing any product!!!',
     expiry: 10,
+    expired: false,
     url: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
@@ -111,6 +117,7 @@ const digitalVouchers = [
     promotion: 'Percentage off',
     description: 'Get 10% off when purchasing any product in the ',
     expiry: 10,
+    expired: false,
     url: '',
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
@@ -125,7 +132,8 @@ const digitalVouchers = [
     midascode: 890123,
     promotion: 'Money off',
     description: 'Get a few quid off some Cornettos',
-    expiry: true,
+    expiry: 0,
+    expired: true,
     url: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
@@ -140,7 +148,8 @@ const digitalVouchers = [
     midascode: 901234,
     promotion: 'Free Product',
     description: 'Free chips when you buy some cod',
-    expiry: true,
+    expiry: 0,
+    expired: true,
     url: '',
     titleBgColor: voucherColor.free,
     titleFontColor: '#ffffff',
@@ -155,7 +164,8 @@ const digitalVouchers = [
     midascode: 132345,
     promotion: 'Percentage off',
     description: 'Get 20% off toilet rolls',
-    expiry: 4,
+    expiry: 0,
+    expired: true,
     url: '',
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
@@ -165,12 +175,49 @@ const digitalVouchers = [
     applied: true,
     termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
   },
+  {
+    id: 11,
+    midascode: 290778,
+    promotion: 'Money Off',
+    description: 'Save 3 quid off Pedro Wine',
+    expiry: 20,
+    expired: false,
+    url: '',
+    titleBgColor: voucherColor.money,
+    titleFontColor: '#ffffff',
+    btnBgColor: voucherColor.button,
+    btnText: 'Shop now',
+    btnFontColor: '#ffffff',
+    applied: true,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. '
+  },
 
 ];
 
 const numberOfAppliedAvailable = (appliedOrAvailable) => {
   let number = appliedOrAvailable == 'applied' ? digitalVouchers.filter(v => v.applied === true).length : appliedOrAvailable == 'available' ? digitalVouchers.filter(v => v.applied === false).length : false;
   return number;
+}
+
+const digitalVouchersFilter = (filterBy, value) => {
+  const vouchers = digitalVouchers.filter(voucher => voucher[filterBy] === value).map(voucher => `
+    <digital-voucher class="my-3"
+      data-id="${voucher.id}"
+      data-midascode="${voucher.midascode}"
+      data-promotion="${voucher.promotion}"
+      data-description="${voucher.description}"
+      data-expiry="${voucher.expiry}"
+      data-expired="${voucher.expired}"
+      data-url="${voucher.url}"
+      data-title-bg-color="${voucher.titleBgColor}"
+      data-title-font-color="${voucher.titleFontColor}"
+      data-btn-bg-color="${voucher.btnBgColor}"
+      data-btn-text="${voucher.btnText}"
+      data-btn-font-color="${voucher.btnFontColor}"
+      data-terms-and-conditions="${voucher.termsAndConditions}"
+      ></digital-voucher>
+    `).join('');
+    return vouchers;
 }
 
 const digitalVouchersApplied = {
@@ -219,75 +266,22 @@ if (digitalVouchersPanel) {
   $('digital-vouchers-panel').css('height', $('body').height());
 }
 
-
 if (digitalVouchersContent) {
   digitalVouchersContent.innerHTML = `
-    <div class="container digitalVouchers my-3">
+    <div class="container digitalVouchers present my-3">
       <h2 class="digitalVouchersPageTitle">${myDigitalVouchersPage.present.title}</h2><p class="digitalVouchersPageText">${myDigitalVouchersPage.present.description}</p>
-      ${digitalVouchers.filter(voucher=> voucher.expiry !== true).map(voucher => `
-        <digital-voucher class="my-3"
-          data-id="${voucher.id}"
-          data-midascode="${voucher.midascode}"
-          data-promotion="${voucher.promotion}"
-          data-description="${voucher.description}"
-          data-expiry="${voucher.expiry}"
-          data-url="${voucher.url}"
-          data-title-bg-color="${voucher.titleBgColor}"
-          data-title-font-color="${voucher.titleFontColor}"
-          data-btn-bg-color="${voucher.btnBgColor}"
-          data-btn-text="${voucher.btnText}"
-          data-btn-font-color="${voucher.btnFontColor}"
-          data-terms-and-conditions="${voucher.termsAndConditions}"
-          ></digital-voucher>
-        `).join('')}
+      ${digitalVouchersFilter('expired', false)}
     </div>
-    <div class="container digitalVouchers my-3">
+    <div class="container digitalVouchers expired my-3">
       <h2 class="digitalVouchersPageTitle">${myDigitalVouchersPage.expired.title}</h2><p class="digitalVouchersPageText">${myDigitalVouchersPage.expired.description}</p>
-      ${digitalVouchers.filter(voucher => voucher.expiry === true).map(voucher => `
-        <digital-voucher class="my-3"
-          data-id="${voucher.id}"
-          data-midascode="${voucher.midascode}"
-          data-promotion="${voucher.promotion}"
-          data-description="${voucher.description}"
-          data-expiry="${voucher.expiry}"
-          data-url="${voucher.url}"
-          data-title-bg-color="${voucher.titleBgColor}"
-          data-title-font-color="${voucher.titleFontColor}"
-          data-btn-bg-color="${voucher.btnBgColor}"
-          data-btn-text="${voucher.btnText}"
-          data-btn-font-color="${voucher.btnFontColor}"
-          data-terms-and-conditions="${voucher.termsAndConditions}"
-          ></digital-voucher>
-        `).join('')}
+      ${digitalVouchersFilter('expired', true)}
     </div>
     `;
-
-
-  //console.log(digitalVouchers.filter(d => d.expiry == true));
- 
- 
-  /*digitalVouchersContent.innerHTML += digitalVouchers.map(voucher => `
-  <digital-voucher class="my-3"
-    data-id="${voucher.id}"
-    data-midascode="${voucher.midascode}"
-    data-promotion="${voucher.promotion}"
-    data-description="${voucher.description}"
-    data-expiry="${voucher.expiry}"
-    data-url="${voucher.url}"
-    data-title-bg-color="${voucher.titleBgColor}"
-    data-title-font-color="${voucher.titleFontColor}"
-    data-btn-bg-color="${voucher.btnBgColor}"
-    data-btn-text="${voucher.btnText}"
-    data-btn-font-color="${voucher.btnFontColor}"
-    data-terms-and-conditions="${voucher.termsAndConditions}"
-    ></digital-voucher>
-  `).join('');*/
-  
 }
 
-let digitalVouchersAppliedContent = document.querySelector('.digitalVouchersApplied');
-let digitalVouchersAvailableContent = document.querySelector('.digitalVouchersAvailable');
-let digitalVouchersAppliedAvailableContent = document.querySelector('.digitalVouchersAppliedAvailable');
+const digitalVouchersAppliedContent = document.querySelector('.digitalVouchersApplied');
+const digitalVouchersAvailableContent = document.querySelector('.digitalVouchersAvailable');
+const digitalVouchersAppliedAvailableContent = document.querySelector('.digitalVouchersAppliedAvailable');
 
 if (digitalVouchersAppliedContent) {
 
@@ -362,6 +356,7 @@ class DigitalVoucher extends HTMLElement {
       promotion: this.getAttribute('data-promotion'),
       description: this.getAttribute('data-description'),
       expiry: this.getAttribute('data-expiry'),
+      expired: this.getAttribute('data-expired'),
       url: this.getAttribute('data-url'),
       titleBgColor: this.getAttribute('data-title-bg-color'),
       titleFontColor: this.getAttribute('data-title-font-color'),
@@ -388,7 +383,7 @@ class DigitalVoucher extends HTMLElement {
         <p class="card-description">${this.voucher.description}</p>
       </div>
       <div class="card-bottom">
-        <span class="dotExpiry"><span class="dot"></span> <span class="expiry">${this.voucher.expiry === 'true' ? `Expired` : `Expiring in ${this.voucher.expiry} days</span></span><a href="${this.voucher.url}" class="btn digitalVoucher" style="background: ${this.voucher.btnBgColor}; color: ${this.voucher.btnFontColor}">${this.voucher.btnText}</a>`}
+        <span class="dotExpiry"><span class="dot"></span> <span class="expiry">${this.voucher.expired === 'true' ? `Expired` : `Expiring in ${this.voucher.expiry} days</span></span><a href="${this.voucher.url}" class="btn digitalVoucher" style="background: ${this.voucher.btnBgColor}; color: ${this.voucher.btnFontColor}">${this.voucher.btnText}</a>`}
       </div>
     </div>
     <span class="cutaway right"></span>
@@ -462,7 +457,6 @@ class DigitalVouchersApplied extends HTMLElement {
       document.querySelector('.digitalVouchersPanel').classList.toggle('d-none');
     });
   }
-
 }
 
 
@@ -493,6 +487,7 @@ class DigitalVouchersPanel extends HTMLElement {
             data-promotion="${voucher.promotion}"
             data-description="${voucher.description}"
             data-expiry="${voucher.expiry}"
+            data-expired="${voucher.expired}"
             data-url="${voucher.url}"
             data-title-bg-color="${voucher.titleBgColor}"
             data-title-font-color="${voucher.titleFontColor}"
@@ -517,6 +512,7 @@ class DigitalVouchersPanel extends HTMLElement {
             data-promotion="${voucher.promotion}"
             data-description="${voucher.description}"
             data-expiry="${voucher.expiry}"
+            data-expired="${voucher.expired}"
             data-url="${voucher.url}"
             data-title-bg-color="${voucher.titleBgColor}"
             data-title-font-color="${voucher.titleFontColor}"
