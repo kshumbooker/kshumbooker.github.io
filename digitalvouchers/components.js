@@ -1,6 +1,12 @@
 const myDigitalVouchersPage = {
-  title: 'My Digital Vouchers',
-  description: 'To redeem a voucher, simply add a product to the trolley by searching for that product individually or within a qualifying Aisle or Shelf. You can view more details about where the voucher is applied using the "View Details" link or simply shop straight away using the "Shop now" button.'
+  present: {
+    title: 'My Digital Vouchers',
+    description: 'To redeem a voucher, simply add a product to the trolley by searching for that product individually or within a qualifying Aisle or Shelf. You can view more details about where the voucher is applied using the "View Details" link or simply shop straight away using the "Shop now" button.'
+  },
+  expired: {
+    title: 'My Expired Vouchers',
+    description: 'Below are your vouchers which are expired'
+  }
 };
 
 const voucherColor = {
@@ -75,7 +81,7 @@ const digitalVouchers = [
     midascode: 567890,
     promotion: 'Money off',
     description: 'Get £2.75 off Chef\'s Larder Premium Real Mayonnaise 5 Litres',
-    expiry: 1,
+    expiry: true,
     url: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
@@ -113,7 +119,53 @@ const digitalVouchers = [
     btnFontColor: '#ffffff',
     applied: false,
     termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
-  }
+  },
+  {
+    id: 8,
+    midascode: 890123,
+    promotion: 'Money off',
+    description: 'Get a few quid off some Cornettos',
+    expiry: true,
+    url: '',
+    titleBgColor: voucherColor.money,
+    titleFontColor: '#ffffff',
+    btnBgColor: voucherColor.button,
+    btnText: 'Shop now',
+    btnFontColor: '#ffffff',
+    applied: false,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+  },
+  {
+    id: 9,
+    midascode: 901234,
+    promotion: 'Free Product',
+    description: 'Free chips when you buy some cod',
+    expiry: true,
+    url: '',
+    titleBgColor: voucherColor.free,
+    titleFontColor: '#ffffff',
+    btnBgColor: voucherColor.button,
+    btnText: 'Shop now',
+    btnFontColor: '#ffffff',
+    applied: false,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+  },
+  {
+    id: 10,
+    midascode: 132345,
+    promotion: 'Percentage off',
+    description: 'Get 20% off toilet rolls',
+    expiry: 4,
+    url: '',
+    titleBgColor: voucherColor.percentage,
+    titleFontColor: '#ffffff',
+    btnBgColor: voucherColor.button,
+    btnText: 'Shop now',
+    btnFontColor: '#ffffff',
+    applied: true,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+  },
+
 ];
 
 const numberOfAppliedAvailable = (appliedOrAvailable) => {
@@ -144,7 +196,7 @@ const digitalVouchersAvailable = {
 }
 
 const digitalVouchersAppliedAvailable = {
-  title: `Vouchers applied and available!!`,
+  title: `You have ${numberOfAppliedAvailable('applied')} vouchers Applied and ${numberOfAppliedAvailable('available')} vouchers Available!!`,
   description: `Click the button below to see all your ${numberOfAppliedAvailable('available')} vouchers available and ${numberOfAppliedAvailable('applied')} Applied Vouchers`,
   btnText: 'View All Available and Applied Vouchers',
   descriptionColor: '#2356AA',
@@ -168,12 +220,53 @@ if (digitalVouchersPanel) {
 }
 
 
-
-
 if (digitalVouchersContent) {
-  digitalVouchersContent.innerHTML = `<h2 class="digitalVouchersPageTitle">${myDigitalVouchersPage.title}</h2><p class="digitalVouchersPageText">${myDigitalVouchersPage.description}</p>`;
+  digitalVouchersContent.innerHTML = `
+    <div class="container digitalVouchers my-3">
+      <h2 class="digitalVouchersPageTitle">${myDigitalVouchersPage.present.title}</h2><p class="digitalVouchersPageText">${myDigitalVouchersPage.present.description}</p>
+      ${digitalVouchers.filter(voucher=> voucher.expiry !== true).map(voucher => `
+        <digital-voucher class="my-3"
+          data-id="${voucher.id}"
+          data-midascode="${voucher.midascode}"
+          data-promotion="${voucher.promotion}"
+          data-description="${voucher.description}"
+          data-expiry="${voucher.expiry}"
+          data-url="${voucher.url}"
+          data-title-bg-color="${voucher.titleBgColor}"
+          data-title-font-color="${voucher.titleFontColor}"
+          data-btn-bg-color="${voucher.btnBgColor}"
+          data-btn-text="${voucher.btnText}"
+          data-btn-font-color="${voucher.btnFontColor}"
+          data-terms-and-conditions="${voucher.termsAndConditions}"
+          ></digital-voucher>
+        `).join('')}
+    </div>
+    <div class="container digitalVouchers my-3">
+      <h2 class="digitalVouchersPageTitle">${myDigitalVouchersPage.expired.title}</h2><p class="digitalVouchersPageText">${myDigitalVouchersPage.expired.description}</p>
+      ${digitalVouchers.filter(voucher => voucher.expiry === true).map(voucher => `
+        <digital-voucher class="my-3"
+          data-id="${voucher.id}"
+          data-midascode="${voucher.midascode}"
+          data-promotion="${voucher.promotion}"
+          data-description="${voucher.description}"
+          data-expiry="${voucher.expiry}"
+          data-url="${voucher.url}"
+          data-title-bg-color="${voucher.titleBgColor}"
+          data-title-font-color="${voucher.titleFontColor}"
+          data-btn-bg-color="${voucher.btnBgColor}"
+          data-btn-text="${voucher.btnText}"
+          data-btn-font-color="${voucher.btnFontColor}"
+          data-terms-and-conditions="${voucher.termsAndConditions}"
+          ></digital-voucher>
+        `).join('')}
+    </div>
+    `;
 
-  digitalVouchersContent.innerHTML += digitalVouchers.map(voucher => `
+
+  //console.log(digitalVouchers.filter(d => d.expiry == true));
+ 
+ 
+  /*digitalVouchersContent.innerHTML += digitalVouchers.map(voucher => `
   <digital-voucher class="my-3"
     data-id="${voucher.id}"
     data-midascode="${voucher.midascode}"
@@ -188,9 +281,9 @@ if (digitalVouchersContent) {
     data-btn-font-color="${voucher.btnFontColor}"
     data-terms-and-conditions="${voucher.termsAndConditions}"
     ></digital-voucher>
-  `).join('');
+  `).join('');*/
+  
 }
-
 
 let digitalVouchersAppliedContent = document.querySelector('.digitalVouchersApplied');
 let digitalVouchersAvailableContent = document.querySelector('.digitalVouchersAvailable');
@@ -295,13 +388,13 @@ class DigitalVoucher extends HTMLElement {
         <p class="card-description">${this.voucher.description}</p>
       </div>
       <div class="card-bottom">
-        <span class="dotExpiry"><span class="dot"></span> <span class="expiry">Expiring in ${this.voucher.expiry} days</span></span>  <a href="${this.voucher.url}" class="btn digitalVoucher" style="background: ${this.voucher.btnBgColor}; color: ${this.voucher.btnFontColor}">${this.voucher.btnText}</a>
+        <span class="dotExpiry"><span class="dot"></span> <span class="expiry">${this.voucher.expiry === 'true' ? `Expired` : `Expiring in ${this.voucher.expiry} days</span></span><a href="${this.voucher.url}" class="btn digitalVoucher" style="background: ${this.voucher.btnBgColor}; color: ${this.voucher.btnFontColor}">${this.voucher.btnText}</a>`}
       </div>
     </div>
     <span class="cutaway right"></span>
   </div>
   ${this.voucher.termsAndConditions !== 'undefined' && this.voucher.termsAndConditions !== '' ? `
-    <div class="modal fade digitalVoucherModal" id="digitalVoucherModal${this.voucher.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade digitalVoucherModal" id="digitalVoucherModal${this.voucher.id}" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -312,7 +405,7 @@ class DigitalVoucher extends HTMLElement {
           </div>
           <div class="modal-body">
             <p class="termsAndConditions">${this.voucher.termsAndConditions}</p>
-            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -492,6 +585,7 @@ class DigitalVouchersAvailable extends HTMLElement {
     </div>
     <span class="cutaway right"></span>
   </div>
+
   `;
 
   render = () => {
