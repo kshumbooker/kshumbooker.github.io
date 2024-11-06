@@ -195,12 +195,15 @@ const digitalVouchers = [
 ];
 
 const numberOfAppliedAvailable = (appliedOrAvailable) => {
-  let number = appliedOrAvailable == 'applied' ? digitalVouchers.filter(v => v.applied === true).length : appliedOrAvailable == 'available' ? digitalVouchers.filter(v => v.applied === false).length : false;
+  let number = appliedOrAvailable == 'applied' ? digitalVouchers.filter(v => v.applied === true && v.expired !== true).length : appliedOrAvailable == 'available' ? digitalVouchers.filter(v => v.applied === false && v.expired !== true).length : false;
   return number;
 }
 
-const digitalVouchersFilter = (filterBy, value) => {
-  const vouchers = digitalVouchers.filter(voucher => voucher[filterBy] === value).map(voucher => `
+const digitalVouchersFilter = (filterBy, value, from = '') => {
+  let filteredDigitalVouchers = [];
+  filteredDigitalVouchers = from == 'panel' ? digitalVouchers.filter(voucher => voucher.expired === false) : [...digitalVouchers];
+
+  let vouchers = filteredDigitalVouchers.filter(voucher => voucher[filterBy] === value).map(voucher => `
     <digital-voucher class="my-3"
       data-id="${voucher.id}"
       data-midascode="${voucher.midascode}"
@@ -218,7 +221,9 @@ const digitalVouchersFilter = (filterBy, value) => {
       ></digital-voucher>
     `).join('');
     return vouchers;
+  
 }
+
 
 const digitalVouchersApplied = {
   title: 'You have Vouchers Applied!!',
@@ -480,23 +485,7 @@ class DigitalVouchersPanel extends HTMLElement {
         <h4>Vouchers Applied</h4>
       </div>
       <div class="panel-body">  
-          ${digitalVouchers.map(voucher => voucher.applied ? `
-            <digital-voucher
-            data-id="${voucher.id}"
-            data-midascode="${voucher.midascode}"
-            data-promotion="${voucher.promotion}"
-            data-description="${voucher.description}"
-            data-expiry="${voucher.expiry}"
-            data-expired="${voucher.expired}"
-            data-url="${voucher.url}"
-            data-title-bg-color="${voucher.titleBgColor}"
-            data-title-font-color="${voucher.titleFontColor}"
-            data-btn-bg-color="${voucher.btnBgColor}"
-            data-btn-text="${voucher.btnText}"
-            data-btn-font-color="${voucher.btnFontColor}"
-            data-terms-and-conditions="${voucher.termsAndConditions}"
-              ></digital-voucher>
-          ` : ``).join('')}
+        ${digitalVouchersFilter('applied', true, 'panel')}
       </div>
     </div>
 
@@ -505,23 +494,7 @@ class DigitalVouchersPanel extends HTMLElement {
         <h4>Vouchers Available</h4>
       </div>
       <div class="panel-body">
-          ${digitalVouchers.map(voucher => !voucher.applied ? `
-            <digital-voucher
-            data-id="${voucher.id}"
-            data-midascode="${voucher.midascode}"
-            data-promotion="${voucher.promotion}"
-            data-description="${voucher.description}"
-            data-expiry="${voucher.expiry}"
-            data-expired="${voucher.expired}"
-            data-url="${voucher.url}"
-            data-title-bg-color="${voucher.titleBgColor}"
-            data-title-font-color="${voucher.titleFontColor}"
-            data-btn-bg-color="${voucher.btnBgColor}"
-            data-btn-text="${voucher.btnText}"
-            data-btn-font-color="${voucher.btnFontColor}"
-            data-terms-and-conditions="${voucher.termsAndConditions}"
-          ></digital-voucher> 
-          ` : ``).join('')}
+      ${digitalVouchersFilter('applied', false, 'panel')}
       </div>
   </div>
 </div>
