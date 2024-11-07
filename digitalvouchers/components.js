@@ -39,14 +39,15 @@ const digitalVouchers = [
     promotion: 'Percentage off',
     description: 'Get £10 off when purchasing any product in the Fresh Fish aisle',
     expiry: 8,
-    expired: false,
+    expired: true,
     url: '',
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
     btnText: 'Shop now',
     btnFontColor: '#ffffff',
-    applied: false
+    applied: false,
+    termsAndConditions: ''
   },
   {
     id: 3,
@@ -54,7 +55,7 @@ const digitalVouchers = [
     promotion: 'Free Product',
     description: 'Get a free case of Chef\'s Larder Chip',
     expiry: 5,
-    expired: false,
+    expired: true,
     url: '',
     titleBgColor: voucherColor.free,
     titleFontColor: '#ffffff',
@@ -70,7 +71,7 @@ const digitalVouchers = [
     promotion: 'Money off',
     description: 'Get £0.50 off Chef\'s Larder Steak Cut Chips',
     expiry: 12,
-    expired: false,
+    expired: true,
     url: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
@@ -93,7 +94,8 @@ const digitalVouchers = [
     btnBgColor: voucherColor.button,
     btnText: 'Shop now',
     btnFontColor: '#ffffff',
-    applied: true
+    applied: true,
+    termsAndConditions: ''
   },
   {
     id: 6,
@@ -101,7 +103,7 @@ const digitalVouchers = [
     promotion: 'Money off',
     description: 'Get £2.99 off when purchasing any product!!!',
     expiry: 10,
-    expired: false,
+    expired: true,
     url: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
@@ -164,8 +166,8 @@ const digitalVouchers = [
     midascode: 132345,
     promotion: 'Percentage off',
     description: 'Get 20% off toilet rolls',
-    expiry: 0,
-    expired: true,
+    expiry: 10,
+    expired: false,
     url: '',
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
@@ -191,13 +193,17 @@ const digitalVouchers = [
     applied: true,
     termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. '
   },
-
 ];
 
 const numberOfAppliedAvailable = (appliedOrAvailable) => {
   let number = appliedOrAvailable == 'applied' ? digitalVouchers.filter(v => v.applied === true && v.expired !== true).length : appliedOrAvailable == 'available' ? digitalVouchers.filter(v => v.applied === false && v.expired !== true).length : false;
   return number;
 }
+
+const digitalVouchersAllExpired = () => {
+  return digitalVouchers.filter(voucher => voucher.expired === false).length == 0 ? true : false;
+}
+
 
 const digitalVouchersFilter = (filterBy, value, from = '') => {
   let filteredDigitalVouchers = [];
@@ -275,11 +281,11 @@ if (digitalVouchersContent) {
   digitalVouchersContent.innerHTML = `
     <div class="container digitalVouchers present my-3">
       <h2 class="digitalVouchersPageTitle">${myDigitalVouchersPage.present.title}</h2><p class="digitalVouchersPageText">${myDigitalVouchersPage.present.description}</p>
-      ${digitalVouchersFilter('expired', false)}
+      ${digitalVouchersFilter('expired', false) ? digitalVouchersFilter('expired', false) : `<strong>You have no present vouchers</strong>`}
     </div>
     <div class="container digitalVouchers expired my-3">
       <h2 class="digitalVouchersPageTitle">${myDigitalVouchersPage.expired.title}</h2><p class="digitalVouchersPageText">${myDigitalVouchersPage.expired.description}</p>
-      ${digitalVouchersFilter('expired', true)}
+      ${digitalVouchersFilter('expired', true) ? digitalVouchersFilter('expired', true)  : `<strong>You have no expired vouchers</strong>`}
     </div>
     `;
 }
@@ -288,7 +294,7 @@ const digitalVouchersAppliedContent = document.querySelector('.digitalVouchersAp
 const digitalVouchersAvailableContent = document.querySelector('.digitalVouchersAvailable');
 const digitalVouchersAppliedAvailableContent = document.querySelector('.digitalVouchersAppliedAvailable');
 
-if (digitalVouchersAppliedContent) {
+if (digitalVouchersAppliedContent && digitalVouchersAllExpired()) {
 
   digitalVouchersAppliedContent.innerHTML = `
     <digital-vouchers-applied class="my-3"
@@ -304,7 +310,8 @@ if (digitalVouchersAppliedContent) {
   `;
 }
 
-if (digitalVouchersAvailableContent) {
+
+if (digitalVouchersAvailableContent && digitalVouchersAllExpired()) {
 
   digitalVouchersAvailableContent.innerHTML = `
     <digital-vouchers-available class="my-3"
@@ -322,7 +329,7 @@ if (digitalVouchersAvailableContent) {
   `;
 }
 
-if (digitalVouchersAppliedAvailableContent) {
+if (digitalVouchersAppliedAvailableContent && digitalVouchersAllExpired()) {
 
   digitalVouchersAppliedAvailableContent.innerHTML = `
     <digital-vouchers-applied-available class="my-3"
