@@ -36,7 +36,7 @@ const digitalVouchers = [
     btnBgColor: voucherColor.button,
     btnText: 'Shop now',
     btnFontColor: '#ffffff',
-    applied: true,
+    applied: false,
     termsAndConditions: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
   },
   {
@@ -84,7 +84,7 @@ const digitalVouchers = [
     btnBgColor: voucherColor.button,
     btnText: 'Shop now',
     btnFontColor: '#ffffff',
-    applied: true,
+    applied: false,
     termsAndConditions: ''
   },
   {
@@ -100,7 +100,7 @@ const digitalVouchers = [
     btnBgColor: voucherColor.button,
     btnText: 'Shop now',
     btnFontColor: '#ffffff',
-    applied: true,
+    applied: false,
     termsAndConditions: ''
   },
   {
@@ -378,8 +378,8 @@ class DigitalVouchersNotification extends HTMLElement {
   }
 
   template = () => `
-    <nav class="alert alert-dismissible text-white d-flex justify-content-center align-items-center" style="background: #2356AA; gap: 2rem;" role="alert">
-      <span class="digitalVouchersNotificationMsg">You have <strong>${numberOfAppliedAvailable('available')}</strong> ${numberOfAppliedAvailable('available') > 1 ? `vouchers` : `voucher`} available</span> <a href="" class="btn" style="background: #ED6511; color: #fff;">View my Vouchers</a>
+    <nav class="alert alert-dismissible" style="background: ${digitalVouchersNotificationAttr.backgroundColor}" role="alert">
+      <span class="digitalVouchersNotificationMsg" style="color: ${digitalVouchersNotificationAttr.textColor}">${digitalVouchersNotificationAttr.text}</span> <a href="" class="btn" style="background: ${digitalVouchersNotificationAttr.buttonBgColor}; color: ${digitalVouchersNotificationAttr.buttonTextColor}">${digitalVouchersNotificationAttr.buttonText}</a>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -683,14 +683,23 @@ const wrongTrolleyModal = () => {
   document.body.appendChild(wrongTrolleyModal);
 }
 
+const digitalVouchersNotificationAttr = {
+  backgroundColor: '#2356AA',
+  text: `You have <strong>${numberOfAppliedAvailable('available')}</strong> ${numberOfAppliedAvailable('available') > 1 ? `vouchers` : `voucher`} available`,
+  textColor: '#ffffff',
+  buttonText: 'View All Vouchers',
+  buttonBgColor: '#ED6511',
+  buttonTextColor: '#ffffff',
+}
 
 const topNavBar = document.querySelector('#shopping-header-desktop .top-nav');
 const topNavBarMobile = document.querySelector('#shopping-header-mobile #search-bar');
 
 const digitalVouchersNotificationsDiv = document.createElement('div');
 digitalVouchersNotificationsDiv.innerHTML = `<digital-vouchers-notification></digital-vouchers-notification>`;
+const digitalVouchersNotificationsDivMob = digitalVouchersNotificationsDiv.cloneNode(true);
 topNavBar.before(digitalVouchersNotificationsDiv);
-topNavBarMobile.before(digitalVouchersNotificationsDiv);
+topNavBarMobile.before(digitalVouchersNotificationsDivMob);
 
 wrongTrolleyModal();
 
