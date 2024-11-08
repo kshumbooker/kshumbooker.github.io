@@ -211,7 +211,7 @@ digital-voucher .btn.digitalVoucher, digital-voucher {
 .digitalVouchersApplied, .digitalVouchersAvailable, .digitalVouchersAppliedAvailable {
   border-radius: 10px;
   padding: 10px;
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -227,6 +227,12 @@ digital-voucher .btn.digitalVoucher, digital-voucher {
 }
 
 @media (max-width: 1280px) {
+
+  .digitalVouchersApplied, .digitalVouchersAvailable, .digitalVouchersAppliedAvailable {
+    width: 95%;
+    margin: 0 auto;
+  }
+
   digital-voucher .card .cutaway.left, digital-vouchers-applied .card .cutaway.left, digital-vouchers-available .card .cutaway.left, digital-vouchers-applied-available .card .cutaway.left {
     left: -1%;
   }
