@@ -300,7 +300,7 @@ const digitalVouchersAppliedContent = document.querySelector('.digitalVouchersAp
 const digitalVouchersAvailableContent = document.querySelector('.digitalVouchersAvailable');
 const digitalVouchersAppliedAvailableContent = document.querySelector('.digitalVouchersAppliedAvailable');
 
-if (digitalVouchersAppliedContent && digitalVouchersAllExpired()) {
+if (digitalVouchersAppliedContent && !digitalVouchersAllExpired()) {
 
   digitalVouchersAppliedContent.innerHTML = `
     <digital-vouchers-applied class="my-3"
@@ -317,7 +317,7 @@ if (digitalVouchersAppliedContent && digitalVouchersAllExpired()) {
 }
 
 
-if (digitalVouchersAvailableContent && digitalVouchersAllExpired()) {
+if (digitalVouchersAvailableContent && !digitalVouchersAllExpired()) {
 
   digitalVouchersAvailableContent.innerHTML = `
     <digital-vouchers-available class="my-3"
@@ -335,7 +335,7 @@ if (digitalVouchersAvailableContent && digitalVouchersAllExpired()) {
   `;
 }
 
-if (digitalVouchersAppliedAvailableContent && digitalVouchersAllExpired()) {
+if (digitalVouchersAppliedAvailableContent && !digitalVouchersAllExpired()) {
 
   digitalVouchersAppliedAvailableContent.innerHTML = `
     <digital-vouchers-applied-available class="my-3"
