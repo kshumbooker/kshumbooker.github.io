@@ -35,6 +35,18 @@ digital-vouchers-panel {
   box-shadow: 10px 10px 10px 10px #d3d3d3;
 }
 
+digital-vouchers-notification .alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+digital-vouchers-notification .alert-dismissible .close {
+  top: auto;
+  color: #ffffff;
+}
+
 
 digital-vouchers-panel .top {
   justify-content: space-between;
@@ -186,9 +198,20 @@ digital-voucher .btn.digitalVoucher, digital-voucher {
 .digitalVouchersApplied, .digitalVouchersAvailable, .digitalVouchersAppliedAvailable {
   border-radius: 10px;
   padding: 10px;
+  width: 99%;
+  margin: 0 auto;
 }
 
+@media (max-width: 900px) {
+  digital-vouchers-notification .alert {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
+  digital-vouchers-notification .alert .btn {
+    background: transparent;
+  }
+}
 
 @media (max-width: 1200px) {
 
