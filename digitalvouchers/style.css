@@ -222,7 +222,7 @@ digital-voucher .btn.digitalVoucher, digital-voucher {
   }
 
   digital-vouchers-notification .alert .btn {
-    background: transparent;
+    background: transparent !important;
   }
 }
 
