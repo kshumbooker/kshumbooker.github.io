@@ -218,7 +218,7 @@ digital-voucher .btn.digitalVoucher, digital-voucher {
 @media (max-width: 900px) {
   digital-vouchers-notification .alert {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0;
   }
 
   digital-vouchers-notification .alert .btn {
