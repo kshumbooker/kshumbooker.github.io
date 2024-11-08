@@ -664,7 +664,7 @@ class DigitalVouchersAppliedAvailable extends HTMLElement {
 const wrongTrolleyModal = () => {
   const wrongTrolleyModal = document.createElement('div');
   wrongTrolleyModal.innerHTML = `
-  <div id="wrongTrolleyModal" class="modal" data-keyboard="false" data-backdrop="static">
+  <div id="wrongTrolleyModal" class="modal">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
