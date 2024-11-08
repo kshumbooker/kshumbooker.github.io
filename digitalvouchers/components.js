@@ -270,6 +270,15 @@ const digitalVouchersAppliedAvailable = {
   btnFontColor: '#ffffff'
 }
 
+const digitalVouchersNotificationAttr = {
+  backgroundColor: '#2356AA',
+  text: `You have <strong>${numberOfAppliedAvailable('available')}</strong> ${numberOfAppliedAvailable('available') > 1 ? `vouchers` : `voucher`} available`,
+  textColor: '#ffffff',
+  buttonText: 'Click here to view',
+  buttonBgColor: '#ED6511',
+  buttonTextColor: '#ffffff',
+}
+
 const digitalVouchersContent = document.querySelector('.digitalVouchers');
 
 const digitalVouchersPanel = document.querySelector('.digitalVouchersPanel');
@@ -368,6 +377,14 @@ class DigitalVouchersNotification extends HTMLElement {
   }
 
   connectedCallback() {
+    this.notification = {
+      backgroundColor: this.getAttribute('data-background-color'),
+      textColor: this.getAttribute('data-text-color'),
+      text: this.getAttribute('data-text'),
+      buttonBgColor: this.getAttribute('data-button-bg-color'),
+      buttonText: this.getAttribute('data-button-text'),
+      buttonTextColor: this.getAttribute('data-button-text-color'),
+    }
     this.render();
   }
 
@@ -378,14 +395,13 @@ class DigitalVouchersNotification extends HTMLElement {
   }
 
   template = () => `
-    <nav class="alert alert-dismissible" style="background: ${digitalVouchersNotificationAttr.backgroundColor}" role="alert">
-      <span class="digitalVouchersNotificationMsg" style="color: ${digitalVouchersNotificationAttr.textColor}">${digitalVouchersNotificationAttr.text}</span> <a href="" class="btn" style="background: ${digitalVouchersNotificationAttr.buttonBgColor}; color: ${digitalVouchersNotificationAttr.buttonTextColor}">${digitalVouchersNotificationAttr.buttonText}</a>
+    <nav class="alert alert-dismissible" style="background: ${this.notification.backgroundColor}" role="alert">
+      <span class="digitalVouchersNotificationMsg" style="color: ${this.notification.textColor}">${this.notification.text}</span> <a href="" class="btn" style="background: ${this.notification.buttonBgColor}; color: ${this.notification.buttonTextColor}">${this.notification.buttonText}</a>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </nav>
   `;
-
 
 }
 
@@ -683,22 +699,22 @@ const wrongTrolleyModal = () => {
   document.body.appendChild(wrongTrolleyModal);
 }
 
-const digitalVouchersNotificationAttr = {
-  backgroundColor: '#2356AA',
-  text: `You have <strong>${numberOfAppliedAvailable('available')}</strong> ${numberOfAppliedAvailable('available') > 1 ? `vouchers` : `voucher`} available`,
-  textColor: '#ffffff',
-  buttonText: 'Click here to view',
-  buttonBgColor: '#ED6511',
-  buttonTextColor: '#ffffff',
-}
-
 const topNavBar = document.querySelector('#shopping-header-desktop .top-nav');
 topNavBar.parentElement.classList.remove('py-3');
 topNavBar.parentElement.classList.add('pb-3');
 const topNavBarMobile = document.querySelector('#shopping-header-mobile #search-bar');
 
 const digitalVouchersNotificationsDiv = document.createElement('div');
-digitalVouchersNotificationsDiv.innerHTML = `<digital-vouchers-notification></digital-vouchers-notification>`;
+digitalVouchersNotificationsDiv.innerHTML = `
+<digital-vouchers-notification 
+  id="digitalVouchersNotification" 
+  data-background-color="${digitalVouchersNotificationAttr.backgroundColor}"
+  data-text-color="${digitalVouchersNotificationAttr.textColor}"
+  data-text="${digitalVouchersNotificationAttr.text}"
+  data-button-bg-color="${digitalVouchersNotificationAttr.buttonBgColor}"
+  data-button-text="${digitalVouchersNotificationAttr.buttonText}"
+  data-button-text-color="${digitalVouchersNotificationAttr.buttonTextColor}"  
+></digital-vouchers-notification>`;
 const digitalVouchersNotificationsDivMob = digitalVouchersNotificationsDiv.cloneNode(true);
 topNavBar.before(digitalVouchersNotificationsDiv);
 topNavBarMobile.before(digitalVouchersNotificationsDivMob);
