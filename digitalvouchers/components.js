@@ -693,6 +693,8 @@ const digitalVouchersNotificationAttr = {
 }
 
 const topNavBar = document.querySelector('#shopping-header-desktop .top-nav');
+topNavBar.parentElement.classList.remove('py-3');
+topNavBar.parentElement.classList.add('pb-3');
 const topNavBarMobile = document.querySelector('#shopping-header-mobile #search-bar');
 
 const digitalVouchersNotificationsDiv = document.createElement('div');
