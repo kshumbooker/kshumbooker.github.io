@@ -684,10 +684,13 @@ const wrongTrolleyModal = () => {
 }
 
 
-const topNavBar = document.querySelector('.top-nav');
+const topNavBar = document.querySelector('#shopping-header-desktop .top-nav');
+const topNavBarMobile = document.querySelector('#shopping-header-mobile #search-bar');
+
 const digitalVouchersNotificationsDiv = document.createElement('div');
 digitalVouchersNotificationsDiv.innerHTML = `<digital-vouchers-notification></digital-vouchers-notification>`;
 topNavBar.before(digitalVouchersNotificationsDiv);
+topNavBarMobile.before(digitalVouchersNotificationsDiv);
 
 wrongTrolleyModal();
 
