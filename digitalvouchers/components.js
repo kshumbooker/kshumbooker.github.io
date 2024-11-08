@@ -240,7 +240,7 @@ const digitalVouchersFilter = (filterBy, value, from = '') => {
 const digitalVouchersApplied = {
   title: 'You have Vouchers Applied!!',
   description: 'Click the button below to see all your Vouchers',
-  btnText: 'View All Vouchers',
+  btnText: 'Click here to view',
   descriptionColor: '#2356AA',
   titleBgColor: '#2356AA',
   titleFontColor: '#ffffff',
