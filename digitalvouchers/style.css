@@ -40,6 +40,19 @@ digital-vouchers-notification .alert {
   justify-content: center;
   align-items: center;
   gap: 2em;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+digital-vouchers-notification .alert-dismissible {
+  padding-right: 0;
+}
+
+digital-vouchers-notification .alert .btn {
+  padding: 5px;
+  border-radius: 10px;   
 }
 
 digital-vouchers-notification .alert-dismissible .close {
