@@ -9,11 +9,17 @@ const myDigitalVouchersPage = {
   }
 };
 
+
 const voucherColor = {
   money: '#0454A1',
   percentage: '#D6901A',
   free: '#3CAD43',
   button: '#0454A1',
+}
+
+const wrongTrolleyModalContent = {
+  title: 'Wrong Trolley Selected',
+  text: 'The voucher you have selected is for "EXPECTED TROLLEY TYPE" only. Please switch your trolley to "EXPECTED TROLLEY TYPE" to see your qualifying products'
 }
 
 const digitalVouchers = [
@@ -356,6 +362,33 @@ $(window).scroll(() => {
 });
 
 
+class DigitalVouchersNotification extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  render = () => {
+    this.innerHTML = `
+      ${this.template().trim()}
+    `;
+  }
+
+  template = () => `
+    <nav class="alert alert-dismissible text-white d-flex justify-content-center align-items-center" style="background: #2356AA; gap: 2rem;" role="alert">
+      <span class="digitalVouchersNotificationMsg">You have <strong>${numberOfAppliedAvailable('available')}</strong> ${numberOfAppliedAvailable('available') > 1 ? `vouchers` : `voucher`} available</span> <a href="" class="btn" style="background: #ED6511; color: #fff;">View my Vouchers</a>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </nav>
+  `;
+
+
+}
+
 class DigitalVoucher extends HTMLElement {
   constructor() {
     super();
@@ -628,9 +661,46 @@ class DigitalVouchersAppliedAvailable extends HTMLElement {
   }
 }
 
+const wrongTrolleyModal = () => {
+  const wrongTrolleyModal = document.createElement('div');
+  wrongTrolleyModal.innerHTML = `
+  <div id="wrongTrolleyModal" class="modal" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">${wrongTrolleyModalContent.title}</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>${wrongTrolleyModalContent.text}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+  document.body.appendChild(wrongTrolleyModal);
+}
+
+
+const topNavBar = document.querySelector('.top-nav');
+const digitalVouchersNotificationsDiv = document.createElement('div');
+digitalVouchersNotificationsDiv.innerHTML = `<digital-vouchers-notification></digital-vouchers-notification>`;
+topNavBar.before(digitalVouchersNotificationsDiv);
+
+wrongTrolleyModal();
+
+if (isClickAndCollect && isDelivery) {
+  document.querySelector('#click-collect').addEventListener('click', () => {
+    $('#wrongTrolleyModal').modal('show');    
+  });
+}
+
 
 customElements.define('digital-voucher', DigitalVoucher);
 customElements.define('digital-vouchers-applied', DigitalVouchersApplied);
 customElements.define('digital-vouchers-panel', DigitalVouchersPanel);
 customElements.define('digital-vouchers-available', DigitalVouchersAvailable);
 customElements.define('digital-vouchers-applied-available', DigitalVouchersAppliedAvailable);
+customElements.define('digital-vouchers-notification', DigitalVouchersNotification);
