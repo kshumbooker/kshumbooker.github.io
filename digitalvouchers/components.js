@@ -362,8 +362,10 @@ if (digitalVouchersAppliedAvailableContent && !digitalVouchersAllExpired()) {
   `;
 }
 
+
+
 $(window).scroll(() => {
-  if ($(window).scrollTop() >= $('#booker_trolley_first_main').offset().top + $('#booker_trolley_first_main').outerHeight() - window.innerHeight) {
+  if ($(window).scrollTop() >= $('#shopping-header-desktop').height() + $('.nav-blue').height() + 20) {
     $('#booker_trolley_first_aside').css('position', 'fixed');
   } else {
     $('#booker_trolley_first_aside').css('position', 'sticky');
@@ -429,12 +431,6 @@ class DigitalVoucher extends HTMLElement {
     this.render();
   }
 
-  render = () => {
-    this.innerHTML = `
-      ${this.template().trim()}
-    `;
-  }
-
   template = () => `
   <div class="card pb-2 h-100">
     <span class="cutaway left"></span>
@@ -467,6 +463,40 @@ class DigitalVoucher extends HTMLElement {
     </div>
     ` : ``}
   `;
+
+  render = () => {
+    this.innerHTML = `${this.template().trim()}`;
+
+    const shopNowBtn = this.querySelector('a.btn.digitalVoucher');
+    if (shopNowBtn) {
+      shopNowBtn.addEventListener('click', (event) => {
+        this.clickShopNow(event);
+      });            
+    }
+  }
+
+  clickShopNow = (event) => {
+    let trolley = this.voucher.trolley;
+
+    var activeTrolley = document.querySelector('#mini-trolley .active');
+    if((activeTrolley.id == 'click-collect' && trolley == 'delivery') ||
+        (activeTrolley.id == 'delivery' && trolley == 'clickandcollect')) {
+
+        event.preventDefault();
+
+        const switchTrolleyModalDiv = document.createElement('div');
+        switchTrolleyModalDiv.innerHTML = switchTrolleyModal({ title: this.getAttribute('data-switch-title'), text: this.getAttribute('data-switch-text') });
+        document.body.appendChild(switchTrolleyModalDiv);
+
+        var url = event.target.getAttribute('href');
+
+        $('#switchTrolleyModal').modal('show');
+
+        setTimeout(() => {
+            ActivateTrolley(trolley, false, url);
+        }, "2000");
+    }
+  }
 }
 
 
