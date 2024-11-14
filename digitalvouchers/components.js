@@ -31,6 +31,7 @@ const digitalVouchers = [
     expiry: 10,
     expired: false,
     url: '',
+    trolleyType: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -47,6 +48,7 @@ const digitalVouchers = [
     expiry: 8,
     expired: true,
     url: '',
+    trolleyType: 'ClickAndCollect',
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -63,6 +65,7 @@ const digitalVouchers = [
     expiry: 5,
     expired: true,
     url: '',
+    trolleyType: 'ClickAndCollect',
     titleBgColor: voucherColor.free,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -79,6 +82,7 @@ const digitalVouchers = [
     expiry: 12,
     expired: true,
     url: '',
+    trolleyType: 'ClickAndCollect',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -95,6 +99,7 @@ const digitalVouchers = [
     expiry: 6,
     expired: false,
     url: '',
+    trolleyType: 'ClickAndCollect',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -111,6 +116,7 @@ const digitalVouchers = [
     expiry: 10,
     expired: true,
     url: '',
+    trolleyType: '',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -127,6 +133,7 @@ const digitalVouchers = [
     expiry: 10,
     expired: false,
     url: '',
+    trolleyType: 'Delivery',
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -143,6 +150,7 @@ const digitalVouchers = [
     expiry: 0,
     expired: true,
     url: '',
+    trolleyType: 'ClickAndCollect',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -159,6 +167,7 @@ const digitalVouchers = [
     expiry: 0,
     expired: true,
     url: '',
+    trolleyType: 'Delivery',
     titleBgColor: voucherColor.free,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -175,6 +184,7 @@ const digitalVouchers = [
     expiry: 10,
     expired: false,
     url: '',
+    trolleyType: 'Delivery',
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -191,6 +201,7 @@ const digitalVouchers = [
     expiry: 20,
     expired: false,
     url: '',
+    trolleyType: 'ClickAndCollect',
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -228,6 +239,7 @@ const digitalVouchersFilter = (filterBy, value, from = '') => {
       data-title-font-color="${voucher.titleFontColor}"
       data-btn-bg-color="${voucher.btnBgColor}"
       data-btn-text="${voucher.btnText}"
+      data-trolley-type="${voucher.trolleyType}"
       data-btn-font-color="${voucher.btnFontColor}"
       data-terms-and-conditions="${voucher.termsAndConditions}"
       ></digital-voucher>
@@ -424,6 +436,7 @@ class DigitalVoucher extends HTMLElement {
       titleBgColor: this.getAttribute('data-title-bg-color'),
       titleFontColor: this.getAttribute('data-title-font-color'),
       btnBgColor: this.getAttribute('data-btn-bg-color'),
+      trolleyType: this.getAttribute('data-trolley-type'),
       btnText: this.getAttribute('data-btn-text'),
       btnFontColor: this.getAttribute('data-btn-font-color'),
       termsAndConditions: this.getAttribute('data-terms-and-conditions')
@@ -565,6 +578,9 @@ class DigitalVouchersPanel extends HTMLElement {
     <div class="d-flex my-3 top">
       <h3>My Digital Vouchers</h3>
       <span class="digitalVouchersPanelClose"><i class="fa-solid fa-circle-xmark fa-xl"></i></span>
+    </div>
+    <div class="d-flex my-3">
+      <p class="trolleyType">${trolleyType == 'ClickAndCollect' ? 'Click And Collect Order' : 'Delivery' ? 'Delivery Order' : ''}</p>
     </div>
     <div class="panel panel-default my-3">
       <div class="panel-heading">
