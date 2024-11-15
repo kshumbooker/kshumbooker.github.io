@@ -328,7 +328,7 @@ const digitalVouchers = [
     btnFontColor: '#ffffff',
     applied: false,
     termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
-  },
+  }
 ];
 
 
@@ -714,25 +714,24 @@ class DigitalVouchersPanel extends HTMLElement {
       <h3>My Digital Vouchers</h3>
       <span class="digitalVouchersPanelClose"><i class="fa-solid fa-circle-xmark fa-xl"></i></span>
     </div>
-    <div class="panel panel-default my-3">
+    ${numberOfAppliedAvailable('applied', trolleyType) > 0 ? `<div class="panel panel-default my-3">
       <div class="panel-heading">
         <h4>Vouchers Applied (${trolleyType == 'ClickAndCollect' ? 'Click And Collect Order' : 'Delivery' ? 'Delivery Order' : ''})</h4>
       </div>
       <div class="panel-body">  
         ${digitalVouchersFilter('applied', true, 'panel', trolleyType)}
       </div>
-    </div>
+    </div>` : ``}
 
-    <div class="panel panel-default my-3">
+    ${numberOfAppliedAvailable('available', trolleyType) > 0 ? `<div class="panel panel-default my-3">
       <div class="panel-heading">
         <h4>Vouchers Available (${trolleyType == 'ClickAndCollect' ? 'Click And Collect Order' : 'Delivery' ? 'Delivery Order' : ''})</h4>
       </div>
       <div class="panel-body">
       ${digitalVouchersFilter('applied', false, 'panel', trolleyType)}
       </div>
-  </div>
-</div>
-`;
+    </div>` : ``}
+  </div>`;
 
   render = () => {
     this.innerHTML = `
