@@ -714,12 +714,9 @@ class DigitalVouchersPanel extends HTMLElement {
       <h3>My Digital Vouchers</h3>
       <span class="digitalVouchersPanelClose"><i class="fa-solid fa-circle-xmark fa-xl"></i></span>
     </div>
-    <div class="d-flex my-3">
-      <p class="trolleyType">${trolleyType == 'ClickAndCollect' ? 'Click And Collect Order' : 'Delivery' ? 'Delivery Order' : ''}</p>
-    </div>
     <div class="panel panel-default my-3">
       <div class="panel-heading">
-        <h4>Vouchers Applied</h4>
+        <h4>Vouchers Applied (${trolleyType == 'ClickAndCollect' ? 'Click And Collect Order' : 'Delivery' ? 'Delivery Order' : ''})</h4>
       </div>
       <div class="panel-body">  
         ${digitalVouchersFilter('applied', true, 'panel', trolleyType)}
@@ -728,7 +725,7 @@ class DigitalVouchersPanel extends HTMLElement {
 
     <div class="panel panel-default my-3">
       <div class="panel-heading">
-        <h4>Vouchers Available</h4>
+        <h4>Vouchers Available (${trolleyType == 'ClickAndCollect' ? 'Click And Collect Order' : 'Delivery' ? 'Delivery Order' : ''})</h4>
       </div>
       <div class="panel-body">
       ${digitalVouchersFilter('applied', false, 'panel', trolleyType)}
