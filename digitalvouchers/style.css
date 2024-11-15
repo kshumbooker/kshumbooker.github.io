@@ -42,8 +42,8 @@ digital-vouchers-notification .alert {
   gap: 2em;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 digital-vouchers-notification .alert-dismissible {
@@ -70,7 +70,7 @@ digital-vouchers-panel h3 {
 }
 
 digital-vouchers-panel h4 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
 
 .digitalVouchers digital-voucher, .digitalVouchersApplied digital-vouchers-applied, .digitalVouchersAvailable digital-vouchers-available, .digitalVouchersAppliedAvailable digital-vouchers-applied-available {
@@ -103,7 +103,7 @@ digital-voucher .card .card-bottom, digital-vouchers-applied .card .card-bottom,
 }
 
 digital-voucher .card .btn {
-  float: inline-end;
+  float: right;
 }
 
 digital-voucher .card .card-title, digital-vouchers-applied .card .card-title, digital-vouchers-available .card .card-title, digital-vouchers-applied-available .card .card-title {
