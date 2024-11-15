@@ -27,11 +27,12 @@ const digitalVouchers = [
     id: 1,
     midascode: 123456,
     promotion: 'Money off',
-    description: 'Get £10 off when purchasing any product in the Fresh Beef aisle',
+    description: 'CC only Get £10 off when purchasing any product in the Fresh Beef aisle',
     expiry: 10,
     expired: false,
     url: '',
-    trolleyType: '',
+    clickAndCollect: true,
+    delivery: false,
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -44,11 +45,12 @@ const digitalVouchers = [
     id: 2,
     midascode: 234567,
     promotion: 'Percentage off',
-    description: 'Get £10 off when purchasing any product in the Fresh Fish aisle',
+    description: 'CC Only Get £10 off when purchasing any product in the Fresh Fish aisle',
     expiry: 8,
     expired: true,
     url: '',
-    trolleyType: 'ClickAndCollect',
+    clickAndCollect: true,
+    delivery: false,
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -61,11 +63,12 @@ const digitalVouchers = [
     id: 3,
     midascode: 345678,
     promotion: 'Free Product',
-    description: 'Get a free case of Chef\'s Larder Chip',
+    description: 'CC only Get a free case of Chef\'s Larder Chip',
     expiry: 5,
     expired: true,
     url: '',
-    trolleyType: 'ClickAndCollect',
+    clickAndCollect: true,
+    delivery: false,
     titleBgColor: voucherColor.free,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -78,11 +81,12 @@ const digitalVouchers = [
     id: 4,
     midascode: 456789,
     promotion: 'Money off',
-    description: 'Get £0.50 off Chef\'s Larder Steak Cut Chips',
+    description: 'CC only Get £0.50 off Chef\'s Larder Steak Cut Chips',
     expiry: 12,
     expired: true,
     url: '',
-    trolleyType: 'ClickAndCollect',
+    clickAndCollect: true,
+    delivery: false,
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -95,11 +99,12 @@ const digitalVouchers = [
     id: 5,
     midascode: 567890,
     promotion: 'Money off',
-    description: 'Get £2.75 off Chef\'s Larder Premium Real Mayonnaise 5 Litres',
+    description: 'CC only Get £2.75 off Chef\'s Larder Premium Real Mayonnaise 5 Litres',
     expiry: 6,
     expired: false,
     url: '',
-    trolleyType: 'ClickAndCollect',
+    clickAndCollect: true,
+    delivery: false,
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -112,11 +117,12 @@ const digitalVouchers = [
     id: 6,
     midascode: 678901,
     promotion: 'Money off',
-    description: 'Get £2.99 off when purchasing any product!!!',
+    description: 'Both trolleys Get £2.99 off when purchasing any product!!!',
     expiry: 10,
     expired: true,
     url: '',
-    trolleyType: '',
+    clickAndCollect: true,
+    delivery: true,
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -129,11 +135,12 @@ const digitalVouchers = [
     id: 7,
     midascode: 789012,
     promotion: 'Percentage off',
-    description: 'Get 10% off when purchasing any product in the ',
+    description: 'Delivery only Get 10% off when purchasing any product in the Home Bargains',
     expiry: 10,
     expired: false,
     url: '',
-    trolleyType: 'Delivery',
+    clickAndCollect: false,
+    delivery: true,
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -146,11 +153,12 @@ const digitalVouchers = [
     id: 8,
     midascode: 890123,
     promotion: 'Money off',
-    description: 'Get a few quid off some Cornettos',
+    description: 'CC only Get a few quid off some Cornettos',
     expiry: 0,
     expired: true,
     url: '',
-    trolleyType: 'ClickAndCollect',
+    clickAndCollect: true,
+    delivery: false,
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -163,11 +171,12 @@ const digitalVouchers = [
     id: 9,
     midascode: 901234,
     promotion: 'Free Product',
-    description: 'Free chips when you buy some cod',
+    description: 'Delivery Only Free chips when you buy some cod',
     expiry: 0,
     expired: true,
     url: '',
-    trolleyType: 'Delivery',
+    clickAndCollect: false,
+    delivery: true,
     titleBgColor: voucherColor.free,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -180,11 +189,12 @@ const digitalVouchers = [
     id: 10,
     midascode: 132345,
     promotion: 'Percentage off',
-    description: 'Get 20% off toilet rolls',
+    description: 'Delivery Only Get 20% off toilet rolls',
     expiry: 10,
     expired: false,
     url: '',
-    trolleyType: 'Delivery',
+    clickAndCollect: false,
+    delivery: true,
     titleBgColor: voucherColor.percentage,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -197,11 +207,12 @@ const digitalVouchers = [
     id: 11,
     midascode: 290778,
     promotion: 'Money Off',
-    description: 'Save 3 quid off Pedro Wine',
+    description: 'CC only Save 3 quid off Pedro Wine',
     expiry: 20,
     expired: false,
     url: '',
-    trolleyType: 'ClickAndCollect',
+    clickAndCollect: true,
+    delivery: false,
     titleBgColor: voucherColor.money,
     titleFontColor: '#ffffff',
     btnBgColor: voucherColor.button,
@@ -210,11 +221,98 @@ const digitalVouchers = [
     applied: true,
     termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. '
   },
+  {
+    id: 12,
+    midascode: 291234,
+    promotion: 'Money Off',
+    description: 'Both trolleys Save 5 quid off Pedro Wine',
+    expiry: 13,
+    expired: false,
+    url: '',
+    clickAndCollect: true,
+    delivery: true,
+    titleBgColor: voucherColor.money,
+    titleFontColor: '#ffffff',
+    btnBgColor: voucherColor.button,
+    btnText: 'Shop now',
+    btnFontColor: '#ffffff',
+    applied: true,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. '
+  },
+  {
+    id: 13,
+    midascode: 584720,
+    promotion: 'Percentage off',
+    description: 'Delivery only Get 10% off when purchasing any product in the Tesco',
+    expiry: 10,
+    expired: false,
+    url: '',
+    clickAndCollect: false,
+    delivery: true,
+    titleBgColor: voucherColor.percentage,
+    titleFontColor: '#ffffff',
+    btnBgColor: voucherColor.button,
+    btnText: 'Shop now',
+    btnFontColor: '#ffffff',
+    applied: false,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+  },
+  {
+    id: 14,
+    midascode: 584721,
+    promotion: 'Free product',
+    description: 'Delivery only Get 10% off when purchasing any product in the Aldi',
+    expiry: 10,
+    expired: false,
+    url: '',
+    clickAndCollect: false,
+    delivery: true,
+    titleBgColor: voucherColor.free,
+    titleFontColor: '#ffffff',
+    btnBgColor: voucherColor.button,
+    btnText: 'Shop now',
+    btnFontColor: '#ffffff',
+    applied: false,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+  },
+  {
+    id: 15,
+    midascode: 584722,
+    promotion: 'Money off',
+    description: 'Delivery only Get 10% off when purchasing any product in the Sainos',
+    expiry: 10,
+    expired: false,
+    url: '',
+    clickAndCollect: false,
+    delivery: true,
+    titleBgColor: voucherColor.money,
+    titleFontColor: '#ffffff',
+    btnBgColor: voucherColor.button,
+    btnText: 'Shop now',
+    btnFontColor: '#ffffff',
+    applied: false,
+    termsAndConditions: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+  },
 ];
 
-const numberOfAppliedAvailable = (appliedOrAvailable) => {
-  let number = appliedOrAvailable == 'applied' ? digitalVouchers.filter(v => v.applied === true && v.expired !== true).length : appliedOrAvailable == 'available' ? digitalVouchers.filter(v => v.applied === false && v.expired !== true).length : false;
-  return number;
+
+
+
+
+const numberOfAppliedAvailable = (appliedOrAvailable, trolley = '') => {
+
+  let trolleyType = ''; 
+  
+  if (trolley === 'ClickAndCollect') {
+    trolleyType = 'clickAndCollect';
+  } else if (trolley === 'Delivery') {
+    trolleyType = 'delivery'
+  }
+
+  let number = appliedOrAvailable === 'applied' ? digitalVouchers.filter(v => v.applied === true && v.expired !== true && v[trolleyType] === true).length : appliedOrAvailable == 'available' ? digitalVouchers.filter(v => v.applied === false && v.expired !== true && v[trolleyType] === true).length : false;
+
+  return trolley == '' ? digitalVouchers.filter(v => v.applied === false && v.expired !== true).length : number;
+
 }
 
 const digitalVouchersAllExpired = () => {
@@ -222,9 +320,11 @@ const digitalVouchersAllExpired = () => {
 }
 
 
-const digitalVouchersFilter = (filterBy, value, from = '') => {
+const digitalVouchersFilter = (filterBy, value, from = '', trolley = '') => {
   let filteredDigitalVouchers = [];
-  filteredDigitalVouchers = from == 'panel' ? digitalVouchers.filter(voucher => voucher.expired === false) : [...digitalVouchers];
+  filteredDigitalVouchers = from == 'panel' ? digitalVouchers.filter(voucher => voucher.expired === false && ((trolley.toLowerCase() === 'clickandcollect' && voucher.clickAndCollect === true) || (trolley.toLowerCase() == 'delivery' && voucher.delivery === true))) : [...digitalVouchers];
+
+  
 
   let vouchers = filteredDigitalVouchers.filter(voucher => voucher[filterBy] === value).map(voucher => `
     <digital-voucher class="my-3"
@@ -239,18 +339,20 @@ const digitalVouchersFilter = (filterBy, value, from = '') => {
       data-title-font-color="${voucher.titleFontColor}"
       data-btn-bg-color="${voucher.btnBgColor}"
       data-btn-text="${voucher.btnText}"
-      data-trolley-type="${voucher.trolleyType}"
+      data-click-and-collect="${voucher.clickAndCollect}"
+      data-delivery="${voucher.delivery}"
       data-btn-font-color="${voucher.btnFontColor}"
       data-terms-and-conditions="${voucher.termsAndConditions}"
       ></digital-voucher>
     `).join('');
+
     return vouchers;
   
 }
 
 
 const digitalVouchersApplied = {
-  title: 'You have Vouchers Applied!!',
+  title: `You have ${numberOfAppliedAvailable('applied', trolleyType)} vouchers Available!!`,
   description: 'Click the button below to see all your Vouchers',
   btnText: 'View All Vouchers',
   descriptionColor: '#2356AA',
@@ -261,8 +363,8 @@ const digitalVouchersApplied = {
 }
 
 const digitalVouchersAvailable = {
-  title: `You have ${numberOfAppliedAvailable('available')} vouchers Available!!`,
-  description: `Click the button below to see all your ${numberOfAppliedAvailable('available')} Available Vouchers`,
+  title: `You have ${numberOfAppliedAvailable('available', trolleyType)} vouchers Available!!`,
+  description: `Click the button below to see all your ${numberOfAppliedAvailable('available', trolleyType)} Available Vouchers`,
   btnText: 'View All Available Vouchers',
   descriptionColor: '#2356AA',
   titleBgColor: '#2356AA',
@@ -272,8 +374,8 @@ const digitalVouchersAvailable = {
 }
 
 const digitalVouchersAppliedAvailable = {
-  title: `You have ${numberOfAppliedAvailable('applied')} vouchers Applied and ${numberOfAppliedAvailable('available')} vouchers Available!!`,
-  description: `Click the button below to see all your ${numberOfAppliedAvailable('available')} vouchers available and ${numberOfAppliedAvailable('applied')} Applied Vouchers`,
+  title: `You have ${numberOfAppliedAvailable('applied', trolleyType)} vouchers Applied and ${numberOfAppliedAvailable('available', trolleyType)} vouchers Available!!`,
+  description: `Click the button below to see all your ${numberOfAppliedAvailable('available', trolleyType)} vouchers available and ${numberOfAppliedAvailable('applied', trolleyType)} Applied Vouchers`,
   btnText: 'View All Available and Applied Vouchers',
   descriptionColor: '#2356AA',
   titleBgColor: '#2356AA',
@@ -350,8 +452,6 @@ if (digitalVouchersAvailableContent && !digitalVouchersAllExpired()) {
       data-title-font-color="${digitalVouchersAvailable.titleFontColor}"
       data-btn-bg-color="${digitalVouchersAvailable.btnBgColor}"
       data-btn-font-color="${digitalVouchersAvailable.btnFontColor}"
-      data-number-vouchers-applied="${digitalVouchersAvailable.vouchersApplied}"
-      data-number-vouchers-available="${digitalVouchersAvailable.vouchersAvailable}"
     ></digital-voucher-available>
   `;
 }
@@ -368,8 +468,6 @@ if (digitalVouchersAppliedAvailableContent && !digitalVouchersAllExpired()) {
       data-title-font-color="${digitalVouchersAppliedAvailable.titleFontColor}"
       data-btn-bg-color="${digitalVouchersAppliedAvailable.btnBgColor}"
       data-btn-font-color="${digitalVouchersAppliedAvailable.btnFontColor}"
-      data-number-vouchers-applied="${digitalVouchersAppliedAvailable.vouchersApplied}"
-      data-number-vouchers-available="${digitalVouchersAppliedAvailable.vouchersAvailable}"
     ></digital-voucher-applied-available>
   `;
 }
@@ -436,7 +534,8 @@ class DigitalVoucher extends HTMLElement {
       titleBgColor: this.getAttribute('data-title-bg-color'),
       titleFontColor: this.getAttribute('data-title-font-color'),
       btnBgColor: this.getAttribute('data-btn-bg-color'),
-      trolleyType: this.getAttribute('data-trolley-type'),
+      clickAndCollect: this.getAttribute('data-click-and-collect'),
+      delivery: this.getAttribute('data-delivery'),
       btnText: this.getAttribute('data-btn-text'),
       btnFontColor: this.getAttribute('data-btn-font-color'),
       termsAndConditions: this.getAttribute('data-terms-and-conditions')
@@ -587,7 +686,7 @@ class DigitalVouchersPanel extends HTMLElement {
         <h4>Vouchers Applied</h4>
       </div>
       <div class="panel-body">  
-        ${digitalVouchersFilter('applied', true, 'panel')}
+        ${digitalVouchersFilter('applied', true, 'panel', trolleyType)}
       </div>
     </div>
 
@@ -596,7 +695,7 @@ class DigitalVouchersPanel extends HTMLElement {
         <h4>Vouchers Available</h4>
       </div>
       <div class="panel-body">
-      ${digitalVouchersFilter('applied', false, 'panel')}
+      ${digitalVouchersFilter('applied', false, 'panel', trolleyType)}
       </div>
   </div>
 </div>
