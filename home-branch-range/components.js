@@ -189,7 +189,7 @@ const changeBranchModal = (modal, trolley) => {
                   <tr> 
                     <th>Branch Name</th>
                     <th>Address</th>
-                    <th>${trolley}</th>
+                    <th>Click And Collect</th>
                     <th>Select</th>
                   </tr>
                 </thead>
@@ -198,7 +198,7 @@ const changeBranchModal = (modal, trolley) => {
                     <tr>
                       <td>${branch.name}</td>
                       <td>${branch.address.street ? branch.address.street + `,<br>` : ''}${branch.address.address2 ? branch.address.address2 + `,<br>` : ''} ${branch.address.townCity ? branch.address.townCity + `,<br>` : ''} ${branch.address.postCode ? branch.address.postCode : ''}</td>
-                      <td>${branch.currentBranch === true && branch[trolleyTypeMapping(trolley)] === true ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch[trolleyTypeMapping(trolley)] === true ? `Available at this Branch ` : `Not available at this branch` }</td>
+                      <td>${branch.currentBranch === true && branch[trolleyTypeMapping(trolley)] === true ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch[trolleyTypeMapping(trolley)] === true ? `Available at this Branch ` : `Extended Range Collect Only` }</td>
                       <td class="selectBranch">
                         <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``} value="${branch.id}">
                       </td>
@@ -301,7 +301,10 @@ const injectHbrChangeCcButton = () => {
     text: sitecoreGlobalDatasource.changeCcBranchBtn 
   }
   
-  if (!isDelivery) { 
+  if (!isDelivery) {
+    const clickAndCollectTrolleyMobileDiv = document.querySelector('#shopping-header-mobile #search-bar #mini-trolley-mobile #click-collect');
+    clickAndCollectTrolleyMobileDiv.parentElement.classList.remove('p-2');
+    clickAndCollectTrolleyMobileDiv.parentElement.classList.add('my-2');
     clickAndCollectTrolleyMobile.children[0].after(homeBranchRangeBtns(buttonVars, 'full'));
   } else {
     mobileCheckoutDiv.before(homeBranchRangeBtns(buttonVars, 'full', 50));
@@ -332,7 +335,6 @@ const injectHbrChangeCcButton = () => {
     $('header#shopping-header-desktop .changeCcBranchBtn').css('font-size', '10px');
 
   }
-
   trolleyTypeText === 'Extended Range Collect' ? chooseOrBrowseModal(sitecoreGlobalDatasource.browseOtherBranchModal, trolleyTypeText) : chooseOrBrowseModal(sitecoreGlobalDatasource.chooseCcBranchModal, 'Click & Collect');
 }
 
