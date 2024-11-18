@@ -338,7 +338,7 @@ const injectHbrChangeCcButton = () => {
   trolleyTypeText === 'Extended Range Collect' ? chooseOrBrowseModal(sitecoreGlobalDatasource.browseOtherBranchModal, trolleyTypeText) : chooseOrBrowseModal(sitecoreGlobalDatasource.chooseCcBranchModal, 'Click & Collect');
 }
 
-const injectHbrDeliveryButton = () => {
+const injectHbrBrowseOtherBranchButton = () => {
  
   const buttonVars = {
     type: 'browseOtherBranchRangesBtn',
@@ -392,7 +392,7 @@ if (clickAndCollectTrolley && deliveryTrolley) {
   injectHbrChangeCcButton();
   addHomeBranchRangeName('clickAndCollect');
 } else {
-  injectHbrDeliveryButton();
+  injectHbrBrowseOtherBranchButton();
   addHomeBranchRangeName('delivery');
 }
 
