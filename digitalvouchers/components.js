@@ -634,8 +634,9 @@ class DigitalVoucher extends HTMLElement {
 
   clickShopNow = (event) => {
         var activeTrolley = document.querySelector('#mini-trolley .active');
-        if((activeTrolley.id == 'click-collect' && this.voucher.delivery) ||
-            (activeTrolley.id == 'delivery' && this.voucher.clickAndCollect)) {
+        if(!(this.voucher.delivery === "true" && this.voucher.clickAndCollect === "true") &&
+            ((activeTrolley.id == 'click-collect' && this.voucher.delivery === "true") ||
+            (activeTrolley.id == 'delivery' && this.voucher.clickAndCollect === "true"))) {
 
             event.preventDefault();
 
