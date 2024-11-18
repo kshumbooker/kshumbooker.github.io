@@ -14,7 +14,11 @@ const interfaceData = {
     clbprice: {
       heading: 'Date,Country Code,Depot Number,Child Article Code,Saleable Unit Code,Weight Type,Number of Items in a Case,Club eg H13333,WSP Collect Price,WSP Delivered Price,WSP OE Price,WSP Click & Collect Price,WSP Spare4,Recommended Retail Price,POR,Delivered POR,OE POR,Click & Collect POR,Spare POR,Start Date, End Date',
       regex: /^(.{8})(.{2})(.{3})(.{6})(.{6})(.{1})(.{8})(.{6})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{5})(.{5})(.{5})(.{5})(.{5})(.{8})(.{8})$/d
-    }, 
+    },
+    prodref: {
+      heading: 'PRODREF-STORE-ID,PRODREF-SUCODE,PRODREF-CORE-IN-EVERY-STORE,PRODREF-GREEN-TICKET,PRODREF-SUPER-GREEN-TICKET,PRODREF-CORE-IN-EVERY-STORE',
+      regex: /^(.{3})(.{6})(.{1})(.{1})(.{1})(.{1})$/d
+    },
     product: {
       heading: 'PRODTRAN-STORE-ID,PRODTRAN-HUB,PRODTRAN-SUCODE,PRODTRAN-ARTICLE-CODE,PRODTRAN-MIDAS-SPLIT-NUM,PRODTRAN-PRICE,PRODTRAN-ITM-IN-SELL-UNT,PRODTRAN-PROMO,PRODTRAN-UNITID,PRODTRAN-RRP,PRODTRAN-PREV-PRC,PRODTRAN-POR,PRODTRAN-ISNEW,PRODTRAN-ISDEL,PRODTRAN-LEAD-TIME-STATUS,PRODTRAN-PRICE-START,PRODTRAN-PRICE-END,PRODTRAN-STORE-ORDER-GROUP,PRODTRAN-LONDIS-ORDER-GROUP',
       regex: /^(.{3})(.{2})(.{6})(.{6})(.{3})(?<decimal1_2>[^.]{8})(?<decimal2_3>[^.]{6})(.{1})(.{6})(?<decimal3_2>[^.]{8})(?<decimal4_2>[^.]{8})(?<decimal5_2>[^.]{4})(.{1})(.{1})(.{1})(.{8})(.{8})(.{2})(.{1})$/d
@@ -58,6 +62,10 @@ const interfaceData = {
     custcredit: {
       heading: 'Customer Number,Customers Total Credit Limit,Overall Credit Limit status **,Payment Day Number,No of credit days,Extended Credit Days,No of weeks credit,First Payment date,Terms',
       regex: /^(.{9})(.{20})(.{2})(.{1})(.{2})(.{1})(.{2})(.{8})(.{100})$/d
+    },
+    depot: {
+      heading: 'INTDEPOT-STORE-ID,INTDEPOT-HUB-ID,INTDEPOT-NAME,INTDEPOT-ADDR1,INTDEPOT-ADDR2,INTDEPOT-ADDR3,INTDEPOT-ADDR4,INTDEPOT-ADDR5,INTDEPOT-ADDR6,INTDEPOT-CONTACT,INTDEPOT-EMAIL,INTDEPOT-TEL,INTDEPOT-FAX,INTDEPOT-ISDEL,INTDEPOT-COUNTRY',
+      regex: /^(.{3})(.{2})(.{32})(.{32})(.{32})(.{32})(.{32})(.{32})(.{32})(.{50})(.{100})(.{32})(.{32})(.{1})(.{2})$/d
     },
     dropshipsuppcust: {
       heading: 'INTCUST-CUSTNO,SUPPLIER-SUPPNO,SUPP-CUST-RELATIONSHIP-STATUS,CUSTOMER-REQUEST-DT,APPROVAL-DT,DISAPPROVED-DT',
