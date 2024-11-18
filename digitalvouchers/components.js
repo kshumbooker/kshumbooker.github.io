@@ -540,6 +540,13 @@ class DigitalVouchersNotification extends HTMLElement {
     this.innerHTML = `
       ${this.template().trim()}
     `;
+
+    const closeBtn = this.querySelector('button.close');
+      if(closeBtn) {
+          closeBtn.addEventListener('click', (event) => {
+              Cookies.set('VouchersNotificationBar', new Date().toISOString())
+          });
+      }
   }
 
   template = () => `
