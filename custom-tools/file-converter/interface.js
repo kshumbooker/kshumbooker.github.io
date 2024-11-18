@@ -5,19 +5,23 @@ const interfaceData = {
   },
   stdprice: {
       heading: 'Date,Country Code,Depot Number,Child Article Code,Saleable Unit Code,Weight Type,Number of Items in a Case,Promo Indicator,WSP Collect Price,Local Price Indicator,Standard WSP MIDAS FIELD,Standard WSP Delivered MIDAS FIELD,Start Date,End Date,Delivered Price,Online Exc Price,Click & Collect Price,Spare,Recommended Retail Price,POR,Delivered POR,Online Exclusive POR,Click & Collect POR,Spare POR,MUP WSP Collect Price,MUP Delivered Price,MUP Online Exclusive,MUP Click & Collect,MUP Spare,Promotion No,Prom Collect WSP,Prom Delivered Price,Prom Online Exclusive,Prom Click & Collect,Prom Spare,Pre Promotion Price WSP,Pre Promotion Price Delivered,Pre Promotion Price OE,Pre Promotion Price Click & Collect,Pre Promotion Price Spare,Recommended Retail Price,POR,Delivered POR,Online Exclusive POR,Click & Collect POR,Spare POR,Prom Start Date,Prom End Date',
-      regex: /^(\d{8})([A-Z]{2})(\d{3})(\d{6})(\d{6})([A-Z])(\d{5,7}\.\d{2})([A-Z0]|\s)(\d{5,7}\.\d{2})([A-Z]|\s)(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{8})(\d{8})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})([A-Z]\d{4}|\s+)(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{8})(\d{8})$/d,
+      regex: /^(.{8})(.{2})(.{3})(.{6})(.{6})(.{1})(.{8})(.{1})(.{9})(.{1})(.{9})(.{9})(.{8})(.{8})(.{9})(.{9})(.{9})(.{9})(.{9})(.{5})(.{5})(.{5})(.{5})(.{5})(.{9})(.{9})(.{9})(.{9})(.{9})(.{5})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{5})(.{5})(.{5})(.{5})(.{5})(.{8})(.{8})$/d,
     },
     fasprice: {
       heading: 'Date,Country Code,Depot Number,Child Article Code,Saleable Unit Code,Weight Type,Number of Items in a Case,Fascia Code,Promotion No,WSP Collect Price,WSP Delivered Price,WSP Online Exclusive,WSP Click & Collect Price,WSP Spare4,Pre Promotion Price WSP,Pre Promotion Price Delivered,Pre Promotion Price OE,Pre Promotion Price Click & Collect,Pre Promotion Price Spare4,Recommended Retail Price,POR,Delivered POR,Online Exclusive POR,Click & Collect POR,Spare POR,Promotion Start,Promotion End',
-      regex: /^(\d{8})([A-Z]{2})(\d{3})(\d{6})(\d{6})([A-Z])(\d{5,7}\.\d{2})([A-Z]{2})(\w{5})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{8})(\d{8})$/d
+      regex: /^(.{8})(.{2})(.{3})(.{6})(.{6})(.{1})(.{8})(.{2})(.{5})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{5})(.{5})(.{5})(.{5})(.{5})(.{8})(.{8})$/d
     },
     clbprice: {
       heading: 'Date,Country Code,Depot Number,Child Article Code,Saleable Unit Code,Weight Type,Number of Items in a Case,Club eg H13333,WSP Collect Price,WSP Delivered Price,WSP OE Price,WSP Click & Collect Price,WSP Spare4,Recommended Retail Price,POR,Delivered POR,OE POR,Click & Collect POR,Spare POR,Start Date, End Date',
-      regex: /^(\d{8})([A-Z]{2})(\d{3})(\d{6})(\d{6})([A-Z])(\d{5,7}\.\d{2})(\w{6})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{5,7}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{2}\.\d{2})(\d{8})(\d{8})$/d
+      regex: /^(.{8})(.{2})(.{3})(.{6})(.{6})(.{1})(.{8})(.{6})(.{9})(.{9})(.{9})(.{9})(.{9})(.{9})(.{5})(.{5})(.{5})(.{5})(.{5})(.{8})(.{8})$/d
     }, 
     product: {
       heading: 'PRODTRAN-STORE-ID,PRODTRAN-HUB,PRODTRAN-SUCODE,PRODTRAN-ARTICLE-CODE,PRODTRAN-MIDAS-SPLIT-NUM,PRODTRAN-PRICE,PRODTRAN-ITM-IN-SELL-UNT,PRODTRAN-PROMO,PRODTRAN-UNITID,PRODTRAN-RRP,PRODTRAN-PREV-PRC,PRODTRAN-POR,PRODTRAN-ISNEW,PRODTRAN-ISDEL,PRODTRAN-LEAD-TIME-STATUS,PRODTRAN-PRICE-START,PRODTRAN-PRICE-END,PRODTRAN-STORE-ORDER-GROUP,PRODTRAN-LONDIS-ORDER-GROUP',
       regex: /^(.{3})(.{2})(.{6})(.{6})(.{3})(?<decimal1_2>[^.]{8})(?<decimal2_3>[^.]{6})(.{1})(.{6})(?<decimal3_2>[^.]{8})(?<decimal4_2>[^.]{8})(?<decimal5_2>[^.]{4})(.{1})(.{1})(.{1})(.{8})(.{8})(.{2})(.{1})$/d
+    },
+    enhancedhistory: {
+      heading: 'INTEPURCH-HD-INVOICE-DATE,INTEPURCH-HD-INVOICE-NO,INTEPURCH-HD-STORE-ID,INTEPURCH-HD-CUSTNO,INTEPURCH-HD-CUST-CAT-CD,INTEPURCH-HD-TILL-TIME,INTEPURCH-HD-DEL-IND,INTEPURCH-HD-SOP-FLAG,INTEPURCH-HD-ORDER-METHOD,INTEPURCH-HD-PICK-METHOD,INTEPURCH-HD-AUTO-INV,INTEPURCH-HD-PO-ORDER-NO,INTEPURCH-HD-HOW-BOOKED-IN,INTEPURCH-HD-ORDER-STOCK-TYPE,INTEPURCH-DL-SUCODE,INTEPURCH-DL-INV-LINE-TYPE,INTEPURCH-DL-QUANTITY,INTEPURCH-DL-LOCAL-SELL-VALUE,INTEPURCH-TOTAL-UNITS',
+      regex: /^(.{8})(.{10})(.{3})(.{9})(.{2})(.{4})(.{1})(.{1})(.{1})(.{1})(.{1})(.{11})(.{1})(.{1})(.{6})(.{1})(.{6})(.{11})(.{7})$/d
     },
     category: {
       heading: 'INTCTGRY-CATEGORYID,INTCTGRY-PARENTID,INTCTGRY-NAME,INTPRODG-ISDEL',
@@ -50,6 +54,10 @@ const interfaceData = {
     custpref: {
       heading: 'INTPREF-ZCUSTOMER,INTPREF-CDATE,INTPREF-CTIME,INTPREF-ZBOOK_POST,INTPREF-ZTP_POST,INTPREF-ZBOOK_PHONE,INTPREF-ZTP_PHONE,INTPREF-ZBOOK_EMAILID1,INTPREF-ZBOOK_EMAIL1,INTPREF-ZTP_EMAIL1,INTPREF-ZCHANGE_DATE_EMAIL1,INTPREF-ZBOOK_EMAILID2,INTPREF-ZBOOK_EMAIL2,INTPREF-ZTP_EMAIL2,INTPREF-ZCHANGE_DATE_EMAIL2,INTPREF-ZBOOK_WMAIL,INTPREF-ZTP_WMAIL,INTPREF-ZCHANGE_DATE_WMAIL,INTPREF-ZBOOK_SMSNO1,INTPREF-ZBOOK_SMS1,INTPREF-ZTP_SMS1,INTPREF-ZBOOK_SMSNO2,INTPREF-ZCUST_GUID,INTPREF-ZECONOPID,INTPREF-ZRTFACILITYID,INTPREF-ZTOBSALES',
       regex: /^(.{9})(.{8})(.{6})(.{1})(.{1})(.{1})(.{1})(.{100})(.{1})(.{1})(.{8})(.{100})(.{1})(.{1})(.{8})(.{1})(.{1})(.{8})(.{32})(.{1})(.{1})(.{32})(.{36})(.{17})(.{32})(.{36})$/d
+    },
+    custcredit: {
+      heading: 'Customer Number,Customers Total Credit Limit,Overall Credit Limit status **,Payment Day Number,No of credit days,Extended Credit Days,No of weeks credit,First Payment date,Terms',
+      regex: /^(.{9})(.{20})(.{2})(.{1})(.{2})(.{1})(.{2})(.{8})(.{100})$/d
     },
     dropshipsuppcust: {
       heading: 'INTCUST-CUSTNO,SUPPLIER-SUPPNO,SUPP-CUST-RELATIONSHIP-STATUS,CUSTOMER-REQUEST-DT,APPROVAL-DT,DISAPPROVED-DT',
