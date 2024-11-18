@@ -624,27 +624,26 @@ class DigitalVoucher extends HTMLElement {
   }
 
   clickShopNow = (event) => {
-    let trolley = this.voucher.trolley;
+        var activeTrolley = document.querySelector('#mini-trolley .active');
+        if((activeTrolley.id == 'click-collect' && this.voucher.delivery) ||
+            (activeTrolley.id == 'delivery' && this.voucher.clickAndCollect)) {
 
-    var activeTrolley = document.querySelector('#mini-trolley .active');
-    if((activeTrolley.id == 'click-collect' && trolley == 'delivery') ||
-        (activeTrolley.id == 'delivery' && trolley == 'clickandcollect')) {
+            event.preventDefault();
 
-        event.preventDefault();
+            const switchTrolleyModalDiv = document.createElement('div');
+            switchTrolleyModalDiv.innerHTML = switchTrolleyModal({ title: this.getAttribute('data-switch-title'), text: this.getAttribute('data-switch-text') });
+            document.body.appendChild(switchTrolleyModalDiv);
 
-        const switchTrolleyModalDiv = document.createElement('div');
-        switchTrolleyModalDiv.innerHTML = switchTrolleyModal({ title: this.getAttribute('data-switch-title'), text: this.getAttribute('data-switch-text') });
-        document.body.appendChild(switchTrolleyModalDiv);
+            var url = event.target.getAttribute('href');
 
-        var url = event.target.getAttribute('href');
+            $('#switchTrolleyModal').modal('show');
 
-        $('#switchTrolleyModal').modal('show');
-
-        setTimeout(() => {
-            ActivateTrolley(trolley, false, url);
-        }, "2000");
+            const trolley = this.voucher.delivery ? "delivery" : "clickAndCollect";
+            setTimeout(() => {
+                ActivateTrolley(trolley, false, url);
+            }, "2000");
+        }
     }
-  }
 }
 
 
