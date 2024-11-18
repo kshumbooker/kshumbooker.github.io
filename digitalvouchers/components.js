@@ -532,6 +532,7 @@ class DigitalVouchersNotification extends HTMLElement {
       buttonBgColor: this.getAttribute('data-button-bg-color'),
       buttonText: this.getAttribute('data-button-text'),
       buttonTextColor: this.getAttribute('data-button-text-color'),
+      buttonUrl: this.getAttribute('data-button-url'),
     }
     this.render();
   }
@@ -551,7 +552,7 @@ class DigitalVouchersNotification extends HTMLElement {
 
   template = () => `
     <nav class="alert alert-dismissible" style="background: ${this.notification.backgroundColor}" role="alert">
-      <span class="digitalVouchersNotificationMsg" style="color: ${this.notification.textColor}">${this.notification.text}</span> <a href="" class="btn" style="background: ${this.notification.buttonBgColor}; color: ${this.notification.buttonTextColor}">${this.notification.buttonText}</a>
+      <span class="digitalVouchersNotificationMsg" style="color: ${this.notification.textColor}">${this.notification.text}</span> <a href="${this.notification.buttonUrl}" class="btn" style="background: ${this.notification.buttonBgColor}; color: ${this.notification.buttonTextColor}">${this.notification.buttonText}</a>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -559,6 +560,7 @@ class DigitalVouchersNotification extends HTMLElement {
   `;
 
 }
+
 
 class DigitalVoucher extends HTMLElement {
   constructor() {
