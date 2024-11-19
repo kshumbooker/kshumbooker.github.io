@@ -511,7 +511,7 @@ if (digitalVouchersAppliedAvailableContent && !digitalVouchersAllExpired()) {
 
 
 $(window).scroll(() => {
-  if ($(window).scrollTop() >= $('#shopping-header-desktop').height() + $('.nav-blue').height() + 20) {
+  if ($(window).scrollTop() >= $('#shopping-header-desktop').height() + $('.nav-blue').height() + 50) {
     $('#booker_trolley_first_aside').css('position', 'fixed');
   } else {
     $('#booker_trolley_first_aside').css('position', 'sticky');
