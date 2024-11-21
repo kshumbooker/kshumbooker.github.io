@@ -62,7 +62,7 @@ header .suggestions-result div a:hover {
 
 header .suggestions-result {
   /*left: 140px;*/
-  width: calc(100% - 3.2em)
+  width: calc(100% - 3em)
 	max-height: 500px;
 	overflow: auto;
 	border-bottom-left-radius: 0;
