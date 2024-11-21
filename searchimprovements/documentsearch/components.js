@@ -38,7 +38,7 @@ let newSearchInputHtml = `
 
 
 
-[...searchInput].map(search => {
+/*[...searchInput].map(search => {
 
   let documentSearchUl = document.createElement('div');
 
@@ -47,7 +47,7 @@ let newSearchInputHtml = `
   documentSearchUl.innerHTML = newSearchInputHtml;
   
   search.insertBefore(documentSearchUl, search.firstChild);
-});
+});*/
 
   let suggestionResults = document.querySelectorAll('.suggestions-result');
 
