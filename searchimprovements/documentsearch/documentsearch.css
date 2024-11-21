@@ -162,8 +162,6 @@ header .suggestions-result {
 
 	@media (max-width: 900px) {
 		header .suggestions-result {
-			left: 140px;
-			width: calc(100% - 15.5em);
 			box-shadow: none;
 		}
 
