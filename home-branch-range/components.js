@@ -2,7 +2,7 @@ const account = {
   customerNumber: 700108811,
   branchId: 266,
   deliveryBranch: 'Northampton',
-  clickAndCollectBranch: 'Northampton'
+  clickAndCollectBranch: 'Bedford'
 }
 
 const branches = [
