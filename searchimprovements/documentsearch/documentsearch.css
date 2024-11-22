@@ -170,11 +170,6 @@ header .suggestions-result {
 
 	@media (max-width: 576px) {
 
-		header .suggestions-result {
-			left: 0;
-			width: 100%;
-		}
-
 		.documentSearchBtn, .documentSearchPrepend {
 			width: max-content;
 		}
