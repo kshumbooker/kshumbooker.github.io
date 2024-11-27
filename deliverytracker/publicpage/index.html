@@ -105,12 +105,18 @@
 		width: 100%;
 	}
 
+    .remember-me {
+        width: 20px;
+        transform: scale(2);
+        margin-right: 5px;
+    }
 
-	  .form-control,
+
+	 /* .form-control,
 	  .input-group-text
 	  {
 		border-radius: 0.5rem;
-	  }
+	  } */
 
 		input::-ms-input-placeholder { /* Edge 12-18 */
 			color: #D3D3D3 !important;
@@ -170,40 +176,38 @@
 
 
 </style>
-<div class="container-fluid mt-4 mb-4">
+<div class="container-fluid my-4">
     <img src="https://www.booker.co.uk/images/booker.png">
 </div>
 <div class="container-fluid booker booker-bg align-items-center">
 
 <form action="/track-tag" class="form" id="appForm" method="post" novalidate="true"><input id="uid" name="uid" type="hidden" value="a6392849-35a8-45b7-a445-beb96a041317" /><input name="__RequestVerificationToken" type="hidden" value="cJ0N2sXcjWs9keoXptOW5qs7I2yYgYfoC7Fqw9DmDv6gBspv8YShApDmYXtAYheQb6dTVcQqANoklYZ0RPo1FWJnnrV1VFYkV0OoYw_jOio29XEB43vv5lACxBGJNbol8epOaN12GnltJ0ZrZcgpYg2" />        <div class="mb-3">
-            <h4 class="mb-3 font-weight-bold"><img src="https://www.booker.co.uk/images/arrow-web.png" class="icon"> TRACK MY DELIVERIES</h4>
+            <h4 class="mb-3 font-weight-bold"><img src="https://www.booker.co.uk/images/arrow-web.png" width="48" class="icon"> TRACK MY DELIVERIES</h4>
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group my-4">
             <div class="input-group-prepend">
                 <span class="input-group-text">Customer ID</span>
             </div>
             <input class="form-control" id="CustomerNumber" maxlength="9" name="CustomerNumber" placeholder="Enter your customer number" type="text" value="" />
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group my-4">
             <div class="input-group-prepend">
                 <span class="input-group-text trackTagId-text">Track Tag ID</span>
             </div>
             <input class="form-control" id="TrackTagID" maxlength="12" name="TrackTagID" oninput="this.value = this.value.toUpperCase()" placeholder="Enter your TrackTag ID" type="text" value="" />
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="checkbox mb-3">
+        <div class="input group d-flex justify-content-start">
+            <div class="checkbox">
                 <label>
-                  <input type="checkbox" value="remember-me"> Remember My Details
+                  <input type="checkbox" class="remember-me" value="remember-me"> Remember My Details
                 </label>
             </div>
         </div>
-        <div class="row">
-            <div class="col-6 text-left"><a href="/Help/help#id92f8568e" target="_blank" class="forgotten-customer">Forgotten your Customer Number?</a></div>
-            <div class="col-6">
-                <div class="input-group mb-3">
-                    <button type="submit" id="trackMyDeliveries" class="btn btn-primary btn-block">Track My Deliveries</button>
-                </div>
-            </div>
+        <div class="input-group my-4 d-flex justify-content-start">
+            <a href="/Help/help#id92f8568e" target="_blank" class="forgotten-customer">Forgotten your Customer Number?</a>
+        </div>
+        <div class="input-group my-4 d-flex justify-content-start">
+            <button type="submit" id="trackMyDeliveries" class="btn btn-primary">Track My Deliveries</button>   
         </div>
 </form></div>
 
