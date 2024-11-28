@@ -111,6 +111,10 @@
         margin-right: 5px;
     }
 
+    .forgotten-customer {
+        font-size: 85%;
+    }
+
 
 	 /* .form-control,
 	  .input-group-text
@@ -131,12 +135,6 @@
 				color: #062F6E;
 				font-weight: bold;
 				background-color: #ffffff;
-			}
-
-
-
-			.forgotten-customer {
-				font-size: 80%;
 			}
 
 
@@ -196,15 +194,12 @@
             </div>
             <input class="form-control" id="TrackTagID" maxlength="12" name="TrackTagID" oninput="this.value = this.value.toUpperCase()" placeholder="Enter your TrackTag ID" type="text" value="" />
         </div>
-        <div class="input group d-flex justify-content-start">
-            <div class="checkbox">
-                <label>
-                  <input type="checkbox" class="remember-me" value="remember-me"> Remember My Details
-                </label>
-            </div>
-        </div>
-        <div class="input-group my-4 d-flex justify-content-start">
-            <a href="/Help/help#id92f8568e" target="_blank" class="forgotten-customer">Forgotten your Customer Number?</a>
+        <div class="row d-flex my-4 justify-content-between align-items-baseline">
+                <div class="checkbox">
+                    <label><input type="checkbox" class="remember-me" value="remember-me"> Remember My Details</label>
+                </div>
+                <a href="/Help/help#id92f8568e" target="_blank" class="forgotten-customer">Forgotten your Customer Number?</a>
+            
         </div>
         <div class="input-group my-4 d-flex justify-content-start">
             <button type="submit" id="trackMyDeliveries" class="btn btn-primary">Track My Deliveries</button>   
@@ -421,4 +416,7 @@
                 trackInteractions: false
             });
         </script>
+
+
+
 </html>
