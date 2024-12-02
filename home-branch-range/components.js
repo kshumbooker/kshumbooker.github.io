@@ -2,7 +2,7 @@ const account = {
   customerNumber: 700108811,
   branchId: 266,
   deliveryBranch: 'Northampton',
-  clickAndCollectBranch: 'Bedford'
+  clickAndCollectBranch: 'Northampton'
 }
 
 const branches = [
@@ -263,7 +263,7 @@ const changingBranchTrolleyModal = (modal) => {
   `;
 }
 
-const switchTrolleyModal = (modal) => {
+const switchTrolleyModalNew = (modal) => {
   return `
   <div id="switchTrolleyModal" class="modal" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -386,7 +386,7 @@ const populateChangingBranchModal = () => {
 
 if (clickAndCollectTrolley && deliveryTrolley) {
   injectHbrChangeCcButton();
-  addHomeBranchRangeName('clickAndCollect');
+  adHomeBranchRangeName('clickAndCollect');
   addHomeBranchRangeName('delivery');
 } else if (clickAndCollectTrolley) {
   injectHbrChangeCcButton();
@@ -453,7 +453,7 @@ if (alternative == 'alt') {
 
 if (document.querySelector('#click-collect') && document.querySelector('#delivery')) {
   const switchTrolleyModalDiv = document.createElement('div');
-  switchTrolleyModalDiv.innerHTML = switchTrolleyModal(sitecoreGlobalDatasource.switchingTrolleyModal);
+  switchTrolleyModalDiv.innerHTML = switchTrolleyModalNew(sitecoreGlobalDatasource.switchingTrolleyModal);
   document.body.appendChild(switchTrolleyModalDiv);
   document.querySelector('#delivery').addEventListener('click', () => {
     $('#switchTrolleyModal').modal('show');
