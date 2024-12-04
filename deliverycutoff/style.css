@@ -48,7 +48,7 @@ header.shopping-header #counters-non-facia .counter .dots {
 header#shopping-header-mobile #counters-non-facia {
     margin-bottom: 7.5px !important;
     display: flex;
-    flex-direction: column !important;
+    /*flex-direction: column !important;*/
 }
 
 html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia .counter .col {
@@ -100,6 +100,7 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
     header.shopping-header #counters-non-facia .title {
         margin-left: 3.4em;
     }
+
 }
 
 @media (max-width:767px) {
@@ -128,6 +129,12 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
     header.shopping-header #counters-non-facia .title {
         margin-left: 4.5em;
     }
+
+    header#shopping-header-mobile #counters-non-facia {
+        flex-direction: column;
+    }
+
+    
 
     /*IE11 cabecera Londis*/
     html[data-useragent*='rv:11.0'] header.shopping-header #counters-non-facia #ambient-order-counter, header.shopping-header #counters-non-facia #ambient-order-counter {
@@ -204,4 +211,8 @@ html[data-useragent*='rv:11.0'] header.shopping-header #counters-non-facia .coun
     html[data-useragent*='rv:11.0'] header.shopping-header #counters-non-facia .counter {
         width: 8em;
     }
+}
+
+header#shopping-header-mobile.shopping-header #counters-non-facia .title {
+    width:inherit;
 }
