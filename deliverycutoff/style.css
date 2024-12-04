@@ -134,7 +134,10 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
         flex-direction: column;
     }
 
-    
+    header#shopping-header-mobile #fresh-order-counter .title.title.green-title, header#shopping-header-mobile #fresh-order-counter .counter,
+    header#shopping-header-mobile #ambient-order-counter .title.title.orange-title {
+        width: 35%;
+    }
 
     /*IE11 cabecera Londis*/
     html[data-useragent*='rv:11.0'] header.shopping-header #counters-non-facia #ambient-order-counter, header.shopping-header #counters-non-facia #ambient-order-counter {
@@ -216,3 +219,5 @@ html[data-useragent*='rv:11.0'] header.shopping-header #counters-non-facia .coun
 header#shopping-header-mobile.shopping-header #counters-non-facia .title {
     width:inherit;
 }
+
+
