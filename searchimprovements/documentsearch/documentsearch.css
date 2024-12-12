@@ -164,7 +164,9 @@ header .suggestions-result {
 		header .suggestions-result {
 			box-shadow: none;
 		}
-
+		.priceRrp .rrp {
+			display: none;
+		}
 		
 	}
 
