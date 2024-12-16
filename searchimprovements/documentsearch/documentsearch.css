@@ -177,6 +177,10 @@ header .suggestions-result {
 			align-content: start;
 		}
 
+		header .suggestions-result {
+			width: 100%;
+		}
+
 		.documentSearchBtn, .documentSearchPrepend {
 			width: max-content;
 		}
@@ -203,6 +207,12 @@ header .suggestions-result {
 
 		header .suggestions-result .productImg {
 			margin-top: 3px;
+			padding-left: 0;
+
+		}
+
+		header .suggestions-result .productDetails {
+			font-size: 75%;
 		}
 
 		header .suggestions-result div .searchUrl {
