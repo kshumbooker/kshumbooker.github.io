@@ -164,6 +164,7 @@ header .suggestions-result {
 		header .suggestions-result {
 			box-shadow: none;
 		}
+
 		.priceRrp .rrp {
 			display: none;
 		}
@@ -171,6 +172,10 @@ header .suggestions-result {
 	}
 
 	@media (max-width: 576px) {
+
+		header .suggestions-result .keywordsuggestion {
+			align-content: start;
+		}
 
 		.documentSearchBtn, .documentSearchPrepend {
 			width: max-content;
@@ -190,6 +195,14 @@ header .suggestions-result {
 			font-size: 16px;
 			position: relative;
 			right: 1px;
+		}
+
+		header .suggestions-result .price {
+			align-self: flex-start;;
+		}
+
+		header .suggestions-result div .searchUrl {
+			display: inline;
 		}
 
   }
