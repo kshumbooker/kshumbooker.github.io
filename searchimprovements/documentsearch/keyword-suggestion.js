@@ -173,12 +173,12 @@ var suggestion = {
       ];
 
       $.each(searchProducts, function (key, value) {
-         $('.suggestions-result').append('<div class="keywordsuggestion row d-flex justify-content-center align-items-center"><div class="col-3 col-sm-2 col-lg-12 col-xl-1 productImg"><img src="' + value.img + '"></div><div class="col-6 col-sm-8 col-lg-12 col-xl-8 productDetails"><a class="searchUrl" href="/products/search?keywords=' + value.description + '">' + value.description + '</a><p class="volume">Case of ' + value.volume + '</p></div><div class="col-3 col-sm-2 col-lg-12 col-xl-3 priceRrp"><p class="price">&pound;' + value.price + '</p><p class="rrp">RRP: &pound;' + value.rrp + '</p></div></div>');
+         $('.suggestions-result').append('<div class="keywordsuggestion row d-flex justify-content-center align-items-start"><div class="col-3 col-sm-2 col-lg-12 col-xl-1 productImg"><img src="' + value.img + '"></div><div class="col-6 col-sm-8 col-lg-12 col-xl-8 productDetails"><a class="searchUrl" href="/products/search?keywords=' + value.description + '">' + value.description + '</a><p class="volume">Case of ' + value.volume + '</p></div><div class="col-3 col-sm-2 col-lg-12 col-xl-3 priceRrp"><p class="price">&pound;' + value.price + '</p><p class="rrp">RRP: &pound;' + value.rrp + '</p></div></div>');
       });
 
-      $.each(searchDocuments, function (key, value) {
+     /* $.each(searchDocuments, function (key, value) {
         $('.suggestions-result').append('<div class="keywordsuggestion row d-flex justify-content-center align-items-center"><div class="col-xs-12 col-xl-1">' + value.icon + '</div><div class="col-xs-12 col-xl-11"><a href="/documents/search?name=' + value.description + '">' + value.description + '</a><p class="category">' + value.category + '</p></div></div>');
-     });
+     }); */
 
       $('.suggestions-result').css('display', 'block');
   }
