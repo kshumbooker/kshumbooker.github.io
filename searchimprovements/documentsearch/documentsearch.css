@@ -197,8 +197,12 @@ header .suggestions-result {
 			right: 1px;
 		}
 
-		header .suggestions-result .price {
-			align-self: flex-start;;
+		header .suggestions-result .priceRrp, header .suggestions-result .productImg, header .suggestions-result .productDetails {
+			align-self: start;
+		}
+
+		header .suggestions-result .productImg {
+			margin-top: 3px;
 		}
 
 		header .suggestions-result div .searchUrl {
