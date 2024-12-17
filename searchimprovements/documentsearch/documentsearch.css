@@ -216,7 +216,13 @@ header .suggestions-result {
 		}
 
 		header .suggestions-result div .searchUrl {
-			display: inline;
+			overflow: hidden;
+      text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			margin-top: 1px;
 		}
+
 
   }
