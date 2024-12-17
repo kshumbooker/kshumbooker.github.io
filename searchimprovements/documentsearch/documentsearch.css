@@ -212,7 +212,7 @@ header .suggestions-result {
 		}
 
 		header .suggestions-result .productDetails {
-			font-size: 75%;
+			font-size: 80%;
 		}
 
 		header .suggestions-result div .searchUrl {
@@ -222,6 +222,10 @@ header .suggestions-result {
 			-webkit-line-clamp: 2;
 			-webkit-box-orient: vertical;
 			margin-top: 1px;
+		}
+
+		header .suggestions-result .priceRrp {
+			text-align-last: end;
 		}
 
 
