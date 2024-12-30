@@ -104,10 +104,10 @@
                 </div>
                 
                 <div id="counters-non-facia" class="col d-flex justify-content-center">
-                  <div id="fresh-order-counter" class="d-flex mx-3">
-                      <div class="title title green-title">
-                          <p class="mb-0 font-weight-bold">FRESH ORDER</p>
-                          <p class="mb-0">MON 09 DEC </p>
+                  <div id="non-facia-order-counter" class="d-flex mx-3">
+                      <div class="title title non-facia-title">
+                          <p class="mb-0 font-weight-bold">ORDER CUT-OFF</p>
+                          <p class="mb-0 non-facia-date">MON 09 DEC </p>
                       </div>
                       <div>
                           <div class="d-flex counter">
@@ -132,10 +132,10 @@
                           </div>
                       </div>
                   </div>
-                  <div id="ambient-order-counter" class="d-flex mx-3">
-                      <div class="title title orange-title">
-                          <p class="mb-0 font-weight-bold">AMBIENT ORDER</p>
-                          <p class="mb-0">THU 05 DEC </p>
+                  <div id="non-facia-order-counter" class="d-flex mx-3">
+                      <div class="title title non-facia-title">
+                          <p class="mb-0 font-weight-bold">ORDER CUT-OFF</p>
+                          <p class="mb-0 non-facia-date">THU 12 DEC </p>
                       </div>
                       <div>
                           <div class="d-flex counter">
@@ -160,6 +160,34 @@
                           </div>
                       </div>
                   </div>
+                  <div id="non-facia-order-counter" class="d-flex mx-3">
+                    <div class="title title non-facia-title">
+                        <p class="mb-0 font-weight-bold">ORDER CUT-OFF</p>
+                        <p class="mb-0 non-facia-date">SUN 15 DEC </p>
+                    </div>
+                    <div>
+                        <div class="d-flex counter">
+                            <div class="col p-0">
+                                <p class="mb-0 font-weight-bold">05</p>
+                                <p class="mb-0">DAYS</p>
+                            </div>
+                            <div class="col dots">
+                                <p class="mb-0 font-weight-bold ">:</p>
+                            </div>
+                            <div class="col p-0">
+                                <p class="mb-0 font-weight-bold hour-number">10</p>
+                                <p class="mb-0">HOURS</p>
+                            </div>
+                            <div class="col dots">
+                                <p class="mb-0 font-weight-bold">:</p>
+                            </div>
+                            <div class="col p-0">
+                                <p class="mb-0 font-weight-bold">29</p>
+                                <p class="mb-0 text-center">MIN</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
           </div>
 
             </div>
@@ -372,64 +400,94 @@
     </div>
 
 
-    <div id="counters-non-facia" class="col d-flex justify-content-center">
-      <div id="fresh-order-counter" class="d-flex mx-3">
-          <div class="title title green-title">
-              <p class="mb-0 font-weight-bold">FRESH ORDER</p>
-              <p class="mb-0">MON 09 DEC </p>
-          </div>
-          <div>
-              <div class="d-flex counter">
-                  <div class="col p-0">
-                      <p class="mb-0 font-weight-bold">03</p>
-                      <p class="mb-0">DAYS</p>
-                  </div>
-                  <div class="col dots">
-                      <p class="mb-0 font-weight-bold ">:</p>
-                  </div>
-                  <div class="col p-0">
-                      <p class="mb-0 font-weight-bold hour-number">18</p>
-                      <p class="mb-0">HOURS</p>
-                  </div>
-                  <div class="col dots">
-                      <p class="mb-0 font-weight-bold">:</p>
-                  </div>
-                  <div class="col p-0">
-                      <p class="mb-0 font-weight-bold">24</p>
-                      <p class="mb-0 text-center">MIN</p>
+      
+        <div id="counters-non-facia" class="d-flex justify-content-center">
+            <div id="non-facia-order-counter" class="d-flex">
+                <div class="title title non-facia-title">
+                    <p class="mb-0 font-weight-bold">ORDER CUT-OFF</p>
+                    <p class="mb-0 non-facia-date">MON 09 DEC </p>
+                </div>
+                <div>
+                    <div class="d-flex counter">
+                        <div class="col p-0">
+                            <p class="mb-0 font-weight-bold">03</p>
+                            <p class="mb-0">DAYS</p>
+                        </div>
+                        <div class="col dots">
+                            <p class="mb-0 font-weight-bold ">:</p>
+                        </div>
+                        <div class="col p-0">
+                            <p class="mb-0 font-weight-bold hour-number">18</p>
+                            <p class="mb-0">HOURS</p>
+                        </div>
+                        <div class="col dots">
+                            <p class="mb-0 font-weight-bold">:</p>
+                        </div>
+                        <div class="col p-0">
+                            <p class="mb-0 font-weight-bold">24</p>
+                            <p class="mb-0 text-center">MIN</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="non-facia-order-counter" class="d-flex ">
+                <div class="title title non-facia-title">
+                    <p class="mb-0 font-weight-bold">ORDER CUT-OFF</p>
+                    <p class="mb-0 non-facia-date">THU 12 DEC </p>
+                </div>
+                <div>
+                    <div class="d-flex counter">
+                        <div class="col p-0">
+                            <p class="mb-0 font-weight-bold">00</p>
+                            <p class="mb-0">DAYS</p>
+                        </div>
+                        <div class="col dots">
+                            <p class="mb-0 font-weight-bold ">:</p>
+                        </div>
+                        <div class="col p-0">
+                            <p class="mb-0 font-weight-bold hour-number">04</p>
+                            <p class="mb-0">HOURS</p>
+                        </div>
+                        <div class="col dots">
+                            <p class="mb-0 font-weight-bold">:</p>
+                        </div>
+                        <div class="col p-0">
+                            <p class="mb-0 font-weight-bold">54</p>
+                            <p class="mb-0 text-center">MIN</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="non-facia-order-counter" class="d-flex">
+              <div class="title title non-facia-title">
+                  <p class="mb-0 font-weight-bold">ORDER CUT-OFF</p>
+                  <p class="mb-0 non-facia-date">SUN 15 DEC </p>
+              </div>
+              <div>
+                  <div class="d-flex counter">
+                      <div class="col p-0">
+                          <p class="mb-0 font-weight-bold">05</p>
+                          <p class="mb-0">DAYS</p>
+                      </div>
+                      <div class="col dots">
+                          <p class="mb-0 font-weight-bold ">:</p>
+                      </div>
+                      <div class="col p-0">
+                          <p class="mb-0 font-weight-bold hour-number">10</p>
+                          <p class="mb-0">HOURS</p>
+                      </div>
+                      <div class="col dots">
+                          <p class="mb-0 font-weight-bold">:</p>
+                      </div>
+                      <div class="col p-0">
+                          <p class="mb-0 font-weight-bold">29</p>
+                          <p class="mb-0 text-center">MIN</p>
+                      </div>
                   </div>
               </div>
           </div>
-      </div>
-      <div id="ambient-order-counter" class="d-flex mx-3">
-          <div class="title title orange-title">
-              <p class="mb-0 font-weight-bold">AMBIENT ORDER</p>
-              <p class="mb-0">THU 05 DEC </p>
-          </div>
-          <div>
-              <div class="d-flex counter">
-                  <div class="col p-0">
-                      <p class="mb-0 font-weight-bold">00</p>
-                      <p class="mb-0">DAYS</p>
-                  </div>
-                  <div class="col dots">
-                      <p class="mb-0 font-weight-bold ">:</p>
-                  </div>
-                  <div class="col p-0">
-                      <p class="mb-0 font-weight-bold hour-number">04</p>
-                      <p class="mb-0">HOURS</p>
-                  </div>
-                  <div class="col dots">
-                      <p class="mb-0 font-weight-bold">:</p>
-                  </div>
-                  <div class="col p-0">
-                      <p class="mb-0 font-weight-bold">54</p>
-                      <p class="mb-0 text-center">MIN</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-</div>
+      
+    </div>
 
     <div class="row">
         <div class="col d-flex align-items-center">
