@@ -1,3 +1,10 @@
+header.shopping-header #counters-non-facia {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-bottom: 0.5em;
+}
 
 header.shopping-header #counters-non-facia #fresh-order-counter {
     justify-content: flex-start;
@@ -12,6 +19,15 @@ header.shopping-header #counters-non-facia .title {
 header.shopping-header #counters-non-facia .green-title {
     color: #75AD45;
     border-right: 1px solid #75AD45;
+}
+
+header.shopping-header #counters-non-facia .non-facia-title {
+    color: #3CA2F1;
+    border-right: 1px solid #3CA2F1;
+}
+
+header.shopping-header #counters-non-facia .non-facia-title .non-facia-date {
+    color: #2356AA;
 }
 
 header.shopping-header #counters-non-facia .orange-title {
@@ -45,11 +61,6 @@ header.shopping-header #counters-non-facia .counter .dots {
     padding: 0 0.25em !important;
 }
 
-header#shopping-header-mobile #counters-non-facia {
-    margin-bottom: 7.5px !important;
-    display: flex;
-    /*flex-direction: column !important;*/
-}
 
 html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia .counter .col {
     flex-basis: 22px;
@@ -79,6 +90,14 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
 }
 
 @media (max-width:900px) {
+
+    header.shopping-header #counters-non-facia {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 10px;
+        row-gap: 10px
+    }
+
     header.shopping-header #counters-non-facia #ambient-order-counter,
     header.shopping-header #counters-non-facia #fresh-order-counter {
         padding-left: 0em !important;
@@ -151,7 +170,7 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
 
 @media (max-width: 550px) {
     header.shopping-header #counters-non-facia > div:nth-child(2) {
-        padding-left: 0.5rem !important;
+    
     }
 
     header.shopping-header #counters-non-facia .title {
@@ -219,5 +238,7 @@ html[data-useragent*='rv:11.0'] header.shopping-header #counters-non-facia .coun
 header#shopping-header-mobile.shopping-header #counters-non-facia .title {
     width:inherit;
 }
+
+
 
 
