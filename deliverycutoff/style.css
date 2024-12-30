@@ -1,3 +1,4 @@
+
 header.shopping-header #counters-non-facia {
     display: flex;
     flex-wrap: wrap;
@@ -107,7 +108,7 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
     header.shopping-header #counters-non-facia .title {
         width: 5em;
         text-align: left;
-        margin-left: 3.8em;
+        margin-left: 0;
     }
 
     nav.nav-green {
@@ -117,26 +118,21 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
 
 @media (max-width:767px) {
     header.shopping-header #counters-non-facia .title {
-        margin-left: 3.4em;
+        margin-left: 0;
     }
 
 }
 
-@media (max-width:767px) {
-    header.shopping-header #counters-non-facia .title {
-        margin-left: 3.3em;
-    }
-}
 
 @media (max-width:650px) {
     header.shopping-header #counters-lomdis .title {
-        margin-left: 3.1em;
+        margin-left: 0;
     }
 }
 
 @media (max-width:600px) {
     header.shopping-header #counters-non-facia .title {
-        margin-left: 3.0em;
+        margin-left: 0;
     }
 }
 
@@ -146,11 +142,12 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
     }
 
     header.shopping-header #counters-non-facia .title {
-        margin-left: 4.5em;
+        margin-left: 0;
     }
 
     header#shopping-header-mobile #counters-non-facia {
         flex-direction: column;
+        align-content: center;
     }
 
     header#shopping-header-mobile #fresh-order-counter .title.title.green-title, header#shopping-header-mobile #fresh-order-counter .counter,
@@ -174,25 +171,25 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
     }
 
     header.shopping-header #counters-non-facia .title {
-        margin-left: 4.4em;
+        margin-left: 0;
     }
 }
 
 @media (max-width:500px) {
     header.shopping-header #counters-non-facia .title {
-        margin-left: 4.2em;
+        margin-left: 0;
     }
 }
 
 @media (max-width:450px) {
     header.shopping-header #counters-non-facia .title {
-        margin-left: 3.8em;
+        margin-left: 0;
     }
 }
 
 @media (max-width:375px) {
     header.shopping-header #counters-non-facia .title {
-        margin-left: 3.4em;
+        margin-left: 0;
     }
 
     html[data-useragent*='Edge/17.17134'] #search-input {
@@ -238,6 +235,7 @@ html[data-useragent*='rv:11.0'] header.shopping-header #counters-non-facia .coun
 header#shopping-header-mobile.shopping-header #counters-non-facia .title {
     width:inherit;
 }
+
 
 
 
