@@ -1,10 +1,10 @@
-
 header.shopping-header #counters-non-facia {
     display: flex;
     flex-wrap: wrap;
     column-gap: 10px;
     row-gap: 10px;
     margin-bottom: 0.5em;
+    justify-content: center;
 }
 
 header.shopping-header #counters-non-facia #fresh-order-counter {
@@ -235,7 +235,6 @@ html[data-useragent*='rv:11.0'] header.shopping-header #counters-non-facia .coun
 header#shopping-header-mobile.shopping-header #counters-non-facia .title {
     width:inherit;
 }
-
 
 
 
