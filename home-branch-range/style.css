@@ -97,10 +97,17 @@ header.shopping-header #search-bar .btn.changeCcBranchBtn.small {
   overflow: auto;
 }
 
+#changeBranchModal .branches-result {
+  max-height: 400px;
+  overflow: auto;
+}
+
 header.shopping-header .greeting {
-  width: 235px;
-  max-width: 235px;
+  width: 280px;
+  max-width: 280px;
   display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 
@@ -210,10 +217,6 @@ header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile
 
 
 
-/*header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-desktop .browseOtherBranchRangesBtn {
-  font-size: 12px;
-}*/
-
 #changingBranchTrolleyModal .fa-spinner, #switchTrolleyModal .fa-spinner {
   font-size: 2em;
   color: #2356AA;
@@ -231,6 +234,12 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv {
 header#shopping-header-desktop #checkout .btn {
   display: flex;
   align-items: center;
+}
+
+header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
+  text-decoration: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 #changingBranchTrolleyModal .modal-footer, #switchTrolleyModal .modal-footer {
@@ -264,6 +273,23 @@ header#shopping-header-desktop #checkout .btn {
   #changeBranchModal .branches-result .btn {
     padding: 0.3em;
   }
+}
 
+#changeBranchModal .branches-result {
+  font-size: 14px;
+}
 
+@media (min-width: 992px) {
+#changeBranchModal .form-check-input {
+float: left;
+margin-right: 10px;
+}
+}
+
+@media (max-width: 991.99px) {
+#changeBranchModal .form-check-input {
+display:block;
+margin: 5px;
+
+}
 }
