@@ -104,7 +104,10 @@ header.shopping-header .greeting {
   margin-bottom: 15px;
 }
 
-
+#changeBranchModal .branches-result .form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+}
 
 #mini-trolley .clickAndCollectBranch {
   font-weight: 900;
