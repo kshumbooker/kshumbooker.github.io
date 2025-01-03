@@ -460,15 +460,16 @@ if (document.querySelector('#click-collect') && document.querySelector('#deliver
   });
 }
 
-const changeBranchModalRadios = document.querySelectorAll('#changeBranchModal input[type="radio"]');
+$('#changeBranchModal .branches-result .table tbody tr').click(function() { 
+  $(this).children('td').children('input').prop('checked', true);
+  
+  $('#changeBranchModal .branches-result .table tbody tr').removeClass('selected');
+  $(this).toggleClass('selected');
 
-[...changeBranchModalRadios].map(radio => {
-  radio.addEventListener('change', (e) => {
-    if (e.target.value != account.branchId) {
-      const chooseBranchModalBtn = document.querySelector('#chooseBranchModalBtn');
+  if ($(this).children('td').children('input')[0].value != account.branchId) {
+    const chooseBranchModalBtn = document.querySelector('#chooseBranchModalBtn');
       chooseBranchModalBtn.removeAttribute('disabled');
     } else {
       chooseBranchModalBtn.setAttribute('disabled', '');
     }
-  });
 });
