@@ -91,12 +91,6 @@ header.shopping-header #search-bar .btn.changeCcBranchBtn.small {
 }
 
 
-
-#changeBranchModal form[name='changeBranchModal'] {
-  max-height: 450px;
-  overflow: auto;
-}
-
 #changeBranchModal .branches-result {
   max-height: 400px;
   overflow: auto;
@@ -257,10 +251,14 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991.99px) {
   #changeBranchModal .form-check-input {
     display:block;
     margin: 5px;
+  }
+
+  #changeBranchModal .branches-result {
+    font-size: 14px;
   }
 }
 
@@ -273,10 +271,6 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
   #changeBranchModal .branches-result .btn {
     padding: 0.3em;
   }
-}
-
-#changeBranchModal .branches-result {
-  font-size: 14px;
 }
 
 @media (min-width: 992px) {
