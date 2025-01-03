@@ -160,7 +160,6 @@ const trolleyTypeMapping = (type) => {
   return trolley;
 }
 
-
 const changeBranchModal = (modal, trolley) => {
   return `
   <div id="changeBranchModal" class="modal">
@@ -174,8 +173,9 @@ const changeBranchModal = (modal, trolley) => {
         </div>
         <div class="modal-body">
           <p>${modal.text}</p>
+          <form method="POST" name="changeBranchModal" action="#">
           <div id="changeBranch-search-input" class="input-group">
-            <input name="changeBranch" type="text" class="form-control" placeholder="Search by Branch name, Town or Postcode">
+            <input name="changeBranch" type="text" class="form-control" placeholder="Search by Branch name, Town or Postcode" required>
             <div class="input-group-append search-button">
               <button class="btn btn-outline-secondary" type="submit">
                 <i class="fas fa-search fa-lg" onclick="$(this).closest('form').submit();"></i>
@@ -190,18 +190,16 @@ const changeBranchModal = (modal, trolley) => {
                     <th>Branch Name</th>
                     <th>Address</th>
                     <th>Click And Collect</th>
-                    <th>Select</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="branches">
                   ${branches.map(branch => `
                     <tr>
                       <td>${branch.name}</td>
                       <td>${branch.address.street ? branch.address.street + `,<br>` : ''}${branch.address.address2 ? branch.address.address2 + `,<br>` : ''} ${branch.address.townCity ? branch.address.townCity + `,<br>` : ''} ${branch.address.postCode ? branch.address.postCode : ''}</td>
-                      <td>${branch.currentBranch === true && branch[trolleyTypeMapping(trolley)] === true ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch[trolleyTypeMapping(trolley)] === true ? `Available at this Branch ` : `Extended Range Collect Only` }</td>
-                      <td class="selectBranch">
-                        <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``} value="${branch.id}">
-                      </td>
+                      <td>
+                      <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``} value="${branch.id}">
+                      ${branch.currentBranch === true && branch[trolleyTypeMapping(trolley)] === true ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch[trolleyTypeMapping(trolley)] === true ? `Available at this Branch ` : `Extended Range Collect Only` }</td>
                     </tr>`).join('')}
                 </tbody>
               </table>
@@ -210,13 +208,15 @@ const changeBranchModal = (modal, trolley) => {
         </div>
         <div class="modal-footer claim-form-links">
           <button class="btn cancel ml-2" data-dismiss="modal"><i class="fas fa-times"></i>Cancel</button>
-          <button class="btn continue ml-2 btn-success" data-dismiss="modal" data-toggle="modal" data-target="#productsInTrolleyModal" id="chooseBranchModalBtn" disabled>Choose Branch</button>
+          <button type="submit" class="btn continue ml-2 btn-success" data-dismiss="modal" data-toggle="modal" data-target="#productsInTrolleyModal" id="chooseBranchModalBtn" disabled>Choose Branch</button>
         </div>
       </div>
     </div>
   </div>
+  </form>
   `;
 }
+
 
 const productsInTrolleyModal = (modal) => {
   return `
