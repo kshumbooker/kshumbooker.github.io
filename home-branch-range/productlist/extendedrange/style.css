@@ -1,0 +1,302 @@
+#business-details .detail-label {
+  min-width: 200px !important;
+}
+
+#business-details .changeCcBranchDiv {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#shopping-header-desktop .btn.changeCcBranchBtn, #shopping-header-desktop .btn.browseOtherBranchRangesBtn {
+  padding: 10px;
+  height: 100%;
+}
+
+#shopping-header-mobile #search-bar .header-button.green-background {
+  margin-right: 0em !important;
+}
+
+header.shopping-header #search-bar {
+  align-items: normal;
+}
+
+#shopping-header-desktop #search-bar #logo {
+  justify-content: end !important;
+}
+
+header.shopping-header #search-bar .btn.changeCcBranchBtn.small {
+  width: 150px !important;
+  height: 100%;
+}
+
+#shopping-header-desktop .changeCcBranchBtn {
+  line-height: inherit;
+}
+
+#shopping-header-mobile .changeCcBranchBtn.full {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#shopping-header-mobile .changeCcBranchBtn, #shopping-header-mobile .browseOtherBranchRangesBtn {
+  height: 4em;
+}
+
+.branches-result .table thead {
+  background: #ccc;
+}
+
+.branches-result .table th {
+  font-weight: 900;
+}
+
+#collect-no-delivery-option-button {
+  align-self: normal;
+}
+
+#collect-no-delivery-option-button .btn {
+  height: 100%;
+  align-content: center;
+  min-width: 200px;
+}
+
+
+
+
+#changeBranchModal .branches-result .yourSelectedBranch {
+  color: #28a745;
+  font-weight: 700;
+}
+
+#changeBranchModal .branches-result .table td, .table th {
+  position: relative;
+  vertical-align: middle;
+}
+
+#changeBranchModal .branches-result .selectBranch {
+  text-align: center;
+}
+
+#changeBranchModal .branches-result .form-check-input {
+  margin-left: 0;
+}
+
+#changeBranchModal .table {
+  border: 1px solid #dee2e6;
+}
+
+#changeBranchModal .modal-footer, #productsInTrolleyModal .modal-footer {
+  border-top: 0;
+}
+
+
+
+
+
+#changeBranchModal .branches-result {
+  max-height: 400px;
+  overflow: auto;
+}
+
+header.shopping-header .greeting {
+  width: 280px;
+  max-width: 280px;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+
+
+#mini-trolley .clickAndCollectBranch {
+  font-weight: 900;
+  color: #C98D05;
+}
+
+#mini-trolley .deliveryBranch {
+  font-weight: 900;
+  color: #82B279;
+}
+
+#booker_trolley_first_aside .clickAndCollect {
+  background-color: #fdead3;
+  padding: 10px;
+  color: #C98D05;
+}
+
+#booker_trolley_first_aside .delivery {
+  background-color: #E3F5E8;
+  padding: 10px;
+  color: #82B279;
+}
+
+#changeBranchModal .btn, #changeBranchModal .fa-search {
+  background: #2356AA;
+  color: #fff;
+}
+
+#changeBranchModal .btn.cancel, #productsInTrolleyModal .btn.cancel {
+  background: #999;
+  color: #fff;
+}
+
+#changeBranchModal .fa-times, #productsInTrolleyModal .fa-times {
+  margin-right: 3px;
+}
+
+#productsInTrolleyModal .btn-secondary, #productsInTrolleyModal .btn-secondary:hover, #productsInTrolleyModal .btn-secondary:focus {
+  text-decoration: none;
+}
+
+#changeBranchModal .btn-success {
+  background: #28a745;
+  border-color: #28a745;
+}
+
+#changeBranchModal .modal-header {
+  border-bottom: 0;
+}
+
+#changeBranchModal .modal-title {
+  font-weight: 900;
+}
+
+#changeBranchModal .form-check-input {
+  position: relative;
+}
+
+#productsInTrolleyModal .btn-primary {
+  text-decoration: none;
+}
+
+#productsInTrolleyModal .btn-primary:hover {
+  border: 0;
+}
+
+header#shopping-header-desktop #search-bar #mini-trolley .btn {
+  height: 100%;
+}
+
+header#shopping-header-desktop #mini-trolley {
+  position: relative;
+}
+
+
+header#shopping-header-desktop #mini-trolley #click-collect, header#shopping-header-mobile #mini-trolley-mobile #click-collect {
+  border: 1px solid #fdead3;
+}
+
+header#shopping-header-mobile #mini-trolley-mobile #delivery, header#shopping-header-mobile #mini-trolley-mobile #click-collect {
+  width: 98%;
+}
+
+header#shopping-header-desktop #mini-trolley #click-collect {
+  margin-right: 1em;
+}
+
+
+header#shopping-header-desktop #mini-trolley #delivery, header#shopping-header-mobile #mini-trolley-mobile #delivery {
+  border: 1px solid #E3F5E8;
+}
+
+header#shopping-header-desktop #mini-trolley #delivery {
+  margin-right: 1em;
+}
+
+header#shopping-header-desktop .changeCcBranchBtn:hover {
+  cursor: pointer;
+}
+
+header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile .changeCcBranchBtn, header#shopping-header-desktop .browseOtherBranchRangesBtn, header#shopping-header-mobile .browseOtherBranchRangesBtn {
+  background: #00BDF7 !important; color: #fff;
+}
+
+
+
+#changingBranchTrolleyModal .fa-spinner, #switchTrolleyModal .fa-spinner {
+  font-size: 2em;
+  color: #2356AA;
+}
+
+header#shopping-header-mobile .browseOtherBranchRangesBtn {
+  width: 100%;
+}
+
+header#shopping-header-desktop .homeBranchRangeBtnDiv {
+  margin-right: 1em;
+  align-content: center;
+}
+
+header#shopping-header-desktop #checkout .btn {
+  display: flex;
+  align-items: center;
+}
+
+header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
+  text-decoration: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+#changingBranchTrolleyModal .modal-footer, #switchTrolleyModal .modal-footer {
+  border-top: 0;
+}
+
+#changeBranchModal .branches-result .table tbody tr.selected {
+  background: #F5F5F5;
+}
+
+#changeBranchModal .branches-result .form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+@media (min-width: 992px) {
+  #changeBranchModal .form-check-input {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 991px) {
+  #changeBranchModal .form-check-input {
+    display:block;
+    margin: 5px;
+  }
+  #changeBranchModal .branches-result {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  #changeBranchModal .branches-result, 
+  #changeBranchModal .branches-result .btn {
+    font-size: 12px;
+  }
+
+  #changeBranchModal .branches-result .btn {
+    padding: 0.3em;
+  }
+
+  
+}
+
+@media (min-width: 992px) {
+#changeBranchModal .form-check-input {
+float: left;
+margin-right: 10px;
+}
+}
+
+@media (max-width: 991.99px) {
+#changeBranchModal .form-check-input {
+display:block;
+margin: 5px;
+
+}
+}
