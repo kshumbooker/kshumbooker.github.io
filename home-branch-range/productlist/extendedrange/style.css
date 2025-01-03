@@ -252,8 +252,8 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
   width: 1.2em;
   height: 1.2em;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0px;
+  right: 0px;
 }
 
 @media (min-width: 992px) {
