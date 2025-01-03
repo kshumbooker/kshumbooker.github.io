@@ -195,10 +195,9 @@ const changeBranchModal = (modal, trolley) => {
                 <tbody id="branches">
                   ${branches.map(branch => `
                     <tr>
-                      <td>${branch.name}</td>
+                      <td><input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``} value="${branch.id}"> ${branch.name}</td>
                       <td>${branch.address.street ? branch.address.street + `,<br>` : ''}${branch.address.address2 ? branch.address.address2 + `,<br>` : ''} ${branch.address.townCity ? branch.address.townCity + `,<br>` : ''} ${branch.address.postCode ? branch.address.postCode : ''}</td>
                       <td>
-                      <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``} value="${branch.id}">
                       ${branch.currentBranch === true && branch[trolleyTypeMapping(trolley)] === true ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch[trolleyTypeMapping(trolley)] === true ? `Available at this Branch ` : `Extended Range Collect Only` }</td>
                     </tr>`).join('')}
                 </tbody>
