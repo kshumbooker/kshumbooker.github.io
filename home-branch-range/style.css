@@ -59,6 +59,7 @@ header.shopping-header #search-bar .btn.changeCcBranchBtn.small {
 #collect-no-delivery-option-button .btn {
   height: 100%;
   align-content: center;
+  min-width: 200px;
 }
 
 
@@ -89,8 +90,10 @@ header.shopping-header #search-bar .btn.changeCcBranchBtn.small {
   border-top: 0;
 }
 
-#changeBranchModal .modal-content {
-  max-height: 575px;
+
+
+#changeBranchModal form[name='changeBranchModal'] {
+  max-height: 450px;
   overflow: auto;
 }
 
@@ -105,7 +108,6 @@ header.shopping-header .greeting {
 #mini-trolley .clickAndCollectBranch {
   font-weight: 900;
   color: #C98D05;
-  font-size: 12px;
 }
 
 #mini-trolley .deliveryBranch {
@@ -181,7 +183,7 @@ header#shopping-header-desktop #mini-trolley #click-collect, header#shopping-hea
   border: 1px solid #fdead3;
 }
 
-header#shopping-header-mobile #mini-trolley-mobile #delivery {
+header#shopping-header-mobile #mini-trolley-mobile #delivery, header#shopping-header-mobile #mini-trolley-mobile #click-collect {
   width: 98%;
 }
 
@@ -206,12 +208,14 @@ header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-mobile
   background: #00BDF7 !important; color: #fff;
 }
 
+
+
 /*header#shopping-header-desktop .changeCcBranchBtn, header#shopping-header-desktop .browseOtherBranchRangesBtn {
   font-size: 12px;
 }*/
 
 #changingBranchTrolleyModal .fa-spinner, #switchTrolleyModal .fa-spinner {
-  font-size: 5em;
+  font-size: 2em;
   color: #2356AA;
 }
 
@@ -231,4 +235,35 @@ header#shopping-header-desktop #checkout .btn {
 
 #changingBranchTrolleyModal .modal-footer, #switchTrolleyModal .modal-footer {
   border-top: 0;
+}
+
+#changeBranchModal .branches-result .table tbody tr.selected {
+  background: #F5F5F5;
+}
+
+@media (min-width: 992px) {
+  #changeBranchModal .form-check-input {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 991px) {
+  #changeBranchModal .form-check-input {
+    display:block;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  #changeBranchModal .branches-result, 
+  #changeBranchModal .branches-result .btn {
+    font-size: 12px;
+  }
+
+  #changeBranchModal .branches-result .btn {
+    padding: 0.3em;
+  }
+
+
 }
