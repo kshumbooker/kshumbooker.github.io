@@ -256,7 +256,7 @@ const changeBranchModal = (modal, trolley) => {
                       <td>${branch.name}</td>
                       <td>${branch.address.street ? branch.address.street + `,<br>` : ''}${branch.address.address2 ? branch.address.address2 + `,<br>` : ''} ${branch.address.townCity ? branch.address.townCity + `,<br>` : ''} ${branch.address.postCode ? branch.address.postCode : ''}</td>
                       <td>
-                      ${branch.currentBranch === true && branch[trolleyTypeMapping(trolley)] === true ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch[trolleyTypeMapping(trolley)] === true ? `Available at this Branch ` : `Extended Range Collect Only` } <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``} value="${branch.id}"></td>
+                      ${branch.currentBranch === true && branch[trolleyTypeMapping(trolley)] === true ? `<div class="yourSelectedBranch">Your current selected Branch</div>` : branch[trolleyTypeMapping(trolley)] === true ? `Available at this Branch ` : `Extended Range Collect Only` } <input type="radio" class="form-check-input" name="selectBranch" ${branch.currentBranch === true ? `checked` : ``} value="${branch.id}"><i class="fa-solid fa-circle-check d-none"></i></td>
                     </tr>`).join('')}
                 </tbody>
               </table>
@@ -531,5 +531,42 @@ $('#changeBranchModal .branches-result .table tbody tr').click(function() {
     }
 });
 
- 
+
+
+const changeBranchModalRadios = () => {
+  const radios = document.querySelectorAll('#changeBranchModal .branches-result .form-check-input');
+
+  [...radios].map(radio => {
+    if (radio.checked === true) {
+      radio.classList.add('d-none');
+      radio.nextSibling.classList.remove('d-none');
+    } else {
+      radio.classList.remove('d-none');
+      radio.nextSibling.classList.add('d-none');
+    }
+  });
+}
+
+
+if (document.querySelector('#changeBranchModal')) {
+
+  changeBranchModalRadios();
+
+  $('#changeBranchModal .branches-result .table tbody tr').click(function() {
+  
+    $(this).children('td').children('input').prop('checked', true);
+
+    $('#changeBranchModal .branches-result .table tbody tr').removeClass('selected');
+    $(this).toggleClass('selected');
+
+    changeBranchModalRadios();
+
+    if ($(this).children('td').children('input')[0].value != account.branchId) {
+      const chooseBranchModalBtn = document.querySelector('#chooseBranchModalBtn');
+      chooseBranchModalBtn.removeAttribute('disabled');
+    } else {
+      chooseBranchModalBtn.setAttribute('disabled', '');
+    }
+  });
+}
 
