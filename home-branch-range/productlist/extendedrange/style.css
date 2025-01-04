@@ -295,6 +295,14 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
     padding: 0.3em;
   }
 
+  #changeBranchModal .branches-result .fa-solid.fa-circle-check {
+    top: 2px;
+  }
+
+  #changeBranchModal .branches-result .form-check-input {
+    top: -3px;
+  }
+
 }
 
 @media (max-width: 768px) {
