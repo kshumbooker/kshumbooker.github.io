@@ -93,7 +93,7 @@ header.shopping-header #search-bar .btn.changeCcBranchBtn.small {
 
 
 #changeBranchModal {
-  padding-right: 5px;
+  padding-right: 0px !important;
 }
 
 
