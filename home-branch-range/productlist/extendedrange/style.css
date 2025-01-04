@@ -92,7 +92,9 @@ header.shopping-header #search-bar .btn.changeCcBranchBtn.small {
 }
 
 
-
+#changeBranchModal {
+  padding-right: 5px;
+}
 
 
 #changeBranchModal .branches-result {
@@ -244,10 +246,6 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
   border-top: 0;
 }
 
-#changeBranchModal {
-  padding-right: 5px;
-}
-
 #changeBranchModal .branches-result .table tbody tr.selected {
   background: #F5F5F5;
 }
@@ -257,8 +255,18 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
   height: 1.2em;
   position: absolute;
   top: 0px;
-  right: 0px;
+  right: 5px;
 }
+
+#changeBranchModal .branches-result .fa-solid.fa-circle-check {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 1.25em;
+  color: #6600ff;
+}
+
+
 
 @media (min-width: 992px) {
   #changeBranchModal .form-check-input {
@@ -279,7 +287,7 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
 
 @media (max-width: 576px) {
   #changeBranchModal .branches-result, 
-  #changeBranchModal .branches-result .btn {
+  #changeBranchModal .branches-result .btn, .branches-result .table th {
     font-size: 12px;
   }
 
@@ -287,8 +295,14 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
     padding: 0.3em;
   }
 
-  
 }
+
+@media (max-width: 768px) {
+  #changeBranchModal .branches-result .fa-solid.fa-circle-check {
+    right: 10px;
+  }
+}
+
 
 @media (min-width: 992px) {
 #changeBranchModal .form-check-input {
