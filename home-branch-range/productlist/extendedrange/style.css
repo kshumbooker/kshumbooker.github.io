@@ -263,7 +263,7 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
   top: 5px;
   right: 15px;
   font-size: 1.25em;
-  color: #6600ff;
+  color: #2356AA;
 }
 
 
@@ -293,14 +293,6 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
 
   #changeBranchModal .branches-result .btn {
     padding: 0.3em;
-  }
-
-  #changeBranchModal .branches-result .fa-solid.fa-circle-check {
-    top: 2px;
-  }
-
-  #changeBranchModal .branches-result .form-check-input {
-    top: -3px;
   }
 
 }
