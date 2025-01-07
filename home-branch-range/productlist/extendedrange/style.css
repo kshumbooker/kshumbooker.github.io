@@ -267,15 +267,7 @@ header#shopping-header-desktop .homeBranchRangeBtnDiv .btn:hover {
 }
 
 
-
-@media (min-width: 992px) {
-  #changeBranchModal .form-check-input {
-    float: left;
-    margin-right: 10px;
-  }
-}
-
-@media (max-width: 991px) {
+@media (max-width: 991.99px) {
   #changeBranchModal .form-check-input {
     display:block;
     margin: 5px;
