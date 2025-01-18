@@ -385,7 +385,7 @@ const populateChangingBranchModal = () => {
 
 if (clickAndCollectTrolley && deliveryTrolley) {
   injectHbrChangeCcButton();
-  adHomeBranchRangeName('clickAndCollect');
+  addHomeBranchRangeName('clickAndCollect');
   addHomeBranchRangeName('delivery');
 } else if (clickAndCollectTrolley) {
   injectHbrChangeCcButton();
