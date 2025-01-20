@@ -95,8 +95,8 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
     header.shopping-header #counters-non-facia {
         display: flex;
         flex-wrap: wrap;
-        column-gap: 10px;
-        row-gap: 10px
+        column-gap: 30px;
+        row-gap: 15px;
     }
 
     header.shopping-header #counters-non-facia #ambient-order-counter,
