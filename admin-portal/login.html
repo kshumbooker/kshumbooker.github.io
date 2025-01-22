@@ -70,7 +70,7 @@
                 </div>
               <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Administration Login</h2>
               
-              <form action="/admin/portal/login" method="post" autocomplete="disable-autocomplete" class="space-y-4">
+              <form id="loginForm" action="/admin/portal/login" method="post" autocomplete="disable-autocomplete" class="space-y-4">
                 <div>
                   <label class="block text-sm font-bold text-black-700 mb-1">User ID</label>
                   <input autocomplete="disable-autocomplete" 
@@ -105,7 +105,11 @@
                 </div>
                 </footer>
             </div>
-          </div>
-
+          </div>    
+         <script>
+      function onSubmit(token) {
+        document.getElementById("loginForm").submit();
+      }
+    </script>
     </body>
 </html>
