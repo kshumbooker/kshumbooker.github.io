@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Booker</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+          <style type="text/tailwindcss">
+            @theme {
+              --color-booker: #2356AA;
+            }
+            @import "tailwindcss"  prefix(tw);
+          </style>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.booker.co.uk/images/favicon.ico" />
+        <!-- Styles -->
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+
+        <style>
+            main#booker_administration_login .login-here .labels h6 {
+                font-size: xx-large;
+            }
+
+            .badge-danger {
+                color: #fff;
+                background-color: #dc3545;
+            }
+
+            .g-recaptcha {
+    transform:scale(0.8);
+    -webkit-transform:scale(0.8);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+}
+
+@media screen and (max-height: 767px) {
+    #rc-imageselect, .g-recaptcha {
+            transform:scale(0.8);
+            -webkit-transform:scale(0.8);
+            transform-origin:0 0;
+            -webkit-transform-origin:0 0;
+        }
+    }
+        </style>
+    
+    </head>
+
+    <body class="tw:bg-gray-50 tw:px-4 tw:font-[Lato]">
+      <div class="tw:flex tw:items-center tw:justify-center tw:p-8">
+        <img class="tw:h-12 tw:flex tw:justify-center tw:items-center" src="https://assets-global.website-files.com/61f27d3474c2ef62975a0106/61f27d3474c2ef78475a0118_Booker%20logo.svg">
+      </div>
+      <h2 class="tw:text-2xl tw:font-bold tw:text-gray-900 tw:mb-8 tw:text-center">Administration Login</h2>
+        
+        <div class="tw:flex tw:justify-center tw:bg-white tw:relative tw:border-solid tw:border tw:border-gray-50 tw:shadow-sm tw:border border-slate-100 tw:rounded-lg tw:max-w-lg tw:m-auto tw:p-8">
+            <div class="tw:max-w-sm tw:w-full">
+              <form action="/admin/portal/login" method="post" autocomplete="disable-autocomplete" class="tw:space-y-4">
+                <div>
+                  <label class="tw:block tw:text-sm tw:font-bold tw:text-black-700">User ID</label>
+                  <input autocomplete="disable-autocomplete" 
+                    type="text" 
+                    class="tw:w-full tw:mt-2 tw:px-2 tw:py-1.5 tw:border tw:border-gray-300 tw:rounded-md tw:hover:border-booker-400 tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-booker-500 tw:focus:border-blue-500" data-val="true" data-val-length="The field Username must be a string with a maximum length of 100." data-val-length-max="100" id="Username" maxlength="100" name="Username" type="text" value="" required/>
+                    <span class="tw:asterisk tw:pl-2 tw:pt-2"></span>
+                </div>
+          
+                <div>
+                  <label class="tw:text-sm tw:text-left tw:font-bold tw:text-black-700">Password</label>
+                    <span class="tw:float-right"><a href="#" class="tw:text-sm tw:text-booker tw:hover:text-booker tw:font-bold">Forgot password?</a></span>
+                  <input 
+                    type="password" autocomplete="disable-autocomplete"
+                    class="tw:w-full tw:mt-2 tw:mb-4 tw:px-2 tw:py-1.5 tw:border tw:border-gray-300 tw:rounded-md tw:hover:border-booker-400 tw:focus:outline-none tw:focus:ring-1 tw:focus:ring-booker-500 tw:focus:border-blue-500"
+                    required data-val="true" data-val-length="The field Password must be a string with a maximum length of 50." data-val-length-max="50" id="Password" maxlength="50" name="Password" type="password" value=""/>
+                </div>
+
+                <div class="g-recaptcha"
+                     data-sitekey="6LfwwIQqAAAAANcF-qB9oAxVzaVwIum45H588zwK"
+                     data-callback="onSubmit"
+                     data-badge="inline"
+                     data-size="invisible">
+                </div>
+          
+                <button type="submit" class="tw:w-full tw:my-2 tw:login-btn tw:bg-booker tw:hover:bg-booker-600 tw:text-white tw:font-medium tw:px-3 tw:py-1.5 tw:rounded-md tw:transition-colors ">
+                  Sign In
+                </button>
+              </form>
+            </div>
+          </div>
+          <footer>
+            <div id="copyright" class="tw:mt-3 tw:flex tw:items-center tw:justify-center tw:p-8">
+                <p>&copy; Booker 2025 - CD2</p>
+            </div>
+          </footer>
+    </body>
+</html>
