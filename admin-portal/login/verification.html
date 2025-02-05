@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Booker</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+          <style type="text/tailwindcss">
+            @theme {
+              --color-booker: #2356AA;
+            }
+            @import "tailwindcss"  prefix(tw);
+          </style>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.booker.co.uk/images/favicon.ico" />
+        <!-- Styles -->
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+
+        <style>
+            main#booker_administration_login .login-here .labels h6 {
+                font-size: xx-large;
+            }
+
+            .badge-danger {
+                color: #fff;
+                background-color: #dc3545;
+            }
+
+            .grecaptcha-badge {
+                display: none;
+            }
+
+            .g-recaptcha {
+    transform:scale(0.8);
+    -webkit-transform:scale(0.8);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+}
+
+@media screen and (max-height: 767px) {
+    #rc-imageselect, .g-recaptcha {
+            transform:scale(0.8);
+            -webkit-transform:scale(0.8);
+            transform-origin:0 0;
+            -webkit-transform-origin:0 0;
+        }
+    }
+
+        </style>
+    </head>
+    
+    <body class="tw:bg-gray-50 tw:px-4 tw:font-[Lato]">
+      <div class="tw:flex tw:items-center tw:justify-center tw:p-8">
+        <img class="tw:h-12 tw:flex tw:justify-center tw:items-center" src="https://assets-global.website-files.com/61f27d3474c2ef62975a0106/61f27d3474c2ef78475a0118_Booker%20logo.svg">
+      </div>
+      <h2 class="tw:text-2xl tw:font-bold tw:text-gray-900 tw:mb-8 tw:text-center">Login Verification</h2>
+      <div class="tw:flex tw:justify-center tw:bg-white tw:relative tw:border-solid tw:border tw:border-gray-50 tw:shadow-sm tw:border tw:border-slate-100 tw:rounded-lg tw:max-w-lg tw:m-auto tw:p-8">
+        <div class="tw:max-w-sm tw:w-full">
+
+      <p class="tw:text-black-500 tw:my-4">We have sent you a verification code to your registered mobile number, please enter your 8-digit code in the box below to continue your login.<br>
+      <br>  
+      Didn't receive a SMS?<br>
+      <br>
+      <a href="#" class="tw:text-sm tw:text-booker tw:hover:text-booker tw:font-bold">Click here to send a new code</a></p>
+                <div class="tw:flex tw:items-center tw:p-4 tw:mb-4 tw:text-green-800 tw:rounded-lg tw:bg-green-50" role="alert">
+                  <div class="tw:ms-3 tw:text-sm tw:font-bold">New login code has been sent via SMS</div>
+                  <button type="button" class="tw:ms-auto tw:-mx-1.5 tw:-my-1.5 tw:bg-green-50 tw:text-green-500 tw:rounded-lg tw:focus:ring-2 tw:focus:ring-green-400 tw:p-1.5 tw:hover:bg-green-200 tw:inline-flex tw:items-center tw:justify-center tw:h-8 tw:w-8" data-dismiss-target="#alert-3" aria-label="Close">
+                    <span class="tw:sr-only">Close</span>
+                    <svg class="tw:w-3 tw:h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div class="tw:flex tw:items-center tw:p-4 tw:mb-4 tw:text-blue-800 tw:rounded-lg tw:bg-blue-50 tw:dark:bg-gray-800 tw:dark:text-blue-400" role="alert">
+                  <svg class="tw:flex-shrink-0 tw:w-4 tw:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"></path>
+                  </svg>
+                  <span class="tw:sr-only">Info</span>
+                  <div class="tw:ms-3 tw:text-sm tw:font-medium">
+                    You will be able to request another code in 30 seconds
+                  </div>
+                    <button type="button" class="tw:ms-auto tw:-mx-1.5 tw:-my-1.5 tw:bg-blue-50 tw:text-blue-500 tw:rounded-lg tw:focus:ring-2 tw:focus:ring-blue-400 tw:p-1.5 tw:hover:bg-blue-200 tw:inline-flex tw:items-center tw:justify-center tw:h-8 tw:w-8" data-dismiss-target="#alert-1" aria-label="Close">
+                      <span class="tw:sr-only">Close</span>
+                      <svg class="tw:w-3 tw:h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                      </svg>
+                  </button>
+                </div>
+              <form class="tw:space-y-4">
+                <div>
+                  <label class="tw:block tw:text-sm tw:font-bold tw:text-black-700">Verification Code</label>
+                  <input 
+                    type="text" 
+                    class="tw:w-full tw:px-4 tw:py-1.5 tw:mt-2 tw:mb-4 tw:border tw:border-gray-300 tw:rounded-md tw:focus:ring-2 tw:focus:ring-booker-500 tw:focus:border-booker-500 tw:outline-none tw:transition-all"
+                    required />
+                </div>
+
+                <button class="tw:w-full tw:bg-booker tw:text-white tw:font-bold tw:py-2.5 tw:rounded-md tw:transition-colors">Verify</button>
+                <button class="tw:w-full tw:bg-gray tw:text-black tw:font-bold tw:py-2.5 tw:rounded-md tw:transition-colors">Cancel</button>
+              </form>
+    
+            </div>
+          </div>
+          <footer>
+            <div id="copyright" class="tw:mt-3 tw:flex tw:items-center tw:justify-center tw:p-8">
+                <p>&copy; Booker 2025 - CD2</p>
+            </div>
+            </footer>
+
+    </body>
+</html>
