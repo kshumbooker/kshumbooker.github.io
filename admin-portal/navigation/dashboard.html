@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Booker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="../data.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+          <style type="text/tailwindcss">
+            @theme {
+              --color-booker: #2356AA;
+            }
+          </style>
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.booker.co.uk/images/favicon.ico" />
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+  </head>
+  <body class="font-[Lato]">
+    <button data-drawer-target="navigation-sidebar" data-drawer-toggle="navigation-sidebar" aria-controls="navigation-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+      <span class="sr-only">Open sidebar</span>
+      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+      </svg>
+    </button>
+    
+    <aside id="navigation-sidebar" class="fixed top-0 left-0 z-40 w-64 h-dvh transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar" aria-hidden="true">
+      <div class="p-6 bg-gray-50">
+         <img class="h-8 flex justify-center items-center" src="https://assets-global.website-files.com/61f27d3474c2ef62975a0106/61f27d3474c2ef78475a0118_Booker%20logo.svg">
+      </div>
+
+    <!--<button type="button" data-drawer-hide="navigation-sidebar" aria-controls="navigation-sidebar" class="absolute -right-3 top-6 bg-blue-700 rounded-full p-1.5 shadow-lg hover:bg-blue-900 focus:outline-none block hidden sm:block">
+      <svg id="toggleIcon" class="w-4 h-4 text-white font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          
+      </svg>
+    </button>-->
+
+      <div class="h-dvh px-3 py-4 overflow-y-auto bg-gray-50">
+        <ul class="space-y-2 font-medium">
+          <li>
+            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg group">
+              <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+              </svg>
+              <span class="ms-3">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown-click-and-collect" data-collapse-toggle="dropdown-click-and-collect" aria-expanded="false">
+              <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+              </svg>
+              <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Click & Collect</span>
+              
+            </button>
+            <ul id="dropdown-click-and-collect" class="hidden py-2 space-y-2">
+              <li>
+                <a href="/admin/function/AdminBarringManagement" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Barred Categories</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminCollectionBranches" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Click and Collect Branches Configuration</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminCollectionLeadTime" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Collection Lead Time</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminOnlineExclusiveBranches" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Online Exclusive Branches</a>
+              </li>
+            </ul>
+            </a>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" aria-controls="dropdown-customer" data-collapse-toggle="dropdown-customer" aria-expanded="false">
+              <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+              </svg>
+              <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Customer</span>
+              
+            </button>
+            <ul id="dropdown-customer" class="hidden py-2 space-y-2">
+              <li>
+                <a href="/admin/function/AdminBRPEmailOverride" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">BRP Email Override</a>
+              </li>
+              <li>
+                <a href="/admin/function/admincontactprefs" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Contact Preferences</a>
+              </li>
+              <li>
+                <a href="/admin/function/admincrmcustomersearch" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">CRM Customer Search</a>
+              </li>
+              <li>
+                <a href="/admin/function/admincstdeliverytracker" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">CST Delivery Tracker</a>
+              </li>
+              <li>
+                <a href="/admin/function/adminpasswordreset" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Customer Password Reset</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminAccountDelete" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Customer Account Deletion</a>
+              </li>
+              <li>
+                <a href="/admin/function/adminemailchange" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Change Login Email</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminGroupSectors" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Group Sectors</a>
+              </li>
+              <li>
+                <a href="/admin/function/adminnachideprices" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Hide Prices for National Accounts</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminRegistrationAssistance" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Online Registration - Registration Assistance</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminPreventSelfReg" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Prevent Self Registration</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-branch" data-collapse-toggle="dropdown-branch" aria-expanded="false">
+              <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+              </svg>
+              <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Branch</span>
+              
+            </button>
+            </a>
+            <ul id="dropdown-branch" class="hidden py-2 space-y-2">
+              <li>
+                <a href="/admin/function/AdminButcheryProfile" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Butchery Manager Profile</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminButcheryMessages" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Butchery Messages</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminRestrictLogin" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Restrict Login to a Branch</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminManagerPictures" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Managers Photos</a>
+              </li>
+              <li>
+                <a href="/admin/function/AdminWipeboard" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Managers Wipeboard</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-central-billing" data-collapse-toggle="dropdown-central-billing" aria-expanded="false">
+              <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+              </svg>
+              <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Central Billing</span>
+             
+            </button>
+            <ul id="dropdown-central-billing" class="hidden py-2 space-y-2">
+              <li>
+                <a href="/admin/function/AdminCentralBillingSupplier" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Butchery Manager Profile</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Butchery Messages</a>
+              </li>
+            </ul>
+          </li>
+         
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-user-function" data-collapse-toggle="dropdown-user-function" aria-expanded="false">
+              <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+              </svg>
+              <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">User Function</span>
+            </button>
+            <ul id="dropdown-user-function" class="hidden py-2 space-y-2">
+              <li>
+                <a href="/admin/function/adminchangepassword" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Change Your Details</a>
+              </li>
+              <li>
+                <a href="/admin/function/adminusers" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Portal User Management</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-claims" data-collapse-toggle="dropdown-claims" aria-expanded="false">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Claims</span>
+             </button>
+              <ul id="dropdown-claims" class="hidden py-2 space-y-2">
+               <li>
+                 <a href="/admin/function/adminclaimstickets" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Claims / Tickets Visibility</a>
+               </li>
+               <li>
+                 <a href="/admin/function/admincreateclaim" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Create New Claim</a>
+               </li>
+               <li>
+                  <a href="/admin/function/adminviewclaim" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">View Claims</a>
+                </li>
+             </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-product" data-collapse-toggle="dropdown-product" aria-expanded="false">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Product</span>
+              
+             </button>
+              <ul id="dropdown-product" class="hidden py-2 space-y-2">
+               <li>
+                 <a href="/admin/function/AdminDeleteBrandBank" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Delete Brandbank Data</a>
+               </li>
+               <li>
+                 <a href="/admin/function/AdminDeleteImages" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Delete Images</a>
+               </li>
+               <li>
+                  <a href="/admin/function/AdminDeliveryMinimum" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Minimum Delivery Management</a>
+                </li>
+                <li>
+                  <a href="/admin/function/AdminBrandbank" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Brandbank EAN Retrieval</a>
+                </li>
+                <li>
+                  <a href="/admin/function/AdminManageFilters" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Choose Filters to Display</a>
+                </li>
+             </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-digital-vouchers" data-collapse-toggle="dropdown-digital-vouchers" aria-expanded="false">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Digital Vouchers</span>
+             </button>
+              <ul id="dropdown-digital-vouchers" class="hidden py-2 space-y-2">
+               <li>
+                 <a href="/admin/DigitalVouchers" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Create Digital Voucher</a>
+               </li>
+             </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-content" data-collapse-toggle="dropdown-content" aria-expanded="false">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Content</span>
+             </button>
+              <ul id="dropdown-content" class="hidden py-2 space-y-2">
+               <li>
+                 <a href="/admin/function/Adminfacia" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Facia Management</a>
+                 <li>
+                  <a href="/admin/function/AdminBulletin" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Website Bulletin</a>
+                </li>
+                <li>
+                  <a href="/admin/function/AdminSettings" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Site Settings</a>
+                </li>
+               </li>
+             </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-promotion" data-collapse-toggle="dropdown-promotion" aria-expanded="false">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Promotion</span>
+             </button>
+              <ul id="dropdown-promotion" class="hidden py-2 space-y-2">
+               <li>
+                 <a href="/admin/function/AdminAllocations" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">My Allocations / Weekly Deals</a>
+               </li>
+                 <li>
+                  <a href="/admin/function/AdminAllocationsReport" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">My Allocations / Weekly Deals Report</a>
+                </li>
+                <li>
+                  <a href="/admin/function/AdminPresellManagement" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Pre-sell Management</a>
+                </li>
+                <li>
+                  <a href="/admin/function/AdminPresellOrdersReport" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Pre-sell Orders Report</a>
+                </li>
+                <li>
+                  <a href="/admin/function/AdminPresellReport" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Pre-sell Report</a>
+                </li>
+             </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-search" data-collapse-toggle="dropdown-search" aria-expanded="false">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Search</span>
+             </button>
+              <ul id="dropdown-search" class="hidden py-2 space-y-2">
+               <li>
+                 <a href="/admin/function/AdminNegativeSearches" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Negative Search Terms</a>
+               </li>
+                 <li>
+                  <a href="/admin/function/AdminSearchTokens" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Search Phrase Synonyms</a>
+                </li>
+             </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-ourbooker" data-collapse-toggle="dropdown-ourbooker" aria-expanded="false">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">OurBooker</span>
+             </button>
+              <ul id="dropdown-ourbooker" class="hidden py-2 space-y-2">
+               <li>
+                 <a href="/admin/function/OBAccountDeregister" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Account Deregister</a>
+               </li>
+             </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-shop-by-brand" data-collapse-toggle="dropdown-shop-by-brand" aria-expanded="false">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Shop By Brand</span>
+               
+             </button>
+              <ul id="dropdown-shop-by-brand" class="hidden py-2 space-y-2">
+               <li>
+                 <a href="/admin/ShopByBrand/ActiveBrandListing" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Supplier Brand Management</a>
+               </li>
+             </ul>
+          </li>
+          <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-telesales" data-collapse-toggle="dropdown-telesales" aria-expanded="false">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Telesales</span>
+             </button>
+              <ul id="dropdown-telesales" class="hidden py-2 space-y-2">
+               <li>
+                 <a href="/admin/telesales" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Telesales System</a>
+               </li>
+             </ul>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <div class="p-4 sm:ml-64">
+      <div class="flex pb-3 w-full gap-4">
+        <div class="w-7/8">
+        <form>   
+          <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+            </div>
+            <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:border-booker-500" placeholder="Search" required />
+        </div>
+      </form>
+      </div>
+      <div class="flex items-center gap-x-2">
+        <span class="block px-4 w-12 h-12 rounded-full bg-booker text-white font-bold flex justify-center items-center">AP</span>
+        <span class="font-bold hidden lg:block">Anj Patel</span>
+        <div
+        class="relative"
+        data-twe-dropdown-ref
+        data-twe-dropdown-alignment="end">
+
+        <a
+          class="flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
+          href="#"
+          id="dropdownMenuButton2"
+          role="button"
+          data-twe-dropdown-toggle-ref
+          aria-expanded="false">
+
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+
+        <ul
+          class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg data-[twe-dropdown-show]:block"
+          aria-labelledby="dropdownMenuButton2"
+          data-twe-dropdown-menu-ref>
+
+          <li>
+            <a
+              class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline "
+              href="/profile"
+              data-twe-dropdown-item-ref
+              >Your profile</a
+            >
+          </li>
+          <li>
+            <a
+              class="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline"
+              href="/signout"
+              data-twe-dropdown-item-ref
+              >Sign out</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+      
+      </div>
+      <div class="p-4 h-screen border-2 border-gray-200 border-dashed rounded-lg">
+        <div class="flex flex-wrap justify-center bg-gray-100 text-center">
+          <div class="p-4 w-60">
+            <div class="flex rounded-lg bg-white p-8 flex-col h-full gap-y-1">
+              <i class="fa-solid fa-star"></i>
+              <a href="#">
+                  <p class="font-semibold tracking-tight text-gray-500">Telesales</p>
+              </a>
+            </div>
+          </div>
+    
+          <div class="p-4 w-60">
+            <div class="flex rounded-lg bg-white p-8 flex-col h-full gap-y-1">
+              <i class="fa-solid fa-star"></i>
+              <a href="#">
+                <p class="font-semibold tracking-tight text-gray-500">Portal User Management</p>
+              </a>
+            </div>
+          </div>
+    
+          <div class="p-4 w-60">
+            <div class="flex rounded-lg bg-white p-8 flex-col h-full gap-y-1">
+              <i class="fa-solid fa-star"></i>
+              <a href="#">
+                <p class="font-semibold tracking-tight text-gray-500">My Allocations</p>
+              </a>
+            </div>
+          </div>
+       
+          <div class="p-4 w-60">
+            <div class="flex rounded-lg bg-white p-8 flex-col h-full gap-y-1">
+              <i class="fa-solid fa-star"></i>
+              <a href="#">
+                <p class="font-semibold tracking-tight text-gray-500">Create Digital Vouchers</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/js/tw-elements.umd.min.js"></script>
+  </body>
+</html>
