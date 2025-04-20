@@ -208,6 +208,22 @@ const branch = [{
       343: 'York (343)'
       }];
 
+const catererOrRetailer = document.createElement('div');
+catererOrRetailer.className = 'catererOrRetailer';
+catererOrRetailer.id = 'catererOrRetailer';
+catererOrRetailer.innerHTML = `<input id="catererOrRetailerInput" name="catererOrRetailerInput" type="hidden" value="notApplicable">
+`;
+
+document.querySelector('#isCatererOrRetailer').after(catererOrRetailer);
+
+
+document.getElementById('isCatererOrRetailer').addEventListener('change', (event) => {
+    document.getElementById('catererOrRetailerInput').value = event.target.value;
+    event.target.value !== 'notApplicable' 
+    ? document.querySelector('.presellSelectedBranches').classList.remove('d-none') : document.querySelector('.presellSelectedBranches').classList.remove('d-none') 
+    ? !document.querySelector('.presellSelectedBranches').classList.contains('d-none') : document.querySelector('.presellSelectedBranches').classList.add('d-none');
+});
+
 
 const formattedBranches = Object.entries(branch[0]).map(([key, value]) => ({
   code: Number(key),
@@ -328,7 +344,7 @@ class CPA_Branches extends CPA_StyledComponent {
       box-shadow: none;
   }
 
-  cpa-branches .availableBranchesList .branchSearch:focus {
+  cpa-branches .availableBranches .branchSearch:focus {
       outline: none;
       box-shadow:none;
   }
@@ -487,3 +503,4 @@ class CPA_Branches extends CPA_StyledComponent {
 
 customElements.define('cpa-element', CPA_Element);
 customElements.define('cpa-branches', CPA_Branches);
+
