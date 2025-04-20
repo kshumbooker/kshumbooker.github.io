@@ -13,123 +13,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" nonce="" />
 
-<script src="https://www.booker.co.uk/scripts/csp.js?_bts=8DD78D19EB04B11" nonce=""></script>
-<script src="https://www.booker.co.uk/scripts/jquery-3.6.4.min.js?_bts=8DD78D19EB04B11" nonce=""></script>
-<script src="https://www.booker.co.uk/scripts/jquery.validate.min.js?_bts=8DD78D19EB04B11" nonce=""></script>
-<script src="https://www.booker.co.uk/scripts/popper.min.js?_bts=8DD78D19EB04B11" nonce=""></script>
-<script src="https://www.booker.co.uk/scripts/bootstrap.min.js?_bts=8DD78D19EB04B11" nonce=""></script>
-<script src="https://www.booker.co.uk/scripts/global.js?_bts=8DD78D19EB04B11" nonce=""></script>
-<script src="https://www.booker.co.uk/scripts/custom.js?_bts=8DD78D19EB04B11" nonce=""></script>
+<script src="https://www.booker.co.uk/scripts/csp.js" nonce=""></script>
+<script src="https://www.booker.co.uk/scripts/jquery-3.6.4.min.js" nonce=""></script>
+<script src="https://www.booker.co.uk/scripts/jquery.validate.min.js" nonce=""></script>
+<script src="https://www.booker.co.uk/scripts/popper.min.js" nonce=""></script>
+<script src="https://www.booker.co.uk/scripts/bootstrap.min.js" nonce=""></script>
+<script src="https://www.booker.co.uk/scripts/global.js" nonce=""></script>
+<script src="https://www.booker.co.uk/scripts/custom.js" nonce=""></script>
+<script src="https://www.booker.co.uk/scripts/UrlHelper.js"></script>
+<script src="./caterer-presell-admin.js" nonce=""></script>
 
-<style type="text/css" nonce="">
-a.mini-btn {
-background-color: #2356AA;
-padding: 3px 10px 3px 10px;
-color: white;
-text-decoration: none;
-}
-
-a.btn {
-margin: 0px 16px 0px 16px;
-background-color: #2356AA;
-color: white;
-text-decoration: none;
-}
-
-table.fullwidth {
-width: 100%;
-}
-
-.highlighted {
-background-color: lightgreen;
-}
-
-.pagination li {
-padding: 8px;
-}
-
-.noSelect div {
-color: red;
-}
-</style>
-
-<style>
-  .dva_bulletNumberCircle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 2px solid #2356AA;
-    color: #2356AA;
-  }</style>
-  <style>
-    presell-branches .selectedCategories .choosePrompt {
-        padding-left: 1em;
-        color: #495057;
-    }
-
-    presell-branches i.fa-caret-down {
-        border: none !important;
-    }
-
-    presell-branches .selectedCategories presell-branch-element.elementInactive{
-        display: none;
-    }
-    presell-branches .availableCategories presell-branch-element.elementActive{
-        display: none;
-    }
-
-    presell-branches .availableCategories presell-branch-element.searchNoMatch {
-        display: none;
-    }
-    
-
-    presell-branch-element {
-        border-radius: 2px;
-        cursor: pointer;
-        font-size: 0.75rem;
-        white-space: nowrap;
-        margin-left: 0.25em;        
-        margin-right: 0.25em;
-        margin-bottom: 0.25em;
-        padding-left: 0.25em;
-        padding-right: 0.25em;
-    }
-
-    presell-branches .selectedCategories presell-branch-element {
-        background: #4A5DA8;
-        border: 1px solid #4A5DA8;
-        color: white;
-    }
-
-    presell-branches div.presell-branch {
-        border-radius: 4px;
-        border: 2px solid #2356AA;
-        min-height: calc(1.5em + .75rem + 2px);
-    }
-    dpresell-branches .availableCategories {
-        border-top: 2px solid #2356AA;
-    }
-
-    presell-branches .availableCategories .availableCategoriesList {
-        max-height: 20em;
-        overflow-y: scroll;
-    }
-
-    presell-branches .availableCategories .categorySearch {
-        border: none;
-        border-bottom: 1px solid lightgray;
-        font-size: 0.75rem;
-        outline: none;
-        box-shadow:none;
-    }
-
-    presell-branches .availableCategories .categorySearch:focus {
-        outline: none;
-        box-shadow:none;
-    }
-</style>
 </head>
 <body>
 <div class="mt-3 main">
@@ -187,6 +80,29 @@ color: red;
 </div>
 </div>
 <div class="row d-flex align-items-center mb-3">
+  <div class="col-6">
+    Caterer / Retailer
+  </div>
+  <div class="col-6">
+    <select name="Year">
+      <option value="">Not Applicable</option>
+      <option value="caterer">Caterer</option>
+      <option value="retailer">Retailer</option>
+    </select>
+  </div>
+</div>
+<div class="row d-flex align-items-center mb-3 presellSelectedBranches">
+  <div class="col-6">
+    <p>Selected Branches</p>
+  </div>
+  <div class="col-6">
+    <cpa-branches id="cpa-branches" data-model-prefix="Branches_Active_" data-show-search="true">
+      
+    </cpa-branches>
+  </div>
+</div>
+
+<div class="row d-flex align-items-center mb-3">
 <div class="col-6">
 <label class="mb-0 d-block">FaciaType</label>
 </div>
@@ -217,222 +133,7 @@ color: red;
 </div>
 </div>
 
-<div class="row d-flex align-items-center mb-3">
-  <div class="col-6">
-    <p>Selected Branches</p>
-  </div>
-  <div class="col-6">
-<select class="form-control col-3" id="Branch" name="Branch"><option value="">All Branches</option>
-  <option value="125">A1 Edinburgh (125)</option>
-  <option value="454">Aberdeen (454)</option>
-  <option value="590">Aberdeen Makro (590)</option>
-  <option value="103">Aberystwyth (103)</option>
-  <option value="470">Acton (470)</option>
-  <option value="615">Advanced Supply Chain (615)</option>
-  <option value="321">Aldershot (321)</option>
-  <option value="665">Andover (665)</option>
-  <option value="369">Ardwick (369)</option>
-  <option value="322">Avonmouth (322)</option>
-  <option value="171">Ayr (171)</option>
-  <option value="361">Barnsley (361)</option>
-  <option value="213">Barnstaple (213)</option>
-  <option value="176">Barrow (176)</option>
-  <option value="132">Basingstoke (132)</option>
-  <option value="182">Bath (182)</option>
-  <option value="562">Beckton (562)</option>
-  <option value="533">Bedford (533)</option>
-  <option value="592">Belfast Makro (592)</option>
-  <option value="148">Birkenhead (148)</option>
-  <option value="150">Blackburn (150)</option>
-  <option value="345">Blackpool (345)</option>
-  <option value="519">Boston (519)</option>
-  <option value="303">Bournemouth (303)</option>
-  <option value="234">Bradford (234)</option>
-  <option value="402">Bridgend (402)</option>
-  <option value="307">Brighton (307)</option>
-  <option value="423">Bristol (423)</option>
-  <option value="580">Bristol Makro (580)</option>
-  <option value="222">Broadstairs (222)</option>
-  <option value="664">BRP Didcot (664)</option>
-  <option value="463">Burnley (463)</option>
-  <option value="184">Burton-on-Trent (184)</option>
-  <option value="532">Byfleet (532)</option>
-  <option value="544">Cambridge (544)</option>
-  <option value="550">Canterbury (550)</option>
-  <option value="341">Cardiff (341)</option>
-  <option value="426">Cardiff (Leckwith) (426)</option>
-  <option value="588">Cardiff Makro (588)</option>
-  <option value="153">Carlisle (153)</option>
-  <option value="124">Carmarthen (124)</option>
-  <option value="229">Castleford (229)</option>
-  <option value="574">Charlton Makro (574)</option>
-  <option value="136">Chelmsford (136)</option>
-  <option value="433">Cheltenham (433)</option>
-  <option value="344">Chester (344)</option>
-  <option value="275">Chesterfield (275)</option>
-  <option value="133">Chichester (133)</option>
-  <option value="283">Clacton (283)</option>
-  <option value="376">Colchester (376)</option>
-  <option value="302">Coventry (302)</option>
-  <option value="326">Cowes (326)</option>
-  <option value="221">Crayford (221)</option>
-  <option value="536">Croydon (536)</option>
-  <option value="474">Cwmbran (474)</option>
-  <option value="306">Dagenham (306)</option>
-  <option value="205">Darlington (205)</option>
-  <option value="377">Derby (377)</option>
-  <option value="603">Didcot Booker Direct (603)</option>
-  <option value="173">Dumfries (173)</option>
-  <option value="482">Dundee (482)</option>
-  <option value="126">Dunfermline (126)</option>
-  <option value="138">Eastbourne (138)</option>
-  <option value="314">Eastleigh (314)</option>
-  <option value="583">Edinburgh Makro (583)</option>
-  <option value="455">Elgin (455)</option>
-  <option value="667">Elmsall (667)</option>
-  <option value="581">Enfield Makro (581)</option>
-  <option value="338">Exeter (338)</option>
-  <option value="597">Exeter Makro (597)</option>
-  <option value="172">Falkirk (172)</option>
-  <option value="663">Fareham (663)</option>
-  <option value="579">Fareham Makro (579)</option>
-  <option value="261">Farnworth (261)</option>
-  <option value="295">Folkestone (295)</option>
-  <option value="194">Galashiels (194)</option>
-  <option value="208">Gateshead (208)</option>
-  <option value="348">Glasgow (348)</option>
-  <option value="372">Gloucester (372)</option>
-  <option value="109">Gorton (Manchester) (109)</option>
-  <option value="521">Grantham (521)</option>
-  <option value="356">Greenford (356)</option>
-  <option value="177">Greenock (177)</option>
-  <option value="614">GREGORY DISTRIBUTION. (614)</option>
-  <option value="144">Gt Yarmouth (144)</option>
-  <option value="572">Halesowen Makro (572)</option>
-  <option value="168">Hamilton (168)</option>
-  <option value="236">Harrogate (236)</option>
-  <option value="556">Hastings (556)</option>
-  <option value="604">Hatfield Booker Direct (604)</option>
-  <option value="131">Haverfordwest (131)</option>
-  <option value="358">Haydock (358)</option>
-  <option value="602">Haydock Booker Direct (602)</option>
-  <option value="127">Hayle (127)</option>
-  <option value="669">Hemel Hempstead (669)</option>
-  <option value="254">Hereford (254)</option>
-  <option value="290">High Wycombe (290)</option>
-  <option value="418">Holt (418)</option>
-  <option value="268">Huddersfield (268)</option>
-  <option value="427">Hull (427)</option>
-  <option value="586">Hull Makro (586)</option>
-  <option value="457">Inverness (457)</option>
-  <option value="378">Ipswich (378)</option>
-  <option value="598">Ipswich Makro (598)</option>
-  <option value="434">Irvine (434)</option>
-  <option value="503">Kettering (503)</option>
-  <option value="524">Kings Lynn (524)</option>
-  <option value="366">Kingswinford (366)</option>
-  <option value="485">Kirkcaldy (485)</option>
-  <option value="157">Lancaster (157)</option>
-  <option value="575">Leeds Makro (575)</option>
-  <option value="185">Leicester (185)</option>
-  <option value="584">Leicester Makro (584)</option>
-  <option value="165">Leigh (165)</option>
-  <option value="169">Lincoln (169)</option>
-  <option value="163">Liverpool (163)</option>
-  <option value="571">Liverpool Makro (571)</option>
-  <option value="608">Livingston (608)</option>
-  <option value="601">Livingston Booker Direct (601)</option>
-  <option value="311">Llandudno (311)</option>
-  <option value="318">Lowestoft (318)</option>
-  <option value="329">Luton (329)</option>
-  <option value="110">Macclesfield (110)</option>
-  <option value="570">Manchester Makro (570)</option>
-  <option value="287">Mansfield (287)</option>
-  <option value="375">Medway (375)</option>
-  <option value="312">Merthyr Tydfil (312)</option>
-  <option value="260">Middleton (260)</option>
-  <option value="486">Morpeth (486)</option>
-  <option value="203">Newcastle (203)</option>
-  <option value="476">Newquay (476)</option>
-  <option value="232">Newton Abbot (232)</option>
-  <option value="558">Nine Elms (558)</option>
-  <option value="309">North Weald-Epping (309)</option>
-  <option value="266">Northampton (266)</option>
-  <option value="111">Northwich (111)</option>
-  <option value="317">Norwich (317)</option>
-  <option value="596">Norwich Makro (596)</option>
-  <option value="327">Nottingham (327)</option>
-  <option value="331">Nuneaton (331)</option>
-  <option value="437">Oban (437)</option>
-  <option value="534">Oxford (534)</option>
-  <option value="373">Paignton (373)</option>
-  <option value="487">Paisley (487)</option>
-  <option value="622">Perth (622)</option>
-  <option value="316">Peterborough (316)</option>
-  <option value="328">Plymouth (328)</option>
-  <option value="587">Poole Makro (587)</option>
-  <option value="304">Portsmouth (304)</option>
-  <option value="593">Preston Makro (593)</option>
-  <option value="599">Queensferry Makro (599)</option>
-  <option value="594">Rayleigh Makro (594)</option>
-  <option value="585">Reading Makro (585)</option>
-  <option value="560">Redhill (560)</option>
-  <option value="267">Redruth (267)</option>
-  <option value="305">Rugby (305)</option>
-  <option value="137">Salisbury (137)</option>
-  <option value="354">Saltley (354)</option>
-  <option value="219">Sandown (219)</option>
-  <option value="217">Scarborough (217)</option>
-  <option value="223">Scunthorpe (223)</option>
-  <option value="166">Shawfield (166)</option>
-  <option value="308">Sheffield Booker (308)</option>
-  <option value="578">Sheffield Makro (578)</option>
-  <option value="259">Shrewsbury (259)</option>
-  <option value="313">Sidcup (313)</option>
-  <option value="527">Skegness (527)</option>
-  <option value="273">Slough (273)</option>
-  <option value="325">Southend (325)</option>
-  <option value="164">Southport (164)</option>
-  <option value="231">St Austell (231)</option>
-  <option value="561">St Pancras (561)</option>
-  <option value="337">Stirchley (337)</option>
-  <option value="623">Stirling (623)</option>
-  <option value="276">Stockport (276)</option>
-  <option value="279">Stockton (279)</option>
-  <option value="339">Stoke (339)</option>
-  <option value="591">Stoke Makro (591)</option>
-  <option value="351">Sunbury (351)</option>
-  <option value="201">Sunderland (201)</option>
-  <option value="332">Swansea (332)</option>
-  <option value="195">Swindon (195)</option>
-  <option value="190">Tamworth (190)</option>
-  <option value="193">Taunton (193)</option>
-  <option value="595">Teesside Makro (595)</option>
-  <option value="355">Telford (355)</option>
-  <option value="666">Thamesmead (666)</option>
-  <option value="395">Tottenham (395)</option>
-  <option value="130">Trowbridge (130)</option>
-  <option value="258">Tunbridge Wells (258)</option>
-  <option value="191">Warwick (191)</option>
-  <option value="573">Washington Makro (573)</option>
-  <option value="319">Watford (319)</option>
-  <option value="668">Wellingborough (668)</option>
-  <option value="600">Wellingborough Booker Direct (600)</option>
-  <option value="447">Weston-Super-Mare (447)</option>
-  <option value="140">Weymouth (140)</option>
-  <option value="353">Wimbledon (353)</option>
-  <option value="357">Wolverhampton (357)</option>
-  <option value="380">Wolverhampton (380)</option>
-  <option value="280">Worcester (280)</option>
-  <option value="175">Workington (175)</option>
-  <option value="179">Worthing (179)</option>
-  <option value="156">Wrexham (156)</option>
-  <option value="607">Wrexham (607)</option>
-  <option value="479">Yeovil (479)</option>
-  <option value="343">York (343)</option>
-  </select>
-  </div>
-</div>
+
 
 <div class="row d-flex align-items-center mb-3">
 <div class="col-6">
