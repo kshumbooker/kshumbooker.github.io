@@ -208,6 +208,18 @@ const branch = [{
       343: 'York (343)'
       }];
 
+document.querySelector('#checkboxTsAndCs').addEventListener('click', (event) => {
+       const isCheckBoxTsAndCs = document.getElementById('checkboxTsAndCs');
+       const divTsAndCs = document.querySelector('#divTsAndCs');
+       const fileTsAndCs = document.getElementById('fileTsAndCs');
+       const textTsAndCs = document.getElementById('textTsAndCs');
+       divTsAndCs.classList.toggle('d-none');
+       fileTsAndCs.disabled = !fileTsAndCs.disabled;
+       textTsAndCs.disabled = !textTsAndCs.disabled;
+       fileTsAndCs.required = !fileTsAndCs.required;
+       textTsAndCs.required = !textTsAndCs.required;
+    });
+
 const catererOrRetailer = document.createElement('div');
 catererOrRetailer.className = 'catererOrRetailer';
 catererOrRetailer.id = 'catererOrRetailer';
