@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pre-Sell Management</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.booker.co.uk/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://www.booker.co.uk/css/global.css" />
+    <link rel="stylesheet" href="https://www.booker.co.uk/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://www.booker.co.uk/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+    <script src="https://www.booker.co.uk/scripts/jquery-3.6.4.min.js"></script>
+    <script src="https://www.booker.co.uk/scripts/jquery.validate.min.js"></script>
+    <script src="https://www.booker.co.uk/scripts/popper.min.js"></script>
+    <script src="https://www.booker.co.uk/scripts/bootstrap.min.js"></script>
+    <script src="https://www.booker.co.uk/scripts/global.js"></script>
+    <script src="https://www.booker.co.uk/scripts/custom.js"></script>
+
+    <style type="text/css">
+        a.mini-btn {
+            background-color: #2356AA;
+            padding: 3px 10px 3px 10px;
+            color: white;
+            text-decoration: none;
+        }
+        a.btn {
+            margin: 0px 16px 0px 16px;
+            background-color: #2356AA;
+            color: white;
+            text-decoration: none;
+        }
+        table.fullwidth
+        {
+            width:100%;
+        }
+        .highlighted
+        {
+            background-color: lightgreen;
+        }
+        .pagination li 
+        {
+            padding: 8px;
+        }
+        .noSelect div {
+            color: red;
+        }
+    </style>
+
+<script>(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"false","rua.upre":"false","rua.cpre":"false","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"SJ-02fdd77d-6e23-4ccf-8c75-3eb1859762db","rua.cook":"true","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"false","rua.isuxp":"false","rua.texp":"norulematch","rua.ceh":"false","rua.ueh":"false","rua.ieh.st":"0"}]);</script>
+                              <script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="43LUW-3SVM5-PKZDK-Q9NGH-9VAE8",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,_,o,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",o=document.getElementsByTagName("script")[0],o.parentNode.insertBefore(r,o);try{_=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",_=r.contentWindow.document}_.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"43LUW-3SVM5-PKZDK-Q9NGH-9VAE8",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},_.write("<bo"+'dy onload="document._l();">'),_.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e="false"=="true"?1:0,t="cookiepresent",n="ll6g5hycccm5e2afgn2q-f-93e97b450-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,_={"ak.v":"39","ak.cp":"1163797","ak.ai":parseInt("693875",10),"ak.ol":"0","ak.cr":14,"ak.ipv":4,"ak.proto":"h2","ak.rid":"c9eb104","ak.r":46832,"ak.a2":e,"ak.m":"x","ak.n":"essl","ak.bpcip":"90.252.110.0","ak.cport":61589,"ak.gh":"2.19.186.71","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"","ak.t":"1745171317","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==r/Yz9h5kA5OCcSZsNsVZPZ9JNoMETXJ8bsQaikrOFtW1PZJB0LAn/+dBi6zW2AzLSgPzTGrFeZp9OVV39k6AWenCqbIK3EQZl32AU3MybOy2SQhHRI3wpuQmshtsaW5Iqv4NnD79zsJuKHG/AtoEEFN46+kK5O7bigvTVBZRhLJ8Z9YS/jyCOq9Uphm20KjNRHmPFTpMHolqqMH49/eRtaAnEtlXcGt+cDdKoQ/VvCN3/X/S0un9e7aJ89RKsKfiy3smF+M+QViDzJ37DQJ2pJ9EcJv9Gep8oX94e+8rMry3YcItd29wAK2wvv6+itYPMYSr80XLO/9yRyI0z4AcrNNX1DYfw6TNIlPJaeC/ONVwjur4sqhFyrooXaFqLIz4jE+jI4EJJS2k8MS9jyz4xI2m5tgu6QjxFpRL/xFMv9o=","ak.pv":"38","ak.dpoabenc":"","ak.tf":i};if(""!==t)_["ak.ruds"]=t;var o={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))_["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(_)},rv:function(){var a=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:_,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("before_beacon",o.av,null,null),a("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+<body>
+    <div class="mt-3 main">
+
+                <h2>Pre-Sell Management</h2>
+
+        <hr />
+        
+
+<div class="mt-3 main">
+
+<form action="/admin/function/AdminPresellManagement/LoadHeader" enctype="multipart/form-data" method="post" novalidate="true"><input name="__RequestVerificationToken" type="hidden" value="CT7nG-iebi-bqVVP0VbC4F9PLe1eurlfaNPfGleelNpWpwO9c3xcMpCe7Z02lHhLIb8XqEHTkW7WX1Y7zyVaaLatz-2copg0fpXOXJlWrC81" />        <input type="hidden" name="Id" value="1059" />
+        <div class="row d-flex align-items-center mb-3">
+            <div class="col-6">
+                <label class="mb-0 d-block">Upload File</label>
+            </div>
+            <div class="col-6 text-left">
+                <input type="file" name="file" />
+            </div>
+        </div>
+
+        <div class="row d-flex align-items-center mb-3">
+          <div class="col-6">
+              <label class="mb-0 d-block">Is Terms and Conditions required?</label>
+          </div>
+          <div class="col-6 text-left">
+              <input type="checkbox" id="checkboxTsAndCs"  name="checkboxTsAndCs" />
+          </div>
+      </div>
+
+    <div id="divTsAndCs" class="divTsAndCs">
+      <div class="row d-flex align-items-center mb-3">
+          <div class="col-6">
+              <label class="mb-0 d-block">Terms and Conditions document</label>
+          </div>
+          <div class="col-6 text-left">
+              <input type="file" name="fileTsAndCs" />
+          </div>
+      </div>
+
+      <div class="row d-flex align-items-center mb-3">
+        <div class="col-6">
+            <label class="mb-0 d-block">Terms and Conditions text</label>
+        </div>
+        <div class="col-6 text-left">
+            <textarea type="text" name="textTsAndCs" rows="4" cols="50"></textarea>
+        </div>
+      </div>
+    </div>
+
+        <div class="buttons">
+            <button type="submit" class="btn">Upload</button>
+        </div>
+</form>
+</div>
+<p>
+    <a href="/admin/function/AdminPresellManagement">Pre-Sell Management</a>
+</p>
+
+    </div>
+    <hr />
+    <div class="mt-3 mb-3 main">
+        <a href="/admin/portal">Return to Portal</a>
+    </div>
+  <script>
+    document.querySelector('#checkboxTsAndCs').addEventListener('click', (event) => {
+       const isCheckBoxTsAndCs = document.getElementById('checkboxTsAndCs');
+       const divTsAndCs = document.querySelector('#divTsAndCs');
+       if (isCheckBoxTsAndCs.checked === true) {
+        divTsAndCs.classList.remove('d-none');
+       } else {
+        divTsAndCs.classList.add('d-none');
+       }
+    });
+    
+  </script>
+</body>
+</html>
