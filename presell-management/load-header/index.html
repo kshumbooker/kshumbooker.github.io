@@ -115,19 +115,6 @@
     <div class="mt-3 mb-3 main">
         <a href="/admin/portal">Return to Portal</a>
     </div>
-  <script>
-    document.querySelector('#checkboxTsAndCs').addEventListener('click', (event) => {
-       const isCheckBoxTsAndCs = document.getElementById('checkboxTsAndCs');
-       const divTsAndCs = document.querySelector('#divTsAndCs');
-       const fileTsAndCs = document.getElementById('fileTsAndCs');
-       const textTsAndCs = document.getElementById('textTsAndCs');
-       divTsAndCs.classList.toggle('d-none');
-       fileTsAndCs.disabled = !fileTsAndCs.disabled;
-       textTsAndCs.disabled = !textTsAndCs.disabled;
-       fileTsAndCs.required = !fileTsAndCs.required;
-       textTsAndCs.required = !textTsAndCs.required;
-    });
-    
-  </script>
+  <script src="../caterer-presell-admin.js"></script>
 </body>
 </html>
