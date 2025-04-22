@@ -1032,7 +1032,7 @@ System.Web.Mvc.StyleContext;
         max-height: 96px;
     }
 
-     @media (max-width: 1150px) {
+    @media (max-width: 1150px) {
       
       main#presell_button .mobile-view .product-quantity-date .plus-minus-icon {
             width: 1em;
@@ -1052,8 +1052,18 @@ System.Web.Mvc.StyleContext;
     }
 </style>
 <main id="presell_button" class="main mt-3">
-    <h2>Pre-Sell: Presell Test 2025</h2>
-    <h2>Closing Date: Sunday 1st June 2025</h2>
+    <div class="row">
+        <div class="col-xs-12 col-lg-6">
+            <h2>Pre-Sell: Presell Test 2025</h2>
+            <h2>Closing Date: Sunday 1st June 2025</h2>
+        </div>
+        <div class="col-xs-12 col-lg-6 d-inline-flex">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="agreeTsAndCs" id="agreeTsAndCsCheck">
+                <label class="form-check-label" for="agreeTsAndCsCheck">I have read and agree to the terms and conditions <a class="font-bold" href="#" target="_blank">HERE</a></label>
+            </div>
+        </div>
+    </div>
 <form action="/products/presell-product-list?ordername=1342" method="post">        <div id="buttons-bottom" class="text-right mb-sm-0 row d-lg-flex justify-content-lg-end justify-content-sm-end header-buttons pr-0 pb-md-0 mb-md-3 col mt-3">
             <a href="/products/presell-list" class="btn blue-btn">Back to Pre-Sell</a>
                 <a href="#" class="btn green-btn ml-3 update-total">Update Totals</a>
@@ -3082,8 +3092,9 @@ let searchMode = 1;
 $(document).ready(function(){ suggestion.branch = 'B26600';})
 pageSearchUrl = '/products/search'
 </script>
-
+<script src="../caterer-presell-admin.js"></script>
 </html>
 <script nonce="MEba32IsSihqPe5jQESu9bDgcAEmBQwM5Wk/mMSTKIM=">
     document.addEventListener("DOMContentLoaded", function (event) { _csp.scanStyles(); });
 </script>
+
