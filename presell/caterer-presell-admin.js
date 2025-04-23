@@ -430,7 +430,7 @@ this.branches.forEach(branch => {
     }
 });
 
-this.showChoosePrompt();
+  this.showChoosePrompt();
 }
 
 render() {
@@ -493,15 +493,18 @@ const catererOrRetailer = document.createElement('div');
           cpa.classList.add('elementInactive');
         }
       });
+      document.querySelector('.choosePrompt').classList.remove('d-none');
     }
   });
 
   const availableBranchesDiv = document.querySelector('.availableBranches');
   const cpaBranchesDiv = document.querySelector('.cpa-branches');
+  const choosePromptSpan = document.querySelector('.selectedBranches .choosePrompt');
+
   document.addEventListener('click', (e) => {
     e.stopPropagation();
     if (cpaBranchesDiv.contains(e.target) === false && availableBranchesDiv.contains(e.target) === false && availableBranchesDiv.classList.contains('d-none') === false) {
-      availableBranchesDiv.classList.add('d-none');
+      availableBranchesDiv.classList.toggle('d-none');
     }
   });
 
@@ -539,5 +542,7 @@ if (value.length > 1) {
 
 customElements.define('cpa-element', CPA_Element);
 customElements.define('cpa-branches', CPA_Branches);
+
+
 
 
