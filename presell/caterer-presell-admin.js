@@ -228,21 +228,6 @@ if (document.getElementById('checkboxTsAndCs')) {
   });
 }
   
-if (document.getElementById('isCatererOrRetailer')) {
-
-  const catererOrRetailer = document.createElement('div');
-  catererOrRetailer.className = 'catererOrRetailer';
-  catererOrRetailer.id = 'catererOrRetailer';
-  catererOrRetailer.innerHTML = `<input id="catererOrRetailerInput" name="catererOrRetailerInput" type="hidden" value="notApplicable">
-`;
-
-  document.querySelector('#isCatererOrRetailer').after(catererOrRetailer);
-
-  document.getElementById('isCatererOrRetailer').addEventListener('change', (event) => {
-    document.getElementById('catererOrRetailerInput').value = event.target.value;
-    event.target.value !== 'notApplicable' ? document.querySelector('.presellSelectedBranches').classList.remove('d-none') : document.querySelector('.presellSelectedBranches').classList.remove('d-none') ? !document.querySelector('.presellSelectedBranches').classList.contains('d-none') : document.querySelector('.presellSelectedBranches').classList.add('d-none');
-  });
-}
 
 if (document.getElementById('presell_button')) {
 
@@ -428,7 +413,7 @@ clickBranch = (element) => {
 
 let elementCode = element.getAttribute('data-code');
 
-this.formattedBranches.forEach(branch => {
+this.branches.forEach(branch => {
     if (elementCode == branch.code) {
         branch.active = !branch.active;
         element.setAttribute('data-active', !element.getAttribute('data-active'));
@@ -480,7 +465,7 @@ render() {
   inputHtml.className = this.modelPrefix + 'inputs';
   inputHtml.id = this.modelPrefix + 'inputs';
 
-  this.formattedBranches.map((branch, index) => {
+  this.branches.map((branch, index) => {
     inputHtml.innerHTML += `
     <input id="${this.modelPrefix}${index}__code" name="${this.modelPrefix}[${index}].code" type="hidden" value="${branch.code}">
     <input id="${this.modelPrefix}${index}__name" name="${this.modelPrefix}[${index}].name" type="hidden" value="${branch.name}">
@@ -488,6 +473,37 @@ render() {
   });
 
 this.querySelector('.cpa-branches').after(inputHtml);
+
+const catererOrRetailer = document.createElement('div');
+  catererOrRetailer.className = 'catererOrRetailer';
+  catererOrRetailer.id = 'catererOrRetailer';
+  catererOrRetailer.innerHTML = `<input id="catererOrRetailerInput" name="catererOrRetailerInput" type="hidden" value="notApplicable">
+`;
+
+  document.querySelector('#isCatererOrRetailer').after(catererOrRetailer);
+
+  document.getElementById('isCatererOrRetailer').addEventListener('change', (event) => {
+    document.getElementById('catererOrRetailerInput').value = event.target.value;
+    event.target.value !== 'notApplicable' ? document.querySelector('.presellSelectedBranches').classList.remove('d-none') : document.querySelector('.presellSelectedBranches').classList.remove('d-none') ? !document.querySelector('.presellSelectedBranches').classList.contains('d-none') : document.querySelector('.presellSelectedBranches').classList.add('d-none');
+    if (event.target.value === 'notApplicable') {
+      this.branches.map(branch => document.querySelector('.' + this.modelPrefix + branch.code).value = false);
+      [...document.querySelectorAll('cpa-element')].map(cpa => {
+        if (cpa.classList.contains('elementActive')) {
+          cpa.classList.remove('elementActive');
+          cpa.classList.add('elementInactive');
+        }
+      });
+    }
+  });
+
+  const availableBranchesDiv = document.querySelector('.availableBranches');
+  const cpaBranchesDiv = document.querySelector('.cpa-branches');
+  document.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (cpaBranchesDiv.contains(e.target) === false && availableBranchesDiv.contains(e.target) === false && availableBranchesDiv.classList.contains('d-none') === false) {
+      availableBranchesDiv.classList.add('d-none');
+    }
+  });
 
 }
 
@@ -523,4 +539,5 @@ if (value.length > 1) {
 
 customElements.define('cpa-element', CPA_Element);
 customElements.define('cpa-branches', CPA_Branches);
+
 
