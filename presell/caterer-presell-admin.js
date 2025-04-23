@@ -483,6 +483,7 @@ const catererOrRetailer = document.createElement('div');
   document.querySelector('#isCatererOrRetailer').after(catererOrRetailer);
 
   document.getElementById('isCatererOrRetailer').addEventListener('change', (event) => {
+    document.querySelector('select[name="Facia"]').removeAttribute('disabled');
     document.getElementById('catererOrRetailerInput').value = event.target.value;
     event.target.value !== 'notApplicable' ? document.querySelector('.presellSelectedBranches').classList.remove('d-none') : document.querySelector('.presellSelectedBranches').classList.remove('d-none') ? !document.querySelector('.presellSelectedBranches').classList.contains('d-none') : document.querySelector('.presellSelectedBranches').classList.add('d-none');
     if (event.target.value === 'notApplicable') {
@@ -494,12 +495,13 @@ const catererOrRetailer = document.createElement('div');
         }
       });
       document.querySelector('.choosePrompt').classList.remove('d-none');
+    } else {
+      document.querySelector('select[name="Facia"]').setAttribute("disabled", true);
     }
   });
 
   const availableBranchesDiv = document.querySelector('.availableBranches');
   const cpaBranchesDiv = document.querySelector('.cpa-branches');
-  const choosePromptSpan = document.querySelector('.selectedBranches .choosePrompt');
 
   document.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -542,6 +544,7 @@ if (value.length > 1) {
 
 customElements.define('cpa-element', CPA_Element);
 customElements.define('cpa-branches', CPA_Branches);
+
 
 
 
