@@ -228,12 +228,34 @@ if (document.getElementById('checkboxTsAndCs')) {
   });
 }
   
+if (document.getElementById('agreeTsAndCsCheck')) {
+  const disablePreSellElements = (checked) => {
+    const updateTotals = document.querySelector('#presell_button .update-total');
+    const presellGridsActive = document.querySelectorAll('.presell-mode input');
+    const presellGridsIcons = document.querySelectorAll('.presell-mode .plus-minus-icon');
+    if (!checked) {
+      [...presellGridsActive].map(presell => presell.disabled = true);
+      [...presellGridsIcons].map(icon => icon.classList.add('disabled'));
+      updateTotals.classList.add('disabled');
+    } else {
+      [...presellGridsActive].map(presell => presell.disabled = !presell.disabled);
+      [...presellGridsIcons].map(icon => icon.classList.toggle('disabled'));
+      updateTotals.classList.toggle('disabled');
+    }
+  }
 
-if (document.getElementById('presell_button')) {
+  const checkbox = document.getElementById('agreeTsAndCsCheck');
+  if (!checkbox.checked) {
+    disablePreSellElements();
+  }
 
-  const updateTotals = document.querySelector('#presell_button .update-total');
-
-  updateTotals.classList.add('disabled');
+  checkbox.addEventListener('change', (event) => {
+    if (event.target.checked !== true) {
+      disablePreSellElements(false);
+    } else {
+      disablePreSellElements(true);
+    }
+  });
 }
 
 class CPA_StyledComponent extends HTMLElement {
