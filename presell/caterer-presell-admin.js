@@ -606,8 +606,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
     </div>
     <div class="col-8 product-quantities">
       <div class="d-flex product-quantities-row row">
-        ${presell.drops.map(drop => drop.active ? `
-        <div class="flex-fill d-flex justify-content-center product-quantity-date align-items-center text-center flex-row-reverse presell-mode">
+        ${presell.drops.map(drop => drop.active ? ` <div class="flex-fill d-flex justify-content-center product-quantity-date align-items-center text-center flex-row-reverse presell-mode">
           <div class="plus-minus-icon ml-1" data-updatemode="plus">
             <i class="fas fa-plus"></i>
           </div>
@@ -617,8 +616,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
           </div>
         </div>` : `<div class="flex-fill d-flex justify-content-center product-quantity-date back-grey px-4">
               <input type="number" value=${drop.quantity} disabled="" />
-          </div>
-        `).join("")}
+          </div>`).join("")}
         </div>
     </div>
 </div>`).join("")}<div class="d-flex row totals mt-3">
@@ -749,7 +747,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                 </div>
             </div>
 
-        </div>`};
+        </div>`;
 
 
 
