@@ -219,6 +219,7 @@ const presellData = {
   headerId: 1342,
   data: [
     {
+      index: 'one',
       mCode: 299273,
       img: 'https://media.booker.co.uk/content/presell/5056569900638.jpg',
       caseQuantity: 12,
@@ -232,47 +233,56 @@ const presellData = {
       drops: [
         {
           drop: 0,
+          dropIndexText: 'one',
           active: true,
           quantity: 0
         },
         {
           drop: 1,
+          dropIndexText: 'two',
           active: false,
           quantity: 0
         },
         {
           drop: 2,
+          dropIndexText: 'three',
           active: true,
           quantity: 0
         },
         {
           drop: 3,
+          dropIndexText: 'four',
           active: false,
           quantity: 0
         },
         {
           drop: 4,
+          dropIndexText: 'five',
           active: false,
           quantity: 0
         },
         {
           drop: 5,
+          dropIndexText: 'six',
           active: true,
           quantity: 0
         },
         {
           drop: 6,
+          dropIndexText: 'seven',
           active: true,
           quantity: 0
         },
         {
           drop: 7,
+          dropIndexText: 'eight',
           active: false,
           quantity: 0
         }        
       ]
     },
     {
+      index: 'two',
       mCode: 299272,
       img: 'https://media.booker.co.uk/content/presell/5056569900652.jpg',
       caseQuantity: 12,
@@ -301,7 +311,7 @@ const presellData = {
         },
         {
           drop: 3,
-          active: false,
+          active: true,
           quantity: 0
         },
         {
@@ -321,12 +331,13 @@ const presellData = {
         },
         {
           drop: 7,
-          active: false,
+          active: true,
           quantity: 0
         }        
       ]
     },
     {
+      index: 'three',
       mCode: 289573,
       img: 'https://media.booker.co.uk/content/presell/3574661648804.jpg',
       caseQuantity: 12,
@@ -355,12 +366,12 @@ const presellData = {
         },
         {
           drop: 3,
-          active: false,
+          active: true,
           quantity: 0
         },
         {
           drop: 4,
-          active: false,
+          active: true,
           quantity: 0
         },
         {
@@ -375,12 +386,13 @@ const presellData = {
         },
         {
           drop: 7,
-          active: false,
+          active: true,
           quantity: 0
         }        
       ]
     },
     {
+      index: 'four',
       mCode: 212129,
       img: 'https://media.booker.co.uk/content/presell/5010153812523.jpg',
       caseQuantity: 2,
@@ -429,12 +441,13 @@ const presellData = {
         },
         {
           drop: 7,
-          active: false,
+          active: true,
           quantity: 0
         }        
       ]
     },
     {
+      index: 'five',
       mCode: 240438,
       img: 'https://media.booker.co.uk/content/presell/811538013512.jpg',
       caseQuantity: 6,
@@ -473,12 +486,12 @@ const presellData = {
         },
         {
           drop: 5,
-          active: true,
+          active: false,
           quantity: 0
         },
         {
           drop: 6,
-          active: true,
+          active: false,
           quantity: 0
         },
         {
@@ -559,10 +572,11 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                 <img class="product-image" src=${presell.img} alt=${presell.product} />
             </div>
             <div class="col-10">
-                <div class="d-flex p-2">
+                <div class="d-flex p-4">
                     <div class="align-self-center flex-column px-2">
                         <p class="font-weight-bold mb-0">${presell.product}</p>
                         <p class="mb-0">Case of ${presell.caseQuantity}</p>
+                        <p class="mb-0">${presell.caseWeight}</p>
                         <p class="mb-0">${presell.description}</p>
                         <p class="mb-0 font-weight-bold">M${presell.mCode}</p>
                     </div>
@@ -605,8 +619,8 @@ if (document.getElementById('agreeTsAndCsCheck')) {
         </div>
     </div>
     <div class="col-8 product-quantities">
-      <div class="d-flex product-quantities-row row">
-        ${presell.drops.map(drop => drop.active ? ` <div class="flex-fill d-flex justify-content-center product-quantity-date align-items-center text-center flex-row-reverse presell-mode">
+      <div class="d-flex product-quantities-row">
+        ${presell.drops.map(drop => drop.active ? ` <div class="d-flex flex-fill justify-content-center product-quantity-date align-items-center text-center flex-row-reverse presell-mode">
           <div class="plus-minus-icon ml-1" data-updatemode="plus">
             <i class="fas fa-plus"></i>
           </div>
@@ -614,7 +628,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
           <div class="plus-minus-icon mr-1" data-updatemode="minus">
             <i class="fas fa-minus"></i>
           </div>
-        </div>` : `<div class="flex-fill d-flex justify-content-center product-quantity-date back-grey px-4">
+        </div>` : `<div class="d-flex flex-fill justify-content-center product-quantity-date back-grey">
               <input type="number" value=${drop.quantity} disabled="" />
           </div>`).join("")}
         </div>
@@ -753,9 +767,9 @@ if (document.getElementById('agreeTsAndCsCheck')) {
 
   newPresellHtmlMobile[0].innerHTML = presellData.data.map(presell => `<div class="accordion" id="checkout-delivered-accordion">
     <div class="card">
-        <div class="card-header" id="checkout-delivered-heading-one" data-toggle="collapse"
-             data-target="#checkout-delivered-collapse-one" aria-expanded="true"
-             aria-controls="collapse-one">
+        <div class="card-header" id="checkout-delivered-heading-${presell.index}" data-toggle="collapse"
+             data-target="#checkout-delivered-collapse-${presell.index}" aria-expanded="true"
+             aria-controls="collapse-${presell.index}">
             <div class="d-flex row product">
                 <div class="col-12 product-details pl-0 pr-0">
                     <div class="d-flex row">
@@ -810,7 +824,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                                         <span>POR:</span>
                                     </div>
                                     <div class="col-6 pr-0 pl-0">
-                                        <span>${presell.por}%</span>
+                                        <span>${presell.por}&#37</span>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end price-row">
@@ -818,7 +832,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                                         <span>VAT:</span>
                                     </div>
                                     <div class="col-6 pr-0 pl-0">
-                                        <span>${presell.vat}</span>
+                                        <span>${presell.vat}&#37</span>
                                     </div>
                                 </div>
                             </div>
@@ -827,8 +841,8 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                 </div>
             </div>
         </div>
-        <div id="checkout-delivered-collapse-one" class="collapse show"
-             aria-labelledby="checkout-delivered-heading-one" data-parent="#checkout-delivered-accordion">
+        <div id="checkout-delivered-collapse-${presell.index}" class="collapse show"
+             aria-labelledby="checkout-delivered-heading-${presell.index}" data-parent="#checkout-delivered-accordion">
             <div class="card-body">
                 <div class="d-flex row flex-column product">
                     <div class="col-12 product-quantities mb-3">
@@ -877,12 +891,17 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                         </div>
                     </div>
                     <div class="col-12 product-quantities">
-                      ${presell.drops.map(drop => drop.active ? `<div class="d-flex product-quantities-row row">
+                      <div class="d-flex product-quantities-row row">
+                      ${presell.drops.map(drop => drop.active ? `
                         <div class="flex-fill d-flex justify-content-center product-quantity-date align-items-center text-center flex-row-reverse pr-0 pl-0 presell-mode">
-                          <div class="plus-minus-icon ml-1" onclick="addElement(this)"><i class="fas fa-plus"></i></div>
+                          <div class="plus-minus-icon ml-1" onclick="addElement(this)">
+                            <i class="fas fa-plus"></i>
+                          </div>
                           <input data-drop=${drop.drop} data-headerid=${presellData.headerId} data-productid=${presell.mCode} id="" name="SeletedByClient" type="number" value=${drop.quantity} />
-                          <div class="plus-minus-icon mr-1" onclick="removeElement(this)"><i class="fas fa-minus"></i></div>
-                        </div></div>` : `<div class="flex-fill d-flex justify-content-center product-quantity-date back-grey">
+                          <div class="plus-minus-icon mr-1" onclick="removeElement(this)">
+                            <i class="fas fa-minus"></i>
+                          </div>
+                        </div>` : `<div class="flex-fill d-flex justify-content-center product-quantity-date back-grey">
                         <input type="number" value=${drop.quantity} disabled="" />
                       </div>`).join("")}
                         </div>
@@ -891,7 +910,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
             </div>
         </div>
     </div>
-</div>`); 
+</div>`).join(""); 
 
 
   const disablePreSellElements = (checked) => {
