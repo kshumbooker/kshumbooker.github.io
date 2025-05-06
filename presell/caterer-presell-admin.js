@@ -505,6 +505,25 @@ const presellData = {
 }
 
 
+if (document.getElementById('isCatererPresell')) {
+  const isCatererPresell = document.createElement('div');
+  isCatererPresell.className = 'isCatererPresell';
+  isCatererPresell.id = 'isCatererPresell';
+  isCatererPresell.innerHTML = `<input id="isCatererPresellInput" name="isCatererPresellInput" type="hidden" value="notApplicable">
+  `;
+  
+  document.querySelector('#isCatererPresell').after(isCatererPresell);
+  
+  document.getElementById('isCatererPresell').addEventListener('change', (event) => {
+    document.querySelector('select[name="Facia"]').removeAttribute('disabled');
+    document.getElementById('isCatererPresellInput').value = event.target.value;
+    if (event.target.value !== 'notApplicable') {
+      document.querySelector('select[name="Facia"]').setAttribute("disabled", true)
+    }
+  });
+}
+
+
 if (document.getElementById('checkboxTsAndCs')) {
   document.querySelector('#checkboxTsAndCs').addEventListener('click', () => {
    const divTsAndCs = document.querySelector('#divTsAndCs');
@@ -516,7 +535,6 @@ if (document.getElementById('checkboxTsAndCs')) {
    fileTsAndCs.required = !fileTsAndCs.required;
    textTsAndCs.required = !textTsAndCs.required;
   });
-
 }
 
 if (document.getElementById('agreeTsAndCsCheck')) {
@@ -943,7 +961,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
   });
 }
 
-class CPA_StyledComponent extends HTMLElement {
+/*class CPA_StyledComponent extends HTMLElement {
 constructor() {
   super();
 }
@@ -1065,13 +1083,13 @@ box-shadow:none;
 template = () =>
 `
 <div class="cpa-branches">
-<div class="container col-12 p-0 mt-0 mb-0">
+<div class="container col-12 p-0 my-0">
 <div class="row toggleAvailable">
     <div class="col-10 selectedBranches p-0 mt-1">
         <div class="align-items-center p-0">
             <div class="row d-flex">
                 <span class="choosePrompt">Choose...</span>
-                ${this.formattedBranches.map(branch => `<cpa-element class="cpa-element ${branch.active == true ? 'elementActive' : 'elementInactive'}" data-code="${branch.code}" data-name="${branch.name}" data-active="${branch.active}" data-icon="fa-xmark"></cpa-element>`).join('')}
+                ${this.formattedBranches.map(branch => `<cpa-element class="cpa-element ${branch.active === true ? 'elementActive' : 'elementInactive'}" data-code="${branch.code}" data-name="${branch.name}" data-active="${branch.active}" data-icon="fa-xmark"></cpa-element>`).join('')}
             </div>
         </div>
     </div>
@@ -1082,13 +1100,13 @@ template = () =>
 </div>
 <div class="container p-0 bg-light text-dark availableBranches d-none">
 <div class="row m-0">
-  <input type="text" class="col-12 pl-2 m-0 branchSearch ${this.showSearch == 'true' ? '' : 'd-none' }" placeholder="Search..."/>
+  <input type="text" class="col-12 pl-2 m-0 branchSearch ${this.showSearch === 'true' ? '' : 'd-none' }" placeholder="Search..."/>
 </div>
 <div class="row ml-1 p-0 text-dark bg-white">
 <div class="col-12 p-0">
   <div class="row m-0">
     <div class="col-12 p-0 availableBranchesList">
-      ${this.formattedBranches.map(branch => `<cpa-element class="row cpa-element ${branch.active == true ? 'elementActive' : 'elementInactive'}" data-code="${branch.code}" data-name="${branch.name}" data-active="${branch.active}" data-icon="fa-plus"></cpa-element>`).join('')}
+      ${this.formattedBranches.map(branch => `<cpa-element class="row cpa-element ${branch.active === true ? 'elementActive' : 'elementInactive'}" data-code="${branch.code}" data-name="${branch.name}" data-active="${branch.active}" data-icon="fa-plus"></cpa-element>`).join('')}
     </div>
   </div>
 </div>
@@ -1098,21 +1116,21 @@ template = () =>
 `;
 
 connectedCallback() {     
-this.searchTimer = -1;
-this.branches = this.formattedBranches;
-super.addCustomStyle('cpa_branches_style');
-this.modelPrefix = this.getAttribute('data-model-prefix');
-this.showSearch = this.getAttribute('data-show-search');
-this.render();
+  this.searchTimer = -1;
+  this.branches = this.formattedBranches;
+  super.addCustomStyle('cpa_branches_style');
+  this.modelPrefix = this.getAttribute('data-model-prefix');
+  this.showSearch = this.getAttribute('data-show-search');
+  this.render();
 }
 
-showChoosePrompt() {
+  showChoosePrompt() {
 
-if (this.branches.some((branch) => branch.active)) {
-  this.querySelector('.selectedBranches .choosePrompt').classList.add('d-none');
-} else {
-  this.querySelector('.selectedBranches .choosePrompt').classList.remove('d-none');
-}
+  if (this.branches.some((branch) => branch.active)) {
+    this.querySelector('.selectedBranches .choosePrompt').classList.add('d-none');
+  } else {
+    this.querySelector('.selectedBranches .choosePrompt').classList.remove('d-none');
+  }
 }
 
 
@@ -1120,22 +1138,21 @@ clickBranch = (element) => {
 
 let elementCode = element.getAttribute('data-code');
 
-this.branches.forEach(branch => {
-  if (elementCode == branch.code) {
-      branch.active = !branch.active;
+  this.branches.forEach(branch => {
+    if (branch.code == elementCode) { 
       element.setAttribute('data-active', !element.getAttribute('data-active'));
 
-      this.querySelector('.selectedBranches cpa-element[data-code="' + elementCode + '"]').classList.toggle('elementInactive');
+      this.querySelector('.selectedBranches cpa-element[data-code="' + branch.code + '"]').classList.toggle('elementInactive');
 
-      this.querySelector('.selectedBranches cpa-element[data-code="' + elementCode + '"]').classList.toggle('elementActive');
+      this.querySelector('.selectedBranches cpa-element[data-code="' + branch.code + '"]').classList.toggle('elementActive');
 
-      this.querySelector('.availableBranchesList cpa-element[data-code="' + elementCode + '"]').classList.toggle('elementInactive');
+      this.querySelector('.availableBranchesList cpa-element[data-code="' + branch.code + '"]').classList.toggle('elementInactive');
 
-      this.querySelector('.availableBranchesList cpa-element[data-code="' + elementCode + '"]').classList.toggle('elementActive');
+      this.querySelector('.availableBranchesList cpa-element[data-code="' + branch.code + '"]').classList.toggle('elementActive');
       
       this.querySelector('.' + this.modelPrefix + branch.code).value = branch.active;
-  }
-});
+    }
+  });
 
 this.showChoosePrompt();
 }
@@ -1193,7 +1210,7 @@ document.getElementById('isCatererPresell').addEventListener('change', (event) =
   document.querySelector('select[name="Facia"]').removeAttribute('disabled');
   document.getElementById('isCatererPresellInput').value = event.target.value;
   event.target.value !== 'notApplicable' ? document.querySelector('.presellSelectedBranches').classList.remove('d-none') : document.querySelector('.presellSelectedBranches').classList.remove('d-none') ? !document.querySelector('.presellSelectedBranches').classList.contains('d-none') : document.querySelector('.presellSelectedBranches').classList.add('d-none');
-  if (event.target.value === 'notApplicable') {
+  if (event.target.value !== 'notApplicable') {
     this.branches.map(branch => document.querySelector('.' + this.modelPrefix + branch.code).value = false);
     [...document.querySelectorAll('cpa-element')].map(cpa => {
       if (cpa.classList.contains('elementActive')) {
@@ -1250,5 +1267,4 @@ if (value.length > 1) {
 
 
 customElements.define('cpa-element', CPA_Element);
-customElements.define('cpa-branches', CPA_Branches);
-
+customElements.define('cpa-branches', CPA_Branches);*/
