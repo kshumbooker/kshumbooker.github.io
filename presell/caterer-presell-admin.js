@@ -1181,17 +1181,17 @@ this.branches.map((branch, index) => {
 
 this.querySelector('.cpa-branches').after(inputHtml);
 
-const catererOrRetailer = document.createElement('div');
-catererOrRetailer.className = 'catererOrRetailer';
-catererOrRetailer.id = 'catererOrRetailer';
-catererOrRetailer.innerHTML = `<input id="catererOrRetailerInput" name="catererOrRetailerInput" type="hidden" value="notApplicable">
+const isCatererPresell = document.createElement('div');
+isCatererPresell.className = 'isCatererPresell';
+isCatererPresell.id = 'isCatererPresell';
+isCatererPresell.innerHTML = `<input id="isCatererPresellInput" name="isCatererPresellInput" type="hidden" value="notApplicable">
 `;
 
-document.querySelector('#isCatererOrRetailer').after(catererOrRetailer);
+document.querySelector('#isCatererPresell').after(isCatererPresell);
 
-document.getElementById('isCatererOrRetailer').addEventListener('change', (event) => {
+document.getElementById('isCatererPresell').addEventListener('change', (event) => {
   document.querySelector('select[name="Facia"]').removeAttribute('disabled');
-  document.getElementById('catererOrRetailerInput').value = event.target.value;
+  document.getElementById('isCatererPresellInput').value = event.target.value;
   event.target.value !== 'notApplicable' ? document.querySelector('.presellSelectedBranches').classList.remove('d-none') : document.querySelector('.presellSelectedBranches').classList.remove('d-none') ? !document.querySelector('.presellSelectedBranches').classList.contains('d-none') : document.querySelector('.presellSelectedBranches').classList.add('d-none');
   if (event.target.value === 'notApplicable') {
     this.branches.map(branch => document.querySelector('.' + this.modelPrefix + branch.code).value = false);
