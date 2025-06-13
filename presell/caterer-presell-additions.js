@@ -267,7 +267,7 @@ const presellData = {
           active: true,
           quantity: 0
         },
-        {
+        /*{
           drop: 6,
           dropIndexText: 'seven',
           active: true,
@@ -278,7 +278,7 @@ const presellData = {
           dropIndexText: 'eight',
           active: false,
           quantity: 0
-        }        
+        }*/        
       ]
     }/*,
     {
@@ -572,13 +572,13 @@ if (document.getElementById('agreeTsAndCsCheck')) {
             <p class="mb-0">Drop 6</p>
             <p class="mb-0">w/c 15th December</p>
           </div>
-          <div class="product-quantity-date-header flex-fill">
+          <!--<div class="product-quantity-date-header flex-fill">
             <p class="mb-0">Drop 7</p>
             <p class="mb-0">w/c 22nd December</p>
           </div>
           <div class="product-quantity-date-header flex-fill">
             <p class="mb-0">Drop 8</p>
-            <p class="mb-0">w/c 29th December</p>
+            <p class="mb-0">w/c 29th December</p>-->
           </div>
         </div>
       </div>
@@ -675,12 +675,12 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                             <div class="flex-fill d-flex justify-content-center totals-value">
                                 <p class="color-blue font-weight-bold bigger">0</p>
                             </div>
-                            <div class="flex-fill d-flex justify-content-center totals-value">
+                            <!--<div class="flex-fill d-flex justify-content-center totals-value">
                                 <p class="color-blue font-weight-bold bigger">0</p>
                             </div>
                             <div class="flex-fill d-flex justify-content-center totals-value">
                                 <p class="color-blue font-weight-bold bigger">0</p>
-                            </div>
+                            </div>-->
                     </div>
                 </div>
             </div>
@@ -708,12 +708,12 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                             <div class="flex-fill d-flex justify-content-center totals-value">
                                 <p class="font-weight-bold color-blue bigger">£0.00</p>
                             </div>
-                            <div class="flex-fill d-flex justify-content-center totals-value">
+                            <!--<div class="flex-fill d-flex justify-content-center totals-value">
                                 <p class="font-weight-bold color-blue bigger">£0.00</p>
                             </div>
                             <div class="flex-fill d-flex justify-content-center totals-value">
                                 <p class="font-weight-bold color-blue bigger">£0.00</p>
-                            </div>
+                            </div>-->
                     </div>
                 </div>
             </div>
@@ -741,12 +741,12 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                             <div class="flex-fill d-flex justify-content-center totals-value">
                                 <p class="color-blue bigger font-weight-bold">£0.00</p>
                             </div>
-                            <div class="flex-fill d-flex justify-content-center totals-value">
+                            <!--<div class="flex-fill d-flex justify-content-center totals-value">
                                 <p class="color-blue bigger font-weight-bold">£0.00</p>
                             </div>
                             <div class="flex-fill d-flex justify-content-center totals-value">
                                 <p class="color-blue bigger font-weight-bold">£0.00</p>
-                            </div>
+                            </div>-->
                     </div>
                 </div>
             </div>
@@ -896,7 +896,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                                             <p class="mb-0">w/c 15th December</p>
 
                                 </div>
-                                <div class="flex-fill product-quantity-date-header">
+                                <!--<div class="flex-fill product-quantity-date-header">
                                     <p class="mb-0">Drop 7</p>
                                         <p class="mb-0">w/c 22th December</p>
 
@@ -905,7 +905,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
                                 <p class="mb-0">Drop 8</p>
                                     <p class="mb-0">w/c 29th December</p>
 
-                        </div>
+                        </div>-->
                         </div>
                     </div>
                     <div class="col-12 product-quantities">
