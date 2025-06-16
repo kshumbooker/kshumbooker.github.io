@@ -1,82 +1,71 @@
+main#presell_button .desktop-view .product-quantity-date-header p {
+    font-size: 10px;
+}
 
-    main#presell_button .desktop-view .product-quantity-date-header p {
+
+main#presell_button .desktop-view .product-quantity-date-header, main#presell_button .mobile-view .product-quantity-date-header, main#presell_button .desktop-view .product-quantity-date, main#presell_button .mobile-view .product-quantity-date {
+    max-width: 12.5%;
+}
+
+
+main#presell_button .mobile-view .product .product-details .product-name-priceMarked {
+    height: inherit;
+}
+
+.plus-minus-icon.disabled {
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+#agreeTsAndCsCheck {
+    position: relative;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+label[for="agreeTsAndCsCheck"] a {
+    color: #062F6E;
+    font-weight: bold;
+}
+
+@media (max-width: 1150px) {
+    main#presell_button .mobile-view .product-quantity-date-header p {
         font-size: 10px;
     }
+}
 
+@media (max-width: 500px) {
+    main#presell_button .mobile-view .product-quantity-date-header p {
+        font-size: 8px;
+    }
+}
 
-	main#presell_button .desktop-view .product-quantity-date-header {
-		max-width: 16.666%;
-	}
+.main {
+    width: 100%
+}
 
-    main#presell_button .desktop-view .product-quantity-date {
-        width: -webkit-fill-available;
+.product-image img {
+    max-height: 96px;
+}
+
+@media (max-width: 1150px) {
+
+    main#presell_button .mobile-view .product-quantity-date .plus-minus-icon {
+        width: 1em !important;
+        height: 1em !important;
     }
 
-    main#presell_button .mobile-view .product .product-details .product-name-priceMarked {
-        height: inherit;
-    }
+}
 
-    .plus-minus-icon.disabled {
-        cursor: not-allowed !important;
-        opacity: 0.6;
+@media (max-width: 675px) {
+    .mobile-view .product .prices-and-taxes-col {
+        align-items: center;
     }
+}
 
-    #agreeTsAndCsCheck {
-        position: relative;
-        margin-top: 0;
-        margin-left: 0;
+@media (max-width: 590px) {
+    .prices-and-taxes .col-6 {
+        flex: auto;
+        max-width: none;
     }
-
-    label[for="agreeTsAndCsCheck"] a {
-        color: #062F6E;
-        font-weight: bold;
-    }
-
-    @media  (max-width: 1150px) {
-        main#presell_button .mobile-view .product-quantity-date-header p {
-            font-size: 10px;
-        }
-    }
-
-    @media  (max-width: 500px) {
-        main#presell_button .mobile-view .product-quantity-date-header p {
-            font-size: 8px;
-        }
-    }
-
-    .main {
-        width: 100%
-    }
-
-    main#presell_button .mobile-view .product-quantity-date-header {
-        width: min-content;
-    }
-
-    .product-image img {
-        max-height: 96px;
-    }
-
-     @media (max-width: 1150px) {
-      
-      main#presell_button .mobile-view .product-quantity-date .plus-minus-icon {
-            width: 1em;
-            height: 1em;
-        }
-
-        main#presell_button .mobile-view .product .product-quantity-date {
-          width: 0;
-        }
-    }
-
-    @media (max-width: 675px) {
-        .mobile-view .product .prices-and-taxes-col {
-            align-items: center;
-        }
-    }
-
-    @media (max-width: 590px) {
-        .prices-and-taxes .col-6 {
-            flex: auto;
-            max-width: none;
-        }
-    }
+}
