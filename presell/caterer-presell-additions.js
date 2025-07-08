@@ -952,10 +952,16 @@ if (document.getElementById('agreeTsAndCsCheck')) {
     disablePreSellElements();
   }
 
-  checkbox.addEventListener('change', (event) => {
+  /*checkbox.addEventListener('change', (event) => {
     if (event.target.checked !== true) {
       disablePreSellElements(false);
     } else {
+      disablePreSellElements(true);
+    }
+  });*/
+
+  checkbox.addEventListener('click', (event) => {
+    if (event.target.checked === true) {
       disablePreSellElements(true);
     }
   });
