@@ -963,6 +963,7 @@ if (document.getElementById('agreeTsAndCsCheck')) {
   checkbox.addEventListener('click', (event) => {
     if (event.target.checked === true) {
       disablePreSellElements(true);
+      document.getElementById("agreeTsAndCsCheck").disabled = true;
     }
   });
 }
