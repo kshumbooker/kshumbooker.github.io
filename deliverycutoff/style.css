@@ -1,3 +1,10 @@
+.order-cutoff-title {
+    color: #3CA2F1;
+    font-weight: 700 !important;
+    margin-bottom: 0;
+}
+
+
 header.shopping-header #counters-non-facia {
     display: flex;
     flex-wrap: wrap;
@@ -37,11 +44,15 @@ header.shopping-header #counters-non-facia .orange-title {
 }
 
 header.shopping-header #counters-non-facia .counter {
-    padding-left: 1em;
+    padding-left: 0.5em;
+    margin-top: -5px;
 }
 
+header.shopping-header #counters-non-facia .non-facia-title .non-facia-date {
+    color: #000;
+}
 header.shopping-header #counters-non-facia .title p:nth-child(2) {
-    margin-top: -0.45em;
+    margin-top: -0.20em;
 }
 
 header.shopping-header #counters-non-facia .col p:nth-child(2) {
@@ -87,6 +98,10 @@ html[data-useragent*='Edge/17.17134'] header.shopping-header #counters-non-facia
 
     header.shopping-header #counters-non-facia .col p:nth-child(2) {
         font-size: 8px;
+    }
+
+    .order-cutoff-title {
+        font-size: 14px;
     }
 }
 
