@@ -136,6 +136,12 @@
     main {
       padding-bottom: 0;
     }
+
+    #faqModal a {
+      font-size: inherit;
+      font-weight: bold;
+      text-decoration: underline;
+    }
   </style>
 
 </head>
@@ -260,26 +266,45 @@
       <link href="https://www.ourbooker.co.uk/css/OurBooker/Accounts/Login.css?_bts=8DE1BADD89A20D4"
         nonce="plGogZf6bfspejLTgjb6tW4O1BjZb1Tj02Pc7Sh+9o0=" rel="stylesheet" />
       <div class="login-form row">
-        <div class="col-xs-12 my-3 col-md-8 d-flex justify-content-center justify-content-md-end">
+        <div class="col-xs-12 my-3 col-md-9 d-flex justify-content-center justify-content-md-end">
           <div class="login-content text-center">
-          <h1><span><img src="https://www.ourbooker.co.uk/images/OurBooker/ui/login-icon.svg" alt="Login icon"></span>We
-            have made login simplier</h1>
-          <p>Our booker now uses One login (the tomato screen). To access Our Booker, please click on the button below.
-          </p>
-          <form action="/Login" class="input-group justify-content-center" method="post" novalidate="true">
-            <input id="TokenResponse" name="TokenResponse" type="hidden" value="" />
-            <input class="btn" id="submitForm" type="submit" value="Login">
-          </form>
-          <div class="links">
-            <p>If you are having trouble login in, please click <a href="/help/FAQ"><u>here</u></a></p>
-          </div>
+            <h1><span><img src="https://www.ourbooker.co.uk/images/OurBooker/ui/login-icon.svg"
+                  alt="Login icon"></span>Our Booker now uses Single Sign On (SSO)</h1>
+            <p>To access Our Booker, please click on the button below and enter your company issued credentials (ie your
+              username and password)</p>
+            <form action="/Login" class="input-group justify-content-center" method="post" novalidate="true">
+              <input id="TokenResponse" name="TokenResponse" type="hidden" value="" />
+              <input class="btn" id="submitForm" type="submit" value="Login">
+            </form>
+            <div class="links">
+              <p>If you are having trouble login in, please click <a href="#" data-bs-target="#faqModal" data-bs-toggle="modal"><u>here</u></a></p>
+            </div>
           </div>
         </div>
-        <div class="col-xs-12 my-3 col-md-4 d-flex justify-content-center">
-          <img class="img-fluid ourbooker-login-img" src="./ourbooker-tesco-login.png" />
+        <div class="col-xs-12 my-3 col-md-3 d-flex justify-content-center">
+          <img class="img-fluid ourbooker-login-img"
+            src="https://kshumbooker.github.io/ourbooker/ourbooker-tesco-login.png" />
         </div>
 
       </div>
+      <!-- The Modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="lh-base">If you are a recent new starter, your credentials were sent to you in your welcome email.  If you are an existing colleague, your company issued credentials will be in your 'Second Clubcard' letter in 'My Letters' on Our Booker.
+Please speak to your line manager for any assistance.<br>
+ <br>
+If you are still struggling to sign in or having issues accessing your company issued credentials, please use this temporary link to the original sign in page - click <a class="" href="https://www.ourbooker.co.uk/Login">here</a></p> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
       <script src="https://www.google.com/recaptcha/api.js" async defer
         nonce="plGogZf6bfspejLTgjb6tW4O1BjZb1Tj02Pc7Sh+9o0="></script>
 
