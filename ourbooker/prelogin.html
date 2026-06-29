@@ -35,6 +35,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"
     nonce="plGogZf6bfspejLTgjb6tW4O1BjZb1Tj02Pc7Sh+9o0=">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- scripts -->
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d24ac1d9-0917-4f14-847b-be52c018c867"
     data-custom-css="true" data-blockingmode="auto" type="text/javascript"
@@ -277,7 +279,8 @@
               <input class="btn" id="submitForm" type="submit" value="Login">
             </form>
             <div class="links">
-              <p>If you are having trouble login in, please click <a href="#" data-bs-target="#faqModal" data-bs-toggle="modal"><u>here</u></a></p>
+              <p>If you are having trouble login in, please click <a href="#" data-bs-target="#faqModal"
+                  data-bs-toggle="modal"><u>here</u></a></p>
             </div>
           </div>
         </div>
@@ -289,22 +292,30 @@
       </div>
       <!-- The Modal -->
 
-<!-- Modal -->
-<div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-body">
-        <p class="lh-base">If you are a recent new starter, your credentials were sent to you in your welcome email.  If you are an existing colleague, your company issued credentials will be in your 'Second Clubcard' letter in 'My Letters' on Our Booker.
-Please speak to your line manager for any assistance.<br>
- <br>
-If you are still struggling to sign in or having issues accessing your company issued credentials, please use this temporary link to the original sign in page - click <a  href="https://www.ourbooker.co.uk/Login" onclick="goNext(event)">here</a></p> 
+      <!-- Modal -->
+      <div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header d-flex justify-content-end">
+              <i class="fa fa-close" data-bs-dismiss="modal" aria-label="Close"></i>
+            </div>
+            <div class="modal-body p-4">
+              <p class="lh-base">If you are a recent new starter, your credentials were sent to you in your welcome
+                email.<br><br>If you are an existing colleague, your company issued credentials will be in your 'Second
+                Clubcard' letter in 'My Letters' on Our Booker.
+                Please speak to your line manager for any assistance.<br>
+                <br>
+                If you are still struggling to sign in or having issues accessing your company issued credentials,
+                please use this temporary link to the original sign in page - click <a
+                  href="https://www.ourbooker.co.uk/Login" onclick="goNext(event)">here</a>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
       <script src="https://www.google.com/recaptcha/api.js" async defer
         nonce="plGogZf6bfspejLTgjb6tW4O1BjZb1Tj02Pc7Sh+9o0="></script>
 
@@ -364,14 +375,14 @@ If you are still struggling to sign in or having issues accessing your company i
 
   <script>
     function goNext(e) {
-  e.preventDefault();
+      e.preventDefault();
 
-  $('#faqModal').modal('hide');
+      $('#faqModal').modal('hide');
 
-  setTimeout(function () {
-    window.location.href = 'https://www.ourbooker.co.uk/Login';
-  }, 300);
-}
+      setTimeout(function () {
+        window.location.href = 'https://www.ourbooker.co.uk/Login';
+      }, 300);
+    }
   </script>
 
   <!-- Google Tag Manager (noscript) -->
