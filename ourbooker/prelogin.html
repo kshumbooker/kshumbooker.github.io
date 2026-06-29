@@ -297,7 +297,7 @@
         <p class="lh-base">If you are a recent new starter, your credentials were sent to you in your welcome email.  If you are an existing colleague, your company issued credentials will be in your 'Second Clubcard' letter in 'My Letters' on Our Booker.
 Please speak to your line manager for any assistance.<br>
  <br>
-If you are still struggling to sign in or having issues accessing your company issued credentials, please use this temporary link to the original sign in page - click <a class="" href="https://www.ourbooker.co.uk/Login">here</a></p> 
+If you are still struggling to sign in or having issues accessing your company issued credentials, please use this temporary link to the original sign in page - click <a  href="https://www.ourbooker.co.uk/Login" onclick="goNext(event)">here</a></p> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -361,6 +361,18 @@ If you are still struggling to sign in or having issues accessing your company i
       </div>
     </div>
   </footer>
+
+  <script>
+    function goNext(e) {
+  e.preventDefault();
+
+  $('#faqModal').modal('hide');
+
+  setTimeout(function () {
+    window.location.href = 'https://www.ourbooker.co.uk/Login';
+  }, 300);
+}
+  </script>
 
   <!-- Google Tag Manager (noscript) -->
   <noscript>
